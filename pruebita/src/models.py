@@ -75,6 +75,13 @@ class Rol(db.Model):
         self.ambito = ambito
         self.descripcion = descripcion
      
+    def __init__(self, nombre=None, descripcion=None, ambito=None, permisos=[None]):
+        """ constructor de Rol """
+        self.nombre = nombre
+        self.ambito = ambito
+        self.descripcion = descripcion
+        self.permisos = permisos
+        
     def __repr__(self):
         return self.nombre
 
@@ -105,6 +112,7 @@ class Proyecto(db.Model):
     idProyecto = db.Column(db.Integer, primary_key=True, nullable=False)
     nombre = db.Column(db.String(45), unique=True, nullable=False)
     descripcion = db.Column(db.String(150))
+    presupuesto = db.Column(db.Integer)
     fechaDeCreacion = db.Column(db.DateTime, default = datetime.now(), nullable=False) 
     estado = db.Column(db.String(20), default ='Pendiente', nullable=False)
     
@@ -115,10 +123,11 @@ class Proyecto(db.Model):
     users = db.relationship('User', secondary = users,
         backref = db.backref('proyectos' , lazy='dynamic'))
     
-    def __init__(self, nombre=None, descripcion=None):
+    def __init__(self, nombre=None, descripcion=None, presupuesto=None):
         """ constructor de Proyecto """
         self.nombre = nombre
         self.descripcion = descripcion
+        self.presupuesto = presupuesto
         
 
 class TipoDeAtributo(db.Model):
