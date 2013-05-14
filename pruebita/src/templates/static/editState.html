@@ -1,0 +1,16 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Edit State{% endblock %}
+
+{% block body %}
+    <h1>Modificar estado de usuario</h1>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.estado.label(style="float: left; width: 100px;") }} 
+            {{ form.estado(class="form-input", style="width:100px") }}
+            {% for error in form.estado.errors %} {{ error }} {% endfor %}
+      </dl>
+      <p><input type="submit" value="submit">
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block body %}
+    {% for post in posts %}
+     <h2><a href="{{ url_for('post', slug=post.slug) }}">{{ post.subject }}</a></h2>
+     <p>{{ post.content|safe }}</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,30 @@
+.buttons { float: right; text-align: right; }
+a.button { color: #000; }
+.button
+{
+    background-color: #FFFFFF;
+    background: url("/img/buttonshadow.png") repeat-x scroll center bottom #FFFFFF;
+    border: 1px solid #8CACBB;
+    color: #000000;
+    cursor: pointer;
+    font-size: 100%;
+    margin: 1px;
+    padding: 0.125em 0.4em;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+textarea
+{
+    border: 1px solid #ddd;
+}
+
+.form-input
+{
+	border: 1px solid #888;
+}
+.form-login-input
+{
+	width: 100px;
+	border: 1px solid #888;
+}

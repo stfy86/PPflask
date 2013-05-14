@@ -1,0 +1,40 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Add{% endblock %}
+
+{% block body %}
+    <h1>Agregar Usuario</h1>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.name.label(style="float: left; width: 100px;") }} 
+            {{ form.name(class="form-input", style="width:100px") }}
+            {% for error in form.name.errors %} {{ error }} {% endfor %}
+	    <br />
+            {{ form.password.label(style="float: left; width: 100px;") }}
+            {{form.password(class="form-input", style="width:100px") }}
+            {% for error in form.password.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.nombre.label(style="float: left; width: 100px;") }}
+            {{form.nombre(class="form-input", style="width:100px") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.apellido.label(style="float: left; width: 100px;") }}
+            {{form.apellido(class="form-input", style="width:100px") }}
+            {% for error in form.apellido.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.email.label(style="float: left; width: 100px;") }}
+            {{form.email(class="form-input", style="width:100px") }}
+            {% for error in form.email.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.telefono.label(style="float: left; width: 100px;") }}
+            {{form.telefono(class="form-input", style="width:100px") }}
+            {% for error in form.telefono.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.obs.label(style="float: left; width: 100px;") }}
+            {{form.obs(class="form-input", style="width:100px") }}
+            {% for error in form.obs.errors %} {{ error }} {% endfor %}
+      </dl>
+      <p><input type="submit" value="submit">
+    </form>
+{% endblock %}

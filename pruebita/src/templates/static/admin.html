@@ -1,0 +1,16 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+      <dl>
+        <ul>
+            <li><a href="{{ url_for('list') }}">Listar Usuarios</a></li>
+            <li><a href="{{ url_for('addUser') }}">Crear Usuario</a></li>
+            <li><a href="{{ url_for('listEdit') }}">Modificar Usuario</a></li>
+            <li><a href="{{ url_for('listDelete') }}">Eliminar Usuario</a></li>
+            <li><a href="{{ url_for('listState') }}">Modificar Estado</a></li>
+        </ul>
+      </dl>
+    </form>
+{% endblock %}

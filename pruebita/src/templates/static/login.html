@@ -1,0 +1,21 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    <h1>Login form</h1>
+    {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+    <form method="post" action="">
+      <dl>
+            {{ form.csrf }}
+            {{ form.username.label(style="float: left; width: 100px;") }}
+            {{ form.username(class="form-login-input") }}
+            {% for error in form.username.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.password.label(style="float: left; width: 100px;") }}
+            {{form.password(class="form-login-input") }}
+            {% for error in form.password.errors %} {{ error }} {% endfor %}
+      </dl>
+      <p><input type="submit" value="Login">
+    </form>
+{% endblock %}

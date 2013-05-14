@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xml:lang="{{ conf['LANG'] }}" lang="{{ conf['LANG'] }}" 
+      dir="{{ conf['LANG_DIRECTION'] }}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}{% endblock %} [{{ conf['TITLE'] }}]</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css" media="screen" /></head>
+    <link rel="stylesheet" href="/css/wiki.css" type="text/css" media="screen" /></head>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/custom.js"></script>
+</head>
+
+<body>
+<div id="wrap">
+
+    <div id="topnavbar"></div>
+
+    <div id="header">
+	    <div class="headerleft">
+		    <h4><a href="{{ url_for('index') }}">{{ conf['TITLE'] }}</a></h4>
+	    </div>
+    </div>
+
+    <div id="navbar">
+        <div id="navbarleft">
+            <ul id="nav">
+                <li><a href="/">Inicio</a></li>
+				{% if not g.user %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+				{% else %}
+                <li><a href="{{ url_for('administracion') }}">Administración</a></li>
+                <li><a href="{{ url_for('gestion') }}">Gestión</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                		{% endif %}
+            </ul>
+        </div>
+        <div id="navbarright"></div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="content">
+        <div id="sidebar">
+            <ul id="sidebarwidgeted">
+                <li class="widget widget_recent_entries"><span>Menu</span>
+                    {% block sidebar %}
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Inicio</a></li>
+						{% if not g.user %}
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+						{% else %}
+                        <li><a href="{{ url_for('administracion') }}">Administración</a></li>
+                        <li><a href="{{ url_for('gestion') }}">Gestión</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        			{% endif %}
+                    </ul>
+                    {% endblock %}
+                </li>
+            </ul>
+        </div>
+
+        <div id="contentleft">
+            <div class="message">
+            {% block message %}
+			{% for message in get_flashed_messages() %}
+			    <div class=flash>{{ message }}</div>
+			{% endfor %}
+			{% endblock %}
+            </div>
+
+            <div class="postarea">
+            {% block body %}{% endblock %}
+            {% block buttons %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="footer">
+        <p>{{ conf['TITLE'] }} &copy; {{ conf['YEAR'] }}</p>
+    </div>
+
+</div>
+</body>
