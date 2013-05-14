@@ -12,6 +12,13 @@ class MgrUser():
         db.session.add(usuario)
         db.session.commit()
     
+    def guardar(self, listaUsuario):
+        """ guarda una lista de usuarios """
+        from models import User
+        for u in listaUsuario:
+            db.session.add(u)
+            db.session.commit()
+    
     def estado(self, nombre, estadoNew):
         """ guarda el nuevo estado del usuario """
         from models import User

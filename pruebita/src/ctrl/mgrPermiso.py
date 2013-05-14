@@ -13,5 +13,11 @@ class MgrPermiso():
         permiso = Permiso.query.filter(Permiso.nombre == nombre).first_or_404()
         db.session.delete(permiso)
         db.session.commit()
-
+    
+    def guardar(self, permisos=[None]):
+        """ guarda una lista de permisos """
+        from models import Permiso
+        for p in permisos:
+            db.session.add(p)
+            db.session.commit()
 

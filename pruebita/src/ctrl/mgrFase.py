@@ -31,3 +31,11 @@ class MgrFase():
         """ filtrar fase por nombre """
         from models import Fase
         return Fase.query.filter(Fase.nombre == nombre).first_or_404()
+
+
+    def estado(self, nombre, estadoNew):
+        """ guarda el nuevo estado de la fase """
+        from models import Fase
+        fase = Fase.query.filter(Fase.nombre == nombre).first_or_404()
+        fase.estado = estadoNew        
+        db.session.commit()
