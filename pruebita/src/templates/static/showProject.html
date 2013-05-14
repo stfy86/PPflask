@@ -8,7 +8,7 @@
       <dl>
         {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width:200px", readonly="readonly") }}
+            {{form.nombre(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.descripcion.label(style="float: left; width: 100px;") }}
@@ -16,12 +16,16 @@
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.fechaDeCreacion.label(style="float: left; width: 100px;") }}
-            {{form.fechaDeCreacion(class="form-input", style="width:200px", readonly="readonly") }}
+            {{form.fechaDeCreacion(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.fechaDeCreacion.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.estado.label(style="float: left; width: 100px;") }}
-            {{form.estado(class="form-input", style="width:200px", readonly="readonly") }}
+            {{form.estado(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.estado.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.presupuesto.label(style="float: left; width: 100px;") }}
+            {{form.presupuesto(class="form-input", style="width: 200px", readonly="readonly") }}
+            {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
             <br />
   
             
@@ -33,8 +37,9 @@
       </dl>
       <br />
       <p>
-          <input type="submit" name="edit" value="Modificar Proyecto"  > 
+          <input type="submit" name="edit" value="Modificar Proyecto">
           <input type="submit" name="delete" value="Eliminar Proyecto" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+          <input type="submit" name="state" value="Modificar Estado de Proyecto">
           <input type="button" value="Cancelar" onclick="javascript:history.back();">
       </p>
     </form>
