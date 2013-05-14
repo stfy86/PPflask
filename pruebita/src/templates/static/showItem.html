@@ -8,27 +8,27 @@
       <dl>
         {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width:200px", readonly="readonly") }}
+            {{form.nombre(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.version.label(style="float: left; width: 100px;") }}
-            {{form.version(class="form-input", style="width:100px", readonly="readonly") }}
+            {{form.version(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.version.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.complejidad.label(style="float: left; width: 100px;") }}
-            {{form.complejidad(class="form-input", style="width:100px", readonly="readonly") }}
+            {{form.complejidad(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.complejidad.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.costo.label(style="float: left; width: 100px;") }}
-            {{form.costo(class="form-input", style="width:100px", readonly="readonly") }}
+            {{form.costo(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.costo.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.estado.label(style="float: left; width: 100px;") }}
-            {{form.estado(class="form-input", style="width:100px", readonly="readonly") }}
+            {{form.estado(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.estado.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.fechaDeModif.label(style="float: left; width: 100px;") }}
-            {{form.fechaDeModif(class="form-input", style="width:200px", readonly="readonly") }}
+            {{form.fechaDeModif(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.fechaDeModif.errors %} {{ error }} {% endfor %}
       </dl>
       <script language="JavaScript">
