@@ -8,7 +8,7 @@
       <dl>
           {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width:200px") }}
+            {{form.nombre(class="form-input", style="width: 200px") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.descripcion.label(style="float: left; width: 100px;") }}
@@ -16,7 +16,7 @@
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
              {{ form.orden.label(style="float: left; width: 100px;") }}
-            {{form.orden(class="form-input", style="width:200px") }}
+            {{form.orden(class="form-input", style="width: 200px") }}
             {% for error in form.orden.errors %} {{ error }} {% endfor %}
             <br />
       </dl>
