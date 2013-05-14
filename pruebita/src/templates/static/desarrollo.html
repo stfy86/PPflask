@@ -1,0 +1,20 @@
+{% extends "static/layout.html" %}
+
+{% block title %} Modulo de Desarrollo {% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <center>
+              <h3>Modulo de Desarrollo</h3>
+        </center>
+  
+    </div>
+      <dl>
+        <ul>
+            <li><a href="{{ url_for('listItem') }}">Administrar Items</a></li>
+            <li><a href="{{ url_for('index') }}">Administrar Cambio</a></li>
+            <li><a href="{{ url_for('index') }}">Administrar Reportes</a></li>
+         </ul>
+      </dl>
+    </form>
+{% endblock %}
