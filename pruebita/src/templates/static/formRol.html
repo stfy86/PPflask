@@ -1,0 +1,28 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Rol{% endblock %}
+
+{% block body %}
+    <h1>Rol agregarstfy</h1>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 100px;") }} 
+            {{ form.nombre(class="form-input", style="width:100px") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+	    <br />
+            {{ form.ambito.label(style="float: left; width: 100px;") }} 
+            {{ form.ambito(class="form-input", style="width:100px") }}
+            {% for error in form.ambito.errors %} {{ error }} {% endfor %}
+	    <br />
+            {{ form.descripcion.label(style="float: left; width: 100px;") }}
+            {{form.descripcion(class="form-input", style="width:100px") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+   
+      </dl>
+      <p>
+          <input type="submit" value="Guardar">
+          <input type="button" value="Cancelar" onclick="javascript:history.back();">    
+      </p>
+    </form>
+{% endblock %}

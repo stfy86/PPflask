@@ -1,0 +1,24 @@
+{% extends "static/layout.html" %}
+
+{% block title %}List Rol{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+    <h3>Roles</h3>
+</div>
+
+<ul class="users">
+{% for rol in list %}
+    <li class="span3">
+        <div class="well well-small user">
+            <div class="text">
+                <a href="{{ url_for('showRol', nombre = rol.nombre )}}"<h5>{{ rol.nombre }}</h5></a>
+            </div> 
+        </div>
+    </li>
+{% endfor %}
+    <p><input type="button" value="Crear Rol" onclick="document.location='addRol';">
+</ul>
+
+
+{% endblock %}
