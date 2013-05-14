@@ -8,35 +8,35 @@
       <dl>
         {{ form.csrf }}
             {{ form.name.label(style="float: left; width: 100px;") }} 
-            {{ form.name(class="form-input", style="width:100px") }}
+            {{ form.name(class="form-input", style="width:200px") }}
             {% for error in form.name.errors %} {{ error }} {% endfor %}
 	    <br />
             {{ form.password.label(style="float: left; width: 100px;") }}
-            {{form.password(class="form-input", style="width:100px") }}
+            {{form.password(class="form-input", style="width:200px") }}
             {% for error in form.password.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.confirmacion.label(style="float: left; width: 100px;") }}
-            {{form.confirmacion(class="form-input", style="width:100px") }}
+            {{form.confirmacion(class="form-input", style="width: 200px") }}
             {% for error in form.confirmacion.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width:100px") }}
+            {{form.nombre(class="form-input", style="width: 200px") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.apellido.label(style="float: left; width: 100px;") }}
-            {{form.apellido(class="form-input", style="width:100px") }}
+            {{form.apellido(class="form-input", style="width:200px") }}
             {% for error in form.apellido.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.email.label(style="float: left; width: 100px;") }}
-            {{form.email(class="form-input", style="width:100px") }}
+            {{form.email(class="form-input", style="width:200px") }}
             {% for error in form.email.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.telefono.label(style="float: left; width: 100px;") }}
-            {{form.telefono(class="form-input", style="width:100px") }}
+            {{form.telefono(class="form-input", style="width:200px") }}
             {% for error in form.telefono.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.obs.label(style="float: left; width: 100px;") }}
-            {{form.obs(class="form-input", style="width:100px") }}
+            {{form.obs(class="form-input", style="height:50px;width:200px") }}
             {% for error in form.obs.errors %} {{ error }} {% endfor %}
       </dl>
       <script language="JavaScript">
