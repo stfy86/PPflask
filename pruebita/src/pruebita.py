@@ -348,14 +348,14 @@ def deleteRol(nombre):
 # ADMINISTRAR PROYECTO
 
 
-@app.route('/listEditProject')
-def listEditProject():
+@app.route('/listProject')
+def listProject():
     """ Lista editable de proyectos que se alojan en la base de datos"""
     from ctrl.mgrProject import MgrProject
     if g.user is None:
         return redirect(url_for('login'))
     else:
-        return render_template(app.config['DEFAULT_TPL']+'/listEditProject.html',
+        return render_template(app.config['DEFAULT_TPL']+'/listProject.html',
                            conf = app.config,
                            list = MgrProject().listar(),) 
 
@@ -372,17 +372,36 @@ def showProject(nombre):
         form = ShowFormProject(request.form, nombre = project.nombre,
                descripcion = project.descripcion, 
                fechaDeCreacion = project.fechaDeCreacion,
-               estado = project.estado)
+               estado = project.estado,
+               presupuesto = project.presupuesto)
         if request.method == 'POST':
             if request.form.get('edit', None) == "Modificar Proyecto":
                 return redirect(url_for('editProject', nombre = project.nombre))
             elif request.form.get('delete', None) == "Eliminar Proyecto":
                 return redirect(url_for('deleteProject', nombre = project.nombre))
+            elif request.form.get('state', None) == "Modificar Estado de Proyecto":
+                return redirect(url_for('editProjectState', nombre = project.nombre))
             
 	return render_template(app.config['DEFAULT_TPL']+'/showProject.html',
 			       conf = app.config,
 			       form = form)
 
+@app.route('/editProjectState/<path:nombre>.html', methods=['GET','POST'])
+def editProjectState(nombre):
+    """ Modifica el estado de un proyecto"""
+    from form import EditStateProjectForm
+    from ctrl.mgrProject import MgrProject
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        proyecto = MgrProject().filtrar(nombre)
+        form = EditStateProjectForm(request.form, estado = proyecto.estado)
+	if request.method == 'POST' and form.validate(): 
+                MgrProject().estado(nombre, request.form['estado'])
+		return redirect(url_for('listProject'))
+	return render_template(app.config['DEFAULT_TPL']+'/editProjectState.html',
+			       conf = app.config,
+			       form = EditStateProjectForm())
 
 @app.route('/editProject/<path:nombre>.html', methods=['GET','POST'])
 def editProject(nombre):
@@ -393,12 +412,14 @@ def editProject(nombre):
         return redirect(url_for('login'))
     else:
         project = MgrProject().filtrar(nombre)
-        form = CreateFormProject(request.form, nombre = project.nombre,
-               descripcion = project.descripcion)
+        form = CreateFormProject(request.form,
+               nombre = project.nombre,
+               descripcion = project.descripcion,
+               presupuesto = project.presupuesto)
 	if request.method == 'POST' and form.validate:
-            MgrProject().modificar(nombre, request.form['nombre'],request.form['descripcion'])
+            MgrProject().modificar(nombre, request.form['nombre'],request.form['descripcion'], request.form['presupuesto'])
             flash('Se ha modificado correctamente el proyecto')
-            return redirect(url_for('listEditProject'))
+            return redirect(url_for('listProject'))
     return render_template(app.config['DEFAULT_TPL']+'/formProject.html',
 			       conf = app.config,
 			       form = form)
@@ -413,7 +434,7 @@ def deleteProject(nombre):
     else:
         MgrProject().borrar(nombre)
         flash('Se ha borrado correctamente')
-        return redirect(url_for('listEditProject'))
+        return redirect(url_for('listProject'))
                              
 
 @app.route('/addProject', methods=['GET','POST'])
@@ -428,13 +449,15 @@ def addProject():
         if request.method == 'POST':
             form = CreateFormProject(request.form, 
                                      request.form['nombre'], 
-                                     descripcion = request.form['descripcion'])
+                                     descripcion = request.form['descripcion'],
+                                     presupuesto = request.form['presupuesto'])
             if form.validate():
                 project = Proyecto(nombre = request.form['nombre'], 
-                                   descripcion = request.form['descripcion'])    
+                                   descripcion = request.form['descripcion'],
+                                   presupuesto = request.form['presupuesto'])    
                 MgrProject().guardar(project)
                 flash('Se ha creado correctamente el proyecto')
-                return redirect(url_for('listEditProject'))
+                return redirect(url_for('listProject'))
             else:
                 return render_template(app.config['DEFAULT_TPL']+'/formProject.html',
                             conf = app.config,
@@ -449,16 +472,33 @@ def addProject():
 # ADMINISTRAR FASE
 
 
-@app.route('/listEditFase')
-def listEditFase():
+@app.route('/listFase')
+def listFase():
     """ Lista editable de fase que se alojan en la base de datos"""
     from ctrl.mgrFase import MgrFase
     if g.user is None:
         return redirect(url_for('login'))
     else:
-        return render_template(app.config['DEFAULT_TPL']+'/listEditFase.html',
+        return render_template(app.config['DEFAULT_TPL']+'/listFase.html',
                            conf = app.config,
                            list = MgrFase().listar(),) 
+
+@app.route('/editFaseState/<path:nombre>.html', methods=['GET','POST'])
+def editFaseState(nombre):
+    """ Modifica el estado de un proyecto"""
+    from form import EditStateFaseForm
+    from ctrl.mgrFase import MgrFase
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        fase = MgrFase().filtrar(nombre)
+        form = EditStateFaseForm(request.form, estado = fase.estado)
+	if request.method == 'POST' and form.validate(): 
+                MgrFase().estado(nombre, request.form['estado'])
+		return redirect(url_for('listFase'))
+	return render_template(app.config['DEFAULT_TPL']+'/editFaseState.html',
+			       conf = app.config,
+			       form = EditStateFaseForm())
 
 @app.route('/showFase/<path:nombre>.html', methods=['GET','POST'])
 def showFase(nombre):
@@ -479,7 +519,8 @@ def showFase(nombre):
                 return redirect(url_for('editFase', nombre = fase.nombre))
             elif request.form.get('delete', None) == "Eliminar Fase":
                 return redirect(url_for('deleteFase', nombre = fase.nombre))
-            
+            elif request.form.get('state', None) == "Modificar Estado de Fase":
+                return redirect(url_for('editFaseState', nombre = fase.nombre))
 	return render_template(app.config['DEFAULT_TPL']+'/showFase.html',
 			       conf = app.config,
 			       form = form)
@@ -505,7 +546,7 @@ def editFase(nombre):
             fase.orden =  request.form['orden'] 
             MgrFase().modificar(nombre, fase.nombre , fase.descripcion, fase.orden)
             flash('Se ha modificado correctamente el fase')
-            return redirect(url_for('listEditFase'))
+            return redirect(url_for('listFase'))
     return render_template(app.config['DEFAULT_TPL']+'/formFase.html',
 			       conf = app.config,
 			       form = form)
@@ -523,7 +564,7 @@ def deleteFase(nombre):
     else:
         MgrFase().borrar(nombre)
         flash('Se ha borrado correctamente')
-        return redirect(url_for('listEditFase'))
+        return redirect(url_for('listFase'))
 
 
 @app.route('/addFase', methods=['GET','POST'])
@@ -541,7 +582,7 @@ def addFase():
                 fase = Fase(nombre = request.form['nombre'], descripcion = request.form['descripcion'], orden = request.form['orden'])    
                 MgrFase().guardar(fase)
                 flash('Se ha creado correctamente la fase')
-                return redirect(url_for('listEditFase'))
+                return redirect(url_for('listFase'))
             else:
                 return render_template(app.config['DEFAULT_TPL']+'/formFase.html',
                             conf = app.config,
