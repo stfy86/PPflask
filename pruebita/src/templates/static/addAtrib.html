@@ -1,0 +1,29 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Add{% endblock %}
+
+{% block body %}
+    <h1>Agregar Atributo</h1>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 100px;") }}
+            {{form.nombre(class="form-input", style="width:100px") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.tipoDeDato.label(style="float: left; width: 100px;") }}
+            {{form.tipoDeDato(class="form-input", style="width:100px") }}
+            {% for error in form.tipoDeDato.errors %} {{ error }} {% endfor %}
+            <br />  
+            {{ form.detalle.label(style="float: left; width: 100px;") }}
+            {{form.detalle(class="form-input", style="width:100px")}}
+            {% for error in form.detalle.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 100px;") }}
+            {{form.descripcion(class="form-input", style="width:100px") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+      </dl>
+      <p><input type="submit" value="Crear">
+         <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+    </form>
+{% endblock %}
