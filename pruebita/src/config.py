@@ -4,7 +4,7 @@ import os
 DEBUG = True
 
 _basedir = os.path.abspath(os.path.dirname(__file__))
-
+WHOOSH_BASE = os.path.join(_basedir, 'search.db')
 DATA_PATH = os.path.join(_basedir, 'data')
 DEFAULT_TPL = 'static'
 
@@ -17,7 +17,11 @@ LANG = 'es'
 LANG_DIRECTION = 'ltr'
 YEAR = '2013'
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///'+ os.path.join(os.path.dirname(__file__), 'database.db')
+rutaDB  = 'sqlite:///'+ os.path.join(os.path.dirname(__file__), 'database.db')
+rutaDBPueba =  'sqlite:///'+ os.path.join(os.path.dirname(__file__), 'databasePrueba.db')
+
+#SQLALCHEMY_DATABASE_URI = rutaDBPrueba
+SQLALCHEMY_DATABASE_URI = rutaDB
 
 del os
 
