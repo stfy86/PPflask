@@ -12,15 +12,15 @@
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.tipoDeDato.label(style="float: left; width: 100px;") }}
-            {{form.tipoDeDato(class="form-input", style="width:100px", readonly="readonly") }}
+            {{form.tipoDeDato(class="form-input", style="width:200px", readonly="readonly") }}
             {% for error in form.tipoDeDato.errors %} {{ error }} {% endfor %}
             <br />  
             {{ form.detalle.label(style="float: left; width: 100px;") }}
-            {{form.detalle(class="form-input", style="width:100px", readonly="readonly")}}
+            {{form.detalle(class="form-input", style="width:200px", readonly="readonly")}}
             {% for error in form.detalle.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="width:200px", readonly="readonly") }}
+            {{form.descripcion(class="form-input", style="height:50px;width:200px", readonly="readonly") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
       </dl>
       <script language="JavaScript">
