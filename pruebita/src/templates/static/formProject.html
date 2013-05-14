@@ -1,0 +1,33 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Add{% endblock %}
+
+{% block body %}
+    <h1>Agregar Proyecto</h1>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 100px;") }}
+            {{form.nombre(class="form-input", style="width:200px") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 100px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.fechaDeInicio.label(style="float: left; width: 100px;") }}
+            {{form.fechaDeInicio(class="form-input", style="width:200px") }}
+            {% for error in form.fechaDeInicio.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.fechaDeFin.label(style="float: left; width: 100px;") }}
+            {{form.fechaDeFin(class="form-input", style="width:200px") }}
+            {% for error in form.fechaDeFin.errors %} {{ error }} {% endfor %}
+            <br />
+       
+      <p>
+          <input type="submit" value="Crear"> 
+          <input type="button" value="Cancelar" onclick="javascript:history.back();">
+      </p>
+      
+    </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Edit Project{% endblock %}
+
+{% block body %}
+    <h1>Modificar datos de Proyecto</h1>
+    <form method="post" action="">
+      <dl>
+          {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 100px;") }}
+            {{form.nombre(class="form-input", style="width:200px") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 100px;") }}
+            {{form.descripcion(class="form-input", style="width:200px") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.fechaDeInicio.label(style="float: left; width: 100px;") }}
+            {{form.fechaDeInicio(class="form-input", style="width:200px") }}
+            {% for error in form.fechaDeInicio.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.fechaDeFin.label(style="float: left; width: 100px;") }}
+            {{form.fechaDeFin(class="form-input", style="width:200px") }}
+            {% for error in form.fechaDeFin.errors %} {{ error }} {% endfor %}
+            <br />
+            <script language="JavaScript">
+                function confirmar ( mensaje ) {
+                    return confirm( mensaje );
+                } 
+            </script>  
+       
+      </dl>
+      <p>
+          <input type="submit" value="Aceptar"  onclick="return confirmar('¿Está seguro que desea modificar el registro?')">
+      </p>    
+    </form>
+{% endblock %}
