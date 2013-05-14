@@ -1,16 +1,17 @@
 {% extends "static/layout.html" %}
 
-{% block title %}Admin{% endblock %}
+{% block title %} Modulo de Gestion de Cambio {% endblock %}
 
 {% block body %}
+    <div class="page-header">
+        <center>
+              <h3>Modulo de Gestion</h3>
+        </center>
+  
+    </div>
       <dl>
         <ul>
-            <li><a href="{{ url_for('listRolPermiso') }}">Administrar Roles y Permisos</a></li>
-            <li><a href="{{ url_for('index') }}">Administrar Fases</a></li>
             <li><a href="{{ url_for('index') }}">Administrar Líneas Base</a></li>
-            <li><a href="{{ url_for('index') }}">Administrar Tipos de ítem</a></li>
-            <li><a href="{{ url_for('index') }}">Cálculo de Impacto</a></li>
-            <li><a href="{{ url_for('index') }}">Cálculo de Costo</a></li>
         </ul>
       </dl>
     </form>
