@@ -10,18 +10,18 @@ DEFAULT_TPL = 'static'
 
 SECRET_KEY = 'secret devel key'
 
-URL = 'http://localhost:5000/'
+URL = 'http://localhost:8080/'
 TITLE = 'Planificador de Proyecto'
 VERSION = '0.1'
 LANG = 'es'
 LANG_DIRECTION = 'ltr'
 YEAR = '2013'
 
-rutaDB  = 'sqlite:///'+ os.path.join(os.path.dirname(__file__), 'database.db')
-rutaDBPueba =  'sqlite:///'+ os.path.join(os.path.dirname(__file__), 'databasePrueba.db')
+#rutaDB = 'sqlite:///'+ os.path.join(os.path.dirname(__file__), 'database.db')
+rutaDBTest = 'sqlite:///'+ os.path.join(os.path.dirname(__file__), 'databasePrueba.db')
 
-#SQLALCHEMY_DATABASE_URI = rutaDBPrueba
-SQLALCHEMY_DATABASE_URI = rutaDB
+#SQLALCHEMY_DATABASE_URI = rutaDB
+SQLALCHEMY_DATABASE_URI = rutaDBTest
 
 del os
 
