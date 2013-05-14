@@ -1,10 +1,10 @@
 __author__="silvana"
-__date__ ="$06/04/2013 02:18:00 AM$"
+__date__ ="$14/05/2013 12:38:36 PM$"
 
 from setuptools import setup,find_packages
 
 setup (
-  name = 'pruebita',
+  name = 'PPproject',
   version = '0.1',
   packages = find_packages(),
 
