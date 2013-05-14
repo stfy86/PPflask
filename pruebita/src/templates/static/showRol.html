@@ -1,6 +1,6 @@
 {% extends "static/layout.html" %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}Show Rol{% endblock %}
 
 {% block body %}
     <h1>Datos del Rol</h1>
@@ -16,7 +16,7 @@
             {% for error in form.ambito.errors %} {{ error }} {% endfor %}
 	    <br />
             {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="width:100px", readonly="readonly") }}
+            {{form.descripcion(class="form-input", style="width:300px", readonly="readonly") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
       </dl>
       <script language="JavaScript">

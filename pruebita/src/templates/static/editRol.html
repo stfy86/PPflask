@@ -3,7 +3,7 @@
 {% block title %}Rol{% endblock %}
 
 {% block body %}
-    <h1>Agregar Rol</h1>
+    <h1>Modificar Rol</h1>
     <form method="post" action="">
       <dl>
         {{ form.csrf }}
@@ -20,7 +20,6 @@
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
    
       </dl>
-      <br />
       <p>
           <input type="submit" value="Guardar">
           <input type="button" value="Cancelar" onclick="javascript:history.back();">    
