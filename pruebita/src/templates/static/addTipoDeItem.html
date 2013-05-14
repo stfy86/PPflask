@@ -1,0 +1,21 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Add{% endblock %}
+
+{% block body %}
+    <h1>Agregar Tipo de Item</h1>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 100px;") }}
+            {{form.nombre(class="form-input", style="width:100px") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 100px;") }}
+            {{form.descripcion(class="form-input", style="width:300px") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+      </dl>
+      <p><input type="submit" value="Crear">
+         <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+    </form>
+{% endblock %}
