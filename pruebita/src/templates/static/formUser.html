@@ -15,6 +15,10 @@
             {{form.password(class="form-input", style="width:100px") }}
             {% for error in form.password.errors %} {{ error }} {% endfor %}
             <br />
+            {{ form.confirmacion.label(style="float: left; width: 100px;") }}
+            {{form.confirmacion(class="form-input", style="width:100px") }}
+            {% for error in form.confirmacion.errors %} {{ error }} {% endfor %}
+            <br />
             {{ form.nombre.label(style="float: left; width: 100px;") }}
             {{form.nombre(class="form-input", style="width:100px") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
@@ -34,7 +38,11 @@
             {{ form.obs.label(style="float: left; width: 100px;") }}
             {{form.obs(class="form-input", style="width:100px") }}
             {% for error in form.obs.errors %} {{ error }} {% endfor %}
+            <br />
       </dl>
-      <p><input type="submit" value="submit">
+      <p>
+          <input type="submit" value="Crear">
+          <input type="button" value="Cancelar" onclick="javascript:history.back();">    
+      </p>
     </form>
 {% endblock %}

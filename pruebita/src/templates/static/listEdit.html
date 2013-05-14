@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="page-header">
-    <h3>Elija el usuario a editar sus datos</h3>
+    <h3>Usuarios</h3>
 </div>
 
 <ul class="users">
@@ -12,11 +12,13 @@
     <li class="span3">
         <div class="well well-small user">
             <div class="text">
-                <a href="{{ url_for('editUser', nombre = user.name )}}"<h5>{{ user.name }}</h5></a>
-            </div>
+                <a href="{{ url_for('showUser', nombre = user.name )}}"<h5>{{ user.name }}</h5></a>
+            </div> 
         </div>
     </li>
 {% endfor %}
+    <p><input type="button" value="Crear Usuario" onclick="document.location='addUser';"><p>
 </ul>
+
 
 {% endblock %}

@@ -35,6 +35,13 @@
             {{form.obs(class="form-input", style="width:100px") }}
             {% for error in form.obs.errors %} {{ error }} {% endfor %}
       </dl>
-      <p><input type="submit" value="submit">
+      <script language="JavaScript">
+      function confirmar ( mensaje ) {
+      return confirm( mensaje );
+      } 
+      </script>
+      
+      <p><input type="submit" value="Aceptar" onclick="return confirmar('¿Está seguro que desea modificar el usuario?')">
+          <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
     </form>
 {% endblock %}

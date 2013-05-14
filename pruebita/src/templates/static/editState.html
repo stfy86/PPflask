@@ -11,6 +11,13 @@
             {{ form.estado(class="form-input", style="width:100px") }}
             {% for error in form.estado.errors %} {{ error }} {% endfor %}
       </dl>
-      <p><input type="submit" value="submit">
+      <script language="JavaScript">
+      function confirmar ( mensaje ) {
+      return confirm( mensaje );
+      } 
+      </script>
+      
+      <p><input type="submit" value="Aceptar" onclick="return confirmar('¿Está seguro que desea modificar el estado?')">
+          <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
     </form>
 {% endblock %}
