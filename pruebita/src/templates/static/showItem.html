@@ -1,0 +1,45 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Show Item{% endblock %}
+
+{% block body %}
+    <h1>Datos del item</h1>
+    <form method="post" action="">  
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 100px;") }}
+            {{form.nombre(class="form-input", style="width:200px", readonly="readonly") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.version.label(style="float: left; width: 100px;") }}
+            {{form.version(class="form-input", style="width:100px", readonly="readonly") }}
+            {% for error in form.version.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.complejidad.label(style="float: left; width: 100px;") }}
+            {{form.complejidad(class="form-input", style="width:100px", readonly="readonly") }}
+            {% for error in form.complejidad.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.costo.label(style="float: left; width: 100px;") }}
+            {{form.costo(class="form-input", style="width:100px", readonly="readonly") }}
+            {% for error in form.costo.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.estado.label(style="float: left; width: 100px;") }}
+            {{form.estado(class="form-input", style="width:100px", readonly="readonly") }}
+            {% for error in form.estado.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.fechaDeModif.label(style="float: left; width: 100px;") }}
+            {{form.fechaDeModif(class="form-input", style="width:200px", readonly="readonly") }}
+            {% for error in form.fechaDeModif.errors %} {{ error }} {% endfor %}
+      </dl>
+      <script language="JavaScript">
+          function confirmar ( mensaje ) {
+              return confirm( mensaje );
+          }
+      </script> 
+      
+      <p><input type="submit" name="edit" value="Modificar Item">
+         <input type="submit" name="delete" value="Eliminar Item" onclick="return confirmar('¿Está seguro que desea eliminar el usuario?')">
+         <input type="submit" name="state" value="Modificar Estado de Item">
+         <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+    </form>
+{% endblock %}
