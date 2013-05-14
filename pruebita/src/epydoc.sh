@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #configurar los paths
-DESDE=/home/lory/Escritorio/ProyectoIS2/PPproject/src
+DESDE= /home/silvana/PPflask/pruebita/src
 
 cd $DESDE
 epydoc $DESDE/manage.py
