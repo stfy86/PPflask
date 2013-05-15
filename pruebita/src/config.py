@@ -17,11 +17,11 @@ LANG = 'es'
 LANG_DIRECTION = 'ltr'
 YEAR = '2013'
 
-#rutaDB = 'sqlite:///'+ os.path.join(os.path.dirname(__file__), 'database.db')
-rutaDBTest = 'sqlite:///'+ os.path.join(os.path.dirname(__file__), 'databasePrueba.db')
+rutaDB = 'postgresql://admin:admin@localhost:5432/database'
+#rutaDBTest = 'postgresql://admin:admin@localhost:5432/databasePrueba'
 
-#SQLALCHEMY_DATABASE_URI = rutaDB
-SQLALCHEMY_DATABASE_URI = rutaDBTest
+SQLALCHEMY_DATABASE_URI = rutaDB
+#SQLALCHEMY_DATABASE_URI = rutaDBTest
 
 del os
 
