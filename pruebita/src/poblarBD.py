@@ -1,3 +1,5 @@
+""" Clase encargada de poblar la Base de Dato """
+
 def createUser():
     """ Crea usuarios """ 
     from models import User
@@ -93,4 +95,4 @@ def createTipoDeAtrib():
     MgrTipoDeAtrib().guardar(t)
     t=TipoDeAtributo("numerico45", "numerico", 45,"atributo numerico con presicion 45")
     MgrTipoDeAtrib().guardar(t)
-    #MgrTipoDeAtrib().borrar("date")
+    #MgrTipoDeAtrib().borrar("date")    
