@@ -1,6 +1,6 @@
 from flask.ext.script import Manager
 from pruebita import app, db
-from poblarBD import createUser, createPermiso, createRol, createProject, createTipoDeAtrib
+from poblarBD import createUser, createPermiso, createRol, createProject
 from models import *
 
 manager = Manager(app)
@@ -17,8 +17,7 @@ def initdb():
     createPermiso()
     createRol()
     createProject()
-    createTipoDeAtrib()
-    
+   
     
 @manager.command
 def dropdb():

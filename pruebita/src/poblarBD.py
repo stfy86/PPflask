@@ -80,19 +80,3 @@ def createProject():
     #MgrProject().borrar("proyecto5")
     #MgrProject().modificar("proyecto5","proyecto5","sistema para un banco2","Pendiente")
 
-
-def createTipoDeAtrib():
-    """ Crea tipo de Atibutos por default """
-    from models import TipoDeAtributo
-    from ctrl.mgrTipoDeAtrib import MgrTipoDeAtrib
-    t=TipoDeAtributo("numerico20", "numerico", 20,"atributo numerico con presicion 20")
-    MgrTipoDeAtrib().guardar(t)
-    t=TipoDeAtributo("texto45", "texto", 45,"atributo texto con 45 caracteres")
-    MgrTipoDeAtrib().guardar(t)
-    t=TipoDeAtributo("date", "fecha", 0,"atributo fecha")
-    MgrTipoDeAtrib().guardar(t)
-    t=TipoDeAtributo("booleano", "boolean", 0,"atributo boleano")
-    MgrTipoDeAtrib().guardar(t)
-    t=TipoDeAtributo("numerico45", "numerico", 45,"atributo numerico con presicion 45")
-    MgrTipoDeAtrib().guardar(t)
-    #MgrTipoDeAtrib().borrar("date")    
