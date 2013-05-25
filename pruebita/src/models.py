@@ -7,12 +7,12 @@ from pruebita import db, app
 # MODELS
 #------------------------------------------------------------------------------#
 
-# UserXProyecto
+# roles de usuarios
 roles = db.Table('roles', \
     db.Column('idUser',db.Integer, db.ForeignKey('User.idUser')),
     db.Column('idRol',db.Integer, db.ForeignKey('Rol.idRol'))
 )
-    
+
 class User(db.Model):
     """ Modelo de Usuario """
     __tablename__ = 'User'
@@ -41,15 +41,26 @@ class User(db.Model):
         self.telefono = telefono
         self.obs = obs
     
+    def __init__(self,name=None, passwd=None, nombre=None, apellido=None, email=None, telefono=None, obs=None, roles=[None]):
+        """ constructor de user """
+        self.name = name
+        self.passwd = passwd
+        self.nombre = nombre
+        self.apellido = apellido
+        self.email = email
+        self.telefono = telefono
+        self.obs = obs
+        self.roles = roles
+        
     def __repr__(self):
         return self.name
 
-# RolXPermiso
+# permisos de un rol
 permisos = db.Table('permisos', \
     db.Column('idRol',db.Integer, db.ForeignKey('Rol.idRol')),
     db.Column('idPermiso',db.Integer, db.ForeignKey('Permiso.idPermiso'))
     )
-    
+  
 class Rol(db.Model):
     """ Modelo de Rol """
     __tablename__ = 'Rol'
@@ -101,7 +112,7 @@ class Permiso(db.Model):
     def __repr__(self):
         return self.nombre
     
-#ProyectoXUser
+# usuarios de proyecto
 users = db.Table('users', \
     db.Column('idProyecto',db.Integer, db.ForeignKey('Proyecto.idProyecto')),
     db.Column('idUser',db.Integer, db.ForeignKey('User.idUser'))
@@ -119,47 +130,25 @@ class Proyecto(db.Model):
     estado = db.Column(db.String(20), default ='Pendiente', nullable=False)
     
     # one to many: Relaciona Proyecto x Fase
-    listafases = db.relationship('Fase', backref= 'proyecto', lazy = 'dynamic')
+    listafases = db.relationship('Fase', backref= 'Proyecto', lazy = 'dynamic')
     
     # many to many: Relaciona Proyecto x User
     users = db.relationship('User', secondary = users,
         backref = db.backref('proyectos' , lazy='dynamic'))
     
     # one to many: Relaciona Proyecto x Tipo de Item
-    listaTipoDeItem = db.relationship('TipoDeItem', backref= 'proyecto', lazy = 'dynamic')
+    listaTipoDeItem = db.relationship('TipoDeItem', backref= 'Proyecto', lazy = 'dynamic')
     
-    def __init__(self, nombre=None, descripcion=None, presupuesto=None):
+    def __init__(self, nombre=None, descripcion=None, presupuesto=None, listafases = [None]):
         """ constructor de Proyecto """
         self.nombre = nombre
         self.descripcion = descripcion
         self.presupuesto = presupuesto
+        self.listafases = listafases
         
     def __repr__(self):
         return self.nombre
 
-class TipoDeAtributo(db.Model):
-    """ Modelo de Tipo de Atributo """
-    __tablename__ = 'TipoDeAtributo'
-    
-    idTipoDeAtributo = db.Column(db.Integer, primary_key=True, nullable=False)
-    nombre = db.Column(db.String(45), unique=True, nullable=False)
-    tipoDeDato = db.Column(db.String(20), nullable=False) # numerico, texto, fecha, boolean
-    detalle = db.Column(db.Integer) # si tipoDeDato es numerico, corresponde a la presicion, si tipoDeDato es texto, corresponde a la cantidad de caracteres  
-    descripcion = db.Column(db.String(150))
-    
-    # one to one: Relaciona Fase con Tipo de Atributo
-    faseId = db.Column(db.Integer, db.ForeignKey('Fase.idFase'))
-    
-    
-    def __init__(self, nombre=None, tipoDeDato=None, detalle=None, descripcion=None):
-        """ constructor de Tipo de Atributo"""
-        self.nombre = nombre
-        self.tipoDeDato = tipoDeDato
-        self.detalle = detalle
-        self.descripcion = descripcion
-    
-    def __repr__(self):
-        return self.nombre
 
 class Fase(db.Model):
     """ Modelo de Fase """
@@ -211,19 +200,35 @@ class Item(db.Model):
     # one to many: Relaciona Fase x Item 
     faseId = db.Column(db.Integer, db.ForeignKey('Fase.idFase'))
     
-    # one to one: Relaciona Item x Tipo de Item
-    tipoDeItem = db.relationship('TipoDeItem', uselist=False, backref='Item')
-
- 
+    # one to many: Relaciona Tipo de Item x Item
+    tipoDeItemId = db.Column(db.Integer, db.ForeignKey('TipoDeItem.idTipoDeItem'))
+    
+    
     def __init__(self, nombre=None, version=None, complejidad=None, costo=None):
         """ constructor de item """
         self.nombre = nombre
         self.version = version
         self.complejidad = complejidad
         self.costo = costo
-
+    
+    def __init__(self, nombre=None, version=None, complejidad=None, costo=None, estado=None, fase=None):
+        """ constructor de item """
+        self.nombre = nombre
+        self.version = version
+        self.complejidad = complejidad
+        self.costo = costo
+        self.estado = estado
+        self.Fase = fase
+        
     def __repr__(self):
         return self.nombre        
+
+
+# tipoDeItemXTipoDeAtributo
+atributosItem = db.Table('atributosItem', \
+    db.Column('idTipoDeItem',db.Integer, db.ForeignKey('TipoDeItem.idTipoDeItem')),
+    db.Column('idTipoDeAtributo',db.Integer, db.ForeignKey('TipoDeAtributo.idTipoDeAtributo'))
+    )
 
 class TipoDeItem(db.Model):
     """ Modelo de Tipo de Item """
@@ -236,13 +241,16 @@ class TipoDeItem(db.Model):
     # one to many: Relaciona Fase x Tipo de Item
     faseId = db.Column(db.Integer, db.ForeignKey('Fase.idFase'))
 
-    # one to one: Relaciona Item x Tipo de Item
-    itemId = db.Column(db.Integer, db.ForeignKey('Item.idItem'))
-
     # one to many: Relaciona Proyecto x Tipo de Item
     proyectoId = db.Column(db.Integer, db.ForeignKey('Proyecto.idProyecto'))
     
+    # one to many: Relaciona Tipo de Item x Item
+    listaItem = db.relationship('Item', backref='TipoDeItem', lazy = 'dynamic')
     
+    # many to many: Relaciona Tipo de Item x Tipo de Atributo
+    atributosItem = db.relationship('TipoDeAtributo', secondary = atributosItem,
+        backref= db.backref('tipoDeItems' , lazy='dynamic'))
+        
     def __init__(self, nombre=None, descripcion=None):
         """ constructor de tipo de item """
         self.nombre = nombre
@@ -251,7 +259,25 @@ class TipoDeItem(db.Model):
     def __repr__(self):
         return self.nombre
     
-
+class TipoDeAtributo(db.Model):
+    """ Modelo de Tipo de Atributo """
+    __tablename__ = 'TipoDeAtributo'
+    
+    idTipoDeAtributo = db.Column(db.Integer, primary_key=True, nullable=False)
+    nombre = db.Column(db.String(45), unique=True, nullable=False)
+    tipoDeDato = db.Column(db.String(20), nullable=False) # numerico, texto, fecha, boolean
+    detalle = db.Column(db.Integer) # si tipoDeDato es numerico, corresponde a la presicion, si tipoDeDato es texto, corresponde a la cantidad de caracteres  
+    descripcion = db.Column(db.String(150))
+       
+    def __init__(self, nombre=None, tipoDeDato=None, detalle=None, descripcion=None):
+        """ constructor de Tipo de Atributo"""
+        self.nombre = nombre
+        self.tipoDeDato = tipoDeDato
+        self.detalle = detalle
+        self.descripcion = descripcion
+    
+    def __repr__(self):
+        return self.nombre
 # ItemXLineaBase
 itemsLB = db.Table('itemsLB', \
     db.Column('idLineaBase',db.Integer, db.ForeignKey('LineaBase.idLineaBase')),
@@ -278,7 +304,13 @@ class LineaBase(db.Model):
         """ constructor de linea base """
         self.nombre = nombre
         self.descripcion = descripcion
-
+    
+    def __init__(self, nombre=None, descripcion=None, fase=None):
+        """ constructor de linea base """
+        self.nombre = nombre
+        self.descripcion = descripcion
+        self.Fase = fase
+        
     def __repr__(self):
         return self.nombre
     
@@ -306,4 +338,3 @@ class Relacion(db.Model):
 
     def __repr__(self):
         return self.nombre
-    
