@@ -51,4 +51,3 @@ def dropdb():
 
 if __name__ == '__main__':
     manager.run()
-

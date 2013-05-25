@@ -7,24 +7,24 @@
     <form method="post" action="">  
       <dl>
         {{ form.csrf }}
-            {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width: 200px", readonly="readonly") }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:200px", readonly="readonly") }}
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width:300px", readonly="readonly") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.fechaDeCreacion.label(style="float: left; width: 100px;") }}
-            {{form.fechaDeCreacion(class="form-input", style="width: 200px", readonly="readonly") }}
+            {{ form.fechaDeCreacion.label(style="float: left; width: 105px;") }}
+            {{form.fechaDeCreacion(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.fechaDeCreacion.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.estado.label(style="float: left; width: 100px;") }}
-            {{form.estado(class="form-input", style="width: 200px", readonly="readonly") }}
+            {{ form.estado.label(style="float: left; width: 105px;") }}
+            {{form.estado(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.estado.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.presupuesto.label(style="float: left; width: 100px;") }}
-            {{form.presupuesto(class="form-input", style="width: 200px", readonly="readonly") }}
+            {{ form.presupuesto.label(style="float: left; width: 105px;") }}
+            {{form.presupuesto(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
             <br />
   
@@ -37,13 +37,17 @@
       </dl>
       <br />
       <p>
-          <input type="submit" name="edit" value="Modificar Proyecto">
-          <input type="submit" name="delete" value="Eliminar Proyecto" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
-          <input type="submit" name="state" value="Modificar Estado de Proyecto">
-          <input type="submit" name="edit" value="Usuarios a Proyecto">
-          <input type="submit" name="edit" value="Fases a Proyecto">
-          <input type="submit" name="edit" value="Asignar Lider a Proyecto">
-          <input type="button" value="Cancelar" onclick="javascript:history.back();">
+            <input class="button" type="submit" name="edit" value="Modificar Proyecto">
+            <input class="button" type="submit" name="state" value="Modificar Estado de Proyecto">
+            <br />
+            <input class="button" type="submit" name="configLider" value="Asignar Lider">
+            <input class="button" type="submit" name="asignarUsuario" value="Asignar Usuario">
+            <br />
+            <input class="button" type="submit" name="desasignarUsuario" value="Desasignar Usuario">
+            <input class="button" type="submit" name="asignarFase" value="Asignar Fase">
+            <br />
+            <input class="button" type="submit" name="delete" value="Eliminar Proyecto" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+            <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
       </p>
     </form>
 {% endblock %}

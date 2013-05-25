@@ -583,10 +583,88 @@ def showProject(nombre):
                 return redirect(url_for('deleteProject', nombre = project.nombre))
             elif request.form.get('state', None) == "Modificar Estado de Proyecto":
                 return redirect(url_for('editProjectState', nombre = project.nombre))
+            elif request.form.get('configLider', None) == "Asignar Lider":
+                return redirect(url_for('configLider', nombre = project.nombre)) 
+            elif request.form.get('asignarUsuario', None) == "Asignar Usuario":
+                return redirect(url_for('asignarUsuario', nombre = project.nombre)) 
+            elif request.form.get('desasignarUsuario', None) == "Desasignar Usuario":
+                return redirect(url_for('desasignarUsuario', nombre = project.nombre))
+            elif request.form.get('asignarFase', None) == "Asignar Fase":
+                return redirect(url_for('asignarFase', nombre = project.nombre))
             
 	return render_template(app.config['DEFAULT_TPL']+'/showProject.html',
 			       conf = app.config,
 			       form = form)
+@app.route('/configLider/<path:nombre>.html', methods=['GET','POST'])
+def configLider(nombre):
+    """ asigna lider a proyecto """
+    from ctrl.mgrProject import MgrProject
+    from ctrl.mgrUser import MgrUser
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lista = request.form.getlist("lista")
+        if request.method == 'POST':
+            for user in lista:
+                MgrProject().asignarLider(nombre,user)            
+                flash('Se ha asignado el lider')
+            return redirect(url_for('listProject'))
+        return render_template(app.config['DEFAULT_TPL']+'/configLider.html',
+			       conf = app.config,
+                               usuarios =  MgrProject().usersDeProyecto(nombre),
+                               list = MgrUser().listar())
+
+
+@app.route('/asignarUsuario/<path:nombre>.html', methods=['GET','POST'])
+def asignarUsuario(nombre):
+    """ asigna usuario a proyecto """
+    from form import CreateFormRolProyecto
+    from ctrl.mgrProject import MgrProject
+    from ctrl.mgrUser import MgrUser
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lista = request.form.getlist("lista")
+        if request.method == 'POST':
+            form = CreateFormRolProyecto(request.form, nombre = request.form['nombre'], 
+                                         descripcion = request.form['descripcion'])
+            if form.validate():
+                for user in lista:
+                    nombreRol = request.form['nombre']
+                    descripcionRol = request.form['descripcion']   
+                    MgrProject().asignarUsuario(nombre, user, nombreRol, descripcionRol)
+                    flash('Se ha asignado el usuario al proyecto')
+                return redirect(url_for('listProject'))
+        return render_template(app.config['DEFAULT_TPL']+'/asignarUsuario.html',
+			       conf = app.config,
+                               usuarios =  MgrProject().usersDeProyecto(nombre),
+                               list = MgrUser().listar(),
+                               form = CreateFormRolProyecto())
+
+@app.route('/desasignarUsuario/<path:nombre>.html', methods=['GET','POST'])
+def desasignarUsuario(nombre):
+    """ desasigna usuarios de proyecto """
+    from ctrl.mgrProject import MgrProject
+    from ctrl.mgrUser import MgrUser
+    from ctrl.mgrRol import MgrRol
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lista = request.form.getlist("lista")
+        if request.method == 'POST':
+            for rol in lista:
+                nombreRol = rol
+                rol = rol.split('-')
+                nameUser = rol[2]
+                MgrProject().desasignarUsuario(nombre, nameUser,nombreRol)
+                flash('Se ha desasignado usuarios al proyecto')
+            return redirect(url_for('listProject'))
+        return render_template(app.config['DEFAULT_TPL']+'/desasignarUsuario.html',
+			       conf = app.config,
+                               listR = MgrRol().listar(),
+                               roles = MgrRol().filtrarXAmbito(nombre))
+
+
 
 @app.route('/editProjectState/<path:nombre>.html', methods=['GET','POST'])
 def editProjectState(nombre):
@@ -639,6 +717,7 @@ def deleteProject(nombre):
         return redirect(url_for('listProject'))
                              
 
+
 @app.route('/addProject', methods=['GET','POST'])
 def addProject():
     """ Agrega un proyecto """
@@ -656,7 +735,8 @@ def addProject():
             if form.validate():
                 project = Proyecto(nombre = request.form['nombre'], 
                                    descripcion = request.form['descripcion'],
-                                   presupuesto = request.form['presupuesto'])    
+                                   presupuesto = request.form['presupuesto'],
+                                   listafases = [])    
                 MgrProject().guardar(project)
                 flash('Se ha creado correctamente el proyecto')
                 return redirect(url_for('listProject'))
@@ -669,8 +749,32 @@ def addProject():
                 conf = app.config,
                 form = CreateFormProject())
 
-
-
+@app.route('/asignarFase/<path:nombre>.html', methods=['GET','POST'])
+def asignarFase(nombre):
+    """ Agrega una fase a un proyecto"""
+    from models import Fase
+    from form import CreateFormFase
+    from ctrl.mgrFase import MgrFase
+    from ctrl.mgrProject import MgrProject
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+ 
+        if request.method == 'POST':
+            form = CreateFormFase(request.form, request.form['nombre'], descripcion = request.form['descripcion'], orden = request.form['orden'])
+            if form.validate():
+                fn = Fase(nombre = request.form['nombre'], descripcion = request.form['descripcion'], orden = request.form['orden'])    
+                MgrProject().asignarFase(nombre, fn)
+                flash('Se ha creado correctamente la fase')
+                return redirect(url_for('listProject'))
+            else:
+                return render_template(app.config['DEFAULT_TPL']+'/asignarFase.html',
+                            conf = app.config,
+                            form = form )
+    return render_template(app.config['DEFAULT_TPL']+'/asignarFase.html',
+                conf = app.config,
+                form = CreateFormFase())
+              
 # ADMINISTRAR FASE
 
 
@@ -683,7 +787,7 @@ def listFase():
     else:
         return render_template(app.config['DEFAULT_TPL']+'/listFase.html',
                            conf = app.config,
-                           list = MgrFase().listar(),) 
+                           list = MgrFase().listar()) 
 
 @app.route('/editFaseState/<path:nombre>.html', methods=['GET','POST'])
 def editFaseState(nombre):

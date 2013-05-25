@@ -8,7 +8,7 @@ def createUser():
                 User("vavi","vavi","victor","vera","vavi@gmail.com",2222,"usuario nuevo"),
                 User("lory","lory","lorelay","ortiz","lory@gmail.com",3333,"usuario nuevo"),
                 User("guille","guille","guillermo","gonzalez","guille@gmail.com",4444,"usuario nuevo")]
-    MgrUser().guardar(usuarios)
+    MgrUser().guardarLista(usuarios)
    
 def createRol():
     """ 
@@ -17,9 +17,8 @@ def createRol():
     2. Desarrollador:  Permite el acceso al Modulo de Desarrollo
     3. Lider de Proyecto: Permite el acceso al Modulo de Gestion de Cambio
     """
-    from models import Rol
+    from models import Rol, Permiso
     from ctrl.mgrRol import MgrRol
-    from models import Permiso
     from ctrl.mgrPermiso import MgrPermiso
     pAdmin = [Permiso("ModuloAdministracion", "permite el acceso al modulo de administracion")]
     rAdmin = Rol("Administrador", "permite el acceso al modulo de administracion", "all project", pAdmin)
@@ -60,7 +59,7 @@ def createPermiso():
                 Permiso("AprobacionItem","Permite administrar la aprobacion de item en un proyecto"),
                 Permiso("DesaprobacionItem","Permite administrar la desaprobacion de item en un proyecto"),
                 Permiso("ConsultaItem","Permite consulta de item en un proyecto")]
-    MgrPermiso().guardar(permisos)
+    MgrPermiso().guardarLista(permisos)
 
 
 def createProject():
@@ -91,9 +90,11 @@ def createProject():
     f = [Fase("proyecto5-fase1","fase inicial",1)]
     p = Proyecto("proyecto5","sistema para un banco",5000,f)
     MgrProject().guardar(p)
+    fn = Fase("proyecto5-fase2","nueva fase",2)
+    MgrProject().asignarFase("proyecto5", fn)
+    
     #MgrProject().borrar("proyecto5")
     #MgrProject().modificar("proyecto5","proyecto5","sistema para un banco2","Pendiente")
-
 
 def createTipoDeAtrib():
     """ Crea tipo de Atibutos por default """
@@ -127,9 +128,9 @@ def createAdmin():
     rol2 = MgrRol().filtrar("Desarrollador")
     rol3 = MgrRol().filtrar("LiderDeProyecto")
     roles = [rol1, rol2, rol3]
-    usr1 = User("admin","admin","administrador","administrador","admin@gmail.com",1234,"usuario administrador", roles),
-    MgrUser().guardar(usr1)
-
+    usr = User("admin","admin","administrador","administrador","admin@gmail.com",1234,"usuario administrador", roles)
+    MgrUser().guardar(usr)
+    
 def createLider():
     """ asigna lider a un proyecto """
     from ctrl.mgrProject import MgrProject
@@ -140,21 +141,17 @@ def createLider():
 def configurarPermiso():
     """ asigna/desasigna permisos a un rol """
     from ctrl.mgrRol import MgrRol
-    MgrRol().asignarPermiso("liderDeProyecto-proyecto5", "CrearRol")
-    MgrRol().asignarPermiso("liderDeProyecto-proyecto5", "AsignarRolAUsuario")
-    MgrRol().desasignarPermiso("liderDeProyecto-proyecto5", "AsignarRolAUsuario")
+    MgrRol().asignarPermiso("LiderDeProyecto", "CrearRol")
+    MgrRol().asignarPermiso("LiderDeProyecto", "AsignarRolAUsuario")
+    MgrRol().desasignarPermiso("LiderDeProyecto", "AsignarRolAUsuario")
     
-
 def usuariosAProyecto():
     """ asigna/desasigna usuarios a proyecto """
     from ctrl.mgrProject import MgrProject
-    nombreRol = "desarrollador-proyecto4-vavi"
-    descripcionRol = "nuevo rol asignado a un usuario del proyecto"
-    MgrProject().asignarUsuario("proyecto4", "vavi", nombreRol, descripcionRol)
-    nombreRol = "desarrollador-proyecto4-stfy"
-    descripcionRol = "nuevo rol asignado a un usuario del proyecto"
-    MgrProject().asignarUsuario("proyecto4", "stfy", nombreRol, descripcionRol)
-    MgrProject().desasignarUsuario("proyecto4", "stfy", nombreRol)
+    MgrProject().asignarUsuario("proyecto4", "vavi", "desarrollador", "asigne rol a usuario")
+    MgrProject().asignarUsuario("proyecto4", "stfy", "desarrollador", "asigne rol a usuario")
+    MgrProject().desasignarUsuario("proyecto4", "stfy","desarrollador"+"-"+"proyecto4"+"-"+"stfy")
+
     
 def createItem():
     from ctrl.mgrItem import MgrItem

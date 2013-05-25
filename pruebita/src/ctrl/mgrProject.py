@@ -2,13 +2,14 @@ from pruebita import db, app
 
 class MgrProject():
 
-    def guardar(self, project):
+    def guardar(self,project):
         """ 
         Guarda un registro project 
         @param project registro proyecto 
         """
         db.session.add(project)
         db.session.commit()
+    
     
     def borrar(self,nombre):
         """ 
@@ -39,7 +40,7 @@ class MgrProject():
         """ listar proyectos """
         from models import Proyecto
         return Proyecto.query.all()
-
+       
     def filtrar(self, nombre):
         """ 
         Filtrar proyecto por nombre 
@@ -58,7 +59,13 @@ class MgrProject():
         proyecto = Proyecto.query.filter(Proyecto.nombre == nombre).first_or_404()
         proyecto.estado = estadoNew        
         db.session.commit()
-
+    
+    def asignarFase(self, nombre, fase):
+        from models import Proyecto, Fase
+        proyecto = Proyecto.query.filter(Proyecto.nombre == nombre).first_or_404()
+        proyecto.listafases.append(fase)
+        db.session.commit()
+        
     def asignarLider(self, nombre, nombreLider):
         """
         Asigna un lider a un proyecto 
@@ -70,15 +77,15 @@ class MgrProject():
         from ctrl.mgrUserXRol import MgrUserXRol
         from ctrl.mgrRol import MgrRol
         # se crea el rol lider de proyecto 
-        nombreRol = "liderDeProyecto-"+nombre
-        rol = Rol(nombreRol, "se asigno un lider al proyecto "+nombreRol ,nombre)
+        nombreRol = "liderDeProyecto"+"-"+nombre+"-"+nombreLider
+        rol = Rol(nombreRol, "se asigno un lider al proyecto ",nombre)
         MgrRol().guardar(rol)
         # asigna el rol al usuario
         MgrUserXRol().guardar(nombreLider, nombreRol) 
         # asigna al proyecto el usuario 
         MgrProyectoXUser().guardar(nombre, nombreLider)
-    
-    def asignarUsuario(self, nombre, nombreUser, nombreRol, descripcionRol):
+
+    def asignarUsuario(self, nombre,  nameUser, nombreRol, descripcionRol):
         """
         Asigna a un proyecto el usuario con el rol designado
         @param nombre corresponde al nombre del proyecto
@@ -89,15 +96,18 @@ class MgrProject():
         from ctrl.mgrProyectoXUser import MgrProyectoXUser
         from ctrl.mgrUserXRol import MgrUserXRol
         from ctrl.mgrRol import MgrRol
-        # se crea el rol del usuario
-        rol = Rol(nombreRol, descripcionRol, nombre)
+        # crea el rol
+        nombreRol = nombreRol+"-"+nombre+"-"+nameUser
+        rol = Rol(nombreRol, descripcionRol,nombre)
         MgrRol().guardar(rol)
         # asigna el rol al usuario
-        MgrUserXRol().guardar(nombreUser, nombreRol) 
+        MgrUserXRol().guardar(nameUser, nombreRol) 
         # asigna al proyecto el usuario 
-        MgrProyectoXUser().guardar(nombre, nombreUser)
-   
-    def desasignarUsuario(self, nombre, nombreUser, nombreRol):
+        MgrProyectoXUser().guardar(nombre, nameUser)
+
+    
+    
+    def desasignarUsuario(self, nombre,  nameUser, nombreRol):
         """
         Desasigna a un proyecto el usuario con el rol designado
         @param nombre corresponde al nombre del proyecto
@@ -108,10 +118,14 @@ class MgrProject():
         from ctrl.mgrProyectoXUser import MgrProyectoXUser
         from ctrl.mgrUserXRol import MgrUserXRol
         from ctrl.mgrRol import MgrRol
-        # asigna el rol al usuario
-        MgrUserXRol().borrar(nombreUser, nombreRol) 
-        # asigna al proyecto el usuario 
-        MgrProyectoXUser().borrar(nombre, nombreUser)
+        # desasigna el rol al usuario
+        MgrUserXRol().borrar(nameUser, nombreRol) 
+        # deasigna del proyecto el usuario 
+        MgrProyectoXUser().borrar(nombre, nameUser)
         # borrar el rol
         MgrRol().borrar(nombreRol)
-        
+
+    def usersDeProyecto(self, nombre):
+        from models import Proyecto
+        proyecto = Proyecto.query.filter(Proyecto.nombre == nombre).first_or_404()
+        return proyecto.users

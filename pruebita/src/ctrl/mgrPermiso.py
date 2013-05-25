@@ -19,7 +19,7 @@ class MgrPermiso():
         db.session.delete(permiso)
         db.session.commit()
     
-    def guardar(self, permisos=[None]):
+    def guardarLista(self, permisos=[None]):
         """ guarda una lista de permisos """
         from models import Permiso
         for p in permisos:

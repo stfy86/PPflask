@@ -130,20 +130,14 @@ class Proyecto(db.Model):
     estado = db.Column(db.String(20), default ='Pendiente', nullable=False)
     
     # one to many: Relaciona Proyecto x Fase
-    listafases = db.relationship('Fase', backref= 'proyecto', lazy = 'dynamic')
+    listafases = db.relationship('Fase', backref= 'Proyecto', lazy = 'dynamic')
     
     # many to many: Relaciona Proyecto x User
     users = db.relationship('User', secondary = users,
         backref = db.backref('proyectos' , lazy='dynamic'))
     
     # one to many: Relaciona Proyecto x Tipo de Item
-    listaTipoDeItem = db.relationship('TipoDeItem', backref= 'proyecto', lazy = 'dynamic')
-    
-    def __init__(self, nombre=None, descripcion=None, presupuesto=None):
-        """ constructor de Proyecto """
-        self.nombre = nombre
-        self.descripcion = descripcion
-        self.presupuesto = presupuesto
+    listaTipoDeItem = db.relationship('TipoDeItem', backref= 'Proyecto', lazy = 'dynamic')
     
     def __init__(self, nombre=None, descripcion=None, presupuesto=None, listafases = [None]):
         """ constructor de Proyecto """

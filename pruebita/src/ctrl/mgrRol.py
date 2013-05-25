@@ -33,6 +33,12 @@ class MgrRol():
         from models import Rol
         return Rol.query.filter(Rol.nombre == nombre).first_or_404()
     
+    def filtrarXAmbito(self, ambito):
+        """ filtrar rol por nombre """
+        from models import Rol
+        return Rol.query.filter(Rol.ambito == ambito).all()
+    
+    
 
     def asignarPermiso(self, nombre, nombrePermiso):
         """ asigna un permiso a un rol """

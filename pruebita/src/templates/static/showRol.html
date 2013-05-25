@@ -3,20 +3,20 @@
 {% block title %}Show Rol{% endblock %}
 
 {% block body %}
-    <h1>Datos del Rol</h1>
+    <h1>Show Rol</h1>
     <form method="post" action="">  
       <dl>
         {{ form.csrf }}
-            {{ form.nombre.label(style="float: left; width: 100px;") }} 
-            {{ form.nombre(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }} 
+            {{ form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
 	    <br />
-            {{ form.ambito.label(style="float: left; width: 100px;") }} 
-            {{ form.ambito(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.ambito.label(style="float: left; width: 105px;") }} 
+            {{ form.ambito(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.ambito.errors %} {{ error }} {% endfor %}
 	    <br />
-            {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:200px", readonly="readonly") }}
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width: 300px", readonly="readonly") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
       </dl>
       <script language="JavaScript">

@@ -1,9 +1,9 @@
 {% extends "static/layout.html" %}
 
-{% block title %}Edit State{% endblock %}
+{% block title %}Edit State Project{% endblock %}
 
 {% block body %}
-    <h1>Modificar estado de usuario</h1>
+    <h1>Modificar estado de proyecto</h1>
     <form method="post" action="">
       <dl>
         {{ form.csrf }}
@@ -17,9 +17,7 @@
       } 
       </script>
       
-      <p>
-          <input class="button" type="submit" value="Aceptar">
-          <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
-      <p>
+      <p><input type="submit" value="Aceptar">
+          <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
     </form>
 {% endblock %}
