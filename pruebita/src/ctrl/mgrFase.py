@@ -39,3 +39,9 @@ class MgrFase():
         fase = Fase.query.filter(Fase.nombre == nombre).first_or_404()
         fase.estado = estadoNew        
         db.session.commit()
+        
+    def filtrarItems(self, nombre):
+        """ filtrar items por nombre """
+        from models import Fase
+        fase = Fase.query.filter(Fase.nombre == nombre)
+        return fase.listaItem

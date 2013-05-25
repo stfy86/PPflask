@@ -41,6 +41,17 @@ class User(db.Model):
         self.telefono = telefono
         self.obs = obs
     
+    def __init__(self,name=None, passwd=None, nombre=None, apellido=None, email=None, telefono=None, obs=None, roles=[None]):
+        """ constructor de user """
+        self.name = name
+        self.passwd = passwd
+        self.nombre = nombre
+        self.apellido = apellido
+        self.email = email
+        self.telefono = telefono
+        self.obs = obs
+        self.roles = roles
+        
     def __repr__(self):
         return self.name
 
@@ -133,6 +144,13 @@ class Proyecto(db.Model):
         self.nombre = nombre
         self.descripcion = descripcion
         self.presupuesto = presupuesto
+    
+    def __init__(self, nombre=None, descripcion=None, presupuesto=None, listafases = [None]):
+        """ constructor de Proyecto """
+        self.nombre = nombre
+        self.descripcion = descripcion
+        self.presupuesto = presupuesto
+        self.listafases = listafases
         
     def __repr__(self):
         return self.nombre
@@ -215,12 +233,15 @@ class Item(db.Model):
     tipoDeItem = db.relationship('TipoDeItem', uselist=False, backref='Item')
 
  
-    def __init__(self, nombre=None, version=None, complejidad=None, costo=None):
+    def __init__(self, nombre=None, version=None, complejidad=None, costo=None, estado=None, fase=None):
         """ constructor de item """
         self.nombre = nombre
         self.version = version
         self.complejidad = complejidad
         self.costo = costo
+        self.estado = estado
+        self.Fase = fase
+        
 
     def __repr__(self):
         return self.nombre        
@@ -274,10 +295,11 @@ class LineaBase(db.Model):
     # one to many: Relaciona Linea Base x fase
     faseId = db.Column(db.Integer, db.ForeignKey('Fase.idFase'))
  
-    def __init__(self, nombre=None, descripcion=None):
+    def __init__(self, nombre=None, descripcion=None, fase=None):
         """ constructor de linea base """
         self.nombre = nombre
         self.descripcion = descripcion
+        self.Fase=fase
 
     def __repr__(self):
         return self.nombre

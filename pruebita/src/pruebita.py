@@ -306,6 +306,8 @@ def showRol(nombre):
         if request.method == 'POST':
             if request.form.get('edit', None) == "Modificar Rol":
                 return redirect(url_for('editRol', nombre = rol.nombre))
+            elif request.form.get('config', None) == "Configurar Permisos":
+                return redirect(url_for('configPermiso', nombre = rol.nombre))
             elif request.form.get('delete', None) == "Eliminar Rol":
                 return redirect(url_for('deleteRol', nombre = rol.nombre))
 	return render_template(app.config['DEFAULT_TPL']+'/showRol.html',
@@ -332,6 +334,204 @@ def editRol(nombre):
     return render_template(app.config['DEFAULT_TPL']+'/editRol.html',
 			       conf = app.config,
 			       form = form)
+                               
+@app.route('/configPermiso/<path:nombre>.html', methods=['GET','POST'])
+def configPermiso(nombre):
+    from ctrl.mgrRol import MgrRol
+    from ctrl.mgrPermiso import MgrPermiso
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lista = request.form.getlist("lista")
+        lista2 = []
+        permisos2 = MgrRol().filtrarPermiso(nombre)
+        if request.method == 'POST':
+            for perm in lista:
+                if perm in permisos2:
+                        lista.remove(perm)
+            for perm in permisos2:
+                if perm in lista:
+                        permisos2.remove(perm)
+            MgrRol().asignarPermiso2(nombre, lista, permisos2) 
+            flash('Se ha configurado correctamente los permisos')
+            return redirect(url_for('listRolPermiso'))
+        return render_template(app.config['DEFAULT_TPL']+'/configPermiso.html',
+			       conf = app.config,
+                               permisos = MgrRol().filtrarPermiso(nombre),
+                               list = MgrPermiso().listar())
+
+
+@app.route('/listLineaBase')
+def listLineaBase():
+    """ Lista editable de proyectos que se alojan en la base de datos"""
+    from ctrl.mgrLineaBase import MgrLineaBase
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        return render_template(app.config['DEFAULT_TPL']+'/listLineaBase.html',
+                           conf = app.config,
+                           list = MgrLineaBase().listar(),)
+
+
+@app.route('/addLineaBase', methods=['GET','POST'])
+def addLineaBase():
+    """ Agrega una linea Base """
+    from models import LineaBase
+    from form import CreateFormLineaBase
+    from ctrl.mgrLineaBase import MgrLineaBase
+    from ctrl.mgrFase import MgrFase
+    
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        if request.method == 'POST':
+            form = CreateFormLineaBase(request.form, 
+                                     request.form['nombre'], 
+                                     descripcion = request.form['descripcion'],
+                                     fase = request.form['fase'])
+            if form.validate():
+                faseref = MgrFase().filtrar(request.form['fase'])
+                lineaBase = LineaBase(nombre = request.form['nombre'], 
+                                   descripcion = request.form['descripcion'],
+                                   fase = faseref)
+                
+                MgrLineaBase().guardar(lineaBase)
+                flash('Se ha creado correctamente el linea base')
+                
+                return redirect(url_for('seleccionarItems', nombre = lineaBase.nombre))
+            else:
+                return render_template(app.config['DEFAULT_TPL']+'/formLineaBase.html',
+                            conf = app.config,
+                            form = form)
+                
+    return render_template(app.config['DEFAULT_TPL']+'/formLineaBase.html',
+                conf = app.config,
+                form = CreateFormLineaBase())
+
+
+@app.route('/showLineaBase/<path:nombre>.html', methods=['GET','POST'])
+def showLineaBase(nombre):
+    from ctrl.mgrLineaBase import MgrLineaBase
+    from form import ShowFormLineaBase
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lineaBase = MgrLineaBase().filtrar(nombre)
+        form = ShowFormLineaBase(request.form, nombre = lineaBase.nombre, 
+                    descripcion = lineaBase.descripcion,
+                    estado = lineaBase.estado)
+        if request.method == 'POST':
+            if request.form.get('edit', None) == "Modificar Linea Base":
+                return redirect(url_for('editLineaBase', nombre = lineaBase.nombre))
+            elif request.form.get('listLineaBaseItems', None) == "Listar Items":
+                return redirect(url_for('listLineaBaseItems', nombre = lineaBase.nombre))
+            elif request.form.get('delete', None) == "Eliminar Linea Base":
+                return redirect(url_for('deleteLineaBase', nombre = lineaBase.nombre))
+#                return redirect(url_for('deleteLineaBase', nombre = rol.nombre))
+            elif request.form.get('editState', None) == "Modificar estado de Linea Base":
+                return redirect(url_for('editStateLineaBase', nombre = lineaBase.nombre))
+	return render_template(app.config['DEFAULT_TPL']+'/showLineaBase.html',
+			       conf = app.config,
+			       form = form)
+
+
+@app.route('/editLineaBase/<path:nombre>.html', methods=['GET','POST'])
+def editLineaBase(nombre):
+    from ctrl.mgrLineaBase import MgrLineaBase
+    from form import EditFormLineaBase
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lineaBase = MgrLineaBase().filtrar(nombre)
+        form = EditFormLineaBase(request.form, nombre = lineaBase.nombre,
+                    descripcion = lineaBase.descripcion)
+	if request.method == 'POST' and form.validate():
+            MgrLineaBase().modificar(nombre, request.form['nombre'], request.form['descripcion'])
+            flash('Se ha modificado correctamente el rol')
+            return redirect(url_for('listLineaBase'))
+    return render_template(app.config['DEFAULT_TPL']+'/editLineaBase.html',
+			       conf = app.config,
+			       form = form)
+
+
+@app.route('/editStateLineaBase/<path:nombre>.html', methods=['GET','POST'])
+def editStateLineaBase(nombre):
+    """ Modifica el estado de un usuario """
+    from form import EditFormStateLineaBase
+    from ctrl.mgrLineaBase import MgrLineaBase
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lineaBase = MgrLineaBase().filtrar(nombre)
+        form = EditFormStateLineaBase(request.form, estado = lineaBase.estado)
+	if request.method == 'POST' and form.validate(): 
+                MgrLineaBase().estado(nombre, request.form['estado'])
+		return redirect(url_for('listLineaBase'))
+	return render_template(app.config['DEFAULT_TPL']+'/editStateLineaBase.html',
+			       conf = app.config,
+			       form = EditFormStateLineaBase())
+
+
+@app.route('/deleteLineaBase/<path:nombre>.html')
+def deleteLineaBase(nombre):
+    from ctrl.mgrLineaBase import MgrLineaBase
+    if g.user is None:
+        return redirect(url_for('login'))   
+    else:
+        lineaBase=MgrLineaBase().filtrar(nombre)
+        MgrLineaBase().desAsignarItems(nombre)
+        
+        MgrLineaBase().borrar(nombre)
+        flash('Se ha borrado correctamente')
+        return redirect(url_for('listLineaBase'))
+
+
+@app.route('/seleccionarItems/<path:nombre>.html', methods=['GET','POST'])
+def seleccionarItems(nombre):
+    from ctrl.mgrLineaBase import MgrLineaBase
+    from ctrl.mgrItem import MgrItem
+    from ctrl.mgrFase import MgrFase
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lista = request.form.getlist("lista")
+        
+                
+        if request.method == 'POST':
+            MgrLineaBase().asignarItems(nombre, lista) 
+            flash('Se ha configurado correctamente los permisos')
+            return redirect(url_for('listLineaBase'))
+        
+        lineaBase = MgrLineaBase().filtrar(nombre)
+        fase = MgrFase().filtrar(lineaBase.Fase.nombre)
+        itemsFase = MgrItem().filtrarAprobadoXFase(fase.idFase)
+
+        lineasBases = fase.listaLineaBase
+        itemsLineaBase = []
+        for lb in lineasBases:
+            itemsLineaBase.extend(lb.itemsLB)
+            
+        seleccion = []
+        for item in itemsFase:
+            if not (item in itemsLineaBase):
+                seleccion.append(item)
+
+    
+        return render_template(app.config['DEFAULT_TPL']+'/seleccionarItems.html',
+			       conf = app.config,
+                               list = seleccion)
+
+
+@app.route('/listLineaBaseItems/<path:nombre>.html', methods=['GET','POST'])
+def listLineaBaseItems(nombre):
+    """ Lista los datos de un tipo de item """
+    from ctrl.mgrLineaBase import MgrLineaBase
+    if g.user is None:
+        return redirect(url_for('login'))   
+    lineaBase = MgrLineaBase().filtrar(nombre)
+    return render_template(app.config['DEFAULT_TPL']+'/listLineaBaseItems.html',
+                           conf = app.config,
+                           list = lineaBase.itemsLB)
 
 
 @app.route('/deleteRol/<path:nombre>.html')
@@ -903,6 +1103,3 @@ if __name__ == '__main__':
     #app.run()
     from werkzeug.serving import run_simple
     run_simple('127.0.0.1', 8080, app, use_debugger=True, use_reloader=True)
-
-
-

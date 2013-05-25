@@ -1,5 +1,5 @@
 {% extends "static/layout.html" %}
-{% block title %}Lista Proyecto{% endblock %}
+{% block title %}Lista Linea Base{% endblock %}
 {% block body %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  
@@ -38,7 +38,7 @@
 </head>
 <tbody>
 <div class="page-header">
-    <h3>Proyectos</h3>
+    <h3>Lineas Base</h3>
 </div>
 <form runat="server">
              
@@ -55,16 +55,14 @@
             <tr>
 			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
 			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
-			<th><a href='#' title="Click Header to Sort">FechaDeCreacion</a></th>
 			<th><a href='#' title="Click Header to Sort">Estado</a></th>
 		</tr>
 </thead>
-  {% for proyecto in list%}
+  {% for lineaBase in list%}
     <tr>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.nombre}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre)}}"</a><h5>{{proyecto.descripcion}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.fechaDeCreacion}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.estado}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', nombre = lineaBase.nombre)}}"</a><h5>{{lineaBase.nombre}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', nombre = lineaBase.nombre)}}"</a><h5>{{lineaBase.descripcion}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', nombre = lineaBase.nombre)}}"</a><h5>{{lineaBase.estado}}</h5></td>
      </tr>
    {% endfor %}
 
@@ -93,7 +91,7 @@
 </div>
 </form>   
 <p>
-    <input type="button" value="Crear Proyecto" onclick="document.location='addProject';">
+    <input type="button" value="Crear Linea Base" onclick="document.location='addLineaBase';">
 </p>
 
  {% endblock %}

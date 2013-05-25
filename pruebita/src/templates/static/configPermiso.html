@@ -1,5 +1,5 @@
 {% extends "static/layout.html" %}
-{% block title %}Lista Proyecto{% endblock %}
+{% block title %}configPermiso{% endblock %}
 {% block body %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  
@@ -38,9 +38,9 @@
 </head>
 <tbody>
 <div class="page-header">
-    <h3>Proyectos</h3>
+    <h3>Configurar Permisos</h3>
 </div>
-<form runat="server">
+<form runat="server" method="post" action="">
              
 <table id="tableTwo" class="yui">    
 <thead>
@@ -51,24 +51,25 @@
                 Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
                 <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
             </td>
-        </tr> 
-            <tr>
-			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
-			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
-			<th><a href='#' title="Click Header to Sort">FechaDeCreacion</a></th>
-			<th><a href='#' title="Click Header to Sort">Estado</a></th>
+        </tr> 	
+		<tr>
+			<th><a href='#' title="Click Header to Sort">Asignar/Desasignar</a></th>
+                        <th><a href='#' title="Click Header to Sort">Permisos</a></th>
+			
 		</tr>
 </thead>
-  {% for proyecto in list%}
-    <tr>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.nombre}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre)}}"</a><h5>{{proyecto.descripcion}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.fechaDeCreacion}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.estado}}</h5></td>
-     </tr>
-   {% endfor %}
-
-</tbody>   
+       {% for perm in list %}
+       <tr>
+            {% if perm in permisos %}
+                    <td><input type=checkbox checked="checked" name=lista value="{{ perm['nombre'] }}"></td>
+                    <td>{{ perm.nombre }}</td> 
+            {% else %}
+                    <td><input type=checkbox name=lista value="{{ perm['nombre'] }}"></td>
+                    <td>{{ perm.nombre }}</td>
+            {% endif %}
+       </tr>
+       {% endfor %}
+    </tbody>   
 <tfoot>
 	    <tr id="pagerTwo">
 	        <td colspan="5">
@@ -91,9 +92,8 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
+    <p><input type="submit" value="Aceptar" >
+    <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
 </form>   
-<p>
-    <input type="button" value="Crear Proyecto" onclick="document.location='addProject';">
-</p>
-
- {% endblock %}
+ 
+{% endblock %}
