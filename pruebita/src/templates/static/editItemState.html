@@ -12,7 +12,9 @@
             {% for error in form.estado.errors %} {{ error }} {% endfor %}
       </dl>
       
-      <p><input type="submit" value="Aceptar">
-          <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+      <p>
+          <input class="button" type="submit" value="Aceptar">
+          <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
+      <p>
     </form>
 {% endblock %}
