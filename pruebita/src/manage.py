@@ -1,6 +1,6 @@
 from flask.ext.script import Manager
 from pruebita import app, db
-from poblarBD import createUser, createPermiso, createRol, createProject, createTipoDeAtrib, createAdmin, createLider, configurarPermiso, usuariosAProyecto
+from poblarBD import createUser, createPermiso, createRol, createProject, createTipoDeAtrib, createAdmin, createLider, configurarPermiso, usuariosAProyecto, createItem, createLineaBase
 from models import *
 
 manager = Manager(app)
@@ -15,7 +15,6 @@ def initdb():
     db.create_all()
     print ":creo las tablas de la base de datos:"
     poblardb()
-
 
 @manager.command
 def poblardb():
@@ -38,6 +37,10 @@ def poblardb():
     print ":asigna/desasigna permiso al rol:"
     usuariosAProyecto()
     print ":asigna/desasigna usuario al proyecto:"
+    createItem()
+    print ":cargo items:"
+    createLineaBase()
+    print ":cargo lineas base y realciono con Items:"
     
 @manager.command
 def dropdb():

@@ -155,3 +155,133 @@ def usuariosAProyecto():
     descripcionRol = "nuevo rol asignado a un usuario del proyecto"
     MgrProject().asignarUsuario("proyecto4", "stfy", nombreRol, descripcionRol)
     MgrProject().desasignarUsuario("proyecto4", "stfy", nombreRol)
+    
+def createItem():
+    from ctrl.mgrItem import MgrItem
+    from models import Item
+    from ctrl.mgrFase import MgrFase
+    from models import Fase
+    
+    faseref = MgrFase().filtrar('proyecto1-fase1')
+    item = Item(nombre='proyecto1-fase1-item1', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto1-fase1-item2', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto1-fase1-item3', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto1-fase1-item4', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto1-fase1-item5', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto1-fase1-item6', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto1-fase1-item7', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto1-fase1-item8', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto1-fase1-item9', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto1-fase1-item10', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    
+    faseref = MgrFase().filtrar('proyecto2-fase1')
+    item = Item(nombre='proyecto2-fase1-item1', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase1-item2', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase1-item3', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase1-item4', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase1-item5', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase1-item6', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase1-item7', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase1-item8', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase1-item9', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase1-item10', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    
+    faseref = MgrFase().filtrar('proyecto2-fase2')    
+    item = Item(nombre='proyecto2-fase2-item1', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase2-item2', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase2-item3', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase2-item4', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase2-item5', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase2-item6', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase2-item7', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase2-item8', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase2-item9', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
+    MgrItem().guardar(item)
+    item = Item(nombre='proyecto2-fase2-item10', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
+    MgrItem().guardar(item)
+    
+def createLineaBase():
+    from models import LineaBase
+    from ctrl.mgrLineaBase import MgrLineaBase
+    from models import Item
+    from ctrl.mgrItem import MgrItem
+    from models import Fase
+    from ctrl.mgrFase import MgrFase
+    
+    items = []
+    item = MgrItem().filtrar('proyecto1-fase1-item2')
+    items.append(item.nombre)
+    item = MgrItem().filtrar('proyecto1-fase1-item4')
+    items.append(item.nombre)
+    
+    faseref = MgrFase().filtrar('proyecto1-fase1')
+    lineaBase = LineaBase(nombre = 'proyecto1-fase1-LB1', descripcion = 'LB1', fase = faseref)
+    MgrLineaBase().guardar(lineaBase)
+    MgrLineaBase().asignarItems(lineaBase.nombre, items)
+    
+    
+    
+    items = []
+    item = MgrItem().filtrar('proyecto2-fase1-item2')
+    items.append(item.nombre)
+    item = MgrItem().filtrar('proyecto2-fase1-item4')
+    items.append(item.nombre)
+    
+    faseref = MgrFase().filtrar('proyecto2-fase1')
+    lineaBase = LineaBase(nombre= 'proyecto2-fase1-LB1', descripcion = 'LB1', fase = faseref)
+    MgrLineaBase().guardar(lineaBase)
+    MgrLineaBase().asignarItems(lineaBase.nombre, items)
+    
+    
+    
+    items = []
+    item = MgrItem().filtrar('proyecto2-fase2-item2')
+    items.append(item.nombre)
+    item = MgrItem().filtrar('proyecto2-fase2-item4')
+    items.append(item.nombre)
+    
+    faseref = MgrFase().filtrar('proyecto2-fase2')
+    lineaBase = LineaBase(nombre= 'proyecto2-fase2-LB1', descripcion = 'LB1', fase = faseref)
+    MgrLineaBase().guardar(lineaBase)
+    MgrLineaBase().asignarItems(lineaBase.nombre, items)
+    
+    
+    
+    items = []
+    item = MgrItem().filtrar('proyecto2-fase2-item4')
+    items.append(item.nombre)
+    item = MgrItem().filtrar('proyecto2-fase2-item6')
+    items.append(item.nombre)
+    
+    faseref = MgrFase().filtrar('proyecto2-fase2')
+    lineaBase = LineaBase(nombre= 'proyecto2-fase2-LB2', descripcion = 'LB1', fase = faseref)
+    MgrLineaBase().guardar(lineaBase)
+    MgrLineaBase().asignarItems(lineaBase.nombre, items)

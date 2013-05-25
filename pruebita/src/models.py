@@ -206,17 +206,19 @@ class Item(db.Model):
     # one to many: Relaciona Fase x Item 
     faseId = db.Column(db.Integer, db.ForeignKey('Fase.idFase'))
     
-    # one to many: Relaciona Tipo de Item x Item
-    tipoDeItemId = db.Column(db.Integer, db.ForeignKey('TipoDeItem.idTipoDeItem'))
-    
-    
-    def __init__(self, nombre=None, version=None, complejidad=None, costo=None, tipoDeItem= None):
+    # one to one: Relaciona Item x Tipo de Item
+    tipoDeItem = db.relationship('TipoDeItem', uselist=False, backref='Item')
+
+ 
+    def __init__(self, nombre=None, version=None, complejidad=None, costo=None, estado=None, fase=None):
         """ constructor de item """
         self.nombre = nombre
         self.version = version
         self.complejidad = complejidad
         self.costo = costo
-        self.tipoDeItem = tipoDeItem
+        self.estado = estado
+        self.Fase = fase
+        
 
     def __repr__(self):
         return self.nombre        
@@ -298,10 +300,11 @@ class LineaBase(db.Model):
     # one to many: Relaciona Linea Base x fase
     faseId = db.Column(db.Integer, db.ForeignKey('Fase.idFase'))
  
-    def __init__(self, nombre=None, descripcion=None):
+    def __init__(self, nombre=None, descripcion=None, fase=None):
         """ constructor de linea base """
         self.nombre = nombre
         self.descripcion = descripcion
+        self.Fase=fase
 
     def __repr__(self):
         return self.nombre
