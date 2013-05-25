@@ -327,11 +327,38 @@ def editRol(nombre):
 	if request.method == 'POST' and form.validate():
             MgrRol().modificar(nombre, request.form['nombre'],
             request.form['ambito'], request.form['descripcion'])
+            if request.form.get('config', None) == "Configurar Permisos":
+                return redirect(url_for('configPermiso', nombre = rol.nombre))
             flash('Se ha modificado correctamente el rol')
             return redirect(url_for('listRolPermiso'))
     return render_template(app.config['DEFAULT_TPL']+'/editRol.html',
 			       conf = app.config,
 			       form = form)
+                               
+@app.route('/configPermiso/<path:nombre>.html', methods=['GET','POST'])
+def configPermiso(nombre):
+    from ctrl.mgrRol import MgrRol
+    from ctrl.mgrPermiso import MgrPermiso
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lista = request.form.getlist("lista")
+        permisos2 = MgrRol().filtrarPermiso(nombre)
+        rol = MgrRol().filtrar(nombre)
+        if request.method == 'POST':
+            for perm in lista:
+                if perm in permisos2:
+                        lista.remove(perm)
+            for perm in permisos2:
+                if perm in lista:
+                        permisos2.remove(perm)
+            MgrRol().asignarPermiso2(nombre, lista, permisos2) 
+            flash('Se ha configurado correctamente los permisos')
+            return redirect(url_for('editRol', nombre = rol.nombre))
+        return render_template(app.config['DEFAULT_TPL']+'/configPermiso.html',
+			       conf = app.config,
+                               permisos = MgrRol().filtrarPermiso(nombre),
+                               list = MgrPermiso().listar())
 
 
 @app.route('/deleteRol/<path:nombre>.html')
@@ -722,6 +749,7 @@ def showTipoDeItem(nombre):
 def addTipoDeItem():
     """Controlador para crear un tipo de item"""
     from models import TipoDeItem
+    from ctrl.mgrTipoDeAtrib import MgrTipoDeAtrib
     from ctrl.mgrTipoDeItem import MgrTipoDeItem
     from form import CreateFormTipoDeItem
     if g.user is None:
@@ -735,7 +763,8 @@ def addTipoDeItem():
                             descripcion = request.form['descripcion'])
                 MgrTipoDeItem().guardar(tipoDeItem)
                 flash('Se ha creado correctamente el tipo de item')
-                return redirect(url_for('listTipoDeItem'))
+                if request.form.get('crear', None) == "Crear":
+                    return redirect(url_for('relTipoDeAtribxTipoDeItem', nombre = tipoDeItem.nombre))
             else:
                 return render_template(app.config['DEFAULT_TPL']+'/addTipoDeItem.html',
                             conf = app.config,
@@ -743,6 +772,52 @@ def addTipoDeItem():
     return render_template(app.config['DEFAULT_TPL']+'/addTipoDeItem.html',
                 conf = app.config,
                 form = CreateFormTipoDeItem())
+                
+@app.route('/relTipoDeAtribxTipoDeItem/<path:nombre>.html', methods=['GET','POST'])
+def relTipoDeAtribxTipoDeItem(nombre):
+    """Controlador para relacionar un tipo de atributo a un tipo de item"""
+    from ctrl.mgrTipoDeAtrib import MgrTipoDeAtrib
+    from ctrl.mgrTipoDeItem import MgrTipoDeItem
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lista = request.form.getlist("lista")
+        listAtrib2 = MgrTipoDeItem().filtrarTipoDeAtrib(nombre)
+        tipoDeItem = MgrTipoDeItem().filtrar(nombre)
+        if request.method == 'POST':
+                for atrib in lista:
+                    if atrib in listAtrib2:
+                        lista.remove(atrib)
+                for atrib in listAtrib2:
+                    if atrib in lista:
+                        listAtrib2.remove(atrib)
+                MgrTipoDeItem().asignarTipoDeAtrib2(nombre, lista, listAtrib2)
+                flash('Se ha asignado correctamente el tipo de atributo')
+                return redirect(url_for('relTipodeItemxFase', nombre = tipoDeItem.nombre))  
+    return render_template(app.config['DEFAULT_TPL']+'/relTipoDeAtribxTipoDeItem.html',
+                conf = app.config,
+                listAtrib = MgrTipoDeItem().filtrarTipoDeAtrib(nombre),
+                list = MgrTipoDeAtrib().listar())
+                
+@app.route('/relTipodeItemxFase/<path:nombre>.html', methods=['GET','POST'])
+def relTipodeItemxFase(nombre):
+    """Controlador para relacionar un tipo de atributo a un tipo de item"""
+    from ctrl.mgrFase import MgrFase
+    from ctrl.mgrTipoDeItem import MgrTipoDeItem
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        opcion = request.form.get("opcion")
+        tipoDeItem = MgrTipoDeItem().filtrar(nombre)
+        if request.method == 'POST':
+                flash(opcion)
+                MgrTipoDeItem().asignarFase(nombre, opcion)
+                flash('Se ha asignado correctamente la fase')
+                return redirect(url_for('editTipoDeItem', nombre = tipoDeItem.nombre))  
+        return render_template(app.config['DEFAULT_TPL']+'/relTipodeItemxFase.html',
+                conf = app.config,
+                #listFase = MgrTipoDeItem().filtrarFase(nombre),
+                list = MgrFase().listar())
                 
 @app.route('/editTipoDeItem/<path:nombre>.html', methods=['GET','POST'])
 def editTipoDeItem(nombre):
@@ -758,6 +833,10 @@ def editTipoDeItem(nombre):
 	if request.method == 'POST' and form.validate():
             MgrTipoDeItem().modificar(nombre, request.form['nombre'], 
                             request.form['descripcion'])
+            if request.form.get('asignar', None) == "Asignar Tipo de Atributo":
+                return redirect(url_for('relTipoDeAtribxTipoDeItem', nombre = tipoDeItem.nombre))
+            elif request.form.get('asignarFase', None) == "Asignar Fase":
+                return redirect(url_for('relTipodeItemxFase', nombre = tipoDeItem.nombre))
             flash('Se ha modificado correctamente el tipo de item')
             return redirect(url_for('listTipoDeItem'))
     return render_template(app.config['DEFAULT_TPL']+'/editTipoDeItem.html',
@@ -815,6 +894,7 @@ def showItem(nombre):
 def addItem():
     """Controlador para crear item"""
     from models import Item
+    from ctrl.mgrTipoDeItem import MgrTipoDeItem
     from ctrl.mgrItem import MgrItem
     from form import CreateFormItem
     if g.user is None:
@@ -832,7 +912,8 @@ def addItem():
                             costo = request.form['costo'])
                 MgrItem().guardar(item)
                 flash('Se ha creado correctamente el item')
-                return redirect(url_for('listItem'))
+                if request.form.get('crear', None) == "Crear":
+                    return redirect(url_for('asignarTipoDeItem', nombre = item.nombre))
             else:
                 return render_template(app.config['DEFAULT_TPL']+'/addItem.html',
                             conf = app.config,
@@ -840,6 +921,28 @@ def addItem():
     return render_template(app.config['DEFAULT_TPL']+'/addItem.html',
                 conf = app.config,
                 form = CreateFormItem())
+                
+@app.route('/asignarTipoDeItem/<path:nombre>.html', methods=['GET','POST'])
+def asignarTipoDeItem(nombre):
+    """Controlador para relacionar un tipo de item a un item"""
+    from ctrl.mgrTipoDeItem import MgrTipoDeItem
+    from ctrl.mgrItem import MgrItem
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        opcion = request.form.get("opcion")
+        flash(opcion)
+        tipoDeItem = MgrTipoDeItem().filtrarTipoDeItem(opcion)
+        #tipoDeItem = MgrTipoDeItem().filtrar(opcion)
+        #item = MgrItem().filtrar(nombre)
+        if request.method == 'POST':
+                MgrItem().asignarTipoDeItem2(nombre, opcion)
+                flash('Se ha asignado correctamente el tipo de item')
+                return redirect(url_for('editItem', nombre = item.nombre))  
+    return render_template(app.config['DEFAULT_TPL']+'/asignarTipoDeItem.html',
+                    conf = app.config,
+                    listTipoDeItem = MgrItem().filtrarTipoDeItem(nombre),
+                    list = MgrTipoDeItem().listar())
                 
 @app.route('/editItem/<path:nombre>.html', methods=['GET','POST'])
 def editItem(nombre):

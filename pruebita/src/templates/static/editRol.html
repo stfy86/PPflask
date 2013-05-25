@@ -20,6 +20,7 @@
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
       </dl>
       <p>
+          <input type="submit" name="config" value="Configurar Permisos">
           <input type="submit" value="Guardar">
           <input type="button" value="Cancelar" onclick="javascript:history.back();">    
       </p>

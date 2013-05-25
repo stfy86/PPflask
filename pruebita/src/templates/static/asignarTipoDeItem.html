@@ -1,5 +1,5 @@
 {% extends "static/layout.html" %}
-{% block title %}Lista Proyecto{% endblock %}
+{% block title %}Edit TipoDeItem{% endblock %}
 {% block body %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  
@@ -38,37 +38,40 @@
 </head>
 <tbody>
 <div class="page-header">
-    <h3>Proyectos</h3>
+    <h1>Asignar Tipo de Item</h1>
 </div>
-<form runat="server">
-             
+<form runat="server" method="post" action=""> 
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
             <td class="tableHeader">
             </td>
-            <td colspan="5" class="filter">
+            <td colspan="3" class="filter">
                 Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
                 <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
             </td>
-        </tr> 
-            <tr>
+        </tr> 	
+		<tr>    
+                        <th><a href='#' title="Click Header to Sort">Asignar/Desasignar</a></th>
 			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
 			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
-			<th><a href='#' title="Click Header to Sort">FechaDeCreacion</a></th>
-			<th><a href='#' title="Click Header to Sort">Estado</a></th>
+			
 		</tr>
 </thead>
-  {% for proyecto in list%}
+    {% for tipoDeItem in list %}
     <tr>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.nombre}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre)}}"</a><h5>{{proyecto.descripcion}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.fechaDeCreacion}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.estado}}</h5></td>
-     </tr>
-   {% endfor %}
-
-</tbody>   
+            {% if tipoDeItem == listTipoDeItem %}
+                    <td><input type=radio checked="checked" name=opcion value="{{ tipoDeItem['nombre'] }}"></td>
+                    <td>{{ tipoDeItem.nombre }}</td>
+                    <td>{{ tipoDeItem.descripcion }}</td>
+            {% else %}
+                    <td><input type=radio name=opcion value="{{ tipoDeItem['nombre'] }}"></td>
+                     <td>{{ tipoDeItem.nombre }}</td>
+                    <td>{{ tipoDeItem.descripcion }}</td>
+            {% endif %}
+       </tr>
+    {% endfor %}
+    </tbody>   
 <tfoot>
 	    <tr id="pagerTwo">
 	        <td colspan="5">
@@ -91,9 +94,7 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-</form>   
-<p>
-    <input type="button" value="Crear Proyecto" onclick="document.location='addProject';">
-</p>
-
- {% endblock %}
+    <p><input type="submit" value="Aceptar">
+    <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+</form>
+{% endblock %}
