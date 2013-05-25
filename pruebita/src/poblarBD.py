@@ -130,7 +130,7 @@ def createAdmin():
     roles = [rol1, rol2, rol3]
     usr = User("admin","admin","administrador","administrador","admin@gmail.com",1234,"usuario administrador", roles)
     MgrUser().guardar(usr)
-
+    
 def createLider():
     """ asigna lider a un proyecto """
     from ctrl.mgrProject import MgrProject
@@ -145,7 +145,6 @@ def configurarPermiso():
     MgrRol().asignarPermiso("LiderDeProyecto", "AsignarRolAUsuario")
     MgrRol().desasignarPermiso("LiderDeProyecto", "AsignarRolAUsuario")
     
-
 def usuariosAProyecto():
     """ asigna/desasigna usuarios a proyecto """
     from ctrl.mgrProject import MgrProject
@@ -153,6 +152,7 @@ def usuariosAProyecto():
     MgrProject().asignarUsuario("proyecto4", "stfy", "desarrollador", "asigne rol a usuario")
     MgrProject().desasignarUsuario("proyecto4", "stfy","desarrollador"+"-"+"proyecto4"+"-"+"stfy")
 
+    
 def createItem():
     from ctrl.mgrItem import MgrItem
     from models import Item
@@ -240,10 +240,12 @@ def createLineaBase():
     items.append(item.nombre)
     
     faseref = MgrFase().filtrar('proyecto1-fase1')
-    lineaBase = LineaBase(nombre= 'proyecto1-fase1-LB1', descripcion = 'LB1', fase = faseref)
+    lineaBase = LineaBase(nombre = 'proyecto1-fase1-LB1', descripcion = 'LB1', fase = faseref)
     MgrLineaBase().guardar(lineaBase)
     MgrLineaBase().asignarItems(lineaBase.nombre, items)
-        
+    
+    
+    
     items = []
     item = MgrItem().filtrar('proyecto2-fase1-item2')
     items.append(item.nombre)
@@ -254,7 +256,9 @@ def createLineaBase():
     lineaBase = LineaBase(nombre= 'proyecto2-fase1-LB1', descripcion = 'LB1', fase = faseref)
     MgrLineaBase().guardar(lineaBase)
     MgrLineaBase().asignarItems(lineaBase.nombre, items)
-       
+    
+    
+    
     items = []
     item = MgrItem().filtrar('proyecto2-fase2-item2')
     items.append(item.nombre)
@@ -265,7 +269,9 @@ def createLineaBase():
     lineaBase = LineaBase(nombre= 'proyecto2-fase2-LB1', descripcion = 'LB1', fase = faseref)
     MgrLineaBase().guardar(lineaBase)
     MgrLineaBase().asignarItems(lineaBase.nombre, items)
-       
+    
+    
+    
     items = []
     item = MgrItem().filtrar('proyecto2-fase2-item4')
     items.append(item.nombre)

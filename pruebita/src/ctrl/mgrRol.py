@@ -39,6 +39,7 @@ class MgrRol():
         return Rol.query.filter(Rol.ambito == ambito).all()
     
     
+
     def asignarPermiso(self, nombre, nombrePermiso):
         """ asigna un permiso a un rol """
         from ctrl.mgrRolXPermiso import MgrRolXPermiso

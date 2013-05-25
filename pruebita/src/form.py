@@ -157,5 +157,31 @@ class EditStateItemForm(Form):
     """ Formulario de modificacion de estado de item """
     estado = SelectField("Estado", choices = [
         ("Activo", "Activo"),
-        ("Inactivo", "Inactivo")])
+        ("Inactivo", "Inactivo"),
+        ("Aprobado", "Aprobado")])
     submit = SubmitField("POST")
+
+class CreateFormLineaBase(Form):
+    """ Formulario para crear rol"""
+    nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    fase = TextField('Fase', [validators.required(message=":fase?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    
+class ShowFormLineaBase(Form):
+    """ Formulario para crear rol"""
+    nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    estado = TextField('Estado', [validators.required(message=":estado?:")])
+    
+class EditFormStateLineaBase(Form):
+    """ Formulario de modificacion de estado de linea base """
+    estado = SelectField("Estado", choices = [
+        ("Activo", "Activo"),
+        ("Inactivo", "Inactivo"),
+        ("Comprometida", "Comprometida")])
+    submit = SubmitField("POST")
+    
+class EditFormLineaBase(Form):
+    """ Formulario para editar linea base"""
+    nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])

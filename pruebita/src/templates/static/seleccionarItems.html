@@ -1,5 +1,5 @@
 {% extends "static/layout.html" %}
-{% block title %}configPermiso{% endblock %}
+{% block title %}Seleccionar Items{% endblock %}
 {% block body %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  
@@ -38,16 +38,16 @@
 </head>
 <tbody>
 <div class="page-header">
-    <h3>Configurar Permisos</h3>
+    <h3>Seleccionar Items</h3>
 </div>
-<form runat="server" method="post" action=""> 
+<form runat="server" method="post" action="">
              
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
             <td class="tableHeader">
             </td>
-            <td colspan="2" class="filter">
+            <td colspan="5" class="filter">
                 Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
                 <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
             </td>
@@ -58,15 +58,10 @@
 			
 		</tr>
 </thead>
-       {% for perm in list %}
+       {% for item in list %}
        <tr>
-            {% if perm in permisos %}
-                    <td><input type=checkbox checked="checked" name=lista value="{{ perm['nombre'] }}"></td>
-                    <td>{{ perm.nombre }}</td> 
-            {% else %}
-                    <td><input type=checkbox name=lista value="{{ perm['nombre'] }}"></td>
-                    <td>{{ perm.nombre }}</td>
-            {% endif %}
+           <td><input type=checkbox name=lista value="{{ item['nombre'] }}"></td>
+           <td>{{ item.nombre }}</td> 
        </tr>
        {% endfor %}
     </tbody>   
@@ -86,15 +81,14 @@
 		        </select>
 		    </td>
 	    </tr>
-</tfoot>
-</table
+</tfoot>    
+</table>
 <div style="padding-bottom:20px;">
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-<p><input type="submit" value="Aceptar">
-   <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+    <p><input type="submit" value="Aceptar" >
+    <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
 </form>   
-
-
+ 
 {% endblock %}

@@ -200,18 +200,11 @@ class Item(db.Model):
     # one to many: Relaciona Fase x Item 
     faseId = db.Column(db.Integer, db.ForeignKey('Fase.idFase'))
     
-    # one to many: Relaciona Tipo de Item x Item
+    # one to one: Relaciona Item x Tipo de Item
     tipoDeItemId = db.Column(db.Integer, db.ForeignKey('TipoDeItem.idTipoDeItem'))
-    
-    
-    def __init__(self, nombre=None, version=None, complejidad=None, costo=None):
-        """ constructor de item """
-        self.nombre = nombre
-        self.version = version
-        self.complejidad = complejidad
-        self.costo = costo
-    
-    def __init__(self, nombre=None, version=None, complejidad=None, costo=None, estado=None, fase=None):
+
+ 
+    def __init__(self, nombre=None, version=None, complejidad=None, costo=None, estado=None, fase=None, tipoDeItem= None):
         """ constructor de item """
         self.nombre = nombre
         self.version = version
@@ -219,7 +212,8 @@ class Item(db.Model):
         self.costo = costo
         self.estado = estado
         self.Fase = fase
-        
+        self.tipoDeItem = tipoDeItem
+
     def __repr__(self):
         return self.nombre        
 
@@ -245,11 +239,11 @@ class TipoDeItem(db.Model):
     proyectoId = db.Column(db.Integer, db.ForeignKey('Proyecto.idProyecto'))
     
     # one to many: Relaciona Tipo de Item x Item
-    listaItem = db.relationship('Item', backref='TipoDeItem', lazy = 'dynamic')
+    listaItem = db.relationship('Item', backref='tipoDeItem', lazy = 'dynamic')
     
     # many to many: Relaciona Tipo de Item x Tipo de Atributo
     atributosItem = db.relationship('TipoDeAtributo', secondary = atributosItem,
-        backref= db.backref('tipoDeItems' , lazy='dynamic'))
+        backref= db.backref('tipoDeItem' , lazy='dynamic'))
         
     def __init__(self, nombre=None, descripcion=None):
         """ constructor de tipo de item """
@@ -300,17 +294,12 @@ class LineaBase(db.Model):
     # one to many: Relaciona Linea Base x fase
     faseId = db.Column(db.Integer, db.ForeignKey('Fase.idFase'))
  
-    def __init__(self, nombre=None, descripcion=None):
-        """ constructor de linea base """
-        self.nombre = nombre
-        self.descripcion = descripcion
-    
     def __init__(self, nombre=None, descripcion=None, fase=None):
         """ constructor de linea base """
         self.nombre = nombre
         self.descripcion = descripcion
-        self.Fase = fase
-        
+        self.Fase=fase
+
     def __repr__(self):
         return self.nombre
     

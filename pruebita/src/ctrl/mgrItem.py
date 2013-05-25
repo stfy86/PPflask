@@ -41,6 +41,22 @@ class MgrItem():
         from models import Item
         return Item.query.filter(Item.nombre == nombre).first_or_404()
     
+    def asignarTipoDeItem2(self, nombre, id):
+        """ asigna un tipo de item a un item """
+        from models import Item, TipoDeItem
+        item = Item.query.filter(Item.nombre == nombre).first_or_404()
+        tipoItem = TipoDeItem.query.filter(TipoDeItem.idTipoDeItem == id).first_or_404()
+        # asigna al item el tipo de item 
+        item.tipoDeItem = tipoItem
+        db.session.commit()
+            
+                
+    def filtrarTipoDeItem(self, nombre):
+        """ filtrar rol por nombre """
+        from models import Item
+        item = Item.query.filter(Item.nombre == nombre).first_or_404()
+        return item.tipoDeItemId
+
     def filtrarAprobadoXFase(self, faseId):
         """ filtrar proyecto por fase """
         from models import Item

@@ -17,4 +17,4 @@ class MgrUserXRol():
         rol = Rol.query.filter(Rol.nombre == rolNombre).first_or_404() 
         user.roles.remove(rol)
         db.session.commit()    
-        
+

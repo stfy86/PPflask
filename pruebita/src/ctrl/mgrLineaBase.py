@@ -42,3 +42,19 @@ class MgrLineaBase():
         
         lineaBase.estado = 'Activo'
         db.session.commit()
+        
+    def desAsignarItems(self, nombre):
+        from models import LineaBase
+        
+        lineaBase = LineaBase.query.filter(LineaBase.nombre == nombre).first_or_404()
+        lineaBase.itemsLB = []
+        
+        db.session.commit()
+        
+    def modificar(self, nombre, nombreNew, descripcionNew):
+        """ modificar un registro de linea base """
+        from models import LineaBase 
+        lineaBase = LineaBase.query.filter(LineaBase.nombre == nombre).first_or_404()
+        lineaBase.nombre = nombreNew
+        lineaBase.descripcion = descripcionNew
+        db.session.commit()

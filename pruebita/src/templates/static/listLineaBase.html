@@ -1,5 +1,5 @@
 {% extends "static/layout.html" %}
-{% block title %}configPermiso{% endblock %}
+{% block title %}Lista Linea Base{% endblock %}
 {% block body %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  
@@ -38,38 +38,35 @@
 </head>
 <tbody>
 <div class="page-header">
-    <h3>Configurar Permisos</h3>
+    <h3>Lineas Base</h3>
 </div>
-<form runat="server" method="post" action=""> 
+<form runat="server">
              
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
             <td class="tableHeader">
             </td>
-            <td colspan="2" class="filter">
+            <td colspan="5" class="filter">
                 Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
                 <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
             </td>
-        </tr> 	
-		<tr>
-			<th><a href='#' title="Click Header to Sort">Asignar/Desasignar</a></th>
-                        <th><a href='#' title="Click Header to Sort">Permisos</a></th>
-			
+        </tr> 
+            <tr>
+			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
+			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
+			<th><a href='#' title="Click Header to Sort">Estado</a></th>
 		</tr>
 </thead>
-       {% for perm in list %}
-       <tr>
-            {% if perm in permisos %}
-                    <td><input type=checkbox checked="checked" name=lista value="{{ perm['nombre'] }}"></td>
-                    <td>{{ perm.nombre }}</td> 
-            {% else %}
-                    <td><input type=checkbox name=lista value="{{ perm['nombre'] }}"></td>
-                    <td>{{ perm.nombre }}</td>
-            {% endif %}
-       </tr>
-       {% endfor %}
-    </tbody>   
+  {% for lineaBase in list%}
+    <tr>
+        <td><a href="{{ url_for('showLineaBase', nombre = lineaBase.nombre)}}"</a><h5>{{lineaBase.nombre}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', nombre = lineaBase.nombre)}}"</a><h5>{{lineaBase.descripcion}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', nombre = lineaBase.nombre)}}"</a><h5>{{lineaBase.estado}}</h5></td>
+     </tr>
+   {% endfor %}
+
+</tbody>   
 <tfoot>
 	    <tr id="pagerTwo">
 	        <td colspan="5">
@@ -86,15 +83,15 @@
 		        </select>
 		    </td>
 	    </tr>
-</tfoot>
-</table
+</tfoot>    
+</table>
 <div style="padding-bottom:20px;">
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-<p><input type="submit" value="Aceptar">
-   <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
 </form>   
+<p>
+    <input type="button" value="Crear Linea Base" onclick="document.location='addLineaBase';">
+</p>
 
-
-{% endblock %}
+ {% endblock %}

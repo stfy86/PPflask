@@ -1,0 +1,35 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Show Linea Base{% endblock %}
+
+{% block body %}
+    <h1>Datos de la Linea Base</h1>
+    <form method="post" action="">  
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 100px;") }} 
+            {{ form.nombre(class="form-input", style="width:200px", readonly="readonly") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+	    <br />
+            {{ form.descripcion.label(style="float: left; width: 100px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width:200px", readonly="readonly") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.estado.label(style="float: left; width: 100px;") }} 
+            {{ form.estado(class="form-input", style="width:200px", readonly="readonly") }}
+            {% for error in form.estado.errors %} {{ error }} {% endfor %}
+      </dl>
+      <script language="JavaScript">
+          function confirmar ( mensaje ) {
+              return confirm( mensaje );
+          }
+      </script>  
+      <p>
+          <input type="submit" name="edit" value="Modificar Linea Base">
+          <input type="submit" name="listLineaBaseItems" value="Listar Items">
+          <input type="submit" name="delete" value="Eliminar Linea Base" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+          <input type="submit" name="editState" value="Modificar estado de Linea Base">
+          <input type="button" value="Atras" onclick="javascript:history.back();">
+      </p>
+    </form>
+{% endblock %}

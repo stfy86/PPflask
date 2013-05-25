@@ -17,4 +17,4 @@ class MgrProyectoXUser():
         usuario = User.query.filter(User.name == userName).first_or_404() 
         proyecto.users.remove(usuario)
         db.session.commit()   
-       
+
