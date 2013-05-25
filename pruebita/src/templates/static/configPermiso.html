@@ -1,5 +1,5 @@
 {% extends "static/layout.html" %}
-{% block title %}List Atrib{% endblock %}
+{% block title %}configPermiso{% endblock %}
 {% block body %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  
@@ -38,9 +38,9 @@
 </head>
 <tbody>
 <div class="page-header">
-    <h3>Roles</h3>
+    <h3>Configurar Permisos</h3>
 </div>
-<form runat="server">
+<form runat="server" method="post" action="">
              
 <table id="tableTwo" class="yui">    
 <thead>
@@ -53,21 +53,23 @@
             </td>
         </tr> 	
 		<tr>
-			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
-			<th><a href='#' title="Click Header to Sort">Ambito</a></th>
-			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
+			<th><a href='#' title="Click Header to Sort">Asignar/Desasignar</a></th>
+                        <th><a href='#' title="Click Header to Sort">Permisos</a></th>
 			
 		</tr>
 </thead>
-    {% for rol in list %}
-    <tr>
-       <td><a href="{{ url_for('showRol', nombre = rol.nombre )}}"</a><h5>{{ rol.nombre }}</h5></td>
-       <td><a href="{{ url_for('showRol', nombre = rol.ambito )}}"</a><h5>{{ rol.ambito }}</h5></td>
-       <td><a href="{{ url_for('showRol', nombre = rol.descripcion )}}"</a><h5>{{ rol.descripcion }}</h5></td>
-    </tr>
-    {% endfor %}
-
-</tbody>   
+       {% for perm in list %}
+       <tr>
+            {% if perm in permisos %}
+                    <td><input type=checkbox checked="checked" name=lista value="{{ perm['nombre'] }}"></td>
+                    <td>{{ perm.nombre }}</td> 
+            {% else %}
+                    <td><input type=checkbox name=lista value="{{ perm['nombre'] }}"></td>
+                    <td>{{ perm.nombre }}</td>
+            {% endif %}
+       </tr>
+       {% endfor %}
+    </tbody>   
 <tfoot>
 	    <tr id="pagerTwo">
 	        <td colspan="5">
@@ -90,8 +92,8 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
+    <p><input type="submit" value="Aceptar" >
+    <input type="button" value="Cancelar" onclick="javascript:history.back();"></p>
 </form>   
- <p><input class="button" type="button" value="Crear Rol" onclick="document.location='addRol';">
-
+ 
 {% endblock %}
-

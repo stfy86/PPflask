@@ -1,7 +1,12 @@
 from pruebita import db, app
 
 class MgrPermiso():
-
+    
+    def listar(self):
+        """ listar permisos """
+        from models import Permiso
+        return Permiso.query.all()
+    
     def guardar(self, permiso):
         """ guarda un registro permiso """
         db.session.add(permiso)
@@ -14,7 +19,7 @@ class MgrPermiso():
         db.session.delete(permiso)
         db.session.commit()
     
-    def guardar(self, permisos=[None]):
+    def guardarLista(self, permisos=[None]):
         """ guarda una lista de permisos """
         from models import Permiso
         for p in permisos:
