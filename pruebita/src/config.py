@@ -16,12 +16,10 @@ VERSION = '0.1'
 LANG = 'es'
 LANG_DIRECTION = 'ltr'
 YEAR = '2013'
+ 
 
-rutaDB = 'postgresql://admin:admin@localhost:5432/database'
-#rutaDBTest = 'postgresql://admin:admin@localhost:5432/databasePrueba'
-
-SQLALCHEMY_DATABASE_URI = rutaDB
-#SQLALCHEMY_DATABASE_URI = rutaDBTest
+SQLALCHEMY_DATABASE_URI = 'postgresql://admin:admin@localhost:5432/database'
+#SQLALCHEMY_DATABASE_URI = 'postgresql://admin:admin@localhost:5432/databasePrueba'
 
 del os
 
