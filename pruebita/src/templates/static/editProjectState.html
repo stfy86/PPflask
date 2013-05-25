@@ -1,0 +1,23 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Edit State Project{% endblock %}
+
+{% block body %}
+    <h1>Modificar estado de proyecto</h1>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.estado.label(style="float: left; width: 100px;") }} 
+            {{ form.estado(class="form-input", style="width:200px") }}
+            {% for error in form.estado.errors %} {{ error }} {% endfor %}
+      </dl>
+      <script language="JavaScript">
+      function confirmar ( mensaje ) {
+      return confirm( mensaje );
+      } 
+      </script>
+      
+      <p><input type="submit" value="Aceptar">
+          <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+    </form>
+{% endblock %}

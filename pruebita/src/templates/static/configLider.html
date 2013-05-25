@@ -1,5 +1,5 @@
 {% extends "static/layout.html" %}
-{% block title %}Lista Proyecto{% endblock %}
+{% block title %}asignarLider{% endblock %}
 {% block body %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  
@@ -36,12 +36,11 @@
              
     </script>    
 </head>
-<tbody>
 <div class="page-header">
-    <h3>Proyectos</h3>
+    <h3>Asignar Lider</h3>
 </div>
-<form runat="server">
-             
+<form runat="server" method="post" action="">
+    <h1> Lista de usuario </h1>        
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
@@ -51,24 +50,22 @@
                 Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
                 <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
             </td>
-        </tr> 
-            <tr>
-			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
-			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
-			<th><a href='#' title="Click Header to Sort">FechaDeCreacion</a></th>
-			<th><a href='#' title="Click Header to Sort">Estado</a></th>
+        </tr> 	
+		<tr>
+			<th><a href='#' title="Click Header to Sort">Asignar</a></th>
+                        <th><a href='#' title="Click Header to Sort">Usuarios</a></th>
+			
 		</tr>
 </thead>
-  {% for proyecto in list%}
-    <tr>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.nombre}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre)}}"</a><h5>{{proyecto.descripcion}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.fechaDeCreacion}}</h5></td>
-        <td><a href="{{ url_for('showProject', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.estado}}</h5></td>
-     </tr>
-   {% endfor %}
-
-</tbody>   
+       {% for user in list %}
+       <tr>
+            {% if not user in usuarios %}
+                    <td><input type=checkbox name=lista value="{{ user['name'] }}"></td>
+                    <td>{{ user.name }}</td> 
+            {% endif %}
+       </tr>
+       {% endfor %}
+       
 <tfoot>
 	    <tr id="pagerTwo">
 	        <td colspan="5">
@@ -91,9 +88,10 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
+    <p>
+        <input class="button" type="submit" value="Aceptar" >
+        <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
+    <p>
 </form>   
-<p>
-    <input class="button" type="button" value="Crear Proyecto" onclick="document.location='addProject';">
-</p>
-
- {% endblock %}
+ 
+{% endblock %}
