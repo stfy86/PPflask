@@ -3,7 +3,8 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-    <h1>Agregar Fase</h1>
+   
+    <h1>Asignar fase a proyecto</h1>
     <form method="post" action="">
       <dl>
         {{ form.csrf }}
@@ -21,7 +22,7 @@
             <br />
       </dl>
       <br/>
-       <p>
+      <p>
           <input class="button" type="submit" value="Crear">
           <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">    
       </p>

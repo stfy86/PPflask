@@ -1,0 +1,20 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Edit State Fase{% endblock %}
+
+{% block body %}
+    <h1>Modificar estado de una fase</h1>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.estado.label(style="float: left; width: 100px;") }} 
+            {{ form.estado(class="form-input", style="width: 200px") }}
+            {% for error in form.estado.errors %} {{ error }} {% endfor %}
+      </dl>
+      
+      <p>
+          <input type="submit" value="Aceptar">
+          <input type="button" value="Cancelar" onclick="javascript:history.back();">
+      <p>
+    </form>
+{% endblock %}
