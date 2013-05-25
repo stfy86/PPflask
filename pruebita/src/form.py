@@ -78,6 +78,11 @@ class EditStateProjectForm(Form):
         ("Inactivo", "Inactivo")])
     submit = SubmitField("POST")
 
+class CreateFormRolProyecto(Form):
+    """ Formulario para crear rol por proyecto"""
+    nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+   
 # Administrar Fase
 
 class CreateFormFase(Form):
