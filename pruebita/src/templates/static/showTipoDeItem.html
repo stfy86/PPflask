@@ -7,12 +7,12 @@
     <form method="post" action="">  
       <dl>
         {{ form.csrf }}
-            {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:200px", readonly="readonly") }}
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width: 300px", readonly="readonly") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
       </dl>
       <script language="JavaScript">
@@ -22,12 +22,14 @@
       </script> 
       
       <p>
-         <input type="submit" name="edit" value="Modificar Tipo de Item">
-         <input type="submit" name="edit" value="Asignar Atributo por Tipo de Item">
-         <input type="submit" name="edit" value="Modificar Atributo por Tipo de Item">
-         <input type="submit" name="edit" value="Eliminar Atributo por Tipo de Item">
-         <input type="submit" name="delete" value="Eliminar Tipo de Item" onclick="return confirmar('¿Está seguro que desea eliminar el usuario?')">
-         <input type="button" value="Cancelar" onclick="javascript:history.back();">
+         <input class="button" type="submit" name="edit" value="Modificar Tipo de Item">
+         <input class="button" type="submit" name="edit" value="Asignar Atributo por Tipo de Item">
+         <br />
+         <input class="button" type="submit" name="edit" value="Modificar Atributo por Tipo de Item">
+         <input class="button" type="submit" name="edit" value="Eliminar Atributo por Tipo de Item">
+         <br />
+         <input class="button" type="submit" name="delete" value="Eliminar Tipo de Item" onclick="return confirmar('¿Está seguro que desea eliminar el usuario?')">
+         <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
       <p>
     </form>
 {% endblock %}
