@@ -12,7 +12,7 @@ class MgrUser():
         db.session.add(usuario)
         db.session.commit()
     
-    def guardar(self, listaUsuario):
+    def guardarLista(self, listaUsuario=[None]):
         """ guarda una lista de usuarios """
         from models import User
         for u in listaUsuario:
@@ -52,5 +52,9 @@ class MgrUser():
         from models import User
         return User.query.filter(User.name == nombre).first_or_404()
     
-         
+    def rolesDeUser(self, nombre):
+        from models import User
+        usr = User.query.filter(User.name == nombre).first_or_404()
+        return usr.roles
+          
     

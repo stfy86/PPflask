@@ -7,36 +7,36 @@
     <form method="post" action="">  
       <dl>
         {{ form.csrf }}
-            {{ form.name.label(style="float: left; width: 100px;") }} 
-            {{ form.name(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.name.label(style="float: left; width: 105px;") }} 
+            {{ form.name(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.name.errors %} {{ error }} {% endfor %}
 	    <br />
-            {{ form.password.label(style="float: left; width: 100px;") }}
-            {{form.password(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.password.label(style="float: left; width: 105px;") }}
+            {{form.password(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.password.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.apellido.label(style="float: left; width: 100px;") }}
-            {{form.apellido(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.apellido.label(style="float: left; width: 105px;") }}
+            {{form.apellido(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.apellido.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.email.label(style="float: left; width: 100px;") }}
-            {{form.email(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.email.label(style="float: left; width: 105px;") }}
+            {{form.email(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.email.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.telefono.label(style="float: left; width: 100px;") }}
-            {{form.telefono(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.telefono.label(style="float: left; width: 105px;") }}
+            {{form.telefono(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.telefono.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.obs.label(style="float: left; width: 100px;") }}
-            {{form.obs(class="form-input", style="height:50px;width:200px", readonly="readonly") }}
+            {{ form.obs.label(style="float: left; width: 105px;") }}
+            {{form.obs(class="form-input", style="height:50px;width: 300px", readonly="readonly") }}
             {% for error in form.obs.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.estado.label(style="float: left; width: 100px;") }}
-            {{form.estado(class="form-input", style="width:200px", readonly="readonly") }}
+            {{ form.estado.label(style="float: left; width: 105px;") }}
+            {{form.estado(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.obs.errors %} {{ error }} {% endfor %}
       </dl>
       <script language="JavaScript">
@@ -45,12 +45,14 @@
           }
       </script>
       <p>
-          <input type="submit" name="edit" value="Modificar Usuario">
-          <input type="submit" name="delete" value="Eliminar Usuario" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
-          <input type="submit" name="state" value="Modificar Estado de Usuario">
-          <input type="submit" name="edit" value="Asignar Rol a Usuario">
-          <input type="submit" name="edit" value="Eliminar Rol de Usuario">
-          <input type="button" value="Atras" onclick="javascript:history.back();">
+          <input class="button" type="submit" name="edit" value="Modificar Usuario">
+          <input class="button" type="submit" name="delete" value="Eliminar Usuario" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+          <br />
+          <input class="button" type="submit" name="state" value="Modificar Estado de Usuario">
+          <input class="button" type="submit" name="edit" value="Asignar Rol a Usuario">
+          <br />
+          <input class="button" type="submit" name="edit" value="Eliminar Rol de Usuario">
+          <input class="button" type="button" value="Atras" onclick="javascript:history.back();">
       </p>   
     </form>
 {% endblock %}
