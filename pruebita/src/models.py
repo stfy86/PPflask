@@ -207,10 +207,10 @@ class Item(db.Model):
     faseId = db.Column(db.Integer, db.ForeignKey('Fase.idFase'))
     
     # one to one: Relaciona Item x Tipo de Item
-    tipoDeItem = db.relationship('TipoDeItem', uselist=False, backref='Item')
+    tipoDeItemId = db.Column(db.Integer, db.ForeignKey('TipoDeItem.idTipoDeItem'))
 
  
-    def __init__(self, nombre=None, version=None, complejidad=None, costo=None, estado=None, fase=None):
+    def __init__(self, nombre=None, version=None, complejidad=None, costo=None, estado=None, fase=None, tipoDeItem= None):
         """ constructor de item """
         self.nombre = nombre
         self.version = version
@@ -218,7 +218,7 @@ class Item(db.Model):
         self.costo = costo
         self.estado = estado
         self.Fase = fase
-        
+        self.tipoDeItem = tipoDeItem
 
     def __repr__(self):
         return self.nombre        

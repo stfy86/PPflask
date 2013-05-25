@@ -56,3 +56,9 @@ class MgrItem():
         from models import Item
         item = Item.query.filter(Item.nombre == nombre).first_or_404()
         return item.tipoDeItemId
+
+    def filtrarAprobadoXFase(self, faseId):
+        """ filtrar proyecto por fase """
+        from models import Item
+        from sqlalchemy import and_
+        return Item.query.filter(and_(Item.faseId == faseId, Item.estado == 'Aprobado'))

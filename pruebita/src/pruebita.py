@@ -345,8 +345,8 @@ def configPermiso(nombre):
         return redirect(url_for('login'))
     else:
         lista = request.form.getlist("lista")
-        lista2 = []
         permisos2 = MgrRol().filtrarPermiso(nombre)
+        rol = MgrRol().filtrar(nombre)
         if request.method == 'POST':
             for perm in lista:
                 if perm in permisos2:
@@ -356,7 +356,7 @@ def configPermiso(nombre):
                         permisos2.remove(perm)
             MgrRol().asignarPermiso2(nombre, lista, permisos2) 
             flash('Se ha configurado correctamente los permisos')
-            return redirect(url_for('listRolPermiso'))
+            return redirect(url_for('editRol', nombre = rol.nombre))
         return render_template(app.config['DEFAULT_TPL']+'/configPermiso.html',
 			       conf = app.config,
                                permisos = MgrRol().filtrarPermiso(nombre),
