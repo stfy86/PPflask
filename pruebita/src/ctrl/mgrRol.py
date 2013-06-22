@@ -6,10 +6,6 @@ class MgrRol():
         return Rol.query.all()
 
     def guardar(self, rol):
-        for r in self.listarPorAmbito(rol.ambito):
-            if r.nombre == rol.nombre :
-                return ":error: rol ya creado en el proyecto"
-        
         db.session.add(rol)
         db.session.commit()
         return ":guardo el rol:"

@@ -206,6 +206,8 @@ class EditStateItemForm(Form):
 
 # Administrar LB
 
+# Administrar LB
+
 class CreateFormLineaBase(Form):
     """ Formulario para crear rol"""
     nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])

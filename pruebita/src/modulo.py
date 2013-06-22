@@ -28,6 +28,8 @@ from ctrl.mgrUser import MgrUser
 from ctrl.mgrComite import MgrComite
 from ctrl.mgrRolXPermiso import MgrRolXPermiso
 from ctrl.mgrTipoDeItem import MgrTipoDeItem
+from ctrl.mgrSolicitud import MgrSolicitud
+from ctrl.mgrLineaBase import MgrLineaBase
 # paquete views
 from views.ingreso import *
 from views.administracion import *

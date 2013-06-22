@@ -1,0 +1,94 @@
+{% extends "static/layout.html" %}
+{% block title %}Seleccionar Items{% endblock %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">   
+    <link href="/themes/yui/style.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery-1.2.6.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.tablesorter-2.0.3.js" type="text/javascript"></script>
+    <script src="/js/jquery.tablesorter.filer.js" type="text/javascript"></script>
+    <script src="/js/jquery.tablesorter.pager.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#tableOne").tablesorter({ debug: false, sortList: [[0, 0]], widgets: ['zebra'] })
+                        .tablesorterPager({ container: $("#pagerOne"), positionFixed: false })
+                        .tablesorterFilter({ filterContainer: $("#filterBoxOne"),
+                            filterClearContainer: $("#filterClearOne"),
+                            filterColumns: [0, 1, 2, 3 ,4],
+                            filterCaseSensitive: false
+                        });
+
+            $("#tableTwo").tablesorter({ debug: false, sortList: [[0, 0]], widgets: ['zebra'] })
+                .tablesorterPager({ container: $("#pagerTwo"), positionFixed: false })
+                .tablesorterFilter({ filterContainer: $("#filterBoxTwo"),
+                    filterClearContainer: $("#filterClearTwo"),
+                    filterColumns: [0, 1, 2, 3, 4],
+                    filterCaseSensitive: false
+                });
+
+            $("#tableTwo .header").click(function() {
+                $("#tableTwo tfoot .first").click();
+            });                
+        });    
+        
+             
+    </script>    
+</head>
+<tbody>
+<div class="page-header">
+    <h3>Seleccionar Items</h3>
+</div>
+<form runat="server" method="post" action="">
+             
+<table id="tableTwo" class="yui">    
+<thead>
+        <tr>
+            <td class="tableHeader">
+            </td>
+            <td colspan="5" class="filter">
+                Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+            </td>
+        </tr> 	
+		<tr>
+			<th><a href='#' title="Click Header to Sort">Asignar/Desasignar</a></th>
+                        <th><a href='#' title="Click Header to Sort">Permisos</a></th>
+			
+		</tr>
+</thead>
+       {% for item in list %}
+       <tr>
+           <td><input type=checkbox name=lista value="{{ item['nombre'] }}"></td>
+           <td>{{ item.nombre }}</td> 
+       </tr>
+       {% endfor %}
+    </tbody>   
+<tfoot>
+	    <tr id="pagerTwo">
+	        <td colspan="5">
+		        <img src="/img/first.png" class="first"/>
+		        <img src="/img/prev.png" class="prev"/>
+		        <input type="text" class="pagedisplay"/>
+		        <img src="/img/next.png" class="next"/>
+		        <img src="/img/last.png" class="last"/>
+		        <select class="pagesize">
+			        <option selected="selected"  value="5">5</option>
+			        <option value="10">10</option>
+			        <option value="15">15</option>
+			        <option  value="20">20</option>
+		        </select>
+		    </td>
+	    </tr>
+</tfoot>    
+</table>
+<div style="padding-bottom:20px;">
+<div class="js-kit-poll" style="width: 350px;"></div>
+<script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+</div>
+    <p><input type="submit" value="Aceptar" >
+    <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+</form>   
+ 
+{% endblock %}

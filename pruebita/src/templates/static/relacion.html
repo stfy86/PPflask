@@ -34,7 +34,7 @@
                     </tr>
             {% for item in listItem %}
                                             <tr>
-                                            <td>{{ item.nombre }}{{item.idItem}}{{idItem}}</td>
+                                            <td>{{ item.nombre }}</td>
                                             {% if item.idItem in relacionadoList %}
                                                     <td><INPUT TYPE="checkbox" NAME="iditemList" checked="checked" VALUE={{ item.idItem }}></td>
                                             {% else %}

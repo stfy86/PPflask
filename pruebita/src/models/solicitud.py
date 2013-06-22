@@ -20,6 +20,7 @@ class Solicitud(db.Model):
     
     # one to many : Relaciona Solicitud x User
     autorId = db.Column(db.Integer, db.ForeignKey('User.idUser'))
+    Autor = db.relationship("User", backref=db.backref("Solicitudes"))
     
     # many to many: Relaciona Solicitud x Item
     itemsSolicitud = db.relationship('Item', secondary = itemsSolicitud,
@@ -27,6 +28,7 @@ class Solicitud(db.Model):
         
     # one to many : Relaciona Comite x Solicitud
     comiteId = db.Column(db.Integer, db.ForeignKey('Comite.idComite'))
+    Comite = db.relationship("Comite", backref=db.backref("Solicitudes"))
     
 
         
