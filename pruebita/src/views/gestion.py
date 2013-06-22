@@ -11,6 +11,7 @@ from flask import Flask, render_template, request, redirect, url_for, g, \
 
 @app.route('/initProyecto')
 def initProyecto():
+    """ Muestra los proyectos pendiente del sistema"""
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -21,6 +22,7 @@ def initProyecto():
 
 @app.route('/showInit/<path:nombre>.html', methods=['GET','POST'])
 def showInit(nombre):
+    """ Muestra un proyecto pendiente para el modulo administracion """
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -50,6 +52,7 @@ def showInit(nombre):
                                
 @app.route('/iniciarProyecto/<path:nombre>.html', methods=['GET','POST'])
 def iniciarProyecto(nombre):
+    """ Inicia un proyecto si es que es posible su inicializacion, es decir tiene al menos una fase con un tipo de item asignado"""
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -66,6 +69,7 @@ def iniciarProyecto(nombre):
 
 @app.route('/asignarFase/<path:nombre>.html', methods=['GET','POST'])
 def asignarFase(nombre):
+    """ Muestra las fases de un proyecto y permite la opcion de agregar fase """
     if g.user is None:
         return redirect(url_for('login'))
     else:

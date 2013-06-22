@@ -13,6 +13,7 @@ from flask import Flask, render_template, request, redirect, url_for, g, \
 
 @app.route('/listProject')
 def listProject():   
+    """ Lista los Proyectos Pendientes y Finalizados """
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -23,6 +24,7 @@ def listProject():
 
 @app.route('/showProjectPendiente/<path:nombre>.html', methods=['GET','POST'])
 def showProjectPendiente(nombre):
+    """ Muestra un proyecto con estado pendiente """
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -46,6 +48,7 @@ def showProjectPendiente(nombre):
                                
 @app.route('/editProject/<path:nombre>.html', methods=['GET','POST'])
 def editProject(nombre):
+    """ Modifica un proyecto """
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -62,6 +65,7 @@ def editProject(nombre):
 
 @app.route('/editProjectStateAdmin/<path:nombre>.html', methods=['GET','POST'])
 def editProjectStateAdmin(nombre):
+    """ Modifica el estado del Proyecto """
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -76,6 +80,7 @@ def editProjectStateAdmin(nombre):
                                
 @app.route('/addProject', methods=['GET','POST'])
 def addProject():
+    """ Guarda un Proyecto """
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -122,6 +127,7 @@ def deleteProject(nombre):
 
 @app.route('/listComite')
 def listComite():
+    """ Lista los comite del Sistema"""
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -132,6 +138,7 @@ def listComite():
 
 @app.route('/showComite/<path:nombre>.html', methods=['GET','POST'])
 def showComite(nombre):
+    """Muestra un Comite"""
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -152,6 +159,7 @@ def showComite(nombre):
                                
 @app.route('/editComite/<path:nombre>.html', methods=['GET','POST'])
 def editComite(nombre):
+    """ Modifica un Comite """
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -168,6 +176,7 @@ def editComite(nombre):
 
 @app.route('/addComite/<path:nameLider>/<path:nombre>.html', methods=['GET','POST'])
 def addComite(nombre, nameLider):
+    """Guarda un comite y asigna al lider del proyecto como usuario del comite"""
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -210,6 +219,7 @@ def addComite(nombre, nameLider):
 
 @app.route('/listUser')
 def listUser():   
+    """ Lista Usuarios Activos del Sistema """
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -220,6 +230,7 @@ def listUser():
 
 @app.route('/showUser/<path:nombre>.html', methods=['GET','POST'])
 def showUser(nombre):
+    """ Muestra un usuario"""
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -241,6 +252,7 @@ def showUser(nombre):
                              
 @app.route('/addUser', methods=['GET','POST'])
 def addUser():
+    """ Guarda un Usuario """
     if g.user is None:
         return redirect(url_for('login'))
     else:
