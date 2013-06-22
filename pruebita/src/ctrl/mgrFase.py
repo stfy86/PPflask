@@ -1,58 +1,60 @@
-from pruebita import db, app
+from modulo import *
 
 class MgrFase():
 
     def guardar(self, fase):
-        """ guarda un registro fase """
-        db.session.add(fase)
-        db.session.commit()
-    
-    def guardarLista(self, fase = [None]):
-        """ guarda varios registros fase """
-        for f in fase:
-            db.session.add(f)
+        proyecto = Proyecto.query.filter(Proyecto.idProyecto == fase.proyectoId).first_or_404()
+        if proyecto.estado == "Pendiente":
+            db.session.add(fase)
             db.session.commit()
-            
-    def borrar(self,nombre):
-        """ borra un registro fase x name"""
-        from models import Fase
-        fase = Fase.query.filter(Fase.nombre == nombre).first_or_404()
-        db.session.delete(fase)
-        db.session.commit()
+            return ":guardo fase:"
+        else:
+            return ":NO guardo la fase:"
+               
+    def borrar(self, fase):
+        proyecto = Proyecto.query.filter(Proyecto.idProyecto == fase.proyectoId).first_or_404()
+        if proyecto.estado == "Pendiente":
+            db.session.delete(fase)
+            db.session.commit()
+            return ":elimino la fase:"
+        else:
+            return ":NO se elimino la fase:"
     
-    def modificar(self, nombre, nombreNew, descripcionNew, ordenNew):
-        """ modificar un registro fase x name"""
-        from models import Fase
-        fase = Fase.query.filter(Fase.nombre == nombre).first_or_404()
-        fase.nombre = nombreNew
-        fase.descripcion = descripcionNew
-        fase.orden = ordenNew
-        db.session.commit()
+    def modificar(self, fase,  descripcionNew, tipoDeItemIdNew):
+        if fase.estado == "Pendiente":
+            fase.descripcion = descripcionNew
+            fase.tipoDeItemId = tipoDeItemIdNew
+            db.session.commit()
+            return ":modifico la fase:"
+        else:
+            return ":NO modifico la fase:"
 
     def listar(self):
-        from models import Fase
         return Fase.query.all()
-    
-    def listarXProyecto(self, nombreProyecto):
-        from models import Fase, Proyecto
-        proyecto = Proyecto.query.filter(Proyecto.nombre == nombre).first_or_404()    
-        return Fase.query.filter(Fase.proyectoId == proyecto.idProyecto).all()
-    
+               
     def filtrar(self, nombre):
-        """ filtrar fase por nombre """
-        from models import Fase
         return Fase.query.filter(Fase.nombre == nombre).first_or_404()
 
+    def filtrarXId(self, idFase):
+        return Fase.query.filter(Fase.idFase == idFase).first_or_404()
 
-    def estado(self, nombre, estadoNew):
-        """ guarda el nuevo estado de la fase """
-        from models import Fase
-        fase = Fase.query.filter(Fase.nombre == nombre).first_or_404()
-        fase.estado = estadoNew        
-        db.session.commit()
-        
-    def filtrarItems(self, nombre):
-        """ filtrar items por nombre """
-        from models import Fase
-        fase = Fase.query.filter(Fase.nombre == nombre)
-        return fase.listaItem
+    def estado(self, fase, estadoNew):
+        if fase.estado == "Activo" and estadoNew == "Finalizado" and self.itemsAprobados(fase):
+            fase.estado = estadoNew        
+            db.session.commit()
+            return ":modifico estado: todos los items estan aprobados"
+        if fase.estado == "Pendiente" and estadoNew == "Activo":
+            fase.estado = estadoNew        
+            db.session.commit()
+            return ":modifico estado: desea crear items e ir aprobando los items"           
+        if fase.estado == "Finalizado" and estadoNew == "Activo":
+            fase.estado = estadoNew        
+            db.session.commit()
+            return ":modifico estado: desea modificar algun item de la fase"
+        return ":NO modifico el estado:"
+    
+    def itemsAprobados(self, fase):
+        for item in fase.listaItem:
+            if item.estado != "Aprobado":
+                return False
+        return True

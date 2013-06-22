@@ -3,29 +3,85 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-    <h1>Agregar Proyecto</h1>
-    <form method="post" action="">
-      <dl>
-            {{ form.csrf }}
-            {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width:200px") }}
-            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
-            <br />
-            {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
-            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
-            <br />
-            {{ form.presupuesto.label(style="float: left; width: 100px;") }}
-            {{form.presupuesto(class="form-input", style="width:200px") }}
-            {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
-            <br />
-       
-      </dl>
-      <br/>
-      <p>
-          <input type="submit" value="Add"> 
-          <input type="button" value="Cancelar" onclick="javascript:history.back();">
-      </p>
-      
-    </form>
+
+<div class="page-header"><h1>Formulario: Crear Proyecto (1 de 2)</h1></div>
+<div class="page-header"><h3>PASO 1: Rellenar los datos del Proyecto</h3></div>
+<form method="post" action="" runat="server">
+  <dl>
+        {{ form.csrf }}
+        {{ form.nombre.label(style="float: left; width: 100px;") }}
+        {{form.nombre(class="form-input", style="width:300px") }}
+        {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.descripcion.label(style="float: left; width: 100px;") }}
+        {{form.descripcion(class="form-input", style="height:50px;width:300px") }}
+        {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.presupuesto.label(style="float: left; width: 100px;") }}
+        {{form.presupuesto(class="form-input", style="width:300px") }}
+        {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
+        <br />      
+  </dl>
+<div class="page-header"><h3>PASO 2: Seleccionar Lider de Proyecto</h3></div>      
+      <table id="tableTwo" class="yui">    
+        <thead>
+                <tr>
+                    <td class="tableHeader">
+                    </td>
+                    <td colspan="5" class="filter">
+                        Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                        <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+                    </td>
+                </tr> 	
+                        <tr>
+                                <th><a href='#' title="Click Header to Sort">AsignarLider</a></th>
+                                <th><a href='#' title="Click Header to Sort">Nick</a></th>
+                                <th><a href='#' title="Click Header to Sort">Estado</a></th>
+                        </tr>
+        </thead>
+            {% for user in list %}
+             {% if user.estado == "Activo" %}
+                <tr>
+
+                   <td><input type="radio" name=lista value="{{ user['name'] }}"></td>
+                   <td><h5>{{user.name}}</h5></td>
+                   <td><h5>{{user.estado}}</h5></td>  
+                </tr>
+                {% endif %}
+
+            {% endfor %}
+
+        </tbody>   
+        <tfoot>
+                    <tr id="pagerTwo">
+                        <td colspan="5">
+                                <img src="/img/first.png" class="first"/>
+                                <img src="/img/prev.png" class="prev"/>
+                                <input type="text" class="pagedisplay"/>
+                                <img src="/img/next.png" class="next"/>
+                                <img src="/img/last.png" class="last"/>
+                                <select class="pagesize">
+                                        <option selected="selected"  value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option  value="20">20</option>
+                                </select>
+                            </td>
+                    </tr>
+        </tfoot>    
+        </table>
+        <div style="padding-bottom:20px;">
+        <div class="js-kit-poll" style="width: 350px;"></div>
+        <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+        </div>
+<div class="page-header"><h3>PASO 3: Add Proyecto</h3></div>  
+<br/>
+<p>
+    <input  class="button"  type="submit" value="Add">
+    <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">  
+</p>
+</form>
+<br/>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('listProject') }}">Atras</a></li>
 {% endblock %}

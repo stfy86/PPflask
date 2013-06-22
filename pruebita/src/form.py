@@ -26,15 +26,13 @@ class CreateFormUser(Form):
     obs = TextField('Obs', [validators.required(message=":obs?:"), validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
 
 class ShowFormUser(Form):
-    """ Formulario para crear un usuario"""
-    name = TextField('Name', [validators.required(message=":name?:"), validators.Length(min=1, max=15, message=":longitud requerida [1-15]:")])
-    password = PasswordField('Password', [validators.required(message=":password?:"), validators.Length(min=1, max=15, message=":longitud requerida [1-15]:")])
-    nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
-    apellido = TextField('Apellido', [validators.required(message=":apellido?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
-    email = TextField('Email', [validators.required(message=":email?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
-    telefono = IntegerField('Telefono', [validators.required(message=":telefono?:"), validators.NumberRange(min=None, max=None, message=":telefono?:")])
-    obs = TextField('Obs', [validators.required(message=":obs?:"), validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
-    estado = TextField('Estado', [validators.required()])
+    name = TextField('Name')
+    nombre = TextField('Nombre')
+    apellido = TextField('Apellido')
+    email = TextField('Email')
+    telefono = IntegerField('Telefono')
+    obs = TextField('Obs')
+    estado = TextField('Estado')
 
 class EditStateForm(Form):
     """ Formulario de modificacion de estado de usuario """
@@ -52,28 +50,38 @@ class CreateFormRol(Form):
     ambito = TextField('Ambito', [validators.required(message=":ambito?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
     descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
 
-
 # Administrar Proyecto
 
 class CreateFormProject(Form):
     """ Formulario para crear proyecto"""
     nombre = TextField('Nombre', [validators.required( message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
     descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
-    presupuesto = IntegerField('Presupuesto', [validators.required(message=":presupuesto?:"), validators.NumberRange(min=None, max=None, message=":presupuesto?:")])
+    presupuesto = IntegerField('Presupuesto', [validators.required(message=":presupuesto?:"), validators.NumberRange(min=1, max=None, message=":presupuesto?:")])
+
+class EditFormProject(Form):
+    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
+    presupuesto = IntegerField('Presupuesto', [validators.required(message=":presupuesto?:"), validators.NumberRange(min=1, max=None, message=":presupuesto?:")])
+
 
 class ShowFormProject(Form):
     """ Formulario para mostrar un proyecto"""
-    nombre = TextField('Nombre', [validators.required( message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
-    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
+    nombre = TextField('Nombre')
+    descripcion = TextField('Descripcion')
     fechaDeCreacion = DateTimeField('FechaDeCreacion')
-    estado = TextField('Estado', [validators.required(message=":estado?:")])
-    presupuesto = IntegerField('Presupuesto', [validators.required(message=":presupuesto?:"), validators.NumberRange(min=None, max=None, message=":presupuesto?:")])
+    estado = TextField('Estado')
+    presupuesto = IntegerField('Presupuesto')
     
-class EditStateProjectForm(Form):
+class EditStateProjectAdminForm(Form):
+    """ Formulario de modificacion de estado de proyecto """
+    estado = SelectField("Estado", choices = [
+        ("Pendiente", "Pendiente"),
+        ("Inactivo", "Inactivo")])
+    submit = SubmitField("POST")
+
+class EditStateProjectGestionForm(Form):
     """ Formulario de modificacion de estado de proyecto """
     estado = SelectField("Estado", choices = [
         ("Activo", "Activo"),
-        ("Pendiente", "Pendiente"),
         ("Finalizado", "Finalizado"),
         ("Inactivo", "Inactivo")])
     submit = SubmitField("POST")
@@ -83,21 +91,50 @@ class CreateFormRolProyecto(Form):
     nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
     descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
    
+class ShowFormRolProyecto(Form):
+    nombre = TextField('Nombre')
+    ambito = TextField('Ambito')
+    descripcion = TextField('Descripcion')
+
+class ShowFormUserProyecto(Form):
+    name = TextField('Name')
+    nombre = TextField('Nombre')
+    apellido = TextField('Apellido')
+    email = TextField('Email')
+    telefono = IntegerField('Telefono')
+    obs = TextField('Obs')
+    estado = TextField('Estado')
+    rolNombre = TextField('Rol')
+
+class ShowFormUserComite(Form):
+    name = TextField('Name')
+    nombre = TextField('Nombre')
+    apellido = TextField('Apellido')
+    email = TextField('Email')
+    telefono = IntegerField('Telefono')
+    obs = TextField('Obs')
+    estado = TextField('Estado')
+    comiteNombre = TextField('Comite')
+    
 # Administrar Fase
 
 class CreateFormFase(Form):
     """ Formulario para crear fase"""
     nombre = TextField('Nombre', [validators.required( message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
     descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
-    orden = IntegerField('Orden',  [validators.required(message=":orden?:"), validators.NumberRange(min=1, max=150, message=":orden>=1:")])
+
+class EditFormFase(Form):
+    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
    
 class ShowFormFase(Form):
     """ Formulario para mostrar una fase """
-    nombre = TextField('Nombre', [validators.required( message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
-    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
+    nombre = TextField('Nombre')
+    descripcion = TextField('Descripcion')
     fechaDeCreacion = DateTimeField('FechaDeCreacion')
-    orden = IntegerField('Orden',  [validators.required(message=":orden?:"), validators.NumberRange(min=1, max=150, message=":orden>=1:")])
-    estado = TextField('Estado', [validators.required(message=":estado?:")])
+    orden = IntegerField('Orden')
+    estado = TextField('Estado')
+    proyectoId = IntegerField('ProyectoId')
+    tipoDeItemId = IntegerField('TipoDeItemId')
 
 
 class EditStateFaseForm(Form):
@@ -161,6 +198,8 @@ class EditStateItemForm(Form):
         ("Aprobado", "Aprobado")])
     submit = SubmitField("POST")
 
+# Administrar LB
+
 class CreateFormLineaBase(Form):
     """ Formulario para crear rol"""
     nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
@@ -185,3 +224,21 @@ class EditFormLineaBase(Form):
     """ Formulario para editar linea base"""
     nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
     descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+
+
+# Administrar Comite
+
+class CreateFormComite(Form):
+    nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]?:")])
+    cantMiembro = IntegerField('CantMiembro', [validators.required(message=":cantMiembro?:"), validators.NumberRange(min=1, max=150, message=":cantMiembro >= 1?:")])
+     
+class EditFormComite(Form):
+    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]?:")])
+    cantMiembro = IntegerField('CantMiembro', [validators.required(message=":cantMiembro?:"), validators.NumberRange(min=1, max=150, message=":cantMiembro >= 1?:")])
+    
+    
+class ShowFormComite(Form):
+    descripcion = TextField('Descripcion')
+    cantMiembro = IntegerField('CantMiembro')
+    proyectoId = TextField('ProyectoId')

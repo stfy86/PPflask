@@ -4,16 +4,28 @@
 
 {% block body %}
     <div class="page-header">
-        <center>
-              <h3>Modulo de Desarrollo</h3>
-        </center>
-  
-    </div>
-      <dl>
-        <ul>
-            <li><a href="{{ url_for('listItem') }}">Administrar Items</a></li>
-            <li><a href="{{ url_for('index') }}">Administrar Cambio</a></li>
+        
+        <h3>Modulo de Desarrollo</h3>
+            <li><a href="/">Inicio</a></li>
+				{% if not g.user %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+				{% else %}       
+        <dl>
+            <li><a href="{{ url_for('index') }}">Administrar Proyecto</a></li>
+            <ul>
+                <li> Administrar Cambio por Proyecto
+                <li> Administrar Solicitud por Proyecto
+                <li> Administrar Item en Fases
+            </ul>
             <li><a href="{{ url_for('index') }}">Administrar Reportes</a></li>
-         </ul>
-      </dl>
+            <ul>
+                <li> Generar reporte de proyecto
+                <li> Generar reporte de fase
+                <li> Generar reporte de item
+                <li> Generar reporte de linea base
+            </ul>
+        </dl>
+                                {% endif %}
+    </div>
+
 {% endblock %}

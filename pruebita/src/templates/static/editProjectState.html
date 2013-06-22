@@ -1,9 +1,13 @@
 {% extends "static/layout.html" %}
 
-{% block title %}Edit State Project{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-    <h1>Modificar estado de proyecto</h1>
+<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Proyecto</h3></div>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('listProject') }}">Proyectos</a></li>
+
+<div class="page-header"><h3>Modificar Estado de Proyecto</h3></div>
     <form method="post" action="">
       <dl>
         {{ form.csrf }}

@@ -1,0 +1,36 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Mostrar Comite{% endblock %}
+
+{% block body %}
+
+<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Comite</h3></div>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('listComite') }}">Comites</a></li>
+<div class="page-header"><h3>Show Comite :{{nombreComite}}:</h3></div>
+    <form method="post" action="">  
+      <dl>
+        {{ form.csrf }}
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width:300px", readonly="readonly") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.cantMiembro.label(style="float: left; width: 105px;") }}
+            {{form.cantMiembro(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.cantMiembro.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.proyectoId.label(style="float: left; width: 105px;") }}
+            {{form.proyectoId(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.proyectoId.errors %} {{ error }} {% endfor %}
+            <br />
+      </dl>
+      <br />
+      <p>   
+        <br />
+        <input class="button" type="submit" name="edit" value="Modificar Comite">
+        <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">  
+        <br />
+      </p>
+    </form>
+
+{% endblock %}

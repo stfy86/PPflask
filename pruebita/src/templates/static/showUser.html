@@ -1,21 +1,16 @@
 {% extends "static/layout.html" %}
 
-{% block title %}Show User{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-    <h1>Datos del usuario</h1>
+<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Usuario de Sistema</h3></div>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('listProject') }}">Proyectos</a></li>
+<div class="page-header"><h3>Show User Activo</h3></div>
     <form method="post" action="">  
       <dl>
         {{ form.csrf }}
-            {{ form.name.label(style="float: left; width: 105px;") }} 
-            {{ form.name(class="form-input", style="width: 300px", readonly="readonly") }}
-            {% for error in form.name.errors %} {{ error }} {% endfor %}
-	    <br />
-            {{ form.password.label(style="float: left; width: 105px;") }}
-            {{form.password(class="form-input", style="width: 300px", readonly="readonly") }}
-            {% for error in form.password.errors %} {{ error }} {% endfor %}
-            <br />
-            {{ form.nombre.label(style="float: left; width: 105px;") }}
+             {{ form.nombre.label(style="float: left; width: 105px;") }}
             {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
@@ -49,9 +44,6 @@
           <input class="button" type="submit" name="delete" value="Eliminar Usuario" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
           <br />
           <input class="button" type="submit" name="state" value="Modificar Estado de Usuario">
-          <input class="button" type="submit" name="edit" value="Asignar Rol a Usuario">
-          <br />
-          <input class="button" type="submit" name="edit" value="Eliminar Rol de Usuario">
           <input class="button" type="button" value="Atras" onclick="javascript:history.back();">
       </p>   
     </form>

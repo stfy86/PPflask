@@ -1,9 +1,13 @@
 {% extends "static/layout.html" %}
 
-{% block title %}Edit State Fase{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-    <h1>Modificar estado de una fase</h1>
+<div class="page-header"><h3>MODULO GESTION: Administrar Fase</h3></div>
+<li><a href="{{ url_for('index') }}">Home</a> </li>
+<li><a href="{{ url_for('initProyecto') }}"> Proyectos</a> </li>
+
+<div class="page-header"><h3> Modificar Estado de Fase :{{nombreFase}}:</h3></div>
     <form method="post" action="">
       <dl>
         {{ form.csrf }}

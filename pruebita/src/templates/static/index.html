@@ -3,7 +3,16 @@
 {% block title %}Index{% endblock %}
 
 {% block body %}
-<center>
-    <h4> Bienvenido a la Pagina del Planificador de Proyecto </h4>
-</center>
+
+           
+                    {% if not g.user %}
+    <h4> Sistema PP </h4>
+                    {% else %}
+    <h4> Bienvenido !</h4>
+    <h3> Modulos del Sistema </h3>
+    <li><a href="{{ url_for('administracion') }}">Administración</a></li>
+    <li><a href="{{ url_for('gestion') }}">Gestión</a></li>
+    <li><a href="{{ url_for('desarrollo') }}">Desarrollo</a></li>
+                    {% endif %}
+
 {% endblock %}
