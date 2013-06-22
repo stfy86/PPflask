@@ -1,104 +1,103 @@
-""" Clase encargada de poblar la Base de Dato """
+#------------------------------------------------------------------------------#
+# poblarBD
+#------------------------------------------------------------------------------#
+from modulo import *
+
+""" Clase encargada para poblar la base de datos """
 
 def createUser():
-    """ Crea usuarios """ 
-    from models import User
-    from ctrl.mgrUser import MgrUser
-    usuarios = [User("stfy","stfy","estefanis","zamora","stfy@gmail.com",1111,"usuario nuevo"),
-                User("vavi","vavi","victor","vera","vavi@gmail.com",2222,"usuario nuevo"),
-                User("lory","lory","lorelay","ortiz","lory@gmail.com",3333,"usuario nuevo"),
-                User("guille","guille","guillermo","gonzalez","guille@gmail.com",4444,"usuario nuevo")]
-    MgrUser().guardar(usuarios)
-   
-def createRol():
-    """ 
-    Crea Roles de Sistema Pre establecidos 
-    1. Administrador:  Permite el acceso al Modulo de Administracion
-    2. Desarrollador:  Permite el acceso al Modulo de Desarrollo
-    3. Lider de Proyecto: Permite el acceso al Modulo de Gestion de Cambio
-    """
-    from models import Rol
-    from ctrl.mgrRol import MgrRol
-    from models import Permiso
-    from ctrl.mgrPermiso import MgrPermiso
-    pAdmin = [Permiso("ModuloAdministracion", "permite el acceso al modulo de administracion")]
-    rAdmin = Rol("Administrador", "permite el acceso al modulo de administracion", "all project", pAdmin)
-    MgrRol().guardar(rAdmin)
-    pDesar = [Permiso("ModuloDesarrollo", "permite el acceso al modulo de desarrollo")]
-    rDesar = Rol("Desarrollador", "permite el acceso al modulo de desarrollo", "all project", pDesar)
-    MgrRol().guardar(rDesar)
-    pLider = [Permiso("ModuloGestion", "permite el acceso al modulo de gestion")]
-    rLider=Rol("LiderDeProyecto","permite el acceso al modulo de gestion","all project", pLider)
-    MgrRol().guardar(rLider)
+    """ Carga usuarios """ 
+    u = User(name="stfy", passwd="stfy", nombre="estefanis", apellido="zamora", email="stfy@gmail.com", telefono=1111, obs="usuario nuevo")
+    MgrUser().guardar(u)
+    u = User(name="vavi", passwd="vavi", nombre="victor", apellido="vera", email="vavi@gmail.com", telefono=2222, obs="usuario nuevo")
+    MgrUser().guardar(u)
+    u = User(name="lory", passwd="lory", nombre="lorelay", apellido="ortiz", email="lory@gmail.com", telefono=3333, obs="usuario nuevo")
+    MgrUser().guardar(u)
+    u = User(name="guille", passwd="guille", nombre="guillermo", apellido="gonzalez", email="guille@gmail.com", telefono=4444, obs="usuario nuevo")
+    MgrUser().guardar(u)
+    u = User(name="admin", passwd="admin", nombre="administrador", apellido="administrador", email="admin@gmail.com", telefono=1234, obs="administrador del sistema")
+    MgrUser().guardar(u)
+    print ":cargo usuarios:"
+ 
+def createProyecto():
+    """ Carga proyectos """
+    # crea un proyecto
+    p = Proyecto(nombre="proyecto1", descripcion="sistema 1", presupuesto=10000)
+    MgrProyecto().guardar(p)
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    MgrRol().guardar(r)
+    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "lory")
+    p = MgrProyecto().filtrar("proyecto1")
+    c = Comite(nombre="comite-proyecto1", descripcion="comite de cambio", cantMiembro=3, proyectoId=p.idProyecto)
+    MgrComite().guardar(c)
+    MgrComite().asignarUsuario(nombreProyecto = "proyecto1",  nameUser= "lory")
+
+    p = Proyecto(nombre="proyecto2", descripcion="sistema 2", presupuesto=20000)
+    MgrProyecto().guardar(p)
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    MgrRol().guardar(r)
+    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "vavi")
+    p = MgrProyecto().filtrar("proyecto2")
+    c = Comite(nombre="comite-proyecto2", descripcion="comite de cambio", cantMiembro=4, proyectoId=p.idProyecto)
+    MgrComite().guardar(c)
+    MgrComite().asignarUsuario(nombreProyecto = "proyecto2",  nameUser= "vavi")
     
-def createPermiso():
-    """
-    Crea Permisos Predefinidos a nivel de:
-    - sistema
-    - proyecto
-    - fase
-    - item
-    """
-    from models import Permiso
-    from ctrl.mgrPermiso import MgrPermiso
-    permisos = [ # Los permisos a Nivel de Sistema son
-                Permiso("CrearProyecto","Permite crear un proyecto en el sistema"),
-                Permiso("CrearUsuario","Permite crear un usuario dentro de un proyecto"),
-                Permiso("CambiarEstadoUsuario","Permite cambiar el estado de un usuario dentro del proyecto"),
-                Permiso("AdministrarTipoDeAtributo","Permite administrar un tipo de atributo"),
-                # Los Permisos a Nivel de Proyecto son
-                Permiso("CrearRol","Permite crear un rol en el sistema"),
-                Permiso("AsignarRolAUsuario","Permite asignar Rol a Usuario"),
-                Permiso("AdministrarFase","Permite administrar fase en un proyecto"),
-                Permiso("ConsultaProyecto","Permite realizar consultas en un proyecto"),
-                # Los Permisos a Nivel de Fase son
-                Permiso("AdministrarLineaBase","Permite administrar linea base en un proyecto"),
-                Permiso("AdministrarTiposDeItem","Permite administrar tipos de item en un proyecto"),
-                # Los Permisos a Nivel de Item son
-                Permiso("AdministrarItem","Permite administrar item en un proyecto"),
-                Permiso("AdministrarCambio","Permite administrar cambio en un item de un proyecto"),
-                Permiso("AprobacionItem","Permite administrar la aprobacion de item en un proyecto"),
-                Permiso("DesaprobacionItem","Permite administrar la desaprobacion de item en un proyecto"),
-                Permiso("ConsultaItem","Permite consulta de item en un proyecto")]
-    MgrPermiso().guardar(permisos)
-
-
-def createProject():
-    """ Crea proyectos por default """
-    from models import Proyecto
-    from ctrl.mgrProject import MgrProject
-    from models import Fase
-    from ctrl.mgrFase import MgrFase
-    f = [Fase("proyecto1-fase1","fase inicial",1)]
-    p = Proyecto("proyecto1","sistema para una veterinaria",1000,f)
-    MgrProject().guardar(p)
-    f = [Fase("proyecto2-fase1","fase inicial",1),
-         Fase("proyecto2-fase2","nueva fase",2)]
-    p = Proyecto("proyecto2","sistema para una guarderia",2000,f)
-    MgrProject().guardar(p)
-    f = [Fase("proyecto3-fase1","fase inicial",1),
-         Fase("proyecto3-fase2","nueva fase",2),
-         Fase("proyecto3-fase3","nueva fase",3),
-         ]
-    p = Proyecto("proyecto3","sistema para un consultorio",3000,f)
-    MgrProject().guardar(p)
-    f = [Fase("proyecto4-fase1","fase inicial",1),
-         Fase("proyecto4-fase2","nueva fase",2),
-         Fase("proyecto4-fase3","nueva fase",3),
-         Fase("proyecto4-fase4","nueva fase",4)]
-    p = Proyecto("proyecto4","sistema para un supermercado",4000,f)
-    MgrProject().guardar(p)
-    f = [Fase("proyecto5-fase1","fase inicial",1)]
-    p = Proyecto("proyecto5","sistema para un banco",5000,f)
-    MgrProject().guardar(p)
-    #MgrProject().borrar("proyecto5")
-    #MgrProject().modificar("proyecto5","proyecto5","sistema para un banco2","Pendiente")
-
-
-def createTipoDeAtrib():
-    """ Crea tipo de Atibutos por default """
-    from models import TipoDeAtributo
-    from ctrl.mgrTipoDeAtrib import MgrTipoDeAtrib
+    p = Proyecto(nombre="proyecto3", descripcion="sistema 3", presupuesto=30000)
+    MgrProyecto().guardar(p)
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    MgrRol().guardar(r)
+    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "guille")
+    p = MgrProyecto().filtrar("proyecto3")
+    c = Comite(nombre="comite-proyecto3", descripcion="comite de cambio", cantMiembro=5, proyectoId=p.idProyecto)
+    MgrComite().guardar(c)
+    MgrComite().asignarUsuario(nombreProyecto = "proyecto3",  nameUser= "guille")    
+    
+    p = Proyecto(nombre="proyecto4", descripcion="sistema 4", presupuesto=40000)
+    MgrProyecto().guardar(p)
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    MgrRol().guardar(r)
+    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "stfy")
+    p = MgrProyecto().filtrar("proyecto4")
+    c = Comite(nombre="comite-proyecto4", descripcion="comite de cambio", cantMiembro=6, proyectoId=p.idProyecto)
+    MgrComite().guardar(c)
+    MgrComite().asignarUsuario(nombreProyecto = "proyecto4",  nameUser= "stfy")
+    
+    
+    p = Proyecto(nombre="proyecto5", descripcion="sistema 5", presupuesto=50000)
+    MgrProyecto().guardar(p)
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    MgrRol().guardar(r)
+    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "lory")
+    p = MgrProyecto().filtrar("proyecto5")
+    c = Comite(nombre="comite-proyecto5", descripcion="comite de cambio", cantMiembro=3, proyectoId=p.idProyecto)
+    MgrComite().guardar(c)
+    MgrComite().asignarUsuario(nombreProyecto = "proyecto5",  nameUser= "lory")
+    
+    p = Proyecto(nombre="proyecto6", descripcion="sistema 6", presupuesto=60000)
+    MgrProyecto().guardar(p)
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    MgrRol().guardar(r)
+    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "vavi")
+    p = MgrProyecto().filtrar("proyecto6")
+    c = Comite(nombre="comite-proyecto6", descripcion="comite de cambio", cantMiembro=3, proyectoId=p.idProyecto)
+    MgrComite().guardar(c)
+    MgrComite().asignarUsuario(nombreProyecto = "proyecto6",  nameUser= "vavi")
+    
+    
+    p = Proyecto(nombre="proyecto7", descripcion="sistema 7", presupuesto=70000)
+    MgrProyecto().guardar(p)
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    MgrRol().guardar(r)
+    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "stfy")
+    p = MgrProyecto().filtrar("proyecto7")
+    c = Comite(nombre="comite-proyecto7", descripcion="comite de cambio", cantMiembro=5, proyectoId=p.idProyecto)
+    MgrComite().guardar(c)
+    MgrComite().asignarUsuario(nombreProyecto = "proyecto7",  nameUser= "stfy")    
+    
+    print ":cargo proyectos:"
+        
+def createAtrib():
+    """ Carga tipos de atributos """
     t=TipoDeAtributo("numerico20", "numerico", 20,"atributo numerico con presicion 20")
     MgrTipoDeAtrib().guardar(t)
     t=TipoDeAtributo("texto45", "texto", 45,"atributo texto con 45 caracteres")
@@ -109,179 +108,158 @@ def createTipoDeAtrib():
     MgrTipoDeAtrib().guardar(t)
     t=TipoDeAtributo("numerico45", "numerico", 45,"atributo numerico con presicion 45")
     MgrTipoDeAtrib().guardar(t)
-    #MgrTipoDeAtrib().borrar("date")
-    
+    t=TipoDeAtributo("texto100", "texto", 100,"atributo texto con 100 caracteres")
+    MgrTipoDeAtrib().guardar(t)
+    print ":cargo tipo de atributo:"
+  
+def createRol():
+    """ Carga los roles del sistema """
+    r = Rol(nombre="Administrador", descripcion="rol de administrador", ambito= "all project")
+    MgrRol().guardar(r)
+    MgrRol().asignarPermiso("Administrador", "all project", "ModuloAdministracion")
+    r = Rol(nombre="Desarrollador", descripcion="rol de desarrollador", ambito= "all project")
+    MgrRol().guardar(r)
+    MgrRol().asignarPermiso("Desarrollador", "all project", "ModuloDesarrollo")
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= "all project")
+    MgrRol().guardar(r)
+    MgrRol().asignarPermiso("LiderDeProyecto", "all project", "ModuloGestion")
+    print ":cargo los roles del sistema con los permisos:"
 
-def createAdmin():
-    """ 
-    Crea el usuario admin con los roles de:
-        1. administrador
-        2. desarrollador
-        3. lider de proyecto
-    Dicho usario, tiene acceso a todos los modulos del sistema (administracion, desarrollo y gestion)
-    """
-    from models import User, Rol
-    from ctrl.mgrRol import MgrRol
-    from ctrl.mgrUser import MgrUser
-    rol1 = MgrRol().filtrar("Administrador")
-    rol2 = MgrRol().filtrar("Desarrollador")
-    rol3 = MgrRol().filtrar("LiderDeProyecto")
-    roles = [rol1, rol2, rol3]
-    usr1 = User("admin","admin","administrador","administrador","admin@gmail.com",1234,"usuario administrador", roles),
-    MgrUser().guardar(usr1)
+    
+def createPermiso():
+    """ Carga permisos predefinidos """
+    p = Permiso("ModuloAdministracion","Acceso al modulo de administracion del sistema")
+    MgrPermiso().guardar(p)
+    p = Permiso("ModuloGestion","Acceso al modulo de gestion del sistema")
+    MgrPermiso().guardar(p)
+    p = Permiso("ModuloDesarrollo","Acceso al modulo desarrollo del sistema")
+    MgrPermiso().guardar(p)
 
-def createLider():
-    """ asigna lider a un proyecto """
-    from ctrl.mgrProject import MgrProject
-    MgrProject().asignarLider("proyecto5","stfy")
-    MgrProject().asignarLider("proyecto4","lory")
-    MgrProject().asignarLider("proyecto2","vavi")
-    
-def configurarPermiso():
-    """ asigna/desasigna permisos a un rol """
-    from ctrl.mgrRol import MgrRol
-    MgrRol().asignarPermiso("liderDeProyecto-proyecto5", "CrearRol")
-    MgrRol().asignarPermiso("liderDeProyecto-proyecto5", "AsignarRolAUsuario")
-    MgrRol().desasignarPermiso("liderDeProyecto-proyecto5", "AsignarRolAUsuario")
-    
+    p = Permiso("AdmUsuario","Permite crear/modificar/eliminar/cambiar de estado un usuario dentro de un proyecto")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmUsuariosDeProyecto","Permite asignar/desasignar usuarios a un proyecto del sistema")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmRolDeProyecto","Permite crear/modificar/eliminar/configurar un rol")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmAtributo","Permite crear/modificar/eliminar un tipo de atributo")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmComite","Permite crear/modificar un comite de cambio en un proyecto")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmUsuarioComite","Permite asignar/desasignar usuarios al comite de cambio de un proyecto")
+    MgrPermiso().guardar(p)
+    p = Permiso("CrearProyecto","Permite crear un proyecto en el sistema")
+    MgrPermiso().guardar(p)
+    p = Permiso("ModificarProyecto","Permite modificar datos de un proyecto")
+    MgrPermiso().guardar(p)
+    p = Permiso("AsignarLiderAProyecto","Permite asignar lider a un proyecto del sistema")
+    MgrPermiso().guardar(p)
 
-def usuariosAProyecto():
-    """ asigna/desasigna usuarios a proyecto """
-    from ctrl.mgrProject import MgrProject
-    nombreRol = "desarrollador-proyecto4-vavi"
-    descripcionRol = "nuevo rol asignado a un usuario del proyecto"
-    MgrProject().asignarUsuario("proyecto4", "vavi", nombreRol, descripcionRol)
-    nombreRol = "desarrollador-proyecto4-stfy"
-    descripcionRol = "nuevo rol asignado a un usuario del proyecto"
-    MgrProject().asignarUsuario("proyecto4", "stfy", nombreRol, descripcionRol)
-    MgrProject().desasignarUsuario("proyecto4", "stfy", nombreRol)
+    p = Permiso("AdmRolesDeUsuarios","Permite asignar/desasignar Roles a Usuario de un proyecto")
+    MgrPermiso().guardar(p)
+    p = Permiso("CalculoCosto","Permite generar el costo")
+    MgrPermiso().guardar(p)
+    p = Permiso("CalculoImpacto","Permite generar el impacto")
+    MgrPermiso().guardar(p)
     
-def createItem():
-    from ctrl.mgrItem import MgrItem
-    from models import Item
-    from ctrl.mgrFase import MgrFase
-    from models import Fase
+    p = Permiso("AdmCambio","Permite administrar cambio")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmSolicitud","Permite gestionar una solicitud")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmReporte","Permite generar reporte")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmItemDeFase","Permite asignar item a fase")
+    MgrPermiso().guardar(p)
+
+    p = Permiso("AdmProyecto","Permite gestionar un proyecto")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmFase","Permite gestionar las fases de un proyecto")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmLB","Permite gestinar la LB dentro de una fase de un proyecto")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmTiposDeItem","Permite gestionar los tipos de item de una fase")
+    MgrPermiso().guardar(p)
+    p = Permiso("AdmItem","Permite gestionar item de una fase")
+    MgrPermiso().guardar(p)
+    print ":cargo permisos:"
+ 
     
-    faseref = MgrFase().filtrar('proyecto1-fase1')
-    item = Item(nombre='proyecto1-fase1-item1', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto1-fase1-item2', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto1-fase1-item3', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto1-fase1-item4', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto1-fase1-item5', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto1-fase1-item6', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto1-fase1-item7', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto1-fase1-item8', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto1-fase1-item9', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto1-fase1-item10', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
+def createTipoDeItem():
+    """ Carga Tipo de Item con tipos de Atributos asignados """
+    t = TipoDeItem(nombre="TipoDeItem1", descripcion="tipo de item con atributo numerico de precicion 20")
+    MgrTipoDeItem().guardar(t)
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "numerico20")
     
-    faseref = MgrFase().filtrar('proyecto2-fase1')
-    item = Item(nombre='proyecto2-fase1-item1', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase1-item2', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase1-item3', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase1-item4', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase1-item5', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase1-item6', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase1-item7', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase1-item8', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase1-item9', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase1-item10', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
+    t = TipoDeItem(nombre="TipoDeItem2", descripcion="tipo de item con atributo numerico de precicion 20 y texto de 45 caracteres")
+    MgrTipoDeItem().guardar(t)
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "numerico20")
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "texto45")
     
-    faseref = MgrFase().filtrar('proyecto2-fase2')    
-    item = Item(nombre='proyecto2-fase2-item1', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase2-item2', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase2-item3', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase2-item4', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase2-item5', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase2-item6', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase2-item7', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase2-item8', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase2-item9', version=1, complejidad=3, costo=4, estado='Activo', fase=faseref)
-    MgrItem().guardar(item)
-    item = Item(nombre='proyecto2-fase2-item10', version=1, complejidad=3, costo=4, estado='Aprobado', fase=faseref)
-    MgrItem().guardar(item)
+    t = TipoDeItem(nombre="TipoDeItem3", descripcion="tipo de item con atributo date y texto de 100 caracteres")
+    MgrTipoDeItem().guardar(t)
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "date")
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "texto100")
     
-def createLineaBase():
-    from models import LineaBase
-    from ctrl.mgrLineaBase import MgrLineaBase
-    from models import Item
-    from ctrl.mgrItem import MgrItem
-    from models import Fase
-    from ctrl.mgrFase import MgrFase
+    t = TipoDeItem(nombre="TipoDeItem4", descripcion="tipo de item con atributo date y texto de 45 caracteres")
+    MgrTipoDeItem().guardar(t)
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "date")
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "texto45") 
     
-    items = []
-    item = MgrItem().filtrar('proyecto1-fase1-item2')
-    items.append(item.nombre)
-    item = MgrItem().filtrar('proyecto1-fase1-item4')
-    items.append(item.nombre)
+    t = TipoDeItem(nombre="TipoDeItem5", descripcion="tipo de item con atributo numerico de precision 45")
+    MgrTipoDeItem().guardar(t)
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "numerico45")
     
-    faseref = MgrFase().filtrar('proyecto1-fase1')
-    lineaBase = LineaBase(nombre = 'proyecto1-fase1-LB1', descripcion = 'LB1', fase = faseref)
-    MgrLineaBase().guardar(lineaBase)
-    MgrLineaBase().asignarItems(lineaBase.nombre, items)
+    t = TipoDeItem(nombre="TipoDeItem6", descripcion="tipo de item con atributo booleano y texto de 45 caracteres")
+    MgrTipoDeItem().guardar(t)
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "booleano")  
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "texto45")    
+
+    t = TipoDeItem(nombre="TipoDeItem7", descripcion="tipo de item con atributo numerico de precision de 20 digitos y texto de 100 caracteres ")
+    MgrTipoDeItem().guardar(t)
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "numerico20")
+    MgrTipoDeItem().asignarTipoDeAtrib(t.nombre, "texto100")
     
+    print ":cargo tipo de item:"
+
+
+def createFase():
+    # proyecto 1
+    p = MgrProyecto().filtrar("proyecto1")
+    t = MgrTipoDeItem().filtrar("TipoDeItem1")
+    f = Fase(nombre="proyecto1-fase1", descripcion="nueva fase", orden=1, proyectoId= p.idProyecto, tipoDeItemId=t.idTipoDeItem)
+    MgrFase().guardar(f)
     
+    p = MgrProyecto().filtrar("proyecto1")
+    t = MgrTipoDeItem().filtrar("TipoDeItem1")
+    f = Fase(nombre="proyecto1-fase2", descripcion="nueva fase", orden=2, proyectoId= p.idProyecto, tipoDeItemId=t.idTipoDeItem)
+    MgrFase().guardar(f)
     
-    items = []
-    item = MgrItem().filtrar('proyecto2-fase1-item2')
-    items.append(item.nombre)
-    item = MgrItem().filtrar('proyecto2-fase1-item4')
-    items.append(item.nombre)
+    p = MgrProyecto().filtrar("proyecto1")
+    t = MgrTipoDeItem().filtrar("TipoDeItem2")
+    f = Fase(nombre="proyecto1-fase3", descripcion="nueva fase", orden=3, proyectoId= p.idProyecto, tipoDeItemId=t.idTipoDeItem)
+    MgrFase().guardar(f)
     
-    faseref = MgrFase().filtrar('proyecto2-fase1')
-    lineaBase = LineaBase(nombre= 'proyecto2-fase1-LB1', descripcion = 'LB1', fase = faseref)
-    MgrLineaBase().guardar(lineaBase)
-    MgrLineaBase().asignarItems(lineaBase.nombre, items)
+    p = MgrProyecto().filtrar("proyecto1")
+    t = MgrTipoDeItem().filtrar("TipoDeItem3")
+    f = Fase(nombre="proyecto1-fase4", descripcion="nueva fase", orden=4, proyectoId= p.idProyecto, tipoDeItemId=t.idTipoDeItem)
+    MgrFase().guardar(f)
     
+    # proyecto 2
+    p = MgrProyecto().filtrar("proyecto2")
+    t = MgrTipoDeItem().filtrar("TipoDeItem3")
+    f = Fase(nombre="proyecto2-fase1", descripcion="nueva fase", orden=1, proyectoId= p.idProyecto, tipoDeItemId=t.idTipoDeItem)
+    MgrFase().guardar(f)
     
+    p = MgrProyecto().filtrar("proyecto2")
+    t = MgrTipoDeItem().filtrar("TipoDeItem2")
+    f = Fase(nombre="proyecto2-fase2", descripcion="nueva fase", orden=2, proyectoId= p.idProyecto, tipoDeItemId=t.idTipoDeItem)
+    MgrFase().guardar(f)
     
-    items = []
-    item = MgrItem().filtrar('proyecto2-fase2-item2')
-    items.append(item.nombre)
-    item = MgrItem().filtrar('proyecto2-fase2-item4')
-    items.append(item.nombre)
+    p = MgrProyecto().filtrar("proyecto2")
+    t = MgrTipoDeItem().filtrar("TipoDeItem4")
+    f = Fase(nombre="proyecto2-fase3", descripcion="nueva fase", orden=3, proyectoId= p.idProyecto, tipoDeItemId=t.idTipoDeItem)
+    MgrFase().guardar(f)    
     
-    faseref = MgrFase().filtrar('proyecto2-fase2')
-    lineaBase = LineaBase(nombre= 'proyecto2-fase2-LB1', descripcion = 'LB1', fase = faseref)
-    MgrLineaBase().guardar(lineaBase)
-    MgrLineaBase().asignarItems(lineaBase.nombre, items)
-    
-    
-    
-    items = []
-    item = MgrItem().filtrar('proyecto2-fase2-item4')
-    items.append(item.nombre)
-    item = MgrItem().filtrar('proyecto2-fase2-item6')
-    items.append(item.nombre)
-    
-    faseref = MgrFase().filtrar('proyecto2-fase2')
-    lineaBase = LineaBase(nombre= 'proyecto2-fase2-LB2', descripcion = 'LB1', fase = faseref)
-    MgrLineaBase().guardar(lineaBase)
-    MgrLineaBase().asignarItems(lineaBase.nombre, items)
+    p = MgrProyecto().filtrar("proyecto2")
+    t = MgrTipoDeItem().filtrar("TipoDeItem2")
+    f = Fase(nombre="proyecto2-fase4", descripcion="nueva fase", orden=4, proyectoId= p.idProyecto, tipoDeItemId=t.idTipoDeItem)
+    MgrFase().guardar(f)    

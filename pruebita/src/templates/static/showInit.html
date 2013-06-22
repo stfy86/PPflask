@@ -1,0 +1,46 @@
+{% extends "static/layout.html" %}
+
+{% block title %}{% endblock %}
+
+    
+{% block body %}
+<div class="page-header"><h1>: INICIAR PROYECTO :</h1></div>
+<form method="post" action="" runat="server" > 
+<div class="page-header"><h3>Show Proyecto</h3></div>
+ 
+  <dl>
+    {{ form.csrf }}
+        {{ form.nombre.label(style="float: left; width: 105px;") }}
+        {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
+        {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.descripcion.label(style="float: left; width: 105px;") }}
+        {{form.descripcion(class="form-input", style="height:50px;width:300px", readonly="readonly") }}
+        {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.fechaDeCreacion.label(style="float: left; width: 105px;") }}
+        {{form.fechaDeCreacion(class="form-input", style="width: 300px", readonly="readonly") }}
+        {% for error in form.fechaDeCreacion.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.estado.label(style="float: left; width: 105px;") }}
+        {{form.estado(class="form-input", style="width: 300px", readonly="readonly") }}
+        {% for error in form.estado.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.presupuesto.label(style="float: left; width: 105px;") }}
+        {{form.presupuesto(class="form-input", style="width: 300px", readonly="readonly") }}
+        {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
+        <br />
+  </dl>
+<p>   
+<br />
+<input class="button" type="submit" name="rol" value="Administrar Rol">
+<input class="button" type="submit" name="usuario" value="Administrar Usuario">
+<br />
+<input class="button" type="submit" name="usuarioAComite" value="Administrar Comite">
+<input class="button" type="submit" name="fase" value="Administrar Fase">      
+<br />
+</p>
+</form>
+<li><a href="{{ url_for('index') }}">Home</a> </li>
+<li><a href="{{ url_for('initProyecto') }}"> Iniciar Proyecto</a> </li>
+{% endblock %}

@@ -3,8 +3,9 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-    <h1>Agregar Fase</h1>
-    <form method="post" action="">
+<div class="page-header"><h1>Formulario: Crear Fase</h1></div>
+<form method="post" action="" runat="server">
+      <div class="page-header"><h3>PASO 1: Rellenar los datos de la Fase</h3></div>
       <dl>
         {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 100px;") }}
@@ -15,15 +16,61 @@
             {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.orden.label(style="float: left; width: 100px;") }}
-            {{form.orden(class="form-input", style="width: 200px") }}
-            {% for error in form.orden.errors %} {{ error }} {% endfor %}
-            <br />
       </dl>
       <br/>
-      <p>
-          <input type="submit" value="Add" >
-          <input type="button" value="Cancelar" onclick="javascript:history.back();">
-      <p>
-    </form>
+      <div class="page-header"><h3>PASO 2: Elegir tipo de item de la fase </h3></div>
+      
+      <table id="tableTwo" class="yui">    
+        <thead>
+                <tr>
+                    <td class="tableHeader">
+                    </td>
+                    <td colspan="2" class="filter">
+                        Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                        <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+                    </td>
+                </tr> 	
+                <tr>
+                        <th><a href='#' title="Click Header to Sort">ElegirTipoDeItem</a></th>
+                        <th><a href='#' title="Click Header to Sort">Nombre</a></th>
+                        <th><a href='#' title="Click Header to Sort">Descripcion</a></th>
+
+                </tr>
+        </thead>
+        {% for tipoDeItem in list %}
+        <tr>
+            <td><input type="radio" name=tipoDeItem value="{{ tipoDeItem['nombre'] }}"></td>
+           <td><h5>{{ tipoDeItem.nombre }}</h5></td>
+           <td><h5>{{ tipoDeItem.descripcion }}</h5></td>
+        </tr>
+        {% endfor %}
+
+        <tfoot>
+            <tr id="pagerTwo">
+                <td colspan="5">
+                        <img src="/img/first.png" class="first"/>
+                        <img src="/img/prev.png" class="prev"/>
+                        <input type="text" class="pagedisplay"/>
+                        <img src="/img/next.png" class="next"/>
+                        <img src="/img/last.png" class="last"/>
+                        <select class="pagesize">
+                                <option selected="selected"  value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option  value="20">20</option>
+                        </select>
+                    </td>
+            </tr>
+        </tfoot>    
+</table>
+<div style="padding-bottom:20px;">
+<div class="js-kit-poll" style="width: 350px;"></div>
+<script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+</div>
+<div class="page-header"><h3>PASO 3: Crear o Cancelar </h3></div>
+<p>
+   <input class="button" type="submit" value="Crear">
+  <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">    
+</p>
+</form>
 {% endblock %}

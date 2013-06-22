@@ -1,0 +1,23 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Linea Base{% endblock %}
+
+{% block body %}
+    <h1>Modificar Linea Base</h1>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 100px;") }} 
+            {{ form.nombre(class="form-input", style="width: 200px") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+	    <br />
+            {{ form.descripcion.label(style="float: left; width: 100px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+      </dl>
+      <p>
+          <input type="submit" value="Guardar">
+          <input type="button" value="Cancelar" onclick="javascript:history.back();">    
+      </p>
+    </form>
+{% endblock %}

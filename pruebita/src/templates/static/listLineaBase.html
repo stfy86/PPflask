@@ -40,7 +40,7 @@
 <div class="page-header">
     <h3>Lineas Base</h3>
 </div>
-<form runat="server">
+<form method="post" action="" runat="server">
              
 <table id="tableTwo" class="yui">    
 <thead>
@@ -89,9 +89,11 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-</form>   
-<p>
-    <input type="button" value="Crear Linea Base" onclick="document.location='addLineaBase';">
+    <p>
+    
+    <input class="button" type="submit" name="add" value="Crear Linea Base">
 </p>
+</form>   
+
 
  {% endblock %}

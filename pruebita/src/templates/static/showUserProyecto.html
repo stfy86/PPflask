@@ -1,0 +1,57 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Show User{% endblock %}
+
+{% block body %}
+
+    <div class="page-header"><h1> :ADMINISTRAR USUARIO: {{ambito}}</h1></div>
+    <form method="post" action="" >  
+      <div class="page-header"><h3>Show User por Proyecto</h3></div>
+      <dl>
+        {{ form.csrf }}
+            {{ form.name.label(style="float: left; width: 105px;") }} 
+            {{ form.name(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.name.errors %} {{ error }} {% endfor %}
+	    <br />
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.apellido.label(style="float: left; width: 105px;") }}
+            {{form.apellido(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.apellido.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.email.label(style="float: left; width: 105px;") }}
+            {{form.email(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.email.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.telefono.label(style="float: left; width: 105px;") }}
+            {{form.telefono(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.telefono.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.obs.label(style="float: left; width: 105px;") }}
+            {{form.obs(class="form-input", style="height:50px;width: 300px", readonly="readonly") }}
+            {% for error in form.obs.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.estado.label(style="float: left; width: 105px;") }}
+            {{form.estado(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.obs.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.rolNombre.label(style="float: left; width: 105px;") }}
+            {{form.rolNombre(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.rolNombre.errors %} {{ error }} {% endfor %}
+      </dl>
+      
+      <script language="JavaScript">
+          function confirmar ( mensaje ) {
+              return confirm( mensaje );
+          }
+      </script>
+<p>
+<input class="button" type="submit" name="desasignar" value="Desasignar Usuario de Proyecto" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+<input class="button" type="button" value="Atras" onclick="javascript:history.back();">
+</p>   
+ </form>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('initProyecto') }}">Iniciar Proyecto</a></li>
+{% endblock %}

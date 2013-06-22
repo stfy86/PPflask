@@ -1,0 +1,35 @@
+{% extends "static/layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="page-header"><h1> :ADMINISTRAR ROL: {{ambito}}</h1></div>
+<form method="post" action="">  
+<div class="page-header"><h3>Show Rol por Proyecto</h3></div>
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }} 
+            {{ form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+	    <br />
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width: 300px", readonly="readonly") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+      </dl>
+      <script language="JavaScript">
+          function confirmar ( mensaje ) {
+              return confirm( mensaje );
+          }
+      </script>  
+      <p>
+      <br />
+          <input class="button" type="submit" name="edit" value="Modificar Rol">
+          <input class="button" type="submit" name="config" value="Configurar Permisos">
+      <br />
+          <input class="button" type="submit" name="delete" value="Eliminar Rol" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+          <input class="button" type="button" value="Atras" onclick="javascript:history.back();">
+      </p>
+ 
+    </form>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+{% endblock %}

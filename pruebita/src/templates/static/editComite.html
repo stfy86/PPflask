@@ -1,0 +1,33 @@
+{% extends "static/layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <form method="post" action="" runat="server">
+      <div class="page-header"><h3>Editar Comite</h3></div>
+      <dl>
+            {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 100px;") }}
+            {{form.nombre(class="form-input", style="width:300px") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 100px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width:300px") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.cantMiembro.label(style="float: left; width: 100px;") }}
+            {{form.cantMiembro(class="form-input", style="width:300px") }}
+            {% for error in form.cantMiembro.errors %} {{ error }} {% endfor %}
+            <br />   
+      </dl>
+        
+      <br/>
+      <p>
+          <br/>
+          <input  class="button"  type="submit" value="Add"> 
+          <br/>
+      </p>
+      
+    </form>
+{% endblock %}

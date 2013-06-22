@@ -1,0 +1,59 @@
+{% extends "static/layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <form method="post" action="">  
+      <div class="page-header"><h3>Show Fase</h3></div>
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width: 300px", readonly="readonly") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.fechaDeCreacion.label(style="float: left; width: 105px;") }}
+            {{form.fechaDeCreacion(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.fechaDeCreacion.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.orden.label(style="float: left; width: 105px;") }}
+            {{form.orden(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.orden.errors %} {{ error }} {% endfor %}
+             <br />
+            {{ form.estado.label(style="float: left; width: 105px;") }}
+            {{form.estado(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.estado.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.proyectoId.label(style="float: left; width: 105px;") }}
+            {{form.proyectoId(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.proyectoId.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.tipoDeItemId.label(style="float: left; width: 105px;") }}
+            {{form.tipoDeItemId(class="form-input", style="width: 300px", readonly="readonly") }}
+            {% for error in form.tipoDeItemId.errors %} {{ error }} {% endfor %}
+            <br />
+    
+            <script language="JavaScript">
+                function confirmar ( mensaje ) {
+                    return confirm( mensaje );
+                } 
+            </script>  
+      </dl>
+      <br />
+      <p>
+          <input class="button" type="submit" name="edit" value="Modificar Fase"  >
+          <input class="button" type="submit" name="delete" value="Eliminar Fase" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+          <br />
+          <input class="button" type="submit" name="state" value="Modificar Estado de Fase"  >
+          <input class="button" type="submit" name="index" value="Importar Fase">
+          <br />
+          <input class="button" type="submit" name="adminLineaBase" value="Administrar Linea Base">
+          <input class="button" type="button" value="Atras" onclick="javascript:history.back();">
+      </p>
+    </form>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+
+{% endblock %}
