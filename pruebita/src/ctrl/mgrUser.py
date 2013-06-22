@@ -15,14 +15,15 @@ class MgrUser():
             db.session.commit()
             return ":borro el usuario:"
         else:
-            return ":no borro:"
+            return ":no borro: revisar estado"
             
         
-    def modificar(self, name, nameNew, passwordNew, nombreNew, apellidoNew,
+    def modificar(self, name, passwordNew, confirmacionNew, nombreNew, apellidoNew,
                     emailNew, telefonoNew, obsNew):
         user =  self.filtrar(name)
         if user.estado == "Inactivo":
             user.password = passwordNew
+            user.confirmacion = confirmacionNew
             user.nombre = nombreNew
             user.apellido = apellidoNew
             user.email = emailNew
@@ -31,7 +32,7 @@ class MgrUser():
             db.session.commit()
             return ":modifico:"
         else:
-            return ":no modifico:"
+            return ":no modifico: revisar estado"
         
     def filtrar(self, name):
         return User.query.filter(User.name == name).first_or_404()

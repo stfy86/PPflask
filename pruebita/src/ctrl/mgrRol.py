@@ -13,7 +13,7 @@ class MgrRol():
         db.session.add(rol)
         db.session.commit()
         return ":guardo el rol:"
-    
+
     def borrar(self, rol):
         if rol in self.listar():
             db.session.delete(rol)
@@ -21,7 +21,7 @@ class MgrRol():
             return ":borro:"
         else:   
             return ":NO borro:"
-  
+
     def modificar(self, nombre, nombreNew, ambitoNew, descripcionNew):
         rol = Rol.query.filter(Rol.nombre == nombre).first_or_404()
         rol.nombre = nombreNew

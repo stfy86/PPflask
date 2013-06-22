@@ -1,0 +1,43 @@
+{% extends "static/layout.html" %}
+
+{% block title %}{% endblock %}
+
+    
+{% block body %}
+<div class="page-header"><h3>MODULO GESTION: Administrar Proyecto</h3></div>
+<li><a href="{{ url_for('index') }}">Home</a> </li>
+<li><a href="{{ url_for('gestionProyectoItem') }}"> Proyectos Activos</a> </li>
+<form method="post" action="" runat="server" > 
+<div class="page-header"><h3>: DATOS DEL PROYECTO :</h3></div>
+ 
+  <dl>
+    {{ form.csrf }}
+        {{ form.nombre.label(style="float: left; width: 105px;") }}
+        {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
+        {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.descripcion.label(style="float: left; width: 105px;") }}
+        {{form.descripcion(class="form-input", style="height:50px;width:300px", readonly="readonly") }}
+        {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.fechaDeCreacion.label(style="float: left; width: 105px;") }}
+        {{form.fechaDeCreacion(class="form-input", style="width: 300px", readonly="readonly") }}
+        {% for error in form.fechaDeCreacion.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.estado.label(style="float: left; width: 105px;") }}
+        {{form.estado(class="form-input", style="width: 300px", readonly="readonly") }}
+        {% for error in form.estado.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.presupuesto.label(style="float: left; width: 105px;") }}
+        {{form.presupuesto(class="form-input", style="width: 300px", readonly="readonly") }}
+        {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
+        <br />
+  </dl>
+<p>   
+<br />
+<input class="button" type="submit" name="verFases" value="Ver Fases">     
+<br />
+</p>
+</form>
+
+{% endblock %}

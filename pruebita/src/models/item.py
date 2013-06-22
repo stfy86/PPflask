@@ -20,7 +20,7 @@ class Item(db.Model):
     
     # one to many: Relaciona Tipo de Item x Item
     tipoDeItemId = db.Column(db.Integer, db.ForeignKey('TipoDeItem.idTipoDeItem'))
-
+  
     def __init__(self, codigo=None, nombre=None, version=None, complejidad=None, costo=None, faseId = None, tipoDeItemId = None):
         """ constructor de item """
         self.codigo = codigo

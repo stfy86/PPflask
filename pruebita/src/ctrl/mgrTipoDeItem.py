@@ -38,7 +38,9 @@ class MgrTipoDeItem():
         tipoDeItem.Fase = fase
         db.session.commit()
             
-       
+    def desasignarTipoDeAtrib(self, nombre, nombreTipoDeAtrib):
+        MgrTipoDeItemXTipoDeAtrib().borrar(nombre, nombreTipoDeAtrib) 
+                    
     def filtrarTipoDeAtrib(self, nombre):
         tipoDeItem = TipoDeItem.query.filter(TipoDeItem.nombre == nombre).first_or_404()
         return tipoDeItem.atributosItem
@@ -70,4 +72,3 @@ class MgrTipoDeItem():
             return ":desasigno tipo de atributo de tipo de item:"
         else:
             return ":error: no desasigno tipo de atributo de tipo de item"
-             

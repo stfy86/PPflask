@@ -1,0 +1,78 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Edit Atrib{% endblock %}
+
+{% block body %}
+    <h1>Modificar datos de atributo</h1>
+    <form enctype="multipart/form-data" method="post" action="">
+      <dl>
+          {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 120px;") }}
+            {{form.nombre(class="form-input", style="width: 200px") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            <div style="float:left;width: 120px;">
+            <LABEL for="tipoDato">Tipo de Dato </LABEL>
+            </div>
+            <select name="tipoDeDato" onchange="chequea(this,this.form.file, this.form.detalle, this.form.filename)" id="tipoDato">
+            {% for button in buttons %}
+                {% if button in active_btns %}
+                    <option selected value="{{ button }}" >{{ button }}</option>
+                {% else %}
+                    <option value="{{ button }}" >{{ button }}</option>
+                {% endif %}
+            {% endfor %}
+            </select>
+            <br />
+            {{ form.filename.label(style="float: left; width: 120px;") }}
+            {{form.filename(class="form-input", style="width:200px", readonly="readonly")}}
+            <br />
+            <p>
+            <input type="file" name="file" id="filed" disabled="true" value="" hidden="" required ="true">
+            </p>
+            {{ form.detalle.label(style="float: left; width: 120px;") }}
+            {{form.detalle(class="form-input", style="width: 200px")}}
+            {% for error in form.detalle.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 120px;") }}
+            {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+      </dl>
+      <script type="text/javascript">
+        function chequea(campo, boton, campo2, campo3){
+                switch (campo.value) { 
+                case "archivo":
+                        boton.disabled=false;
+                        boton.hidden=false;
+                        campo2.disabled=true;
+                        campo2.value=0;
+                        return campo2;
+                        break;
+                case "numerico":
+                case "texto":
+                        boton.disabled=true;
+                        boton.value="";
+                        boton.hidden=true;
+                        campo2.disabled=false;
+                        campo3.value="";
+                        return boton;
+                        break;
+                case "fecha":
+                case "booleano":
+                        boton.disabled=true;
+                        boton.value=""
+                        boton.hidden=true;
+                        campo2.disabled=true;
+                        campo2.value=0;
+                        campo3.value="";
+                        return boton, campo2;
+                        break;
+                }
+        }
+     </script>
+      <p>
+          <input class="button" type="submit" value="Aceptar">
+          <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
+      <p>
+    </form> 
+{% endblock %}

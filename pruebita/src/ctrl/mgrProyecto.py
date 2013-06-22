@@ -242,3 +242,7 @@ class MgrProyecto():
             return True
         else:
             return False      
+        
+    def fasesActivasDeProyecto(self, nombre):
+        proyecto = self.filtrar(nombre)
+        return Fase.query.filter(and_(Fase.estado == "Activo", Fase.proyectoId == proyecto.idProyecto)).all()

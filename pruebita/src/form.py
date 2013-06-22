@@ -1,5 +1,5 @@
 from wtforms import Form, TextField, FileField, PasswordField, \
-     validators, IntegerField, SelectField, SubmitField, DateTimeField
+     validators, IntegerField, SelectField, SubmitField, DateTimeField, RadioField
 #------------------------------------------------------------------------------#
 # FORMS
 #------------------------------------------------------------------------------#
@@ -150,20 +150,24 @@ class EditStateFaseForm(Form):
 class CreateFormAtrib(Form):
     """ Formulario para crear un atributo"""
     nombre = TextField('Nombre', [validators.required(message=":nombre?:"),validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
-    tipoDeDato = SelectField("Tipo de Dato", choices = [
-        ("Numerico", "Numerico"),
-        ("Texto", "Texto"),
-        ("Booleano", "Booleano"),
-        ("Fecha", "Fecha")])
-    detalle = IntegerField('Detalle', [validators.required(message=":detalle?:"), validators.NumberRange(min=None, max=None, message=":detalle?:")])
     descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
+    
     
 class ShowFormAtrib(Form):
     """ Formulario para mostrar un atributo"""
-    nombre = TextField('Nombre', [validators.required(message=":nombre?:"),validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
-    tipoDeDato = TextField("Tipo de Dato", [validators.required(message=":tipoDeDato?:"), validators.Length(min=1, max=20, message=":longitud requerida [1-20]:")])
-    detalle = IntegerField('Detalle', [validators.required(message=":detalle?:"), validators.NumberRange(min=None, max=None, message=":detalle?:")])
-    descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"),validators.Length(min=1, max=150, message=":longitud requerida [1-150]:")])
+    nombre = TextField('Nombre')
+    tipoDeDato = TextField('Tipo De Dato', [validators.required(message=":tipoDeDato?:"),validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    submit = SubmitField("POST")
+    filename = TextField('Nombre de Archivo')
+    detalle = IntegerField('Detalle')
+    descripcion = TextField('Descripcion')
+
+class EditFormAtrib(Form):
+    """ Formulario para mostrar un atributo"""
+    nombre = TextField('Nombre')
+    filename = TextField('Nombre de Archivo')
+    detalle = IntegerField('Detalle')
+    descripcion = TextField('Descripcion')
 
 # Administrar tipo de item
 
@@ -177,9 +181,10 @@ class CreateFormTipoDeItem(Form):
 class CreateFormItem(Form):
     """ Formulario para crear un item"""
     nombre = TextField('Nombre', [validators.required(message=":nombre?:"),validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
-    version = IntegerField('Version', [validators.required(message=":version?:"), validators.NumberRange(min=None, max=None, message=":version?:")])
-    complejidad = IntegerField('Complejidad', [validators.required(message=":complejidad?:"), validators.NumberRange(min=None, max=None, message=":complejidad?:")])
-    costo = IntegerField('Costo', [validators.required(message=":costo?:"), validators.NumberRange(min=None, max=None, message=":costo?:")])
+    tipoDeItem = TextField('TipoDeItem')
+    version = IntegerField('Version')
+    complejidad = IntegerField('Complejidad', [validators.required(message=":complejidad?:"), validators.NumberRange(min=1, max=100, message=":complejidad?:")])
+    costo = IntegerField('Costo', [validators.required(message=":costo?:"), validators.NumberRange(min=1, max=100, message=":costo?:")])
         
 class ShowFormItem(Form):
     """ Formulario para crear un item"""
@@ -194,8 +199,9 @@ class EditStateItemForm(Form):
     """ Formulario de modificacion de estado de item """
     estado = SelectField("Estado", choices = [
         ("Activo", "Activo"),
-        ("Inactivo", "Inactivo"),
-        ("Aprobado", "Aprobado")])
+        ("Eliminado", "Eliminado"),
+        ("Aprobado", "Aprobado"),
+        ("Revision", "Revision")])
     submit = SubmitField("POST")
 
 # Administrar LB

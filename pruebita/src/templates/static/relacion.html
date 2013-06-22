@@ -1,0 +1,56 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Show Item{% endblock %}
+
+{% block body %}
+
+<div class="page-header">
+    <h3>Relacion entre Items</h3>
+</div>
+<form action="" method=post>
+      <br>
+        <div><label>Tipo de Relacion:</label><br>
+                            {% if bool %}
+                                    <select name="tipo">
+                                                    <option value="padre-hijo">Padre-Hijo</option>
+                                                    <option value="sucesor-antecesor">Sucesor-Antecesor</option>
+                                    </select>
+                            {% else %}
+                                    <select name="tipo">
+                                                    <option value="sucesor-antecesor">Sucesor-Antecesor</option>
+                                                    <option value="padre-hijo">Padre-Hijo</option>
+                                    </select>
+                            {% endif %}
+        <br> 
+        <input name='opcion' type='submit' value='Mostrar Item'>         
+        <br> <br>
+        <div><label>Lista de Items<label></div>
+            <div style="height:150px;width:300px;overflow:scroll;">	
+            <TABLE BORDER WIDTH="70%">
+            <COL SPAN="4" ALIGN="left">
+                    <tr>
+                    <th scope="col">ITEM</th>
+                    <th scope="col">OK</th>
+                    </tr>
+            {% for item in listItem %}
+                                            <tr>
+                                            <td>{{ item.nombre }}{{item.idItem}}{{idItem}}</td>
+                                            {% if item.idItem in relacionadoList %}
+                                                    <td><INPUT TYPE="checkbox" NAME="iditemList" checked="checked" VALUE={{ item.idItem }}></td>
+                                            {% else %}
+                                                    <td><INPUT TYPE="checkbox" NAME="iditemList" VALUE={{ item.idItem }}></td>
+                                            {% endif %}
+                                            </tr>  	
+             {% endfor %}
+                    </table>
+                    </div>
+
+            <div><center>
+            <input name='opcion' type='submit' value='Guardar'>
+            <input name='opcion' type='submit' value='Cancelar'>		    	     
+            </center></div>
+</form>
+
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('showItem', idItem = id )}}">Datos del Item</a></li>
+{% endblock %}

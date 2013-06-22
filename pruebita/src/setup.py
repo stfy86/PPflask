@@ -13,7 +13,7 @@ setup (
 
   # Fill in these to make your Egg ready for upload to
   # PyPI
-  author = 'silvana',
+  author = 'lory',
   author_email = '',
 
   summary = 'Just another Python package for the cheese shop',

@@ -1,6 +1,7 @@
 #------------------------------------------------------------------------------#
 # IMPORTS
 #------------------------------------------------------------------------------#
+from flask import Flask, request, send_file
 from pruebita import app, db
 from form import *
 # paquete models
@@ -18,6 +19,7 @@ from models.tipoDeItem import TipoDeItem, atributosItem
 from models.user import User, roles
 # paquete ctrl
 from ctrl.mgrFase import MgrFase
+from ctrl.mgrItem import MgrItem
 from ctrl.mgrPermiso import MgrPermiso
 from ctrl.mgrProyecto import MgrProyecto
 from ctrl.mgrRol import MgrRol
