@@ -1,60 +1,99 @@
-from pruebita import db, app
+from modulo import *
 
 class MgrUser():
 
     def listar(self):
-        """ listar usuarios """
-        from models import User
         return User.query.all()
     
-    def guardar(self, usuario):
-        """ guarda un registro usuario """
-        db.session.add(usuario)
+    def guardar(self, user):
+        db.session.add(user)
         db.session.commit()
-    
-    def guardarLista(self, listaUsuario=[None]):
-        """ guarda una lista de usuarios """
-        from models import User
-        for u in listaUsuario:
-            db.session.add(u)
+        
+    def borrar(self, user):
+        if user.estado == "Inactivo":
+            db.session.delete(user)
             db.session.commit()
-    
-    def estado(self, nombre, estadoNew):
-        """ guarda el nuevo estado del usuario """
-        from models import User
-        user = User.query.filter(User.name == nombre).first_or_404()
-        user.estado = estadoNew        
-        db.session.commit()
-    
-    def borrar(self,nombre):
-        """ borra un registro usuario x name"""
-        from models import User
-        user = User.query.filter(User.name == nombre).first_or_404()
-        db.session.delete(user)
-        db.session.commit()
+            return ":borro el usuario:"
+        else:
+            return ":no borro: revisar estado"
+            
         
-    def modificar(self, nombre, nameNew, passwordNew, nombreNew, apellidoNew,
+    def modificar(self, name, passwordNew, confirmacionNew, nombreNew, apellidoNew,
                     emailNew, telefonoNew, obsNew):
-        """ modificar un registro de usuario"""
-        from models import User
-        user = User.query.filter(User.name == nombre).first_or_404()
-        user.name = nameNew
-        user.password = passwordNew
-        user.nombre = nombreNew
-        user.apellido = apellidoNew
-        user.email = emailNew
-        user.telefono = telefonoNew
-        user.obs = obsNew        
-        db.session.commit()
+        user =  self.filtrar(name)
+        if user.estado == "Inactivo":
+            user.password = passwordNew
+            user.confirmacion = confirmacionNew
+            user.nombre = nombreNew
+            user.apellido = apellidoNew
+            user.email = emailNew
+            user.telefono = telefonoNew
+            user.obs = obsNew        
+            db.session.commit()
+            return ":modifico:"
+        else:
+            return ":no modifico: revisar estado"
         
-    def filtrar(self, nombre):
-        """ filtrar proyecto por nombre """
-        from models import User
-        return User.query.filter(User.name == nombre).first_or_404()
+    def filtrar(self, name):
+        return User.query.filter(User.name == name).first_or_404()
     
-    def rolesDeUser(self, nombre):
-        from models import User
-        usr = User.query.filter(User.name == nombre).first_or_404()
-        return usr.roles
-          
     
+    def listarActivo(self):
+        return User.query.filter(User.estado == "Activo").all()
+    
+    def estado(self, name, estadoNew):
+        user = self.filtrar(name)
+        if estadoNew == "Activo" and self.ceroRol(name) > 0:
+            user.estado = estadoNew        
+            db.session.commit()
+            return ":cambio de estado:"
+        if estadoNew == "Inactivo" and self.ceroRol(name) == 0:
+            user.estado = estadoNew        
+            db.session.commit()
+            return ":cambio de estado:"    
+        return ":no cambio de estado:"
+    
+   
+    def existeRol(self, name, idRol):
+        rol = Rol.query.filter(Rol.idRol == idRol).first()
+        user = self.filtrar(name)
+        if rol in user.roles:
+            return True
+        else:
+            return False
+    
+    def ceroRol(self, name):
+        user = self.filtrar(name)
+        cont = 0
+        for rol in user.roles:
+            cont = cont + 1
+        return cont
+        
+    def addRol(self, name, rol):  
+        user = self.filtrar(name)
+        if self.existeRol(name, rol.idRol):
+            return ":ya tiene asignado ese rol:"
+        else:
+            user.roles.append(rol)
+            user.estado = "Activo"
+            db.session.commit()
+            return ":asigno el rol:"
+        
+    def removeRol(self, name, rol):   
+        user = self.filtrar(name)
+        if self.existeRol(name, rol.idRol):
+            user.roles.remove(rol)
+            db.session.commit()
+            if self.ceroRol(name) == 0:
+                user.estado = "Inactivo"
+                db.session.commit()              
+            return ":removio el rol:"
+        else:
+            return ":no removio el rol:"
+        
+    def rolDeUser(self, name, nombreProyecto):
+        user = self.filtrar(name)
+        for rol in user.roles:
+            if rol.ambito == nombreProyecto:
+                return rol
+        return None

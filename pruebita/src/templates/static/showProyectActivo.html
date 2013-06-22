@@ -1,0 +1,66 @@
+{% extends "static/layout.html" %}
+{% block title %}Lista Proyecto Activos{% endblock %}
+{% block body %}
+
+<tbody>
+<div class="page-header"><h3>Modulo De Desarrollo: Administrar Item</h3></div>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('desarrollo') }}">Modulo Desarrollo</a></li>
+<div class="page-header"> <h3>Lista de Proyecto</h3></div>
+<form runat="server">
+             
+<table id="tableTwo" class="yui">    
+<thead>
+        <tr>
+            <td class="tableHeader">
+            </td>
+            <td colspan="5" class="filter">
+                Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+            </td>
+        </tr> 
+            <tr>
+			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
+			<th><a href='#' title="Click Header to Sort">FechaDeCreacion</a></th>
+			<th><a href='#' title="Click Header to Sort">Estado</a></th>
+                        <th><a href='#' title="Click Header to Sort">Presupuesto</a></th>
+                        <th><a href='#' title="Click Header to Sort">Descripcion</a></th>
+		</tr>
+</thead>
+  {% for proyecto in list%}
+    <tr>
+        <td><a href="{{ url_for('showInitActivo', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.nombre}}</h5></td>
+        <td><a href="{{ url_for('showInitActivo', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.fechaDeCreacion}}</h5></td>
+        <td><a href="{{ url_for('showInitActivo', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.estado}}</h5></td>
+        <td><a href="{{ url_for('showInitActivo', nombre = proyecto.nombre)}}"</a><h5>{{proyecto.presupuesto}}</h5></td>
+        <td><a href="{{ url_for('showInitActivo', nombre = proyecto.nombre)}}"</a><h5>{{proyecto.descripcion}}</h5></td>
+     </tr>
+   {% endfor %}
+
+</tbody>   
+<tfoot>
+	    <tr id="pagerTwo">
+	        <td colspan="5">
+		        <img src="/img/first.png" class="first"/>
+		        <img src="/img/prev.png" class="prev"/>
+		        <input type="text" class="pagedisplay"/>
+		        <img src="/img/next.png" class="next"/>
+		        <img src="/img/last.png" class="last"/>
+		        <select class="pagesize">
+			        <option selected="selected"  value="5">5</option>
+			        <option value="10">10</option>
+			        <option value="15">15</option>
+			        <option  value="20">20</option>
+		        </select>
+		    </td>
+	    </tr>
+</tfoot>    
+</table>
+<div style="padding-bottom:20px;">
+<div class="js-kit-poll" style="width: 350px;"></div>
+<script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+</div>
+</form>  
+
+
+ {% endblock %}

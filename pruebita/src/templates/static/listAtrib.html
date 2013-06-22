@@ -36,7 +36,6 @@
              
     </script>    
 </head>
-<tbody>
 <div class="page-header">
     <h3>Tipos de Atributos</h3>
 </div>
@@ -57,19 +56,20 @@
 			<th><a href='#' title="Click Header to Sort">Tipo de Dato</a></th>
 			<th><a href='#' title="Click Header to Sort">Detalle</a></th>
 			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
+                        <th><a href='#' title="Click Header to Sort">Archivo</a></th>
 			
 		</tr>
 </thead>
     {% for atrib in list %}
     <tr>
        <td><a href="{{ url_for('showAtrib', nombre = atrib.nombre )}}"</a><h5>{{ atrib.nombre }}</h5></td>
-       <td><a href="{{ url_for('showAtrib', nombre = atrib.tipoDeDato )}}"</a><h5>{{ atrib.tipoDeDato }}</h5></td>
-       <td><a href="{{ url_for('showAtrib', nombre = atrib.detalle )}}"</a><h5>{{ atrib.detalle }}</h5></td>
-       <td><a href="{{ url_for('showAtrib', nombre = atrib.descripcion )}}"</a><h5>{{ atrib.descripcion }}</h5></td>
+       <td><a href="{{ url_for('showAtrib', nombre = atrib.nombre )}}"</a><h5>{{ atrib.tipoDeDato }}</h5></td>
+       <td><a href="{{ url_for('showAtrib', nombre = atrib.nombre )}}"</a><h5>{{ atrib.detalle }}</h5></td>
+       <td><a href="{{ url_for('showAtrib', nombre = atrib.nombre )}}"</a><h5>{{ atrib.descripcion }}</h5></td>
+       <td><a href="{{ url_for('showAtrib', nombre = atrib.nombre )}}"</a><h5>{{ atrib.filename }}</h5></td>
     </tr>
     {% endfor %}
-
-</tbody>   
+  
 <tfoot>
 	    <tr id="pagerTwo">
 	        <td colspan="5">

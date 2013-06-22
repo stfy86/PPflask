@@ -4,26 +4,67 @@
 
 {% block body %}
     <h1>Agregar Atributo</h1>
-    <form method="post" action="">
+    <form enctype="multipart/form-data" method="post" action="">
       <dl>
         {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 100px;") }}
             {{form.nombre(class="form-input", style="width: 200px") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.tipoDeDato.label(style="float: left; width: 100px;") }}
-            {{form.tipoDeDato(class="form-input", style="width: 200px") }}
-            {% for error in form.tipoDeDato.errors %} {{ error }} {% endfor %}
-            <br />  
-            {{ form.detalle.label(style="float: left; width: 100px;") }}
-            {{form.detalle(class="form-input", style="width: 200px")}}
-            {% for error in form.detalle.errors %} {{ error }} {% endfor %}
+            <div style="float:left;width: 100px;">
+            <LABEL for="tipoDato">Tipo de Dato </LABEL>
+            </div>
+            <select name="tipoDeDato" onchange="chequea(this,this.form.file, this.form.detalle)" id="tipoDato">
+                  <option selected value="numerico">Numerico</option>
+                  <option value="texto">Texto</option>
+                  <option value="booleano">Booleano</option>
+                  <option value="fecha">Fecha</option>
+                  <option value="archivo">Archivo</option>
+            </select>
+            <br />
+            <div style="float:left;width: 100px;">
+            <LABEL for="filed"> Elija un archivo </LABEL>
+            </div>
+            <input type="file" name="file" id="filed" disabled="true" value="" required ="true">
+            <br />
+            <div style="float:left;width: 100px;">
+            <LABEL for="detalles">Detalle</LABEL>
+            </div>
+            <INPUT type="text" name="detalle" style="width:200px" class="form-input" id="detalles">
             <br />
             {{ form.descripcion.label(style="float: left; width: 100px;") }}
             {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
       </dl>
+<script type="text/javascript">
+function chequea(campo,boton, campo2){
+	switch (campo.value) { 
+   	case "archivo":
+                boton.disabled=false;
+                campo2.disabled=true;
+                campo2.value=0;
+                return campo2;
+                break;
+        case "numerico":
+        case "texto":
+                boton.disabled=true;
+                boton.value=""
+                campo2.disabled=false;
+                return boton;
+                break;
+        case "fecha":
+        case "booleano":
+                boton.disabled=true;
+                boton.value=""
+		campo2.disabled=true;
+                campo2.value=0;
+                return boton, campo2;
+                break;
+        }
+}
+</script>
       <p><input class="button" type="submit" value="Crear">
          <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();"><p>
-    </form>
+ </form>
+  
 {% endblock %}

@@ -1,5 +1,5 @@
 {% extends "static/layout.html" %}
-{% block title %}List Atrib{% endblock %}
+{% block title %}Lista de Usuarios{% endblock %}
 {% block body %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  
@@ -36,7 +36,6 @@
              
     </script>    
 </head>
-<tbody>
 <div class="page-header">
     <h3>Usuarios</h3>
 </div>
@@ -68,8 +67,7 @@
        <td><a href="{{ url_for('showUser', nombre = user.name )}}"</a><h5>{{user.estado}}</h5></td>
     </tr>
     {% endfor %}
-
-</tbody>   
+   
 <tfoot>
 	    <tr id="pagerTwo">
 	        <td colspan="5">

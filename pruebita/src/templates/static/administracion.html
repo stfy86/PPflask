@@ -4,20 +4,38 @@
 
 {% block body %}
     <div class="page-header">
-        <center>
-              <h3>Modulo de Administracion</h3>
-        </center>
-  
+        
+            <h3>Modulo de Administracion</h3>
+            <li><a href="/">Inicio</a></li>
+				{% if not g.user %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+				{% else %}
+            <dl>
+            <li><a href="{{ url_for('index') }}">Administrar Proyecto</a></li>
+            <ul>
+                <li> Crear Proyecto             
+                <li> Modificar Proyecto
+                <li> Crear Comite
+                <li> Modificar Comite
+                <li> Eliminar Comite
+            </ul>
+            <li><a href="{{ url_for('listEdit') }}">Administrar Usuarios del Sistema</a></li>
+            <ul>
+                <li> Crear Usuario 
+                <li> Modificar Usuario
+                <li> Actualizar Estado de Usuario    
+                <li> Eliminar Usuario
+            </ul>  
+            <li><a href="{{ url_for('listAtrib') }}">Administrar Atributos del Sistema</a></li>
+            <ul>
+                <li> Crear Atributo 
+                <li> Modificar Atributo  
+                <li> Eliminar Atributo
+            </ul> 
+                        </dl>
+                                {% endif %}
     </div>
-      <dl>
-        <ul>
-            <li><a href="{{ url_for('listEdit') }}">Administrar Usuarios</a></li>
-            <li><a href="{{ url_for('listAtrib') }}">Administrar Tipos de Atributos</a></li>
-            <li><a href="{{ url_for('listRolPermiso') }}">Administrar Roles y Permisos</a></li>
-            <li><a href="{{ url_for('listProject') }}">Administrar Proyecto</a></li>
-            <li><a href="{{ url_for('listFase') }}">Administrar Fases</a></li>
-            <li><a href="{{ url_for('listTipoDeItem') }}">Administrar Tipo de Item</a></li>
-        </ul>
-      </dl>
-
+  
 {% endblock %}
+
+

@@ -1,6 +1,6 @@
 {% extends "static/layout.html" %}
 
-{% block title %}Show User{% endblock %}
+{% block title %}Datos del Usuario{% endblock %}
 
 {% block body %}
     <h1>Datos del usuario</h1>
@@ -49,9 +49,6 @@
           <input class="button" type="submit" name="delete" value="Eliminar Usuario" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
           <br />
           <input class="button" type="submit" name="state" value="Modificar Estado de Usuario">
-          <input class="button" type="submit" name="edit" value="Asignar Rol a Usuario">
-          <br />
-          <input class="button" type="submit" name="edit" value="Eliminar Rol de Usuario">
           <input class="button" type="button" value="Atras" onclick="javascript:history.back();">
       </p>   
     </form>

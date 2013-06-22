@@ -11,8 +11,12 @@
             {{form.nombre(class="form-input", style="width:200px") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
+            {{ form.tipoDeItem.label(style="float: left; width: 100px;") }}
+            {{form.tipoDeItem(class="form-input", style="width: 200px", readonly="readonly")}}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
             {{ form.version.label(style="float: left; width: 100px;") }}
-            {{form.version(class="form-input", style="width: 200px") }}
+            {{form.version(class="form-input", style="width: 200px", readonly="readonly", value= version) }}
             {% for error in form.version.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.complejidad.label(style="float: left; width: 100px;") }}

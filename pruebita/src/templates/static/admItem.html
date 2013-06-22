@@ -1,0 +1,24 @@
+{% extends "static/layout.html" %}
+
+{% block title %} Administrar Item {% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        
+            <h3>Administrar Item</h3>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="{{ url_for('listFasesActivasProyecto' , nombre = nomProyecto) }}">Lista de Fases activas del Proyecto</a></li>
+                		{% if not g.user %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+				{% else %}
+            <dl>
+            <li><a href="{{ url_for('addItem', idFase = identFase ) }}">Crear Item</a></li>
+            <li><a href="{{ url_for('listItem', idFase = identFase) }}">Listar Item por Fase</a></li>
+            <li><a href="{{ url_for('revivirItem', idFase = identFase) }}">Revivir Item</a></li>
+                                {% endif %}
+    </div>
+  
+{% endblock %}
+
+

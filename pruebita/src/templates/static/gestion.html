@@ -4,14 +4,29 @@
 
 {% block body %}
     <div class="page-header">
-        <center>
-              <h3>Modulo de Gestion</h3>
-        </center>
+        
+        <h3>Modulo de Gestion</h3>
+            <li><a href="/">Inicio</a></li>
+				{% if not g.user %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+				{% else %}        
+        <dl>
+            <li><a href="{{ url_for('index') }}">Administrar Proyecto</a></li>
+            <ul>
+                <li> Iniciar Proyecto                 
+                <li> Finalizar Proyecto
   
+            </ul>
+            <li><a href="{{ url_for('index') }}">Calculo de Costo</a></li>
+            <ul>
+                <li> Generar Costo
+            </ul>
+            <li><a href="{{ url_for('index') }}">Calculo de Impacto</a></li>
+            <ul>
+                <li> Generar Impacto   
+            </ul>
+        </dl>
+                                {% endif %}
     </div>
-      <dl>
-        <ul>
-            <li><a href="{{ url_for('listLineaBase') }}">Administrar Líneas Base</a></li>
-        </ul>
-      </dl>
+
 {% endblock %}

@@ -64,12 +64,12 @@
 </thead>
     {% for item in list %}
     <tr>
-       <td><a href="{{ url_for('showItem', nombre = item.nombre )}}"</a><h5>{{ item.nombre }}</h5></td>
-       <td><a href="{{ url_for('showItem', nombre = item.version )}}"</a><h5>{{ item.version }}</h5></td>
-       <td><a href="{{ url_for('showItem', nombre = item.complejidad )}}"</a><h5>{{ item.complejidad }}</h5></td>
-       <td><a href="{{ url_for('showItem', nombre = item.costo )}}"</a><h5>{{ item.costo }}</h5></td>
-       <td><a href="{{ url_for('showItem', nombre = item.estado )}}"</a><h5>{{ item.estado }}</h5></td>
-       <td><a href="{{ url_for('showItem', nombre = item.fechaDeModif )}}"</a><h5>{{ item.fechaDeModif }}</h5></td>
+       <td><a href="{{ url_for('showItem', idItem = item.idItem )}}"</a><h5>{{ item.nombre }}</h5></td>
+       <td><a href="{{ url_for('showItem', idItem = item.idItem )}}"</a><h5>{{ item.version }}</h5></td>
+       <td><a href="{{ url_for('showItem', idItem = item.idItem )}}"</a><h5>{{ item.complejidad }}</h5></td>
+       <td><a href="{{ url_for('showItem', idItem = item.idItem )}}"</a><h5>{{ item.costo }}</h5></td>
+       <td><a href="{{ url_for('showItem', idItem = item.idItem )}}"</a><h5>{{ item.estado }}</h5></td>
+       <td><a href="{{ url_for('showItem', idItem = item.idItem )}}"</a><h5>{{ item.fechaDeModif }}</h5></td>
     </tr>
     {% endfor %}
 
@@ -97,8 +97,10 @@
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
 </form>   
- <p><input class="button" type="button" value="Crear Item" onclick="document.location='addItem';"><p>
 
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('admItem' , idFase = id) }}">Administrar Item</a></li>
+    
 {% endblock %}
 
 
