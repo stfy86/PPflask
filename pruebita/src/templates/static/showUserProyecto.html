@@ -4,7 +4,9 @@
 
 {% block body %}
 
-    <div class="page-header"><h1> :ADMINISTRAR USUARIO: {{ambito}}</h1></div>
+<div class="page-header"><h1> :ADMINISTRAR USUARIO: {{ambito}}</h1></div>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('listProyectoPendiente') }}">Iniciar Proyecto</a></li>
     <form method="post" action="" >  
       <div class="page-header"><h3>Show User por Proyecto</h3></div>
       <dl>
@@ -52,6 +54,5 @@
 <input class="button" type="button" value="Atras" onclick="javascript:history.back();">
 </p>   
  </form>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('initProyecto') }}">Iniciar Proyecto</a></li>
+
 {% endblock %}

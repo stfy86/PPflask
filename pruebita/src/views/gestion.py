@@ -9,13 +9,13 @@ from flask import Flask, render_template, request, redirect, url_for, g, \
 # ADMINISTRAR PROYECTO - INICIAR UN PROYECTO 
 
 
-@app.route('/initProyecto')
-def initProyecto():
+@app.route('/listProyectoPendiente')
+def listProyectoPendiente():
     """ Muestra los proyectos pendiente del sistema"""
     if g.user is None:
         return redirect(url_for('login'))
     else:
-        return render_template(app.config['DEFAULT_TPL']+'/initProyecto.html',
+        return render_template(app.config['DEFAULT_TPL']+'/listProyectoPendiente.html',
                            conf = app.config,
                            list = MgrProyecto().listarPendiente()) 
 

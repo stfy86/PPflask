@@ -8,12 +8,12 @@ from flask import Flask, render_template, request, redirect, url_for, g, \
 # MODULO DESARROLLO
 #------------------------------------------------------------------------------#
 
-@app.route('/gestionProyectoItem')
-def gestionProyectoItem():
+@app.route('/listProyectoActivo')
+def listProyectoActivo():
     if g.user is None:
         return redirect(url_for('login'))
     else:
-        return render_template(app.config['DEFAULT_TPL']+'/showProyectActivo.html',
+        return render_template(app.config['DEFAULT_TPL']+'/listProyectoActivo.html',
                            conf = app.config,
                            list = MgrProyecto().listarActivo())
                            
