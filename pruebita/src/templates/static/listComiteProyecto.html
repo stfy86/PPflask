@@ -3,10 +3,10 @@
 {% block body %}
 
 <tbody>
-<div class="page-header"><h3>MODULO DE ADMINISTRACION: Comites</h3></div>
+<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Proyecto</h3></div>
 <li><a href="{{ url_for('index') }}">Home</a></li>
 <li><a href="{{ url_for('administracion') }}">Modulo Administracion</a></li>
-<div class="page-header"><h3>Lista de Comite</h3></div>
+<div class="page-header"><h3>Comite de Proyecto :{{nombreProyecto}}:</h3></div>
 <form runat="server">             
 <table id="tableTwo" class="yui">    
 <thead>
@@ -28,10 +28,10 @@
 </thead>
   {% for comite in list%}
     <tr>
-        <td><a href="{{ url_for('showComite', nombre = comite.nombre )}}"</a><h5>{{comite.nombre}}</h5></td>
-        <td><a href="{{ url_for('showComite', nombre = comite.nombre )}}"</a><h5>{{comite.proyectoId}}</h5></td>
-        <td><a href="{{ url_for('showComite', nombre = comite.nombre)}}"</a><h5>{{comite.cantMiembro}}</h5></td>
-        <td><a href="{{ url_for('showComite', nombre = comite.nombre)}}"</a><h5>{{comite.descripcion}}</h5></td>
+        <td><a href="{{ url_for('showComite', nombreProyecto = nombreProyecto, idComite = comite.idComite )}}"</a><h5>{{comite.nombre}}</h5></td>
+        <td><a href="{{ url_for('showComite', nombreProyecto = nombreProyecto, idComite = comite.idComite )}}"</a><h5>{{comite.proyectoId}}</h5></td>
+        <td><a href="{{ url_for('showComite', nombreProyecto = nombreProyecto, idComite = comite.idComite)}}"</a><h5>{{comite.cantMiembro}}</h5></td>
+        <td><a href="{{ url_for('showComite', nombreProyecto = nombreProyecto, idComite = comite.idComite)}}"</a><h5>{{comite.descripcion}}</h5></td>
      </tr>
    {% endfor %}
 

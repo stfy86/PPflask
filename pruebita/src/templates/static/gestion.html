@@ -9,20 +9,27 @@
             <li><a href="/">Inicio</a></li>
 				{% if not g.user %}
             <li><a href="{{ url_for('login') }}">Login</a></li>
-				{% else %}        
+				{% else %}       
+            <dl><li><a href="{{ url_for('index') }}">Administrar Tipo De Item</a></li>
+             <ul>
+                <li> Crear Tipo de Item
+                <li> Modificar Tipo de Item 
+                <li> Eliminar Tipo de Item
+            </ul> 
+            </dl>
                                 
-            <dl>
-                <li><a href="{{ url_for('initProyecto') }}">Iniciar Proyecto</a></li>
-                    <ul>
-                    <li> Administrar Rol         
-                    <li> Administrar Fase
-                    <li> Administrar Usuario
-                    <li> Administrar Comite
+            <dl><li><a href="{{ url_for('initProyecto') }}"> Administrar Proyecto</a></li>
+                    <ul>       
+                    <li> Administrar Fase de Proyecto (crear - cambiar orden de fase - importar fase - modificar fase - eliminar fase - cambiar estado)
+                    <li> Administrar Usuario de Proyecto (asignar/desasignar usuarios al proyecto con un rol especifico )
+                    <li> Administrar Usuarios de Comite de Proyecto (asignar/desasignar usuarios al comite)
+                    <li> Iniciar Proyecto </li>
+                    <li> Administrar Linea Base en Fase de Proyecto ( crear lb - modificar lb - modificar estado de lb - eliminar lb )
+                    <li> Calculo de Costo</li>
+                    <li> Calculo de Impacto</li>
+                    <li> Finalizar Proyecto </li>
                     </ul>
             </dl>
-            <dl><li><a href="{{ url_for('finProyecto') }}">Finalizar Proyecto</a></li><dl>
-            <dl><li><a href="{{ url_for('index') }}">Calculo de Costo</a></li></dl>
-            <dl><li><a href="{{ url_for('index') }}">Calculo de Impacto</a></li></dl>
                                 {% endif %}
     </div>
 

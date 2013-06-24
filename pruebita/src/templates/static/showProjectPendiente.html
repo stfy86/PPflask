@@ -38,13 +38,16 @@
     return confirm( mensaje );
     } 
     </script> 
-      <p>   
+      <p>  
+        <div class="page-header"><h3> Gestionar un Proyecto</h3></div>
         <br />
         <input class="button" type="submit" name="edit" value="Modificar Proyecto">
         <input class="button" type="submit" name="editState" value="Modificar Estado de Proyecto">
-        <br />
         <input class="button" type="submit" name="delete" value="Eliminar Proyecto" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
-        
+        <br />
+        <br />
+        <input class="button" type="submit" name="listRolProyecto" value="Ver Rol de Proyecto">
+        <input class="button" type="submit" name="listComiteProyecto" value="Ver Comite de Proyecto">
         <br />
       </p>
     </form>

@@ -33,8 +33,6 @@ def showInit(nombre):
                estado = project.estado,
                presupuesto = project.presupuesto)
         if request.method == 'POST':
-            if request.form.get('rol', None) == "Administrar Rol":
-                return redirect(url_for('asignarRol', nombre = project.nombre))
             if request.form.get('usuario', None) == "Administrar Usuario":
                 return redirect(url_for('asignarUsuario', nombre = project.nombre))            
             if request.form.get('usuarioAComite', None) == "Administrar Comite":
@@ -309,64 +307,7 @@ def desasignarUsuarioDeComite(nombre, nameUser):
                                list = MgrComite().miembrosComite(nombre),
                                ambito = nombre)
                                
-# ADMINISTRAR PROYECTO - INICIAR UN PROYECTO  - ADMINISTRAR ROL
 
-@app.route('/asignarRol/<path:nombre>.html', methods=['GET','POST'])
-def asignarRol(nombre):
-    if g.user is None:
-        return redirect(url_for('login'))
-    else:
-        if request.method == 'POST':
-            proyecto =  MgrProyecto().filtrar(nombre)
-            if request.form.get('nuevo', None) == "Nuevo Rol por Proyecto":
-                return redirect(url_for('addRolPorProyecto', nombre = proyecto.nombre))
-        return render_template(app.config['DEFAULT_TPL']+'/listRolesProyecto.html',
-			       conf = app.config,
-                               list = MgrRol().listarPorAmbito(nombre),
-                               nombreProyecto = nombre)
-
-@app.route('/showRolProyecto/<path:nombreProyecto>/<path:nombre>.html', methods=['GET','POST'])
-def showRolProyecto(nombre, nombreProyecto):
-    if g.user is None:
-        return redirect(url_for('login'))
-    else:
-        rol = MgrRol().search(nombre, nombreProyecto)
-        form = CreateFormRolProyecto(request.form, nombre = rol.nombre, 
-                                    descripcion = rol.descripcion)
-        if request.method == 'POST':
-            if request.form.get('edit', None) == "Modificar Rol":
-                return redirect(url_for('editRol', nombre = rol.nombre))
-            elif request.form.get('config', None) == "Configurar Permisos":
-                return redirect(url_for('configPermiso', nombre = rol.nombre))
-            elif request.form.get('delete', None) == "Eliminar Rol":
-                return redirect(url_for('deleteRol', nombre = rol.nombre))
-	return render_template(app.config['DEFAULT_TPL']+'/showRolProyecto.html',
-			       conf = app.config,
-			       form = form,
-                               ambito = nombreProyecto)
-
-@app.route('/addRolPorProyecto/<path:nombre>.html', methods=['GET','POST'])
-def addRolPorProyecto(nombre):
-    if g.user is None:
-        return redirect(url_for('login'))
-    else:
-	if request.method == 'POST':
-            form = CreateFormRolProyecto(request.form, nombre = request.form['nombre'], 
-                                          descripcion = request.form['descripcion'])
-            if form.validate():
-                rol = Rol(nombre = request.form['nombre'],
-                        ambito = nombre,
-                        descripcion = request.form['descripcion'])    
-                
-                flash(MgrRol().guardar(rol))
-                return redirect(url_for('asignarRol', nombre = nombre)) 
-            else:
-                return render_template(app.config['DEFAULT_TPL']+'/formRolPorProyecto.html',
-			       conf = app.config,
-			       form = form)
-    return render_template(app.config['DEFAULT_TPL']+'/formRolPorProyecto.html',
-			       conf = app.config,
-			       form = CreateFormRolProyecto())
 
 # ADMINISTRAR PROYECTO - INICIAR UN PROYECTO  - ADMINISTRAR USUARIO 
 
@@ -453,6 +394,9 @@ def addUsuarioAProyecto(nombre):
 
 
 
+#------------------------------------------------------------------------------#
+# MODULO GESTION
+#------------------------------------------------------------------------------#
 
 # ADMINISTRAR PROYECTO - FINALIZAR UN PROYECTO 
 
@@ -691,3 +635,51 @@ def listSolicitudItems(nombre):
                            list = solicitud.itemsSolicitud)
 
 #Solicitud fin    
+
+
+
+# ADMINISTRAR ROL Y PERMISO
+
+@app.route('/editRol/<path:nombre>.html', methods=['GET','POST'])
+def editRol(nombre):
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        rol = MgrRol().filtrar(nombre)
+        form = CreateFormRol(request.form, nombre = rol.nombre, 
+                    ambito = rol.ambito,    
+                    descripcion = rol.descripcion)
+	if request.method == 'POST' and form.validate():
+            MgrRol().modificar(nombre, request.form['nombre'],
+            request.form['ambito'], request.form['descripcion'])
+            if request.form.get('config', None) == "Configurar Permisos":
+                return redirect(url_for('configPermiso', nombre = rol.nombre))
+            flash('Se ha modificado correctamente el rol')
+            return redirect(url_for('listRolPermiso'))
+    return render_template(app.config['DEFAULT_TPL']+'/editRol.html',
+			       conf = app.config,
+			       form = form)
+                               
+@app.route('/configPermiso/<path:nombre>.html', methods=['GET','POST'])
+def configPermiso(nombre):
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        lista = request.form.getlist("lista")
+        permisos2 = MgrRol().filtrarPermiso(nombre)
+        rol = MgrRol().filtrar(nombre)
+        if request.method == 'POST':
+            for perm in lista:
+                if perm in permisos2:
+                        lista.remove(perm)
+            for perm in permisos2:
+                if perm in lista:
+                        permisos2.remove(perm)
+            MgrRol().asignarPermiso2(nombre, lista, permisos2) 
+            flash('Se ha configurado correctamente los permisos')
+            return redirect(url_for('editRol', nombre = rol.nombre))
+        return render_template(app.config['DEFAULT_TPL']+'/configPermiso.html',
+			       conf = app.config,
+                               permisos = MgrRol().filtrarPermiso(nombre),
+                               list = MgrPermiso().listar())
+

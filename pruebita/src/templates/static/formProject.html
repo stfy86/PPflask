@@ -3,8 +3,9 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-
-<div class="page-header"><h1>Formulario: Crear Proyecto (1 de 2)</h1></div>
+<div class="page-header"><h3>  ADD PROYECTO ( 1 DE 2 )</h3></div>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('listProject') }}">Proyectos</a></li>
 <div class="page-header"><h3>PASO 1: Rellenar los datos del Proyecto</h3></div>
 <form method="post" action="" runat="server">
   <dl>
@@ -82,6 +83,5 @@
 </p>
 </form>
 <br/>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('listProject') }}">Atras</a></li>
+
 {% endblock %}

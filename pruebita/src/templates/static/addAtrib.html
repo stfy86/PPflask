@@ -3,12 +3,15 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-    <h1>Agregar Atributo</h1>
+<div class="page-header"><h3> ADD ATRIBUTO</h3></div>
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('listAtrib') }}">Atributos</a></li>
+<div class="page-header"><h3>PASO 1: Rellenar los datos del Atributo</h3></div>
     <form enctype="multipart/form-data" method="post" action="">
       <dl>
         {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width: 200px") }}
+            {{ form.nombre(class="form-input", style="width: 200px") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             <div style="float:left;width: 100px;">

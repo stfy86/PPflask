@@ -52,48 +52,6 @@ def createProyecto():
     MgrComite().guardar(c)
     MgrComite().asignarUsuario(nombreProyecto = "proyecto3",  nameUser= "guille")    
     
-    p = Proyecto(nombre="proyecto4", descripcion="sistema 4", presupuesto=40000)
-    MgrProyecto().guardar(p)
-    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
-    MgrRol().guardar(r)
-    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "stfy")
-    p = MgrProyecto().filtrar("proyecto4")
-    c = Comite(nombre="comite-proyecto4", descripcion="comite de cambio", cantMiembro=6, proyectoId=p.idProyecto)
-    MgrComite().guardar(c)
-    MgrComite().asignarUsuario(nombreProyecto = "proyecto4",  nameUser= "stfy")
-    
-    
-    p = Proyecto(nombre="proyecto5", descripcion="sistema 5", presupuesto=50000)
-    MgrProyecto().guardar(p)
-    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
-    MgrRol().guardar(r)
-    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "lory")
-    p = MgrProyecto().filtrar("proyecto5")
-    c = Comite(nombre="comite-proyecto5", descripcion="comite de cambio", cantMiembro=3, proyectoId=p.idProyecto)
-    MgrComite().guardar(c)
-    MgrComite().asignarUsuario(nombreProyecto = "proyecto5",  nameUser= "lory")
-    
-    p = Proyecto(nombre="proyecto6", descripcion="sistema 6", presupuesto=60000)
-    MgrProyecto().guardar(p)
-    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
-    MgrRol().guardar(r)
-    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "vavi")
-    p = MgrProyecto().filtrar("proyecto6")
-    c = Comite(nombre="comite-proyecto6", descripcion="comite de cambio", cantMiembro=3, proyectoId=p.idProyecto)
-    MgrComite().guardar(c)
-    MgrComite().asignarUsuario(nombreProyecto = "proyecto6",  nameUser= "vavi")
-    
-    
-    p = Proyecto(nombre="proyecto7", descripcion="sistema 7", presupuesto=70000)
-    MgrProyecto().guardar(p)
-    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
-    MgrRol().guardar(r)
-    MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "stfy")
-    p = MgrProyecto().filtrar("proyecto7")
-    c = Comite(nombre="comite-proyecto7", descripcion="comite de cambio", cantMiembro=5, proyectoId=p.idProyecto)
-    MgrComite().guardar(c)
-    MgrComite().asignarUsuario(nombreProyecto = "proyecto7",  nameUser= "stfy")    
-    
     print ":cargo proyectos:"
         
 def createAtrib():
@@ -116,15 +74,12 @@ def createRol():
     """ Carga los roles del sistema """
     r = Rol(nombre="Administrador", descripcion="rol de administrador", ambito= "none project")
     MgrRol().guardar(r)
-    MgrRol().asignarPermiso("Administrador", "none project", "ModuloAdministracion")
-    
+       
     r = Rol(nombre="Desarrollador", descripcion="rol de desarrollador", ambito= "none project")
     MgrRol().guardar(r)
-    MgrRol().asignarPermiso("Desarrollador", "none project", "ModuloDesarrollo")
     
     r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= "none project")
     MgrRol().guardar(r)
-    MgrRol().asignarPermiso("LiderDeProyecto", "none project", "ModuloGestion")
   
     r = Rol(nombre="Invitado", descripcion="invitado del sistema", ambito= "none project")
     MgrRol().guardar(r)

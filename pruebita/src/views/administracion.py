@@ -41,7 +41,11 @@ def showProjectPendiente(nombre):
                 return redirect(url_for('editProjectStateAdmin', nombre = project.nombre)) 
             elif request.form.get('delete', None) == "Eliminar Proyecto":
                 return redirect(url_for('deleteProject', nombre = project.nombre))
-          
+            elif request.form.get('listRolProyecto', None) == "Ver Rol de Proyecto":
+                return redirect(url_for('listRolProyecto', nombre = project.nombre))
+            elif request.form.get('listComiteProyecto', None) == "Ver Comite de Proyecto":
+                return redirect(url_for('listComiteProyecto', nombre = project.nombre))
+            
 	return render_template(app.config['DEFAULT_TPL']+'/showProjectPendiente.html',
 			       conf = app.config,
 			       form = form)
@@ -121,28 +125,35 @@ def deleteProject(nombre):
         flash(MgrProyecto().borrar(project))
         return redirect(url_for('listProject'))
               
-              
+     
+#------------------------------------------------------------------------------#
+# MODULO ADMINISTRACION
+#------------------------------------------------------------------------------#
+
+
 # ADMINISTRAR COMITE
 
 
-@app.route('/listComite')
-def listComite():
+@app.route('/listComiteProyecto/<path:nombre>.html', methods=['GET','POST'])
+def listComiteProyecto(nombre):
     """ Lista los comite del Sistema"""
     if g.user is None:
         return redirect(url_for('login'))
     else:
-        return render_template(app.config['DEFAULT_TPL']+'/listComite.html',
+        return render_template(app.config['DEFAULT_TPL']+'/listComiteProyecto.html',
                            conf = app.config,
-                           list = MgrComite().listar()) 
+                           list = MgrComite().listarPorProyecto(nombre),
+                           nombreProyecto = nombre) 
 
 
-@app.route('/showComite/<path:nombre>.html', methods=['GET','POST'])
-def showComite(nombre):
+@app.route('/showComite/<path:nombreProyecto>/<path:idComite>.html', methods=['GET','POST'])
+def showComite(nombreProyecto, idComite):
     """Muestra un Comite"""
     if g.user is None:
         return redirect(url_for('login'))
     else:
-        comite = MgrComite().filtrar(nombre)
+        comite = MgrComite().filtrarXId(idComite)
+        proyecto = MgrProyecto().filtrarXId(comite.proyectoId)
         form = ShowFormComite(request.form,
                descripcion = comite.descripcion, 
                cantMiembro = comite.cantMiembro,
@@ -150,29 +161,33 @@ def showComite(nombre):
                )
         if request.method == 'POST':
             if request.form.get('edit', None) == "Modificar Comite":
-                return redirect(url_for('editComite', nombre = comite.nombre))
+                return redirect(url_for('editComite', nombreProyecto = nombreProyecto, idComite = idComite))
           
 	return render_template(app.config['DEFAULT_TPL']+'/showComite.html',
 			       conf = app.config,
 			       form = form,
-                               nombreComite = nombre)
+                               idComite = idComite,
+                               nombreProyecto = nombreProyecto)
                                
-@app.route('/editComite/<path:nombre>.html', methods=['GET','POST'])
-def editComite(nombre):
+@app.route('/editComite/<path:nombreProyecto>/<path:idComite>.html', methods=['GET','POST'])
+def editComite(nombreProyecto, idComite):
     """ Modifica un Comite """
     if g.user is None:
         return redirect(url_for('login'))
     else:
-        comite = MgrComite().filtrar(nombre)
+        comite = MgrComite().filtrarXId(idComite)
+        proyecto = MgrProyecto().filtrarXId(comite.proyectoId)
         form = EditFormComite(request.form,
                descripcion = comite.descripcion,
                cantMiembro = comite.cantMiembro)
 	if request.method == 'POST' and form.validate:
-            flash(MgrComite().modificar(nombre, request.form['descripcion'], request.form['cantMiembro']))
-            return redirect(url_for('listComite'))
+            flash(MgrComite().modificar(comite, request.form['descripcion'], request.form['cantMiembro']))
+            return redirect(url_for('listComiteProyecto', nombre = nombreProyecto))
     return render_template(app.config['DEFAULT_TPL']+'/editComite.html',
 			       conf = app.config,
-			       form = form)
+			       form = form,
+                               idComite = idComite,
+                               nombreProyecto = nombreProyecto)
 
 @app.route('/addComite/<path:nameLider>/<path:nombre>.html', methods=['GET','POST'])
 def addComite(nombre, nameLider):
@@ -374,6 +389,12 @@ def showUser(nombre):
                             conf = app.config,
                             form = form)
 
+                           
+#------------------------------------------------------------------------------#
+# MODULO ADMINISTRACION
+#------------------------------------------------------------------------------#
+
+
 # ADMINISTRAR TIPO DE ATRIBUTO
 
 
@@ -529,4 +550,48 @@ def descargar(nombre):
         MgrTipoDeAtrib().descargar(nombre)
         flash('El archivo se ha descargado satisfactoriamente')
     return redirect(url_for('showAtrib', nombre = atrib.nombre))
+    
+    
+                           
+#------------------------------------------------------------------------------#
+# MODULO ADMINISTRACION
+#------------------------------------------------------------------------------#
+
+# ADMINISTRACION DE ROLES Y PERMISOS
+
+@app.route('/listRolProyecto/<path:nombre>.html', methods=['GET','POST'])
+def listRolProyecto(nombre):
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        if request.method == 'POST':
+            proyecto =  MgrProyecto().filtrar(nombre)
+            if request.form.get('nuevo', None) == "Nuevo Rol por Proyecto":
+                return redirect(url_for('addRolPorProyecto', nombreProyecto = nombre))
+        return render_template(app.config['DEFAULT_TPL']+'/listRolesProyecto.html',
+			       conf = app.config,
+                               list = MgrRol().listarPorAmbito(nombre),
+                               nombreProyecto = nombre)
+
+
+@app.route('/showRolProyecto/<path:nombreProyecto>/<path:nombre>.html', methods=['GET','POST'])
+def showRolProyecto(nombreProyecto, nombre):
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        rol = MgrRol().search(nombre, nombreProyecto)
+        form = CreateFormRolProyecto(request.form, nombre = rol.nombre, 
+                                    descripcion = rol.descripcion)
+        if request.method == 'POST':
+            if request.form.get('edit', None) == "Modificar Rol":
+                return redirect(url_for('editRol', idRol = rol.idRol))
+            elif request.form.get('config', None) == "Configurar Permisos":
+                return redirect(url_for('configPermiso',  idRol = rol.idRol))
+            elif request.form.get('delete', None) == "Eliminar Rol":
+                return redirect(url_for('deleteRol',  idRol = rol.idRol))
+	return render_template(app.config['DEFAULT_TPL']+'/showRolProyecto.html',
+			       conf = app.config,
+			       form = form,
+                               ambito = nombreProyecto)
+
     

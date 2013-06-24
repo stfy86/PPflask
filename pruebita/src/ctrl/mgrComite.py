@@ -20,8 +20,7 @@ class MgrComite():
         else:
             return ":no borro el comite:"
     
-    def modificar(self, nombre, descripcionNew, cantMiembroNew):
-        comite = Comite.query.filter(Comite.nombre == nombre).first_or_404()
+    def modificar(self, comite, descripcionNew, cantMiembroNew):
         proyecto = Proyecto.query.filter(Proyecto.idProyecto == comite.proyectoId).first_or_404()
         if proyecto.estado == "Pendiente":
             comite.descripcion = descripcionNew
@@ -36,6 +35,9 @@ class MgrComite():
        
     def filtrar(self, nombre):
         return Comite.query.filter(Comite.nombre == nombre).first_or_404()
+
+    def filtrarXId(self, idComite):
+        return Comite.query.filter(Comite.idComite == idComite).first_or_404()
 
     def asignarUsuario(self, nombreProyecto,  nameUser):
         comite = self.search(nombreProyecto)
@@ -78,4 +80,9 @@ class MgrComite():
     def search(self, nombreProyecto):
         proyecto = Proyecto.query.filter(Proyecto.nombre == nombreProyecto).first_or_404()
         comite = Comite.query.filter(Comite.proyectoId == proyecto.idProyecto).first_or_404()
+        return comite
+    
+    def listarPorProyecto(self, nombreProyecto):
+        proyecto = Proyecto.query.filter(Proyecto.nombre == nombreProyecto).first_or_404()
+        comite = Comite.query.filter(Comite.proyectoId == proyecto.idProyecto).all()
         return comite
