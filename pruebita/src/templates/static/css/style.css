@@ -988,13 +988,13 @@ img.alignleft {
 	}
 
 #sidebar ul li li {
-	background: #FFFFFF url(/img/icon.gif) no-repeat top left;
+	background: #FFFFFF url(/img/star.png) no-repeat top left;
 	padding: 0px 0px 5px 20px;
 	margin: 0px;
 	}
 
 #sidebar ul li ul li {
-	background: #FFFFFF url(/img/icon.gif) no-repeat top left;
+	background: #FFFFFF url(/img/star.png) no-repeat top left;
 	padding: 0px 0px 5px 20px;
 	margin: 0px;
 	}
@@ -1045,13 +1045,13 @@ img.alignleft {
 	}
 
 #l_sidebar ul li li {
-	background: #FFFFFF url(/img/icon.gif) no-repeat top left;
+	background: #FFFFFF url(/img/star.png) no-repeat top left;
 	padding: 0px 0px 5px 20px;
 	margin: 0px;
 	}
 
 #l_sidebar ul li ul li {
-	background: #FFFFFF url(/img/icon.gif) no-repeat top left;
+	background: #FFFFFF url(/img/star.png) no-repeat top left;
 	padding: 0px 0px 5px 20px;
 	margin: 0px;
 	}
@@ -1102,13 +1102,13 @@ img.alignleft {
 	}
 
 #r_sidebar ul li li {
-	background: #FFFFFF url(/img/icon.gif) no-repeat top left;
+	background: #FFFFFF url(/img/star.png) no-repeat top left;
 	padding: 0px 0px 5px 20px;
 	margin: 0px;
 	}
 
 #r_sidebar ul li ul li {
-	background: #FFFFFF url(/img/icon.gif) no-repeat top left;
+	background: #FFFFFF url(/img/star.png) no-repeat top left;
 	padding: 0px 0px 5px 20px;
 	margin: 0px;
 	}
@@ -1419,4 +1419,4 @@ img.alignleft {
 	border-left: 1px dotted #BBBBBB;
 	margin: 0px;
 	padding: 0px;
-	}
+	}        

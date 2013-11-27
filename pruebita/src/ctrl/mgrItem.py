@@ -69,3 +69,13 @@ class MgrItem():
                 i.estado = "Eliminado"
         item.estado = "Activo" 
         db.session.commit()
+
+    def getListaItem(self, listaId):
+        list = []
+        for i in listaId:
+            item = Item.query.filter(Item.idItem == i).first_or_404()
+            list.append(item)
+        return list
+    
+    def aprobados(self):
+        return Item.query.filter(Item.estado == 'Aprobado')

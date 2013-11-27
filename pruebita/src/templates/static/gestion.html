@@ -1,36 +1,53 @@
 {% extends "static/layout.html" %}
-
 {% block title %} Modulo de Gestion de Cambio {% endblock %}
-
 {% block body %}
-    <div class="page-header">
-        
-        <h3>Modulo de Gestion</h3>
-            <li><a href="/">Inicio</a></li>
-				{% if not g.user %}
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-				{% else %}       
-            <dl><li><a href="{{ url_for('index') }}">Administrar Tipo De Item</a></li>
-             <ul>
-                <li> Crear Tipo de Item
-                <li> Modificar Tipo de Item 
-                <li> Eliminar Tipo de Item
-            </ul> 
-            </dl>
-                                
-            <dl><li><a href="{{ url_for('listProyectoPendiente') }}"> Administrar Proyecto</a></li>
-                    <ul>       
-                    <li> Administrar Fase de Proyecto (crear - cambiar orden de fase - importar fase - modificar fase - eliminar fase - cambiar estado)
-                    <li> Administrar Usuario de Proyecto (asignar/desasignar usuarios al proyecto con un rol especifico )
-                    <li> Administrar Usuarios de Comite de Proyecto (asignar/desasignar usuarios al comite)
-                    <li> Iniciar Proyecto </li>
-                    <li> Administrar Linea Base en Fase de Proyecto ( crear lb - modificar lb - modificar estado de lb - eliminar lb )
-                    <li> Calculo de Costo</li>
-                    <li> Calculo de Impacto</li>
-                    <li> Finalizar Proyecto </li>
-                    </ul>
-            </dl>
-                                {% endif %}
-    </div>
-
+{% if session.logged_in and g.proyecto != None and  "ModuloGestion" in g.permisos %}
+    <center>
+        <div class="page-header"><h3>Modulo de Gestion</h3></div>
+    {% if "GesRolProyecto" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('listRolProyecto') }}"> Gestionar Roles del Proyecto</a>
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  {{ url_for('listRolProyecto') }}"> Gestionar Roles del Proyecto</a>
+    {% endif %}
+    {% if "GesUserProyecto" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('listUserProyecto') }}"> Gestionar Usuario del Proyecto</a></p>
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  href="{{ url_for('listUserProyecto') }}"> Gestionar Usuario del Proyecto</a></p>
+    {% endif %}
+    {% if "GesUsuarioComite" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('listUserComite') }}"> Gestionar Usuario de Comite del Proyecto</a></p>
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('listUserComite') }}"> Gestionar Usuario de Comite del Proyecto</a></p>
+    {% endif %}
+    {% if "GesFase" in g.permisos %}
+    <p><img src="/img/link.png"/><a href="{{ url_for('listFases') }}"> Gestionar Fases del Proyecto</a></p>
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('listFases') }}"> Gestionar Fases del Proyecto</a></p>
+    {% endif %}
+    {% if "GesTiposDeItem" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('listTipoDeItem') }}"> Gestionar Tipo De Ítem </a></p>
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('listTipoDeItem') }}"> Gestionar Tipo De Ítem en el contexto de la fase</a></p>
+    {% endif %}
+    {% if "GesLB" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('listFasesActivasG') }}"> Gestionar Linea Base</a></p>
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('listFasesActivasG') }}"> Gestionar Linea Base</a></p>
+    {% endif %}
+    {% if "GesProyecto" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('gesProyecto') }}"> Gestionar Proyecto</a></p>
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('index') }}"> Gestionar Proyecto</a></p>
+    {% endif %}
+    </center>
+    <p><img src="/img/info.png"/></p>
+    <p>Proyecto: {{g.proyecto.nombre}} </p>
+    <p>Rol del Usuario:  {{ g.rol.nombre}} </p>
+    <p>Permisos del Usuario: {{ g.permisos}}</p>
+    </dl> 
+{% else%}
+    <p><img src="/img/info.png"/></p>
+    <p>No se logue al sistema o </p>
+    <p>No tiene el permiso: "ModuloGestion" </p>
+{% endif %}
 {% endblock %}

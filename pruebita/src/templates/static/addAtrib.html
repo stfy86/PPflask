@@ -3,15 +3,20 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-<div class="page-header"><h3> ADD ATRIBUTO</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('listAtrib') }}">Atributos</a></li>
-<div class="page-header"><h3>PASO 1: Rellenar los datos del Atributo</h3></div>
+<div class="page-header">
+    <center>
+    <h1>Agregar Tipo de Atributo</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+
+<h3>*PASO 1: Rellenar los datos del Atributo</h3>
     <form enctype="multipart/form-data" method="post" action="">
+       
       <dl>
         {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{ form.nombre(class="form-input", style="width: 200px") }}
+            {{ form.nombre(class="form-input") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             <div style="float:left;width: 100px;">
@@ -33,10 +38,10 @@
             <div style="float:left;width: 100px;">
             <LABEL for="detalles">Detalle</LABEL>
             </div>
-            <INPUT type="text" name="detalle" style="width:200px" class="form-input" id="detalles">
+            <INPUT type="text" name="detalle"  class="form-input" id="detalles">
             <br />
             {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
+            {{form.descripcion(class="textarea") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
       </dl>
 <script type="text/javascript">
@@ -67,7 +72,8 @@ function chequea(campo,boton, campo2){
 }
 </script>
       <p><input class="button" type="submit" value="Crear">
-         <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+         <input class="button" type="button" value="Cancelar" onclick="location.href = '/listAtrib'"> <p>
+        
  </form>
   
 {% endblock %}

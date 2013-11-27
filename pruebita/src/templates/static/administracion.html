@@ -1,46 +1,25 @@
 {% extends "static/layout.html" %}
-
 {% block title %} Modulo de Administracion {% endblock %}
-
 {% block body %}
-    <div class="page-header">
-        
-            <h3>Modulo de Administracion</h3>
-            <li><a href="/">Inicio</a></li>
-				{% if not g.user %}
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-				{% else %}
-            <dl>
-            <li><a href="{{ url_for('listProject') }}">Administrar Proyecto</a></li>
-            <ul>
-                <li> Crear Proyecto             
-                <li> Modificar Proyecto
-                <li> Eliminar Proyecto
-                <li> Crear Comite
-                <li> Administrar Rol
-                <li> Administrar Comite
-            </ul>
-            </dl>
-                                <dl>
-            <li><a href="{{ url_for('listUser') }}">Administrar Usuarios del Sistema</a></li>
-            <ul>
-                <li> Crear Usuario 
-                <li> Modificar Usuario
-                <li> Actualizar Estado de Usuario    
-                <li> Eliminar Usuario
-            </ul>  
-                                </dl>
-                                <dl>
-            <li><a href="{{ url_for('listAtrib') }}">Administrar Atributos del Sistema</a></li>
-            <ul>
-                <li> Crear Atributo 
-                <li> Modificar Atributo  
-                <li> Eliminar Atributo
-            </ul> 
-                        </dl>
-                                {% endif %}
+{% if session.logged_in and g.user.name == "admin"%}
+    <div class="page-header"> 
+        <center>
+            <h3>Modulo de Administracion</h3>       
+                  
+            <p><img src="/img/link.png"/><a href="{{ url_for('listProject') }}">Administrar Proyectos del Sistema</a> </p>
+            <p><img src="/img/link.png"/><a href="{{ url_for('listUser') }}">Administrar Usuarios del Sistema</a></p>
+            <p><img src="/img/link.png"/><a href="{{ url_for('listAtrib') }}">Administrar Atributos del Sistema</a></p>
+        </center>            
     </div>
-  
-{% endblock %}
+{% else%}
+<img src="/img/info.png"/>
+<p> 
+<ol type="1">
+    <li> No se logueo al sistema o </li>
+    <li> No tiene el permiso: "ModuloAdministracion" </li>
+    <li> No es el usuario admin</li>
+    
+</ol>
 
-
+{% endif %}
+ {% endblock %}

@@ -4,15 +4,13 @@
 
 {% block body %}
 
-           
                     {% if not g.user %}
     <h4> Sistema PP </h4>
+                    {% elif g.user.name == "admin" %}
+    <h4> Bienvenido {{g.user}}!!! </h4>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Administracion</a></p>
                     {% else %}
-    <h4> Bienvenido !</h4>
-    <h3> Modulos del Sistema </h3>
-    <li><a href="{{ url_for('administracion') }}">Administración</a></li>
-    <li><a href="{{ url_for('gestion') }}">Gestión</a></li>
-    <li><a href="{{ url_for('desarrollo') }}">Desarrollo</a></li>
+    <h4> Bienvenido {{g.user}}!!! </h4>
+    <p><img src="/img/link.png"/><a href="{{ url_for('misProyectos') }}">Mis Proyectos</a></p>
                     {% endif %}
-
 {% endblock %}

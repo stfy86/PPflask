@@ -1,0 +1,39 @@
+{% extends "static/layout.html" %}
+{% block title %}Mis Modulos{% endblock %}
+{% block body %}
+<div class="page-header">
+<center>
+<h3>Modulos del Sistema</h3>
+</center>
+</div>
+<div>
+<center>
+{% if not session.logged_in and g.proyecto != None%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('login') }}">Login</a></p>
+{% else %}
+    {% if "ModuloAdministacion" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}"> Modulo de Administración</a></p>
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  {{ url_for('administracion') }}"> Modulo de Administracion</a></p>               
+    {% endif %}
+    {% if "ModuloGestion" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">  Modulo de Gestion </a></p>          
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  {{ url_for('gestion') }}">  Modulo de Gestion </a></p>                
+    {% endif %}
+    {% if "ModuloDesarrollo" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('desarrollo') }}">  Modulo de Desarrollo</a></p>
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  {{ url_for('desarrollo') }}">  Modulo de Desarrollo </a></p>                
+    {% endif %}
+</center>
+</div> 
+    <p><img src="/img/info.png"/></p>
+    <p>Proyecto: {{g.proyecto.nombre}} </p>
+    <p>Rol del Usuario:  {{ g.rol.nombre}} </p>
+    <p>Permisos del Usuario: {{ g.permisos}}</p>
+     
+{% endif %}
+
+    
+{% endblock %}

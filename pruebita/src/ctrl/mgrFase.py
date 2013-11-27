@@ -3,8 +3,17 @@ from sqlalchemy import or_, and_
 
 class MgrFase():
 
+    def existe(self, fase):
+        f = Fase.query.filter(and_(Fase.nombre == fase.nombre, Fase.proyectoId == fase.proyectoId)).first()
+        if f != None:
+            return True
+        else:
+            return False
+
     def guardar(self, fase):
         proyecto = Proyecto.query.filter(Proyecto.idProyecto == fase.proyectoId).first_or_404()
+        if self.existe(fase):
+            return ":NO guardo la fase - existe una fase con el mismo nombre en el proyecto:"
         if proyecto.estado == "Pendiente":
             db.session.add(fase)
             db.session.commit()
@@ -14,14 +23,18 @@ class MgrFase():
                
     def borrar(self, fase):
         proyecto = Proyecto.query.filter(Proyecto.idProyecto == fase.proyectoId).first_or_404()
+        if not self.existe(fase):
+            return ":NO borro la fase - la fase no existe:"
         if proyecto.estado == "Pendiente":
             db.session.delete(fase)
             db.session.commit()
-            return ":elimino la fase:"
+            return ":borro la fase:"
         else:
-            return ":NO se elimino la fase:"
+            return ":NO borro la fase:"
     
     def modificar(self, fase,  descripcionNew, tipoDeItemIdNew):
+        if not self.existe(fase):
+            return ":NO modifico la fase - la fase no existe:"
         if fase.estado == "Pendiente":
             fase.descripcion = descripcionNew
             fase.tipoDeItemId = tipoDeItemIdNew
@@ -42,12 +55,7 @@ class MgrFase():
         proyecto = Proyecto.query.filter(Proyecto.idProyecto == idPro).first_or_404()
         nombrePro = proyecto.nombre
         return nombrePro
-        
-    def estado(self, nombre, estadoNew):
-        fase = Fase.query.filter(Fase.nombre == nombre).first_or_404()
-        fase.estado = estadoNew        
-        db.session.commit()
-        
+                
     def filtrarItems(self, nombre):
         fase = Fase.query.filter(Fase.nombre == nombre).first_or_404()
         return fase.listaItem
@@ -155,19 +163,31 @@ class MgrFase():
         if fase.estado == "Activo" and estadoNew == "Finalizado" and self.itemsAprobados(fase):
             fase.estado = estadoNew        
             db.session.commit()
-            return ":modifico estado: todos los items estan aprobados"
-        if fase.estado == "Pendiente" and estadoNew == "Activo":
+            return ":modifico estado: de Activo a " + estadoNew
+        if fase.estado == "Pendiente" and estadoNew == "Activo" and fase.tipoDeItemId != None:
             fase.estado = estadoNew        
             db.session.commit()
-            return ":modifico estado: desea crear items e ir aprobando los items"           
+            return ":modifico estado:  de Pendiente a" + estadoNew
         if fase.estado == "Finalizado" and estadoNew == "Activo":
             fase.estado = estadoNew        
             db.session.commit()
-            return ":modifico estado: desea modificar algun item de la fase"
-        return ":NO modifico el estado:"
+            return ":modifico estado: de Finalizado a"+ estadoNew
+        return ":NO modifico el estado: de " + fase.estado + " a " +estadoNew
     
     def itemsAprobados(self, fase):
         for item in fase.listaItem:
             if item.estado != "Aprobado":
                 return False
         return True
+    
+    def lineaBaseDeFase(self, fase):
+        return fase.listaLineaBase
+    
+    def listItemsAprobados(self, fase):
+        list = []
+        for item in fase.listaItem:
+            if item.estado == "Aprobado":
+                itemN = Item.query.filter(Item.idItem == item.idItem).first()
+                list.append(itemN)
+        return list
+    

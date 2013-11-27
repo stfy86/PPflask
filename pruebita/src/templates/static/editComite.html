@@ -3,30 +3,28 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Comite</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<div class="page-header"><h3>Editar Comite</h3></div>
+<div class="page-header">
+    <center>
+    <h1>Administrar Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+<h3>Editar Comite</h3>
     <form method="post" action="" runat="server">
-
       <dl>
             {{ form.csrf }}
             {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:300px") }}
+            {{form.descripcion(class="textarea", autofocus=true) }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.cantMiembro.label(style="float: left; width: 100px;") }}
-            {{form.cantMiembro(class="form-input", style="width:300px") }}
+            {{form.cantMiembro(class="form-input") }}
             {% for error in form.cantMiembro.errors %} {{ error }} {% endfor %}
             <br />   
       </dl>
-        
-      <br/>
-      <p>
-          <br/>
-          <input  class="button"  type="submit" value="Add"> 
-          <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">  
-          <br/>
-      </p>
-      
+        <div class="buttons"> 
+            <input  class="button"  type="submit" value="EditComite"> 
+            <input class="button" type="button" value="Back" onclick="document.location='/showComite/{{idProyecto}}/{{idComite}}.html';">
+        </div>  
     </form>
 {% endblock %}

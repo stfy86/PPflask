@@ -7,51 +7,26 @@ from flask import Flask, render_template, request, redirect, url_for, g, \
 #------------------------------------------------------------------------------#
 # MODULO DESARROLLO
 #------------------------------------------------------------------------------#
+   
+# Desarrollo Item
 
-@app.route('/listProyectoActivo')
-def listProyectoActivo():
+@app.route('/listFasesActivasD', methods=['GET','POST'])
+def listFasesActivasD():
     if g.user is None:
         return redirect(url_for('login'))
     else:
-        return render_template(app.config['DEFAULT_TPL']+'/listProyectoActivo.html',
-                           conf = app.config,
-                           list = MgrProyecto().listarActivo())
-                           
-@app.route('/showInitActivo/<path:nombre>.html', methods=['GET','POST'])
-def showInitActivo(nombre):
-    if g.user is None:
-        return redirect(url_for('login'))
-    else:
-        project = MgrProyecto().filtrar(nombre)
-        form = ShowFormProject(request.form, nombre = project.nombre,
-               descripcion = project.descripcion, 
-               fechaDeCreacion = project.fechaDeCreacion,
-               estado = project.estado,
-               presupuesto = project.presupuesto)
-        if request.method == 'POST':
-            if request.form.get('verFases', None) == "Ver Fases":
-                return redirect(url_for('listFasesActivasProyecto', nombre = project.nombre))            
-	return render_template(app.config['DEFAULT_TPL']+'/showInitActivo.html',
+        return render_template(app.config['DEFAULT_TPL']+'/listFasesActivasD.html',
 			       conf = app.config,
-			       form = form,
-                               listU = MgrProyecto().usersDeProyecto(nombre),
-                               ambito = nombre)
-                               
-@app.route('/listFasesActivasProyecto/<path:nombre>.html', methods=['GET','POST'])
-def listFasesActivasProyecto(nombre):
-    if g.user is None:
-        return redirect(url_for('login'))
-    else:
-        return render_template(app.config['DEFAULT_TPL']+'/listFasesActivasProyecto.html',
-			       conf = app.config,
-                               list = MgrProyecto().fasesActivasDeProyecto(nombre),
-                               nombreProyecto = nombre )
- 
+                               list = MgrProyecto().fasesActivasDeProyecto(g.proyecto.nombre),
+                                )
+                  
+
 @app.route('/admItem/<path:idFase>.html')
 def admItem(idFase):
     if g.user is None:
         return redirect(url_for('login'))
     else:
+        
         return render_template(app.config['DEFAULT_TPL']+'/admItem.html',
                            identFase = idFase,
                            nomProyecto = MgrFase().buscarPro(idFase),
@@ -94,16 +69,19 @@ def addItem(idFase):
                 MgrItem().guardar(item)
                 MgrItem().modificarCodigo(nom)
                 flash('Se ha creado correctamente el item')
-                if request.form.get('crear', None) == "Crear":
-                    return redirect(url_for('listItem', idFase = idFase))
+                return redirect(url_for('listItem', idFase = idFase))
             else:
                 return render_template(app.config['DEFAULT_TPL']+'/addItem.html',
                             conf = app.config,
-                            form = form)
+                            form = form,
+                            tipoItem = MgrFase().filtrarTipoItems(idFase),
+                            idFase = idFase
+                            )
     return render_template(app.config['DEFAULT_TPL']+'/addItem.html',
                 conf = app.config,
                 tipoItem = MgrFase().filtrarTipoItems(idFase),
-                form = CreateFormItem())
+                form = CreateFormItem(),
+                idFase = idFase)
                 
 @app.route('/showItem/<path:idItem>.html', methods=['GET','POST'])
 def showItem(idItem):
@@ -126,7 +104,10 @@ def showItem(idItem):
                 return redirect(url_for('relacion', idItem = item.idItem))
 	return render_template(app.config['DEFAULT_TPL']+'/showItem.html',
 			       conf = app.config,
-			       form = form)
+			       form = form,
+                               idItem = idItem,
+                               idFase = item.faseId
+                               )
                                
 @app.route('/editItem/<path:idItem>.html', methods=['GET','POST'])
 def editItem(idItem):
@@ -142,9 +123,8 @@ def editItem(idItem):
                         tipoDeItem = item.tipoDeItemId,
                         complejidad = item.complejidad,
                         costo = item.costo)
-            if request.method == 'POST':
-                if form.validate():
-                    item = Item(codigo = cod,
+            if request.method == 'POST' and form.validate():
+                item = Item(codigo = cod,
                                 nombre = request.form['nombre'],
                                 version = request.form['version'],
                                 complejidad = request.form['complejidad'],
@@ -162,7 +142,8 @@ def editItem(idItem):
 			       conf = app.config,
                                item = MgrItem().filtrarId(idItem),
                                version = item.version+1,
-			       form = form)
+			       form = form, 
+                               idItem = idItem)
 
 @app.route('/deleteItem/<path:idItem>.html')
 def deleteItem(idItem):
@@ -194,7 +175,8 @@ def editItemState(idItem):
 		return redirect(url_for('listItem', idFase = fase))
 	return render_template(app.config['DEFAULT_TPL']+'/editItemState.html',
 			       conf = app.config,
-			       form = EditStateItemForm())
+			       form = EditStateItemForm(),
+                               idItem = idItem)
                                
 @app.route('/revivirItem<path:idFase>.html')
 def revivirItem(idFase):
@@ -303,81 +285,111 @@ def relacion(idItem):
                 flash("Se han guardado los cambios exitosamente")
     return render_template(app.config['DEFAULT_TPL']+'/relacion.html',
                        id = idItem,
+                       idItem = idItem,
                        conf = app.config)
 
 
 
 
+#------------------------------------------------------------------------------#
+# MODULO DESARROLLO
+#------------------------------------------------------------------------------#
+   
+# Solicitud de Cambio
+
+@app.route('/listSolicitudes', methods=['GET', 'POST'])
+def listSolicitudes():
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        return render_template(app.config['DEFAULT_TPL'] + '/listSolicitudes.html',
+                               conf=app.config,
+                               list=MgrSolicitud().listar()
+                               )
+
+@app.route('/showSolicitud/<path:idSolicitud>', methods=['GET', 'POST'])
+def showSolicitud(idSolicitud):
+    """  Muestra un formulario no editable del item con las opciones de modificar, eliminar item """
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        if request.method == 'POST':
+            s = MgrSolicitud().por_id(idSolicitud)
+            form = ShowFormSolicitud(request.form, nombre = s.nombre)
+            if str(g.user.idUser) in s.votantes.split(','):
+                flash('Ud ya a votado!!!')
+                return render_template(app.config['DEFAULT_TPL'] + '/showSolicitud.html',conf=app.config,s=s,form=form)
+            
+            if request.form.get('aceptar')=='1':
+                flash('si')
+                flash(s.votosNegativos)
+                s.votosPositivos=s.votosPositivos+1
+            else:
+                flash('no')
+                s.votosNegativos=s.votosNegativos+1
+            s.votantes=s.votantes+str(g.user.idUser)+','
+            MgrSolicitud().guardar(s)
+            return render_template(app.config['DEFAULT_TPL'] + '/showSolicitud.html',conf=app.config,s=s,form=form)
+        else:
+            s = MgrSolicitud().por_id(idSolicitud)            
+            form = ShowFormSolicitud(request.form, nombre = s.nombre)
+            return render_template(app.config['DEFAULT_TPL'] + '/showSolicitud.html',
+                               conf=app.config,
+                               idSolicitud=idSolicitud,form=form,s=s
+                               )
+                               
+    s = MgrSolicitud().por_id(idSolicitud)
+    form = ShowFormSolicitud()
+    return render_template(app.config['DEFAULT_TPL'] + '/showSolicitud.html',
+                               conf=app.config,
+                               idSolicitud=idSolicitud,form=form,s=s
+                               )
 
 
 # Solicitud de cambio
 
-@app.route('/addSolicitud/<path:nombre>.html', methods=['GET','POST'])
-def addSolicitud(nombre):
+@app.route('/addSolicitud', methods=['GET', 'POST'])
+def addSolicitud():
     """ Agrega una Solicitud """
+    items = []
     if g.user is None:
         return redirect(url_for('login'))
     else:
         if request.method == 'POST':
-            form = CreateFormSolicitud(request.form,
-                                     request.form['nombre'],
-                                     descripcion = request.form['descripcion'])
-            if form.validate():
-                proyecto = MgrProyecto().filtrar(nombre)
-                solicitud = Solicitud(nombre = request.form['nombre'],
-                                   descripcion = request.form['descripcion'])
-                solicitud.descripcion = request.form['descripcion']
-                solicitud.Comite = proyecto.Comite
+            form = CreateFormSolicitud(nombre=request.form['nombre'],
+                                       descripcion=request.form['descripcion'],
+                                       proyecto_nombre=request.form['proyecto_nombre']
+                                       )
+            if form.validate() and request.form.get('lista') != None:
+
+                proyecto = MgrProyecto().filtrar(request.form['proyecto_nombre'])
+                solicitud = Solicitud(nombre=request.form['nombre'],
+                                      descripcion=request.form['descripcion'])
+
+
+                solicitud.Comite = proyecto.comite
                 solicitud.estado = 'Pendiente'
                 solicitud.votosPositivos = 0
                 solicitud.votosNegativos = 0
-                
+                solicitud.autor = g.user
                 MgrSolicitud().guardar(solicitud)
+
+                for id in request.form['lista']:
+                    item = MgrItem().filtrarId(id)
+                    solicitud.itemsSolicitud.append(item)
+
+
                 flash('Se ha creado correctamente la solicitud')
-                
-                return redirect(url_for('seleccionarItemsProyecto', nombre = solicitud.nombre))
+
+                return redirect(url_for('listSolicitudes'))
             else:
-                return render_template(app.config['DEFAULT_TPL']+'/formSolicitud.html',
-                            conf = app.config,
-                            form = form)
-                
-    return render_template(app.config['DEFAULT_TPL']+'/formSolicitud.html',
-                conf = app.config,
-                form = CreateFormSolicitud())
-                
+                flash('Debe seleccionar un item y completar los datos de la solicitud')
+                return render_template(app.config['DEFAULT_TPL'] + '/formSolicitud.html',
+                                       conf=app.config,
+                                       form=form,
+                                       list=MgrItem().aprobados())
 
-@app.route('/seleccionarItemsProyecto/<path:nombre>.html', methods=['GET','POST'])
-def seleccionarItemsProyecto(nombre):
-    if g.user is None:
-        return redirect(url_for('login'))
-    else:
-        if request.method == 'POST':
-            lista = request.form.getlist("lista")
-            MgrSolicitud().asignarItems(nombre, lista)
-            flash('Se ha asignado correctamente los items')
-            return redirect(url_for('desarrollo'))
-        
-        seleccion = []
-        seleccion = MgrProyecto().filtrarItemSolicitud(nombre)
-        
-        
-        return render_template(app.config['DEFAULT_TPL']+'/seleccionarItems.html',
-                                conf = app.config,
-                                list = seleccion)
-                               
-
-@app.route('/editSolicitud/<path:nombre>.html', methods=['GET','POST'])
-def editSolicitud(nombre):
-    if g.user is None:
-        return redirect(url_for('login'))
-    else:
-        solicitud = MgrSolicitud().filtrar(nombre)
-        form = EditFormSolicitud(request.form, nombre = solicitud.nombre,
-                    descripcion = solicitud.descripcion)
-        if request.method == 'POST' and form.validate():
-            MgrSolicitud().modificar(nombre, request.form['nombre'], request.form['descripcion'])
-            flash('Se ha modificado correctamente la solicitud')
-            return redirect(url_for('desarrollo'))
-    return render_template(app.config['DEFAULT_TPL']+'/editSolicitud.html',
-                            conf = app.config,
-                            form = form)
+    return render_template(app.config['DEFAULT_TPL'] + '/formSolicitud.html',
+                           conf=app.config,
+                           form=CreateFormSolicitud(proyecto_nombre=g.proyecto),
+                           list=MgrItem().aprobados())

@@ -1,37 +1,38 @@
 {% extends "static/layout.html" %}
-{% block title %}Lista de Usuarios{% endblock %}
+{% block title %}List tipoDeItem{% endblock %}
 {% block body %}
- 
-</head><div class="page-header"><h3>Usuarios</h3></div>
-<form runat="server">
-             
+<div class="page-header">
+    <center>
+    <h1>Gestionar Tipo de Item </h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    <h3>Lista de Tipo de Item</h3>
+    </center>
+</div>
+<form method="post" action="" runat="server">             
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
             <td class="tableHeader">
             </td>
-            <td colspan="5" class="filter">
+            <td colspan="2" class="filter">
                 Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
                 <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
             </td>
         </tr> 	
 		<tr>
-			<th><a href='#' title="Click Header to Sort">Nick</a></th>
 			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
-			<th><a href='#' title="Click Header to Sort">Apellido</a></th>
-			<th><a href='#' title="Click Header to Sort">Estado</a></th>
+			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
 			
 		</tr>
 </thead>
-    {% for user in list %}
+    {% for tipoDeItem in list %}
     <tr>
-       <td><a href="{{ url_for('showUser', nombre = user.name )}}"</a><h5>{{user.name}}</h5></td>
-       <td><a href="{{ url_for('showUser', nombre = user.name )}}"</a><h5>{{user.nombre}}</h5></td>
-       <td><a href="{{ url_for('showUser', nombre = user.name )}}"</a><h5>{{user.apellido}}</h5></td>
-       <td><a href="{{ url_for('showUser', nombre = user.name )}}"</a><h5>{{user.estado}}</h5></td>
+       <td><a href="{{ url_for('showTipoDeItem', idTipoDeItem= tipoDeItem.idTipoDeItem )}}"</a><h5>{{ tipoDeItem.nombre }}</h5></td>
+       <td><a href="{{ url_for('showTipoDeItem', idTipoDeItem= tipoDeItem.idTipoDeItem )}}"</a><h5>{{ tipoDeItem.descripcion }}</h5></td>
     </tr>
     {% endfor %}
-   
+
+</tbody>   
 <tfoot>
 	    <tr id="pagerTwo">
 	        <td colspan="5">
@@ -54,7 +55,17 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-</form>   
- <p><input class="button" type="button" value="Crear Usuario" onclick="document.location='addUser';"><p>
+<div>
+    <input class="button" type="button" value="Crear Tipo de Item" onclick="document.location='addTipoDeItem';">
+    <input class="button" type="button" value="Back" onclick="document.location='/gestion';">
+</div>
+</form>
+
+ 
 
 {% endblock %}
+
+
+
+
+

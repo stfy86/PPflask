@@ -1,10 +1,14 @@
 {% extends "static/layout.html" %}
 {% block title %}List Atrib{% endblock %}
 {% block body %}
-<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Tipo de Atributo</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('administracion') }}">Modulo Administracion</a></li>
-</head><div class="page-header"><h3>Lista Tipos de Atributos</h3></div>
+
+<div class="page-header">
+<center>
+<h1>Administrar Tipo de Atributo</h1>
+<p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo de Administracion</a></p>
+<h3>Lista de Tipo de Atributo</h3>
+</center>
+</div>
 <form runat="server">
 <table id="tableTwo" class="yui">
 <thead>
@@ -58,6 +62,10 @@
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
 </form>
- <p><input class="button" type="button" value="Crear Atributo" onclick="document.location='addAtrib';"><p>
+<div>
+    <input class="button" type="button" value="Crear Atributo" onclick="document.location='addAtrib';">
+        <input class="button" type="button" value="Back" onclick="document.location='administracion';">
+</div>
+ 
 
 {% endblock %}

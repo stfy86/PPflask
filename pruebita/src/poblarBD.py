@@ -24,34 +24,40 @@ def createProyecto():
     # crea un proyecto
     p = Proyecto(nombre="proyecto1", descripcion="sistema 1", presupuesto=10000)
     MgrProyecto().guardar(p)
-    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    per =  MgrPermiso().filtrarXModulo("ModuloGestion")
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre, permisos=per)
     MgrRol().guardar(r)
     MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "lory")
     p = MgrProyecto().filtrar("proyecto1")
     c = Comite(nombre="comite-proyecto1", descripcion="comite de cambio", cantMiembro=3, proyectoId=p.idProyecto)
     MgrComite().guardar(c)
-    MgrComite().asignarUsuario(nombreProyecto = "proyecto1",  nameUser= "lory")
+    u = MgrProyecto().getUserLider(p.idProyecto)
+    MgrComite().asignarUsuario(p,u)
 
     p = Proyecto(nombre="proyecto2", descripcion="sistema 2", presupuesto=20000)
     MgrProyecto().guardar(p)
-    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    per =  MgrPermiso().filtrarXModulo("ModuloGestion")
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre, permisos=per)
     MgrRol().guardar(r)
     MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "vavi")
     p = MgrProyecto().filtrar("proyecto2")
     c = Comite(nombre="comite-proyecto2", descripcion="comite de cambio", cantMiembro=4, proyectoId=p.idProyecto)
     MgrComite().guardar(c)
-    MgrComite().asignarUsuario(nombreProyecto = "proyecto2",  nameUser= "vavi")
-    
+    u = MgrProyecto().getUserLider(p.idProyecto)
+    MgrComite().asignarUsuario(p,u)
+
     p = Proyecto(nombre="proyecto3", descripcion="sistema 3", presupuesto=30000)
     MgrProyecto().guardar(p)
-    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre)
+    per =  MgrPermiso().filtrarXModulo("ModuloGestion")
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= p.nombre, permisos=per)
     MgrRol().guardar(r)
     MgrProyecto().asignarLider(proyecto = p , rol = r, nameLider = "guille")
     p = MgrProyecto().filtrar("proyecto3")
     c = Comite(nombre="comite-proyecto3", descripcion="comite de cambio", cantMiembro=5, proyectoId=p.idProyecto)
     MgrComite().guardar(c)
-    MgrComite().asignarUsuario(nombreProyecto = "proyecto3",  nameUser= "guille")    
-    
+    u = MgrProyecto().getUserLider(p.idProyecto)
+    MgrComite().asignarUsuario(p,u)
+
     print ":cargo proyectos:"
         
 def createAtrib():
@@ -72,76 +78,77 @@ def createAtrib():
   
 def createRol():
     """ Carga los roles del sistema """
-    r = Rol(nombre="Administrador", descripcion="rol de administrador", ambito= "none project")
+    per =  MgrPermiso().filtrarXModulo("ModuloAdministracion")
+    r = Rol(nombre="Administrador", descripcion="rol de administrador", ambito= "none project", permisos=per)
     MgrRol().guardar(r)
        
-    r = Rol(nombre="Desarrollador", descripcion="rol de desarrollador", ambito= "none project")
+    per =  MgrPermiso().filtrarXModulo("ModuloDesarrollo")   
+    r = Rol(nombre="Desarrollador", descripcion="rol de desarrollador", ambito= "none project", permisos = per)
     MgrRol().guardar(r)
     
-    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= "none project")
+    per =  MgrPermiso().filtrarXModulo("ModuloGestion")
+    r = Rol(nombre="LiderDeProyecto", descripcion="rol de lider", ambito= "none project", permisos=per)
     MgrRol().guardar(r)
   
-    r = Rol(nombre="Invitado", descripcion="invitado del sistema", ambito= "none project")
+    per = []
+    r = Rol(nombre="Invitado", descripcion="invitado del sistema", ambito= "none project", permisos=per)
     MgrRol().guardar(r)
     print ":cargo los roles del sistema con los permisos:"
 
     
 def createPermiso():
     """ Carga permisos predefinidos """
-    p = Permiso("ModuloAdministracion","Acceso al modulo de administracion del sistema")
+    # Permisos del Sistema
+    p = Permiso("ModuloAdministracion","permite acceder al modulo de administracion",1)
     MgrPermiso().guardar(p)
-    p = Permiso("ModuloGestion","Acceso al modulo de gestion del sistema")
+    p = Permiso("ModuloGestion","permite acceder al modulo de gestion",2)
     MgrPermiso().guardar(p)
-    p = Permiso("ModuloDesarrollo","Acceso al modulo desarrollo del sistema")
-    MgrPermiso().guardar(p)
-    p = Permiso("AdmUsuario","Permite crear/modificar/eliminar/cambiar de estado un usuario dentro de un proyecto")
-    MgrPermiso().guardar(p)
-    p = Permiso("AdmUsuariosDeProyecto","Permite asignar/desasignar usuarios a un proyecto del sistema")
-    MgrPermiso().guardar(p)
-    p = Permiso("AdmRolDeProyecto","Permite crear/modificar/eliminar/configurar un rol")
-    MgrPermiso().guardar(p)
-    p = Permiso("AdmAtributo","Permite crear/modificar/eliminar un tipo de atributo")
-    MgrPermiso().guardar(p)
-    p = Permiso("AdmComite","Permite crear/modificar un comite de cambio en un proyecto")
-    MgrPermiso().guardar(p)
-    p = Permiso("AdmUsuarioComite","Permite asignar/desasignar usuarios al comite de cambio de un proyecto")
-    MgrPermiso().guardar(p)
-    p = Permiso("CrearProyecto","Permite crear un proyecto en el sistema")
-    MgrPermiso().guardar(p)
-    p = Permiso("ModificarProyecto","Permite modificar datos de un proyecto")
-    MgrPermiso().guardar(p)
-    p = Permiso("AsignarLiderAProyecto","Permite asignar lider a un proyecto del sistema")
-    MgrPermiso().guardar(p)
-
-    p = Permiso("AdmRolesDeUsuarios","Permite asignar/desasignar Roles a Usuario de un proyecto")
-    MgrPermiso().guardar(p)
-    p = Permiso("CalculoCosto","Permite generar el costo")
-    MgrPermiso().guardar(p)
-    p = Permiso("CalculoImpacto","Permite generar el impacto")
+    p = Permiso("ModuloDesarrollo","permite acceder al modulo de desarrollo",3)
     MgrPermiso().guardar(p)
     
-    p = Permiso("AdmCambio","Permite administrar cambio")
+    
+    #Administrador
+    p = Permiso("AdmUsuario","Permite crear/modificar/eliminar/cambiar de estado un usuario dentro de un proyecto",1)
     MgrPermiso().guardar(p)
-    p = Permiso("AdmSolicitud","Permite gestionar una solicitud")
+    p = Permiso("AdmAtributo","Permite crear/modificar/eliminar un tipo de atributo",1)
     MgrPermiso().guardar(p)
-    p = Permiso("AdmReporte","Permite generar reporte")
+    p = Permiso("AdmComite","Permite crear/modificar un comite de cambio en un proyecto",1)
     MgrPermiso().guardar(p)
-    p = Permiso("AdmItemDeFase","Permite asignar item a fase")
+    p = Permiso("AdmProyecto","Permite crear/modificar/eliminar/modificar estado/asignar lider un proyecto en el sistema",1)
+    MgrPermiso().guardar(p)
+   
+    #Lider
+    p = Permiso("GesUsuarioComite","Permite asignar/desasignar usuarios al comite de cambio de un proyecto",2)
+    MgrPermiso().guardar(p)
+    p = Permiso("Calculo","Permite generar el calculo de costo e impacto",2)
+    MgrPermiso().guardar(p)
+    p = Permiso("GesProyecto","Permite gestionar un proyecto, iniciar o finalizar",2)
+    MgrPermiso().guardar(p)
+    p = Permiso("GesFase","Permite gestionar las fases de un proyecto",2)
+    MgrPermiso().guardar(p)
+    p = Permiso("GesLB","Permite gestinar la LB dentro de una fase de un proyecto",2)
+    MgrPermiso().guardar(p)
+    p = Permiso("GesTiposDeItem","Permite crear/modificar/eliminar los tipos de item de una fase",2)
+    MgrPermiso().guardar(p)
+    p = Permiso("GesUserProyecto","Permite asignar/desasignar usuarios a un proyecto del sistema",2)
+    MgrPermiso().guardar(p)
+    p = Permiso("GesRolProyecto","Permite crear/modificar/eliminar/configurar un rol",2)
     MgrPermiso().guardar(p)
 
-    p = Permiso("AdmProyecto","Permite gestionar un proyecto")
+    #desarrollador
+    p = Permiso("DesCambio","Permite realizar cambio",3)
     MgrPermiso().guardar(p)
-    p = Permiso("AdmFase","Permite gestionar las fases de un proyecto")
+    p = Permiso("DesSolicitud","Permite realizar una solicitud",3)
     MgrPermiso().guardar(p)
-    p = Permiso("AdmLB","Permite gestinar la LB dentro de una fase de un proyecto")
+    p = Permiso("DesReporte","Permite desarrollar un reporte de un proyecto, fase e item",3)
     MgrPermiso().guardar(p)
-    p = Permiso("AdmTiposDeItem","Permite gestionar los tipos de item de una fase")
+    p = Permiso("DesItemFase","Permite desarrollar un item en una fase",3)
     MgrPermiso().guardar(p)
-    p = Permiso("AdmItem","Permite gestionar item de una fase")
+    p = Permiso("DesItem","Permite realizar un item",3)
     MgrPermiso().guardar(p)
     print ":cargo permisos:"
- 
     
+        
 def createTipoDeItem():
     """ Carga Tipo de Item con tipos de Atributos asignados """
     t = TipoDeItem(nombre="TipoDeItem1", descripcion="tipo de item con atributo numerico de precicion 20")
@@ -225,9 +232,16 @@ def createFase():
     
 def asignarRol():
     rol = MgrRol().search("Invitado", "none project")
-    MgrUser().addRol("stfy", rol)
-    MgrUser().addRol("lory", rol)
-    MgrUser().addRol("vavi", rol)
-    MgrUser().addRol("guille", rol)
-    MgrUser().removeRol("guille", rol)
+    user = MgrUser().filtrar("stfy")
+    MgrUser().addRol(user, rol)
+    user = MgrUser().filtrar("lory")
+    MgrUser().addRol(user, rol)
+    user = MgrUser().filtrar("vavi")
+    MgrUser().addRol(user, rol)
+    user = MgrUser().filtrar("guille")
+    MgrUser().addRol(user, rol)
+    rol = MgrRol().search("Administrador", "none project")
+    user = MgrUser().filtrar("admin")
+    MgrUser().addRol(user, rol)
+    
     print ":creo invitados:"    

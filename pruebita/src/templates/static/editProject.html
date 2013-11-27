@@ -3,29 +3,29 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Proyecto</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('listProject') }}">Proyectos</a></li>
-
-<div class="page-header"><h3>Editar Proyecto</h3></div>
+<div class="page-header">
+    <center>
+    <h1>Administrar Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+<h3>*PASO 1: Modificar los datos del proyecto </h3>
 <form method="post" action="" runat="server">
   <dl>
         {{ form.csrf }}
-        {{ form.descripcion.label(style="float: left; width: 100px;") }}
-        {{form.descripcion(class="form-input", style="height:50px;width:300px") }}
+        {{ form.descripcion.label(style="float: left; width: 105px;") }}
+        {{form.descripcion(class="textarea", autofocus=true) }}
         {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
         <br />
-        {{ form.presupuesto.label(style="float: left; width: 100px;") }}
-        {{form.presupuesto(class="form-input", style="width:300px") }}
+        {{ form.presupuesto.label(style="float: left; width: 105px;") }}
+        {{form.presupuesto(class="form-input") }}
         {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
         <br />      
   </dl>
-
   <br/>
-  <p>
-      <input  class="button"  type="submit" value="Add">
-      <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">  
-  </p>
-
+  <div class="buttons"> 
+      <input class="button"  type="submit" value="EditProyecto">
+      <input class="button" type="button" value="Back" onclick="document.location='/showProjectPendiente/{{idProyecto}}.html';">
+  </div>
 </form>
 {% endblock %}

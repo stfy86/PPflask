@@ -1,14 +1,15 @@
 {% extends "static/layout.html" %}
 {% block title %}Lista Proyecto{% endblock %}
 {% block body %}
+<div class="page-header">
+<center>
+<h1>Administrar Proyecto</h1>
+<p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo de Administracion</a></p>
+<h3>Lista de Proyecto</h3>
+</center>
+</div>
 
-<tbody>
-<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Proyecto</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('administracion') }}">Modulo Administracion</a></li>
-<div class="page-header"><h3>Lista de Proyecto Pendiente y Finalizado</h3></div>
-<form runat="server">
-             
+<form runat="server">            
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
@@ -29,11 +30,11 @@
 </thead>
   {% for proyecto in list%}
     <tr>
-        <td><a href="{{ url_for('showProjectPendiente', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.nombre}}</h5></td>
-        <td><a href="{{ url_for('showProjectPendiente', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.fechaDeCreacion}}</h5></td>
-        <td><a href="{{ url_for('showProjectPendiente', nombre = proyecto.nombre )}}"</a><h5>{{proyecto.estado}}</h5></td>
-        <td><a href="{{ url_for('showProjectPendiente', nombre = proyecto.nombre)}}"</a><h5>{{proyecto.presupuesto}}</h5></td>
-        <td><a href="{{ url_for('showProjectPendiente', nombre = proyecto.nombre)}}"</a><h5>{{proyecto.descripcion}}</h5></td>
+        <td><a href="{{ url_for('showProjectPendiente', idProyecto = proyecto.idProyecto )}}"</a><h5>{{proyecto.nombre}}</h5></td>
+        <td><a href="{{ url_for('showProjectPendiente', idProyecto = proyecto.idProyecto  )}}"</a><h5>{{proyecto.fechaDeCreacion}}</h5></td>
+        <td><a href="{{ url_for('showProjectPendiente', idProyecto = proyecto.idProyecto  )}}"</a><h5>{{proyecto.estado}}</h5></td>
+        <td><a href="{{ url_for('showProjectPendiente', idProyecto = proyecto.idProyecto )}}"</a><h5>{{proyecto.presupuesto}}</h5></td>
+        <td><a href="{{ url_for('showProjectPendiente', idProyecto = proyecto.idProyecto )}}"</a><h5>{{proyecto.descripcion}}</h5></td>
      </tr>
    {% endfor %}
 
@@ -61,9 +62,10 @@
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
 </form>   
-<p>
+<div>
     <input class="button" type="button" value="Crear Proyecto" onclick="document.location='addProject';">
-    
-</p>
+    <input class="button" type="button" value="Generar Reporte de Proyecto" onclick="document.location='descargarProyecto';">
+    <input class="button" type="button" value="Back" onclick="document.location='administracion';">
+</div>
 
  {% endblock %}

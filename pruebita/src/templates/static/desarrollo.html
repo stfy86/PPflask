@@ -1,28 +1,31 @@
 {% extends "static/layout.html" %}
 
-{% block title %} Modulo de Desarrollo {% endblock %}
+{% block title %}Modulo de Desarrollo{% endblock %}
 
 {% block body %}
-    <div class="page-header">
+{% if session.logged_in and g.proyecto != None and "ModuloDesarrollo" in g.permisos%}
+    <div class="page-header">        
+        <center>
+            <h3>Modulo de Desarrollo</h3>
         
-        <h3>Modulo de Desarrollo</h3>
-            <li><a href="/">Inicio</a></li>
-				{% if not g.user %}
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-				{% else %}       
-        <dl>
-            <li><a href="{{ url_for('listProyectoActivo') }}">Administrar Proyecto</a></li>
-            <ul>
-                <li> Administrar Cambio por Proyecto
-                <li> Administrar Solicitud por Proyecto
-                <li> Administrar Item en Fases
-                <li> Generar reporte de proyecto
-                <li> Generar reporte de fase
-                <li> Generar reporte de item
-                <li> Generar reporte de linea base
-            </ul>
-        </dl>
-                                {% endif %}
+        <p><img src="/img/link.png"/><a href="{{ url_for('listFasesActivasD') }}"> Desarrollar Ítem </a></p>
+        <p><img src="/img/link.png"/><a href="{{ url_for('listSolicitudes') }}"> Desarrollar Solicitud</a></p>        
+        <p><img src="/img/link.png"/><a href="{{ url_for('index') }}"> Cambio</a></p>
+        <p><img src="/img/link.png"/><a href="{{ url_for('index') }}"> Reportes </a></p>
+        
+        </center>
+        
     </div>
+</br>
+<p><img src="/img/info.png"/></p>
+<p>Proyecto: {{g.proyecto.nombre}} </p>
+<p>Rol del Usuario:  {{ g.rol.nombre}} </p>
+<p>Permisos del Usuario: {{ g.permisos}}</p>
+{% else%}
+<p> <img src="/img/info.png"/> </p>
+<p> No se logue al sistema o </p>
+<p> No eligio un proyecto o  </p>
+<p> No tiene el permiso: "ModuloDesarrollo" o </p>
+{% endif %}
 
 {% endblock %}

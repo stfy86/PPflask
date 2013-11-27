@@ -3,50 +3,52 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-<div class="page-header"><h3> ADD USUARIO </h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('administracion') }}">Modulo Administracion</a></li>
-<div class="page-header"><h3>PASO 1: Rellenar los datos del Usuario</h3></div>
+<div class="page-header">
+    <center>
+    <h1>Administrar Usuario</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+<h3>*PASO 1: Rellenar los datos del usuario</h3>
     <form method="post" action="">
       <dl>
         {{ form.csrf }}
-            {{ form.name.label(style="float: left; width: 100px;") }} 
-            {{ form.name(class="form-input", style="width: 300px") }}
+            {{ form.name.label(style="float: left; width: 105px;") }} 
+            {{ form.name(class="form-input" , autofocus=true) }}
             {% for error in form.name.errors %} {{ error }} {% endfor %}
 	    <br />
-            {{ form.password.label(style="float: left; width: 100px;") }}
-            {{form.password(class="form-input", style="width: 300px") }}
+            {{ form.password.label(style="float: left; width: 105px;") }}
+            {{form.password(class="form-input") }}
             {% for error in form.password.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.confirmacion.label(style="float: left; width: 100px;") }}
-            {{form.confirmacion(class="form-input", style="width: 300px") }}
+            {{ form.confirmacion.label(style="float: left; width: 105px;") }}
+            {{form.confirmacion(class="form-input") }}
             {% for error in form.confirmacion.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width: 300px") }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.apellido.label(style="float: left; width: 100px;") }}
-            {{form.apellido(class="form-input", style="width: 300px") }}
+            {{ form.apellido.label(style="float: left; width: 105px;") }}
+            {{form.apellido(class="form-input") }}
             {% for error in form.apellido.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.email.label(style="float: left; width: 100px;") }}
-            {{form.email(class="form-input", style="width: 300px") }}
+            {{ form.email.label(style="float: left; width: 105px;") }}
+            {{form.email(class="form-input") }}
             {% for error in form.email.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.telefono.label(style="float: left; width: 100px;") }}
-            {{form.telefono(class="form-input", style="width: 300px") }}
+            {{ form.telefono.label(style="float: left; width: 105px;") }}
+            {{form.telefono(class="form-input") }}
             {% for error in form.telefono.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.obs.label(style="float: left; width: 100px;") }}
-            {{form.obs(class="form-input", style="height:50px;width:300px") }}
+            {{ form.obs.label(style="float: left; width: 105px;") }}
+            {{form.obs(class="textarea") }}
             {% for error in form.obs.errors %} {{ error }} {% endfor %}
             <br />
       </dl>
-      <div class="page-header"><h3>PASO 2: Crear o Cancelar</h3></div>
-      <p>
-          <input class="button" type="submit" value="Crear">
-          <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">    
-      </p>
+        <div> 
+            <input class="button" type="submit" value="AddUser">
+            <input class="button" type="button" value="Back" onclick="document.location='/listUser';">
+        </div>
     </form>
 {% endblock %}

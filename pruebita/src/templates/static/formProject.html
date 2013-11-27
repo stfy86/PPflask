@@ -3,27 +3,30 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-<div class="page-header"><h3>  ADD PROYECTO ( 1 DE 2 )</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('listProject') }}">Proyectos</a></li>
-<div class="page-header"><h3>PASO 1: Rellenar los datos del Proyecto</h3></div>
+<div class="page-header">
+    <center>
+    <h1>Agregar Proyecto ( 1 / 2 )</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+<h3>*PASO 1: Rellenar los datos del Proyecto</h3>
 <form method="post" action="" runat="server">
   <dl>
         {{ form.csrf }}
-        {{ form.nombre.label(style="float: left; width: 100px;") }}
-        {{form.nombre(class="form-input", style="width:300px") }}
+        {{ form.nombre.label(style="float: left; width: 105px;") }}
+        {{form.nombre(class="form-input", autofocus=true) }}
         {% for error in form.nombre.errors %} {{ error }} {% endfor %}
         <br />
-        {{ form.descripcion.label(style="float: left; width: 100px;") }}
-        {{form.descripcion(class="form-input", style="height:50px;width:300px") }}
+        {{ form.descripcion.label(style="float: left; width: 105px;") }}
+        {{form.descripcion(class="textarea") }}
         {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
         <br />
-        {{ form.presupuesto.label(style="float: left; width: 100px;") }}
-        {{form.presupuesto(class="form-input", style="width:300px") }}
+        {{ form.presupuesto.label(style="float: left; width: 105px;") }}
+        {{form.presupuesto(class="form-input") }}
         {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
         <br />      
   </dl>
-<div class="page-header"><h3>PASO 2: Seleccionar Lider de Proyecto</h3></div>      
+<h3>*PASO 2: Seleccionar Lider de Proyecto</h3>
       <table id="tableTwo" class="yui">    
         <thead>
                 <tr>
@@ -41,10 +44,10 @@
                         </tr>
         </thead>
             {% for user in list %}
-             {% if user.estado == "Activo" %}
+             {% if user.estado == "Activo"  and user.name != "admin"%}
                 <tr>
 
-                   <td><input type="radio" name=lista value="{{ user['name'] }}"></td>
+                    <td><input type="radio" name=lista value="{{ user['idUser'] }}" required=""></td>
                    <td><h5>{{user.name}}</h5></td>
                    <td><h5>{{user.estado}}</h5></td>  
                 </tr>
@@ -75,12 +78,10 @@
         <div class="js-kit-poll" style="width: 350px;"></div>
         <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
         </div>
-<div class="page-header"><h3>PASO 3: Add Proyecto</h3></div>  
-<br/>
-<p>
-    <input  class="button"  type="submit" value="Add">
-    <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">  
-</p>
+<div class="buttons">
+    <input class="button" type="submit" value="AddProyecto">
+    <input class="button" type="button" value="Back" onclick="document.location='/listProject';">
+</div>
 </form>
 <br/>
 

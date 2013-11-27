@@ -1,13 +1,14 @@
 {% extends "static/layout.html" %}
 {% block title %}{% endblock %}
 {% block body %}
-<div class="page-header"><h3>MODULO GESTION: Administrar Fase</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a> </li>
-<li><a href="{{ url_for('listProyectoPendiente') }}"> Proyectos</a> </li>
-<div class="page-header"><h3>Modificar el Orden de la Fase :{{nombre}}:</h3></div>
-<div class="page-header"><h3>Lista de Fases de Proyecto</h3></div>
+<div class="page-header">
+    <center>
+    <h1>Modificar el Orden de Fase de Proyecto :{{g.proyecto}}:</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>
+<h3>*PASO1: Seleccionar la Fase con la que desea invertir el orden de la fase :{{nombre}}:</h3>
 <form method="post" action="" runat="server" >
-
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
@@ -28,9 +29,8 @@
 </thead>
  {% for fase in list %}
             {% if fase.nombre != nombre %}
-     <tr>  
-         
-        <td><input type="radio" name=fase value="{{ fase['nombre'] }}"></td>
+     <tr>           
+         <td><input type="radio" name=fase value="{{ fase['idFase'] }}" required=""></td>
         <td><h5>{{ fase.nombre }}</h5></td>
         <td><h5>{{ fase.orden}}</h5></td>	
         <td><h5>{{ fase.estado}}</h5></td>	
@@ -61,10 +61,10 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-<p> 
-    <input class="button" type="submit" value="Cambiar"> 
-</p>
-
+<div>
+<input class="button" type="submit" value="Cambiar">
+<input class="button" type="button" value="Back" onclick="document.location='/showFase/{{idFase}}.html';">
+</div>
 </form>   
 
 

@@ -3,12 +3,16 @@ from sqlalchemy import or_, and_
 
 class MgrProyecto():
 
-    def guardar(self, project):        
-        db.session.add(project)
-        db.session.commit()
+    def guardar(self, project):
+        if not self.existe(project):
+            db.session.add(project)
+            db.session.commit()
+            return ":guardo el proyecto:"
+        else:
+            return ":no guardo el proyecto:"
       
     def borrar(self, project):
-        if project.estado == "Finalizado":
+        if self.existe(project) and project.estado == "Finalizado":
             db.session.delete(project)
             db.session.commit()
             return ":borro proyecto:"
@@ -21,8 +25,8 @@ class MgrProyecto():
     def filtrar(self, nombre):
         return Proyecto.query.filter(Proyecto.nombre == nombre).first_or_404()
 
-    def listarPendienteYFinalizado(self):
-        return Proyecto.query.filter(or_(Proyecto.estado == "Pendiente" , Proyecto.estado == "Finalizado")).all()
+    def listProjectPyF(self):
+        return Proyecto.query.filter(or_(Proyecto.estado == "Pendiente", Proyecto.estado == "Finalizado")).all()
     
     def listarActivo(self):
         return Proyecto.query.filter(Proyecto.estado == "Activo").all()        
@@ -43,9 +47,8 @@ class MgrProyecto():
         else:
             return ":NO modifico el proyecto de estado Pendiente:"
          
-    def modificarOrden(self, nombre, fase, faseNew):
-        project = self.filtrar(nombre)
-        if (project.estado == "Pendiente") and (fase in  self.fasesDeProyecto(nombre)) and (faseNew in  self.fasesDeProyecto(nombre)):
+    def modificarOrden(self, project, fase, faseNew):
+        if (project.estado == "Pendiente") and (fase in  self.fasesDeProyecto(project.nombre)) and (faseNew in  self.fasesDeProyecto(project.nombre)):
             aux = fase.orden
             fase.orden = faseNew.orden
             faseNew.orden = aux
@@ -76,16 +79,16 @@ class MgrProyecto():
         proyecto = self.filtrar(nombre)
         for fase in proyecto.listafases:
             if fase.estado != "Desarrollo":
-                return false
-        return true
+                return False
+        return True
         
     def proyectoFinalizado(self, nombre):
         """ Retorna true si todas las fases del proyecto estan en estado finalizado """
         proyecto = self.filtrar(nombre)
         for fase in proyecto.listafases:
             if fase.estado != "Finalizado":
-                return false
-        return true
+                return False
+        return True
 
     def asignarFase(self, nombre, nombreFase, descripcionFase, ordenFase, tipoDeItemIdFase):
         proyecto = Proyecto.query.filter(Proyecto.nombre == nombre).first_or_404()
@@ -128,11 +131,7 @@ class MgrProyecto():
             db.session.commit()
             return ":asigno el lider =>" + u.name + " al proyecto =>" + p.nombre +":"
         
-    def asignarUsuario(self, nombre,  nameUser, nombreRol):
-        # verifica q exista  el proyecto, el usuario y el rol de proyecto
-        proyecto = self.filtrar(nombre)
-        user = User.query.filter(User.name == nameUser).first_or_404()
-        rol = Rol.query.filter(and_(Rol.nombre == nombreRol, Rol.ambito == nombre)).first_or_404()
+    def asignarUsuario(self, proyecto,  user, rol):
         if((rol not in user.roles) and (user not in proyecto.users)):
             user.estado = "Activo"
             # asigna el rol al usuario
@@ -146,11 +145,7 @@ class MgrProyecto():
 
     
     
-    def desasignarUsuario(self, nombre,  nameUser, nombreRol):
-        # verifica q exista  el proyecto, el usuario y el rol de proyecto
-        proyecto = self.filtrar(nombre)
-        user = User.query.filter(User.name == nameUser).first_or_404()
-        rol = Rol.query.filter(and_(Rol.nombre == nombreRol, Rol.ambito == nombre)).first_or_404()        
+    def desasignarUsuario(self, proyecto, user, rol):
         if((not rol.nombre == "LiderDeProyecto" ) and (rol in user.roles) and (user in proyecto.users)):
             # desasigna el rol al usuario
             user.roles.remove(rol)
@@ -246,3 +241,56 @@ class MgrProyecto():
     def fasesActivasDeProyecto(self, nombre):
         proyecto = self.filtrar(nombre)
         return Fase.query.filter(and_(Fase.estado == "Activo", Fase.proyectoId == proyecto.idProyecto)).all()
+
+    def existe(self, proyecto):
+        p = Proyecto.query.filter(Proyecto.nombre == proyecto.nombre).first()
+        if p != None:
+            return True
+        else:
+            return False
+        
+    
+    
+    def ambitoDeUser(self, name):
+        #user = self.filtrar(name)
+        list = []
+        for rol in name.roles:
+            if not rol.ambito == "none project":
+                proyecto = self.filtrar(rol.ambito)
+                #li.extend(["two", "elements"])
+                list.append([proyecto, rol.nombre])    
+        return list
+    
+                
+    def getLider(self, nombre):
+        p = self.filtrar(nombre)
+        r = Rol.query.filter(and_(Rol.nombre == "LiderDeProyecto", Rol.ambito == nombre)).first_or_404()
+        for u in p.users:
+            if r in u.roles:
+                return u.name
+        return None
+    
+    def getUserLider(self, idProyecto):
+        p = self.filtrarXId(idProyecto)
+        r = Rol.query.filter(and_(Rol.nombre == "LiderDeProyecto", Rol.ambito == p.nombre)).first_or_404()
+        for u in p.users:
+            if r in u.roles:
+                user = User.query.filter(User.name == u.name).first()
+                return user
+        return None
+    
+    def finalizarProyecto(self, proyecto):
+        if proyecto.estado == "Activo" and self.sePuedeFinalizar(proyecto):
+            proyecto.estado = "Finalizado"
+            db.session.commit()
+            return ":se finalizo el proyecto:"
+        else:
+            return ":NO se puede finalizar el proyecto:"
+        
+    def sePuedeFinalizar(self, proyecto):
+        for i in proyecto.listafases:    
+            f = Fase.query.filter(Fase.idFase == i.idFase).first()
+            if f.estado != "Finalizado":
+                return False
+        return True
+        

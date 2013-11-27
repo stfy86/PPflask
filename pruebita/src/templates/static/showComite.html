@@ -3,33 +3,32 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-
-<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Comite</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<div class="page-header"><h3>Show Comite :{{nombreComite}}:</h3></div>
+<div class="page-header">
+<h1> Show Comite de Proyecto</h1>
+<a href="{{ url_for('administracion') }}">Modulo de Administracion</a>
+</div>
     <form method="post" action="">  
       <dl>
         {{ form.csrf }}
             {{ form.descripcion.label(style="float: left; width: 105px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:300px", readonly="readonly") }}
+            {{form.descripcion(class="form-input", readonly="readonly") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.cantMiembro.label(style="float: left; width: 105px;") }}
-            {{form.cantMiembro(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.cantMiembro(class="form-input", readonly="readonly") }}
             {% for error in form.cantMiembro.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.proyectoId.label(style="float: left; width: 105px;") }}
-            {{form.proyectoId(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.proyectoId(class="form-input", readonly="readonly") }}
             {% for error in form.proyectoId.errors %} {{ error }} {% endfor %}
             <br />
       </dl>
       <br />
-      <p>   
-        <br />
+      <div class="buttons"> 
         <input class="button" type="submit" name="edit" value="Modificar Comite">
-        <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">  
-        <br />
-      </p>
+        <input class="button" type="button" value="Back" onclick="document.location='/listComiteProyecto/{{idProyecto}}.html';">
+      </div>
+       
     </form>
 
 {% endblock %}

@@ -1,4 +1,9 @@
-.buttons { float: right; text-align: right; }
+.link{
+    background: url("/img/link.png") repeat-x scroll center bottom #FFFFFF;
+    
+    
+}
+.buttons { float: left; text-align: left; }
 a.button { color: #000; }
 .button
 {
@@ -22,10 +27,17 @@ textarea
 
 .form-input
 {
+        width: 500px;
 	border: 1px solid #888;
 }
 .form-login-input
 {
-	width: 100px;
+	width: 300px;
 	border: 1px solid #888;
+}
+.textarea
+{
+    height:50px;
+    width: 500px;       
+    border: 1px solid #888;
 }

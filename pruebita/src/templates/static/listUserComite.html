@@ -1,11 +1,14 @@
 {% extends "static/layout.html" %}
 {% block title %}{% endblock %}
 {% block body %}
-<div class="page-header"><h3>MODULO GESTION: Administrar Usuario</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a> </li>
-<li><a href="{{ url_for('listProyectoPendiente') }}"> Proyectos</a> </li>
+<div class="page-header">
+    <center>
+    <h1>Gestionar Usuarios de Comite de  Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    <h3>Lista de Usuarios de Comite de Proyecto</h3>
+    </center>
+</div>
 <form method="post" action="" runat="server" >
-<div class="page-header"><h3>Lista de Usuarios del Proyecto :{{ambito}}:</h3></div>
 <table id="tableTwo" class="yui">    
     <thead>
             <tr>
@@ -21,11 +24,11 @@
                 <th><a href='#' title="Click Header to Sort">Estado</a></th>
             </tr>
     </thead>
- 
+
     {% for user in list %}
         <tr>
-           <td><a href="{{ url_for('showUserProyecto', nombreProyecto = ambito, nameUser = user.name )}}"</a><h5>{{user.name}}</h5></td>
-           <td><a href="{{ url_for('showUserProyecto', nombreProyecto = ambito, nameUser = user.name )}}"</a><h5>{{user.estado}}</h5></td>
+           <td><a href="{{ url_for('showUserComite', idUser = user.idUser )}}"</a><h5>{{user.name}}</h5></td>
+           <td><a href="{{ url_for('showUserComite', idUser = user.idUser )}}"</a><h5>{{user.estado}}</h5></td>
         </tr>
     {% endfor %}
 
@@ -52,12 +55,11 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-<div class="page-header"><h3>Asignar Usuario</h3></div>
-<p> 
-    <input class="button" type="submit" name="nuevo" value="Asignar Usuario a Proyecto"> 
-</p>
-    
 </form>   
+<div>
+    <input type="button" value="Add Usuario al Comite" onclick="document.location='/addUserComite';">
+    <input class="button" type="button" value="Back" onclick="document.location='/gestion';">
+</div>
+
 
 {% endblock %}
-

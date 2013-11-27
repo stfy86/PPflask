@@ -1,31 +1,38 @@
 {% extends "static/layout.html" %}
 {% block title %}Show Atrib{% endblock %}
 {% block body %}
-<h1>Datos del atributo</h1>
-    <form method="post" action="">
+<div class="page-header">
+    <center>
+    <h1>Administrar Atributo</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+
+<h3>Show Tipo de Atributo</h3>
+    <form method="post" action="" target ="_blank">
       <dl>
         {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 150px;") }}
-            {{form.nombre(class="form-input", style="width:200px", readonly="readonly") }}
+            {{form.nombre(class="form-input", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             <div style="float:left;width: 150px;">
             <LABEL for="tipoDato">Tipo de Dato</LABEL>
             </div>
-            <INPUT type="text" name="tipoDeDato" style="width:200px" class="form-input" id="tipoDato"  
+            <INPUT type="text" name="tipoDeDato" class="form-input" id="tipoDato"  
                    readonly="true" {{form.tipoDeDato}}</>
             <br />    
-            {{ form.filename.label(style="float: left; width: 150px;") }}
-            {{form.filename(class="form-input", style="width:200px", readonly="readonly")}}
-            <input class="button" type="submit" name="descargar" value="Descargar"  onmouseover="chequea(this.form.tipoDeDato, this)">
+            {{form.filename.label(style="float: left; width: 150px;") }}
+            {{form.filename(class="form-input", readonly="readonly")}}
+            <input type="submit" name="descargar" value="Descargar"  onmouseover="chequea(this.form.tipoDeDato, this)">
             {% for error in form.filename.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.detalle.label(style="float: left; width: 150px;") }}
-            {{form.detalle(class="form-input", style="width:200px", readonly="readonly")}}
+            {{form.detalle(class="form-input", readonly="readonly")}}
             {% for error in form.detalle.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.descripcion.label(style="float: left; width: 150px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:200px", readonly="readonly") }}
+            {{form.descripcion(class="textarea", readonly="readonly") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
       </dl>
       <script language="javascript" type="text/javascript">
@@ -35,15 +42,12 @@
 
             }
       </script>
-      <script language="JavaScript">
-      function confirmar ( mensaje ) {
-      return confirm( mensaje );
-      } 
-      </script>
+    </form> 
+    <form method="post" action="">
       <p>
          <input class="button" type="submit" name="edit" value="Modificar Atributo">
          <input class="button" type="submit" name="delete" value="Eliminar Atributo" onclick="return confirmar('¿Está seguro que desea eliminar el usuario?')">
-         <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
+         <input class="button" type="button" value="Cancelar" onclick="location.href = '/listAtrib'">
       <p>
     </form> 
 {% endblock %}

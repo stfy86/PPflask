@@ -20,11 +20,12 @@ class Rol(db.Model):
     # many to many: Relaciona Rol x Permiso
     permisos = db.relationship('Permiso', secondary = permisos, backref= db.backref('roles' , lazy='dynamic'))
      
-    def __init__(self, nombre=None, descripcion=None, ambito=None):
+    def __init__(self, nombre=None, descripcion=None, ambito=None, permisos=None):
         """ constructor de Rol con permisos"""
         self.nombre = nombre
         self.ambito = ambito
         self.descripcion = descripcion
+        self.permisos = permisos
         
     def __repr__(self):
         return self.nombre

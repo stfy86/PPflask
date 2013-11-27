@@ -3,26 +3,80 @@
 {% block title %}Linea Base{% endblock %}
 
 {% block body %}
-    <h1>Agregar Linea Base</h1>
+<div class="page-header">
+    <center>
+    <h1>Agregar Linea Base a la Fase :{{fase.nombre}}:</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>
+<h3>*PASO 1: Rellenar los datos de la linea base</h3>
     <form method="post" action="">
       <dl>
         {{ form.csrf }}
-            {{ form.nombre.label(style="float: left; width: 100px;") }} 
-            {{ form.nombre(class="form-input", style="width: 200px") }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }} 
+            {{ form.nombre(class="form-input", autofocus=true) }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
 	    <br />
-            {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="textarea") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.fase.label(style="float: left; width: 100px;") }} 
-            {{ form.fase(class="form-input", style="width: 200px") }}
+            {{ form.fase.label(style="float: left; width: 105px;") }} 
+            {{ form.fase(class="form-input",value=fase.nombre , readonly="readonly") }}
             {% for error in form.fase.errors %} {{ error }} {% endfor %}
       </dl>
-      <br />
-      <p>
-          <input type="submit" value="Guardar">
-          <input type="button" value="Cancelar" onclick="javascript:history.back();">    
-      </p>
-    </form>
+<h3>*PASO 2: Elegir los items aprobados de la fase</h3>
+      <table id="tableTwo" class="yui">    
+        <thead>
+                <tr>
+                    <td class="tableHeader">
+                    </td>
+                    <td colspan="5" class="filter">
+                        Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                        <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+                    </td>
+                </tr> 	
+                        <tr>
+                                <th><a href='#' title="Click Header to Sort">AsignarItems</a></th>
+                                <th><a href='#' title="Click Header to Sort">Nombre</a></th>
+                                <th><a href='#' title="Click Header to Sort">Estado</a></th>
+                        </tr>
+        </thead>
+            {% for item in list %}
+                  <tr>
+                      <td><input type=checkbox name=lista value="{{ item['idItem'] }}" required=""></td>
+                   <td><h5>{{item.nombre}}</h5></td>
+                   <td><h5>{{item.estado}}</h5></td>  
+                </tr>
+            {% endfor %}
+
+        </tbody>   
+        <tfoot>
+                    <tr id="pagerTwo">
+                        <td colspan="5">
+                                <img src="/img/first.png" class="first"/>
+                                <img src="/img/prev.png" class="prev"/>
+                                <input type="text" class="pagedisplay"/>
+                                <img src="/img/next.png" class="next"/>
+                                <img src="/img/last.png" class="last"/>
+                                <select class="pagesize">
+                                        <option selected="selected"  value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option  value="20">20</option>
+                                </select>
+                            </td>
+                    </tr>
+        </tfoot>    
+        </table>
+        <div style="padding-bottom:20px;">
+        <div class="js-kit-poll" style="width: 350px;"></div>
+        <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+        </div>
+<div>
+    <input class="button" type="submit" value="AddLineaBase" onclick="document.location='/addLineaBase/{{idFase}}.html';">
+    <input class="button" type="button" value="Back" onclick="document.location='/gesLB/{{idFase}}.html';">
+</div>
+</form>
+  
 {% endblock %}

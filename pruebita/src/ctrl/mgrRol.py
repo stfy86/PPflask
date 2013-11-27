@@ -7,26 +7,27 @@ class MgrRol():
         return Rol.query.all()
 
     def guardar(self, rol):
-        if not rol in self.listar():
+        if not self.existe(rol):
             db.session.add(rol)
             db.session.commit()
             return ":guardo el rol:"
         else:
-            return ":NO guardo el rol:"
+            return ":No guardo el rol:"
 
     def borrar(self, rol):
-        if rol in self.listar():
+        if self.existe(rol) and rol.nombre != "LiderDeProyecto" and rol.nombre != "Administracion":
             db.session.delete(rol)
             db.session.commit()
-            return ":borro:"
+            return ":borro el rol:"
         else:   
             return ":NO borro:"
 
-    def modificar(self, idRol, nombreNew, ambitoNew, descripcionNew):
+    def modificar(self, idRol, nombreNew, ambitoNew, descripcionNew, permisosNew):
         rol = self.filtrarXId(idRol)
         rol.nombre = nombreNew
         rol.ambito = ambitoNew
         rol.descripcion = descripcionNew
+        rol.permisos = permisosNew;
         db.session.commit()
         return ":modifico el rol:"
         
@@ -39,10 +40,7 @@ class MgrRol():
     def getPermisos(self, rol):
         return rol.permisos
 
-    def delete(self, rol):
-        db.session.delete(rol)
-        db.session.commit()
-        
+    
     def search(self, nombre, ambito):
         return Rol.query.filter(and_(Rol.nombre == nombre, Rol.ambito == ambito)).first_or_404()
         
@@ -77,5 +75,33 @@ class MgrRol():
         else:
             return ":error: no desasigno"
                 
+    def existe(self, rol):
+        r = Rol.query.filter(and_(Rol.nombre == rol.nombre, Rol.ambito == rol.ambito)).first()
+        if r != None:
+            return True
+        else:
+            return False
 
-                
+          
+    def listarPermisos(self, idRol):
+        lista = []
+        rol = self.filtrarXId(idRol)
+        for perm in rol.permisos:
+            lista.append(perm)
+        return lista     
+
+    def listarNombrePermisos(self, idRol):
+        lista = []
+        rol = self.filtrarXId(idRol)
+        for perm in rol.permisos:
+            lista.append(perm.nombre)
+        return lista    
+    
+   
+    def modificarPermiso(self, idRol, lista):
+        rol = self.filtrarXId(idRol)
+        for p in rol.permisos:
+            self.desasignarPermiso(rol, p)
+        for p in lista:
+            self.asignarPermiso(rol, p)
+        return "Modifico los permisos del rol"

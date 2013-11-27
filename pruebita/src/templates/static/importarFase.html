@@ -1,12 +1,14 @@
 {% extends "static/layout.html" %}
 {% block title %}{% endblock %}
 {% block body %}
-<div class="page-header"><h3>MODULO GESTION: Administrar Fase</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a> </li>
-<li><a href="{{ url_for('listProyectoPendiente') }}"> Proyectos</a> </li>
-<div class="page-header"><h3>Lista de Fases de Proyectos Pendientes</h3></div>
+<div class="page-header">
+    <center>
+    <h1>Importar Fase de Proyecto :{{g.proyecto}}:</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>
+<h3>*PASO1: Seleccionar las Fases de los Proyectos del Sistema </h3>
 <form method="post" action="" runat="server" >
-
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
@@ -29,7 +31,7 @@
  {% for fase in list %}
     {% if fase.proyectoId != proyectoId %}
      <tr>  
-        <td><input type=checkbox name=lista value="{{ fase['idFase'] }}"></td>
+        <td><input type=checkbox name=lista value="{{ fase['idFase'] }}" requiered=""></td>
         <td> <h5>{{ fase.nombre }}</h5></td>
         <td> <h5>{{ fase.orden}}</h5></td>	
         <td> <h5>{{ fase.estado}}</h5></td>	
@@ -61,14 +63,10 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-<script language="JavaScript">
-function confirmar ( mensaje ) {
-    return confirm( mensaje );
-} 
-</script>  
-<p> 
-    <input class="button" type="submit" value="Importar" onclick="return confirmar('¿Está seguro que desea importar el registro?')"> 
-</p>
+<div>
+   <input class="button" type="submit" value="Importar" onclick="return confirmar('¿Está seguro que desea importar el registro?')"> 
+   <input class="button" type="button" value="Back" onclick="document.location='/listFases';">
+</div>
 
 </form>   
 

@@ -1,3 +1,4 @@
+from wtforms.fields import HiddenField
 from wtforms import Form, TextField, FileField, PasswordField, \
      validators, IntegerField, SelectField, SubmitField, DateTimeField, RadioField
 #------------------------------------------------------------------------------#
@@ -34,14 +35,6 @@ class ShowFormUser(Form):
     obs = TextField('Obs')
     estado = TextField('Estado')
 
-class EditStateForm(Form):
-    """ Formulario de modificacion de estado de usuario """
-    estado = SelectField("Estado", choices = [
-        ("Inactivo", "Inactivo"),
-        ("Activo", "Activo")])
-    submit = SubmitField("POST")
-
-
 # Administrar RolXPermiso
 
 class CreateFormRol(Form):
@@ -71,21 +64,6 @@ class ShowFormProject(Form):
     estado = TextField('Estado')
     presupuesto = IntegerField('Presupuesto')
     
-class EditStateProjectAdminForm(Form):
-    """ Formulario de modificacion de estado de proyecto """
-    estado = SelectField("Estado", choices = [
-        ("Pendiente", "Pendiente"),
-        ("Inactivo", "Inactivo")])
-    submit = SubmitField("POST")
-
-class EditStateProjectGestionForm(Form):
-    """ Formulario de modificacion de estado de proyecto """
-    estado = SelectField("Estado", choices = [
-        ("Activo", "Activo"),
-        ("Finalizado", "Finalizado"),
-        ("Inactivo", "Inactivo")])
-    submit = SubmitField("POST")
-
 class CreateFormRolProyecto(Form):
     """ Formulario para crear rol por proyecto"""
     nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
@@ -136,15 +114,6 @@ class ShowFormFase(Form):
     proyectoId = IntegerField('ProyectoId')
     tipoDeItemId = IntegerField('TipoDeItemId')
 
-
-class EditStateFaseForm(Form):
-    """ Formulario de modificacion de estado de fase """
-    estado = SelectField("Estado", choices = [
-        ("Activo", "Activo"),
-        ("Pendiente", "Pendiente"),
-        ("Finalizado", "Finalizado")])
-    submit = SubmitField("POST")
-
 # Administrar tipo de atributos
 
 class CreateFormAtrib(Form):
@@ -168,6 +137,7 @@ class EditFormAtrib(Form):
     filename = TextField('Nombre de Archivo')
     detalle = IntegerField('Detalle')
     descripcion = TextField('Descripcion')
+
 
 # Administrar tipo de item
 
@@ -202,10 +172,9 @@ class EditStateItemForm(Form):
         ("Eliminado", "Eliminado"),
         ("Aprobado", "Aprobado"),
         ("Revision", "Revision")])
-    submit = SubmitField("POST")
-
-# Administrar LB
-
+    submit = SubmitField("POST")    
+      
+      
 # Administrar LB
 
 class CreateFormLineaBase(Form):
@@ -219,14 +188,6 @@ class ShowFormLineaBase(Form):
     nombre = TextField('Nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
     descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
     estado = TextField('Estado', [validators.required(message=":estado?:")])
-    
-class EditFormStateLineaBase(Form):
-    """ Formulario de modificacion de estado de linea base """
-    estado = SelectField("Estado", choices = [
-        ("Activo", "Activo"),
-        ("Inactivo", "Inactivo"),
-        ("Comprometida", "Comprometida")])
-    submit = SubmitField("POST")
     
 class EditFormLineaBase(Form):
     """ Formulario para editar linea base"""
@@ -245,8 +206,26 @@ class EditFormComite(Form):
     descripcion = TextField('Descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]?:")])
     cantMiembro = IntegerField('CantMiembro', [validators.required(message=":cantMiembro?:"), validators.NumberRange(min=1, max=150, message=":cantMiembro >= 1?:")])
     
-    
+   
 class ShowFormComite(Form):
     descripcion = TextField('Descripcion')
     cantMiembro = IntegerField('CantMiembro')
     proyectoId = TextField('ProyectoId')
+
+# Solicitud
+
+class CreateFormSolicitud(Form):
+    nombre = TextField('nombre', [validators.required(message=":nombre?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
+    descripcion = TextField('descripcion', [validators.required(message=":descripcion?:"), validators.Length(min=1, max=45, message=":longitud requerida [1-45]?:")])
+    proyecto_nombre = HiddenField('proyecto_nombre', [validators.required(message=":descripcion?:")])
+    
+class ShowFormSolicitud(Form):
+    """ Formulario para mostrar una fase """
+    nombre = TextField('nombre')
+    descripcion = TextField('descripcion')
+    autor = TextField('autor')
+    complejidad = TextField('complejidad')
+    costo = TextField('costo')
+    a_favor = TextField('Votos a favor')
+    en_contra = TextField('Votos en contra')
+    aceptar = SelectField('Aceptar Cambio?',choices=[('0','No'),('1','Si')])

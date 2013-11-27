@@ -1,0 +1,80 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Show TipoDeItem{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <center>
+    <h1>Gestionar Tipo de Item</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('desarrollo') }}">Modulo Desarrollo</a></p>
+    </center>
+</div>
+<h3>Show Tipo de Item</h3>
+    <form method="post" action="" runat="server">  
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", readonly="readonly") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="textarea", readonly="readonly") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+      </dl>
+        
+      <table id="tableTwo" class="yui">    
+<thead>
+        <tr>
+            <td class="tableHeader">
+            </td>
+            <td colspan="4" class="filter">
+                Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+            </td>
+        </tr> 	
+		<tr>    
+    			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
+			<th><a href='#' title="Click Header to Sort">Tipo de Dato</a></th>
+			<th><a href='#' title="Click Header to Sort">Detalle</a></th>
+			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
+			
+		</tr>
+</thead>
+    {% for atrib in list %}
+        <tr>           
+                    <td>{{ atrib.nombre }}</td>
+                    <td>{{ atrib.tipoDeDato }}</td>
+                    <td>{{ atrib.detalle }}</td>
+                    <td>{{ atrib.descripcion }}</td>
+            
+       </tr>
+    {% endfor %}
+    <tfoot>
+	    <tr id="pagerTwo">
+	        <td colspan="5">
+		        <img src="/img/first.png" class="first"/>
+		        <img src="/img/prev.png" class="prev"/>
+		        <input type="text" class="pagedisplay"/>
+		        <img src="/img/next.png" class="next"/>
+		        <img src="/img/last.png" class="last"/>
+		        <select class="pagesize">
+			        <option selected="selected"  value="5">5</option>
+			        <option value="10">10</option>
+			        <option value="15">15</option>
+			        <option  value="20">20</option>
+		        </select>
+		    </td>
+	    </tr>
+</tfoot>    
+</table>
+<div style="padding-bottom:20px;">
+<div class="js-kit-poll" style="width: 350px;"></div>
+<script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+</div>  
+      <div>
+         <input class="button" type="submit" name="edit" value="Modificar Tipo de Item">
+         <input class="button" type="submit" name="delete" value="Eliminar Tipo de Item" onclick="return confirmar('¿Está seguro que desea eliminar el tipo de item?')">
+         <input class="button" type="button" value="Back" onclick="document.location='/listTipoDeItem';">
+      </div>
+    </form>
+{% endblock %}

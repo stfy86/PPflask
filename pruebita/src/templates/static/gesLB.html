@@ -1,12 +1,14 @@
 {% extends "static/layout.html" %}
 {% block title %}Lista Linea Base{% endblock %}
 {% block body %}
-<tbody>
 <div class="page-header">
-    <h3>Lineas Base</h3>
+    <center>
+    <h1>Gestionar Linea Base del Proyecto :{{g.proyecto}}:</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    <h3>Lista de Linea Base de la Fase :{{fase.nombre}}:</h3>
+    </center>
 </div>
-<form method="post" action="" runat="server">
-             
+<form method="post" action="" runat="server">            
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
@@ -25,9 +27,9 @@
 </thead>
   {% for lineaBase in list%}
     <tr>
-        <td><a href="{{ url_for('showLineaBase', nombre = lineaBase.nombre)}}"</a><h5>{{lineaBase.nombre}}</h5></td>
-        <td><a href="{{ url_for('showLineaBase', nombre = lineaBase.nombre)}}"</a><h5>{{lineaBase.descripcion}}</h5></td>
-        <td><a href="{{ url_for('showLineaBase', nombre = lineaBase.nombre)}}"</a><h5>{{lineaBase.estado}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', idLineaBase = lineaBase.idLineaBase)}}"</a><h5>{{lineaBase.nombre}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', idLineaBase = lineaBase.idLineaBase)}}"</a><h5>{{lineaBase.descripcion}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', idLineaBase = lineaBase.idLineaBase)}}"</a><h5>{{lineaBase.estado}}</h5></td>
      </tr>
    {% endfor %}
 
@@ -54,10 +56,10 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-    <p>
-    
-    <input class="button" type="submit" name="add" value="Crear Linea Base">
-</p>
+<div class="buttons">
+    <input class="button" type="button" value="Crear Linea Base" onclick="document.location='/addLineaBase/{{idFase}}.html';">
+    <input class="button" type="button" value="Back" onclick="document.location='/listFasesActivasG';">
+</div>
 </form>   
 
 

@@ -3,21 +3,24 @@
 {% block title %} Administrar Item {% endblock %}
 
 {% block body %}
-    <div class="page-header">
-        
-            <h3>Administrar Item</h3>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="{{ url_for('listFasesActivasProyecto' , nombre = nomProyecto) }}">Lista de Fases activas del Proyecto</a></li>
-                		{% if not g.user %}
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-				{% else %}
-            <dl>
-            <li><a href="{{ url_for('addItem', idFase = identFase ) }}">Crear Item</a></li>
-            <li><a href="{{ url_for('listItem', idFase = identFase) }}">Listar Item por Fase</a></li>
-            <li><a href="{{ url_for('revivirItem', idFase = identFase) }}">Revivir Item</a></li>
-                                {% endif %}
-    </div>
+<div class="page-header">
+    <center>
+    <h1>Desarrollar Items del Proyecto :{{g.proyecto}}:</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('desarrollo') }}">Modulo Desarrollo</a></p>
+    <h3>En el Contexto de la fase</h3>
+    </center>
+</div>
+<div class="page-header">
+
+{% if not g.user %}
+<p><img src="/img/link.png"/><a href="{{ url_for('login') }}">Login</a></p>
+{% else %}
+<p><img src="/img/link.png"/><a href="{{ url_for('listFasesActivasD') }}">Back</a></p>
+<p><img src="/img/link.png"/><a href="{{ url_for('addItem', idFase = identFase ) }}">Crear Item</a></p>
+<p><img src="/img/link.png"/><a href="{{ url_for('listItem', idFase = identFase) }}">Listar Item por Fase</a></p>
+<p><img src="/img/link.png"/><a href="{{ url_for('revivirItem', idFase = identFase) }}">Revivir Item</a></p>
+{% endif %}
+</div>
   
 {% endblock %}
 

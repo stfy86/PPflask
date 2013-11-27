@@ -1,10 +1,13 @@
 {% extends "static/layout.html" %}
 {% block title %}{% endblock %}
 {% block body %}
-<div class="page-header"><h3>MODULO ADMINISTRACION: Administrar Rol</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a> </li>
-<li><a href="{{ url_for('listProject') }}"> Proyectos</a> </li>
-<div class="page-header"><h3>Lista de Roles de Proyecto :{{nombreProyecto}}:</h3></div>
+<div class="page-header">
+    <center>
+    <h1>Gestionar Rol del Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    <h3>Lista de Roles de Proyecto</h3>
+    </center>
+</div>
 <form method="post" action="" runat="server" >
 <table id="tableTwo" class="yui">    
     <thead>
@@ -20,14 +23,15 @@
                             <th><a href='#' title="Click Header to Sort">Nombre</a></th>
                             <th><a href='#' title="Click Header to Sort">Ambito</a></th>
                             <th><a href='#' title="Click Header to Sort">Descripcion</a></th>
-
+                            
                     </tr>
     </thead>
     {% for rol in list %}
     <tr>
-       <td><a href="{{ url_for('showRolProyecto', nombre = rol.nombre, nombreProyecto = nombreProyecto )}}"</a><h5>{{ rol.nombre }}</h5></td>
-       <td><a href="{{ url_for('showRolProyecto', nombre = rol.nombre , nombreProyecto = nombreProyecto )}}"</a><h5>{{ rol.ambito }}</h5></td>
-       <td><a href="{{ url_for('showRolProyecto', nombre = rol.nombre , nombreProyecto = nombreProyecto )}}"</a><h5>{{ rol.descripcion }}</h5></td>
+       <td><a href="{{ url_for('showRolProyecto',idRol = rol.idRol)}}"</a><h5>{{ rol.nombre }}</h5></td>
+       <td><a href="{{ url_for('showRolProyecto',idRol = rol.idRol)}}"</a><h5>{{ rol.ambito }}</h5></td>
+       <td><a href="{{ url_for('showRolProyecto',idRol = rol.idRol)}}"</a><h5>{{ rol.descripcion }}</h5></td>
+       
     </tr>
     {% endfor %}
 
@@ -54,9 +58,11 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-<p> <input class="button" type="submit" name="nuevo" value="Nuevo Rol por Proyecto"> </p>
-
 </form>   
+<div>
+    <input type="button" value="Crear Rol en el Proyecto" onclick="document.location='/addRolProyecto';">
+    <input class="button" type="button" value="Back" onclick="document.location='/gestion';">
+</div>
 
 
 {% endblock %}

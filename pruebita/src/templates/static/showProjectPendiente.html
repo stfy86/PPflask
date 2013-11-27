@@ -3,53 +3,47 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+<div class="page-header">
+    <center>
+    <h1>Administrar Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
 
-<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Proyecto</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('listProject') }}">Proyectos</a></li>
-<div class="page-header"><h3>Show Proyecto Pendiente</h3></div>
+<h3>Show Proyecto</h3>
     <form method="post" action="">  
       <dl>
         {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 105px;") }}
-            {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.nombre(class="form-input", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.descripcion.label(style="float: left; width: 105px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:300px", readonly="readonly") }}
+            {{form.descripcion(class="textarea", readonly="readonly") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.fechaDeCreacion.label(style="float: left; width: 105px;") }}
-            {{form.fechaDeCreacion(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.fechaDeCreacion(class="form-input", readonly="readonly") }}
             {% for error in form.fechaDeCreacion.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.estado.label(style="float: left; width: 105px;") }}
-            {{form.estado(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.estado(class="form-input", readonly="readonly") }}
             {% for error in form.estado.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.presupuesto.label(style="float: left; width: 105px;") }}
-            {{form.presupuesto(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.presupuesto(class="form-input", readonly="readonly") }}
             {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
             <br />
       </dl>
-      <br />
-    <script language="JavaScript">
-    function confirmar ( mensaje ) {
-    return confirm( mensaje );
-    } 
-    </script> 
-      <p>  
-        <div class="page-header"><h3> Gestionar un Proyecto</h3></div>
-        <br />
+      <div class="buttons">
+       
         <input class="button" type="submit" name="edit" value="Modificar Proyecto">
-        <input class="button" type="submit" name="editState" value="Modificar Estado de Proyecto">
         <input class="button" type="submit" name="delete" value="Eliminar Proyecto" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
-        <br />
-        <br />
-        <input class="button" type="submit" name="listRolProyecto" value="Ver Rol de Proyecto">
+        <input class="button" type="submit" name="editState" value="Modificar Estado de Proyecto">
         <input class="button" type="submit" name="listComiteProyecto" value="Ver Comite de Proyecto">
-        <br />
-      </p>
+        <input class="button" type="button" value="Back" onclick="document.location='/listProject';">
+       </div>
+      
     </form>
 
 {% endblock %}

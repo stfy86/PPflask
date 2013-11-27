@@ -3,31 +3,34 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-<div class="page-header"><h1>Formulario: Crear Proyecto (2 de 2)</h1></div>
-<div class="page-header"><h3>PASO 4: Crear comite de cambio para el Proyecto</h3></div>
-    <form method="post" action="" runat="server">
+<div class="page-header">
+    <center>
+    <h1>Agregar Proyecto (2 / 2) </h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+<div class="page-header"><h3>*PASO 4: Crear comite de cambio para el Proyecto</h3></div>
+    <form method="post" action="">
       <dl>
             {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width:300px") }}
+            {{form.nombre(class="form-input", autofocus=true) }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:300px") }}
+            {{form.descripcion(class="textarea") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.cantMiembro.label(style="float: left; width: 100px;") }}
-            {{form.cantMiembro(class="form-input", style="width:300px") }}
+            {{form.cantMiembro(class="form-input") }}
             {% for error in form.cantMiembro.errors %} {{ error }} {% endfor %}
             <br />   
       </dl>
-        
-      <br/>
-      <p>
-          <br/>
-          <input  class="button"  type="submit" value="Add"> 
-          <br/>
-      </p>
-      
-    </form>
+<div class="buttons">
+    <input class="button" type="submit" value="AddComite">
+    <input class="button" type="button" value="Back" onclick="document.location='/listProject';">
+</div>
+</form>
+<br/>
+
 {% endblock %}

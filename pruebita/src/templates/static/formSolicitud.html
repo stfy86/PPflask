@@ -3,22 +3,78 @@
 {% block title %}Solicitud{% endblock %}
 
 {% block body %}
+<div class="page-header">
+    <center>
     <h1>Agregar Solicitud</h1>
-    <form method="post" action="">
-      <dl>
+    <p><img src="/img/link.png"/><a href="{{ url_for('desarrollo') }}">Modulo Desarrollo</a></p>
+    </center>
+</div>
+<form method="post" action="">
+    <h3>*PASO 1: Detallar solicitud</h3>
+    <dl>
         {{ form.csrf }}
-            {{ form.nombre.label(style="float: left; width: 100px;") }} 
-            {{ form.nombre(class="form-input", style="width: 200px") }}
-            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
-	    <br />
-            {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
-            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
-      </dl>
-      <br />
-      <p>
-          <input type="submit" value="Guardar">
-          <input type="button" value="Cancelar" onclick="javascript:history.back();">    
-      </p>
-    </form>
+        {{ form.nombre.label(style="float: left; width: 105px;") }}
+        {{ form.nombre(class="form-input" , autofocus=true) }}
+        {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+        <br />
+        {{ form.descripcion.label(style="float: left; width: 105px;") }}
+        {{form.descripcion(class="textarea") }}
+        {{form.proyecto_nombre}}
+        {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+    </dl>
+    <h3>*PASO 2: Seleccionar los items</h3>
+    <table id="tableTwo" class="yui">
+        <thead>
+            <tr>
+                <td class="tableHeader">
+                </td>
+                <td colspan="2" class="filter">
+                    Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                    <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th><a href='#' title="Click Header to Sort">Nombre</a></th>
+                <th><a href='#' title="Click Header to Sort">Costo</a></th>
+            </tr>
+        </thead>
+        
+        {% for item in list %}
+        <tr>
+            <td><input type="checkbox" name=lista value="{{ item['idItem'] }}" required=""></td>
+            <td><h5>{{item.nombre}}</h5></td>
+            <td><h5>{{item.costo}}</h5></td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+        <tfoot>
+            <tr id="pagerTwo">
+                <td colspan="5">
+                    <img src="/img/first.png" class="first"/>
+                    <img src="/img/prev.png" class="prev"/>
+                    <input type="text" class="pagedisplay"/>
+                    <img src="/img/next.png" class="next"/>
+                    <img src="/img/last.png" class="last"/>
+                    <select class="pagesize">
+                        <option selected="selected"  value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option  value="20">20</option>
+                    </select>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div style="padding-bottom:20px;">
+        <div class="js-kit-poll" style="width: 350px;"></div>
+        <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+    </div>
+<br />
+<p>
+    <input class="button" type="submit" value="Guardar">
+    <input class="button" type="button" value="Back" onclick="document.location='/desarrollo';">
+</p>
+</form>
 {% endblock %}

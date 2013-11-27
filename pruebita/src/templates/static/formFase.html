@@ -3,23 +3,26 @@
 {% block title %}Add{% endblock %}
 
 {% block body %}
-<div class="page-header"><h1>Formulario: Crear Fase</h1></div>
+<div class="page-header">
+    <center>
+    <h1>Agregar Fase a Proyecto :{{g.proyecto}}:</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>
 <form method="post" action="" runat="server">
-      <div class="page-header"><h3>PASO 1: Rellenar los datos de la Fase</h3></div>
+      <h3>*PASO 1: Rellenar los datos de la Fase</h3>
       <dl>
         {{ form.csrf }}
-            {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width: 200px") }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input" , autofocus=true) }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.descripcion.label(style="float: left; width: 100px;") }}
-            {{form.descripcion(class="form-input", style="height:50px;width:200px") }}
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="textarea") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
       </dl>
-      <br/>
-      <div class="page-header"><h3>PASO 2: Elegir tipo de item de la fase </h3></div>
-      
+      <h3>*PASO 2: Elegir el Tipo de Item de la fase </h3>
       <table id="tableTwo" class="yui">    
         <thead>
                 <tr>
@@ -39,7 +42,7 @@
         </thead>
         {% for tipoDeItem in list %}
         <tr>
-            <td><input type="radio" name=tipoDeItem value="{{ tipoDeItem['nombre'] }}"></td>
+            <td><input type="radio" name=tipoDeItem value="{{ tipoDeItem['nombre'] }}" required=""></td>
            <td><h5>{{ tipoDeItem.nombre }}</h5></td>
            <td><h5>{{ tipoDeItem.descripcion }}</h5></td>
         </tr>
@@ -67,10 +70,9 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-<div class="page-header"><h3>PASO 3: Crear o Cancelar </h3></div>
-<p>
-   <input class="button" type="submit" value="Crear">
-  <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">    
-</p>
+<div>
+   <input class="button" type="submit" value="Crear Fase">
+   <input class="button" type="button" value="Back" onclick="document.location='/listFases';">
+</div>
 </form>
 {% endblock %}

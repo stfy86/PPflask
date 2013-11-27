@@ -1,7 +1,8 @@
 #------------------------------------------------------------------------------#
 # IMPORTS
 #------------------------------------------------------------------------------#
-from flask import Flask, request, send_file
+import os
+from flask import Flask, request, send_file, send_from_directory, Response, make_response
 from pruebita import app, db
 from form import *
 # paquete models
@@ -26,16 +27,14 @@ from ctrl.mgrRol import MgrRol
 from ctrl.mgrTipoDeAtrib import MgrTipoDeAtrib
 from ctrl.mgrUser import MgrUser
 from ctrl.mgrComite import MgrComite
-from ctrl.mgrRolXPermiso import MgrRolXPermiso
 from ctrl.mgrTipoDeItem import MgrTipoDeItem
 from ctrl.mgrSolicitud import MgrSolicitud
 from ctrl.mgrLineaBase import MgrLineaBase
+from ctrl.mgrReporte import MgrReporte
 # paquete views
 from views.ingreso import *
 from views.administracion import *
 from views.gestion import *
 from views.desarrollo import *
 from views.sistema import *
-
-
-
+####

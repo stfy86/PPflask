@@ -4,16 +4,16 @@ class MgrComite():
 
     def guardar(self, comite):
         proyecto = Proyecto.query.filter(Proyecto.idProyecto == comite.proyectoId).first_or_404()
-        if proyecto.estado == "Pendiente":
+        if not self.existe(comite) and proyecto.estado == "Pendiente":
             db.session.add(comite)
             db.session.commit()
-            return ":borro el comite:"
+            return ":guardo el comite:"
         else:
-            return ":no borro el comite:"
+            return ":no guardo el comite:"
         
     def borrar(self, comite):
         proyecto = Proyecto.query.filter(Proyecto.idProyecto == comite.proyectoId).first_or_404()
-        if proyecto.estado == "Pendiente":
+        if self.existe(comite) and proyecto.estado == "Pendiente":
             db.session.delete(comite)
             db.session.commit()
             return ":borro el comite:"
@@ -22,7 +22,7 @@ class MgrComite():
     
     def modificar(self, comite, descripcionNew, cantMiembroNew):
         proyecto = Proyecto.query.filter(Proyecto.idProyecto == comite.proyectoId).first_or_404()
-        if proyecto.estado == "Pendiente":
+        if self.existe(comite) and proyecto.estado == "Pendiente":
             comite.descripcion = descripcionNew
             comite.cantMiembro = cantMiembroNew
             db.session.commit()
@@ -39,11 +39,8 @@ class MgrComite():
     def filtrarXId(self, idComite):
         return Comite.query.filter(Comite.idComite == idComite).first_or_404()
 
-    def asignarUsuario(self, nombreProyecto,  nameUser):
-        comite = self.search(nombreProyecto)
-        proyecto = Proyecto.query.filter(Proyecto.idProyecto == comite.idComite).first_or_404()
-        user = User.query.filter(User.name == nameUser).first_or_404()
-        
+    def asignarUsuario(self, proyecto,  user):
+        comite = Comite.query.filter(Comite.proyectoId == proyecto.idProyecto).first_or_404()
         if self.nroMiembros(proyecto.nombre) == comite.cantMiembro:
             return ":error: se supero la cantidad de miembros del comite"
         if user in proyecto.users and proyecto.estado == "Pendiente":
@@ -55,9 +52,8 @@ class MgrComite():
 
 
 
-    def desasignarUsuario(self, nombreProyecto,  nameUser):
-        comite = self.search(nombreProyecto)
-        user = User.query.filter(User.name == nameUser).first_or_404()     
+    def desasignarUsuario(self, proyecto,  user):
+        comite = self.search(proyecto.nombre)
         if(user in proyecto.users):
             comite.miembros.remove(user)
             db.session.commit()
@@ -82,7 +78,12 @@ class MgrComite():
         comite = Comite.query.filter(Comite.proyectoId == proyecto.idProyecto).first_or_404()
         return comite
     
-    def listarPorProyecto(self, nombreProyecto):
-        proyecto = Proyecto.query.filter(Proyecto.nombre == nombreProyecto).first_or_404()
-        comite = Comite.query.filter(Comite.proyectoId == proyecto.idProyecto).all()
-        return comite
+    def listarPorProyecto(self, idProyecto):
+        return Comite.query.filter(Comite.proyectoId == idProyecto).all()
+
+    def existe(self, comite):
+        c = Comite.query.filter(Comite.nombre == comite.nombre).first()
+        if c != None:
+            return True
+        else:
+            return False

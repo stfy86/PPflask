@@ -1,13 +1,13 @@
 {% extends "static/layout.html" %}
 {% block title %}Lista Comite{% endblock %}
 {% block body %}
-
-<tbody>
-<div class="page-header"><h3>MODULO DE ADMINISTRACION: Administrar Proyecto</h3></div>
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('administracion') }}">Modulo Administracion</a></li>
-<div class="page-header"><h3>Comite de Proyecto :{{nombreProyecto}}:</h3></div>
-<form runat="server">             
+<div class="page-header">
+    <h1>Administrar Proyecto :{{proyecto.nombre}}:</h1>
+    <a href="{{ url_for('administracion') }}">Modulo de Administracion</a>
+    <h3>Comite de Proyecto</h3>
+</div>
+</br>
+<form method="post" action="" runat="server" >
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
@@ -28,10 +28,10 @@
 </thead>
   {% for comite in list%}
     <tr>
-        <td><a href="{{ url_for('showComite', nombreProyecto = nombreProyecto, idComite = comite.idComite )}}"</a><h5>{{comite.nombre}}</h5></td>
-        <td><a href="{{ url_for('showComite', nombreProyecto = nombreProyecto, idComite = comite.idComite )}}"</a><h5>{{comite.proyectoId}}</h5></td>
-        <td><a href="{{ url_for('showComite', nombreProyecto = nombreProyecto, idComite = comite.idComite)}}"</a><h5>{{comite.cantMiembro}}</h5></td>
-        <td><a href="{{ url_for('showComite', nombreProyecto = nombreProyecto, idComite = comite.idComite)}}"</a><h5>{{comite.descripcion}}</h5></td>
+        <td><a href="{{ url_for('showComite',  idComite = comite.idComite, idProyecto=comite.proyectoId) }}"</a><h5>{{comite.nombre}}</h5></td>
+        <td><a href="{{ url_for('showComite',  idComite = comite.idComite, idProyecto=comite.proyectoId) }}"</a><h5>{{comite.proyectoId}}</h5></td>
+        <td><a href="{{ url_for('showComite',  idComite = comite.idComite, idProyecto=comite.proyectoId) }}"</a><h5>{{comite.cantMiembro}}</h5></td>
+        <td><a href="{{ url_for('showComite',  idComite = comite.idComite, idProyecto=comite.proyectoId) }}"</a><h5>{{comite.descripcion}}</h5></td>
      </tr>
    {% endfor %}
 
@@ -57,6 +57,12 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
+    <div class="buttons">
+     {% if not list %}
+     <input class="button" type="button" value="Crear Comite" onclick="document.location='/addComite/{{idProyecto}}.html';">
+     {% endif %}     
+    <input class="button" type="button" value="Back" onclick="document.location='/showProjectPendiente/{{idProyecto}}.html';">
+    </div>
 </form>   
 
 
