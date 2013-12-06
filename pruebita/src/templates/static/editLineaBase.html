@@ -1,0 +1,29 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Linea Base{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <center>
+    <h1>Gestionar Linea Base del Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>
+<h3>*PASO 1: MODIFICAR LOS DATOS DE LA LINEA BASE</h3>
+    <form method="post" action="">
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }} 
+            {{ form.nombre(class="form-input") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+	    <br />
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="textarea") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+      </dl>
+      <p>
+          <input class="button" type="submit" value="Editar">
+          <input class="button" type="button" value="Back" onclick="document.location='/showLineaBase/{{idLineaBase}}.html';">
+      </p>
+    </form>
+{% endblock %}

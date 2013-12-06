@@ -1,15 +1,17 @@
+""" Main para cargar el sistema """
 #------------------------------------------------------------------------------#
 # IMPORTS
 #------------------------------------------------------------------------------#
 from flask import Flask
 from flaskext.sqlalchemy import SQLAlchemy
-
+UPLOAD_FOLDER = '/home/silvana/Escritorio/PPflask/pruebita/src/uploads/'
 #------------------------------------------------------------------------------#
 # FLASK APP
 #------------------------------------------------------------------------------#
 # Flask application and config
 app = Flask(__name__)
 app.config.from_object('config')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 db = SQLAlchemy(app)
 
 #------------------------------------------------------------------------------#

@@ -1,0 +1,30 @@
+{% extends "static/layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <center>
+    <h1>Administrar Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+<h3>*PASO 1: Elegir el nuevo estado del Proyecto </h3>
+   <form method="post" action="">
+    <div>
+    <label> Estado:  </label>
+    <select name="estado" onchange="chequea(this,this.form.estado)" id="estadoProyecto">        
+            {% for button in buttons %}
+                {% if button in proyecto.estado %}
+                    <option selected value="{{ button }}" >{{ button }}</option>
+                {% else %}
+                    <option value="{{ button }}" >{{ button }}</option>
+                {% endif %}
+            {% endfor %}
+    </select>
+    <input class="button" type="submit" value="EditState">
+    <input class="button" type="button" value="Back" onclick="document.location='/showProjectPendiente/{{idProyecto}}.html';">
+    </div>
+     
+    </form>
+{% endblock %}

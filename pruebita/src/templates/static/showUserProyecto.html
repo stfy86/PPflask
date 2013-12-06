@@ -1,0 +1,54 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Show User{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <center>
+    <h1>Gestionar Usuarios de Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>
+<form method="post" action="" > 
+    <h3>Show User por Proyecto</h3>
+      <dl>
+        {{ form.csrf }}
+            {{ form.name.label(style="float: left; width: 105px;") }} 
+            {{ form.name(class="form-input", readonly="readonly") }}
+            {% for error in form.name.errors %} {{ error }} {% endfor %}
+	    <br />
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", readonly="readonly") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.apellido.label(style="float: left; width: 105px;") }}
+            {{form.apellido(class="form-input", readonly="readonly") }}
+            {% for error in form.apellido.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.email.label(style="float: left; width: 105px;") }}
+            {{form.email(class="form-input", readonly="readonly") }}
+            {% for error in form.email.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.telefono.label(style="float: left; width: 105px;") }}
+            {{form.telefono(class="form-input", readonly="readonly") }}
+            {% for error in form.telefono.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.obs.label(style="float: left; width: 105px;") }}
+            {{form.obs(class="textarea", readonly="readonly") }}
+            {% for error in form.obs.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.estado.label(style="float: left; width: 105px;") }}
+            {{form.estado(class="form-input", readonly="readonly") }}
+            {% for error in form.obs.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.rolNombre.label(style="float: left; width: 105px;") }}
+            {{form.rolNombre(class="form-input", readonly="readonly") }}
+            {% for error in form.rolNombre.errors %} {{ error }} {% endfor %}
+      </dl>
+<div>
+<input class="button" type="submit" name="desasignar" value="Desasignar Usuario de Proyecto" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+<input class="button" type="button" value="Back" onclick="document.location='/listUserProyecto';">
+</div>  
+ </form>
+
+{% endblock %}

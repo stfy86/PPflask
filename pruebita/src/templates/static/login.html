@@ -3,22 +3,23 @@
 {% block title %}Login{% endblock %}
 
 {% block body %}
-    <h1>Login</h1>
+    <div class="page-header"><h1>Login</h1></div>
     {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
     <form method="post" action="">
       <dl>
             {{ form.csrf }}
-            {{ form.username.label(style="float: left; width: 100px;") }}
-            {{ form.username(class="form-login-input") }}
+            {{ form.username.label(style="float: left; width: 105px;") }}
+            {{ form.username(class="form-login-input", autofocus = true) }}
             {% for error in form.username.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.password.label(style="float: left; width: 100px;") }}
+            {{ form.password.label(style="float: left; width: 105px;") }}
             {{form.password(class="form-login-input") }}
             {% for error in form.password.errors %} {{ error }} {% endfor %}
       </dl>
-      <p>
-          <input type="submit" value="Login">
-          <input type="button" value="Cancelar" onclick="javascript:history.back();">
-      <p>
+        <div class="buttons"> 
+            <input class="button" type="submit" value="Login">
+            <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
+        </div>
+    
     </form>
 {% endblock %}

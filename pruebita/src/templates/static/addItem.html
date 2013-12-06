@@ -3,31 +3,40 @@
 {% block title %}Add Item{% endblock %}
 
 {% block body %}
+    <div class="page-header">
+    <center>
     <h1>Agregar Item</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('desarrollo') }}">Modulo Desarrollo</a></p>
+    </center>
+</div>
+<h3>*PASO 1: COMPLETAR LOS DATOS DEL ITEM</h3>
     <form method="post" action="">
       <dl>
         {{ form.csrf }}
-            {{ form.nombre.label(style="float: left; width: 100px;") }}
-            {{form.nombre(class="form-input", style="width: 200px") }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", autofocus="True") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.tipoDeItem.label(style="float: left; width: 100px;") }}
-            {{form.tipoDeItem(class="form-input", style="width: 200px", readonly="readonly", value=tipoItem)}}
+            {{ form.tipoDeItem.label(style="float: left; width: 105px;") }}
+            {{form.tipoDeItem(class="form-input", readonly="readonly", value=tipoItem)}}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.version.label(style="float: left; width: 100px;") }}
-            {{form.version(class="form-input", style="width: 200px", readonly="readonly", value=1) }}
+            {{ form.version.label(style="float: left; width: 105px;") }}
+            {{form.version(class="form-input", readonly="readonly", value=1) }}
             {% for error in form.version.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.complejidad.label(style="float: left; width: 100px;") }}
-            {{form.complejidad(class="form-input", style="width: 200px") }}
+            {{ form.complejidad.label(style="float: left; width: 105px;") }}
+            {{form.complejidad(class="form-input") }}
             {% for error in form.complejidad.errors %} {{ error }} {% endfor %}
             <br />
-            {{ form.costo.label(style="float: left; width: 100px;") }}
-            {{form.costo(class="form-input", style="width: 200px") }}
+            {{ form.costo.label(style="float: left; width: 105px;") }}
+            {{form.costo(class="form-input") }}
             {% for error in form.costo.errors %} {{ error }} {% endfor %}
       </dl>
-      <p><input type="submit" name="crear" value="Crear">
-         <input type="button" value="Cancelar" onclick="javascript:history.back();"><p>
+        <div class="buttons"> 
+            <input  class="button"  type="submit" value="Crear Item"> 
+            <input class="button" type="button" value="Back" onclick="document.location='/listItem/{{idFase}}.html';">
+        </div> 
+      
     </form>
 {% endblock %}

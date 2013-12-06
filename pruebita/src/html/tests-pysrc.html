@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>tests</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;tests
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="tests-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="tests-module.html">Module tests</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!virtualenv/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">""" Clase encargada de las pruebas unitarias """</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">tempfile</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">flask</tt> <tt class="py-keyword">import</tt> <tt class="py-name">jsonify</tt><tt class="py-op">,</tt> <tt class="py-name">json</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">flask</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Flask</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module pruebita=pruebita-module.html"><a title="pruebita" class="py-name" href="#" onclick="return doclink('link-0', 'pruebita', 'link-0');">pruebita</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Variable pruebita.db=pruebita-module.html#db"><a title="pruebita.db" class="py-name" href="#" onclick="return doclink('link-1', 'db', 'link-1');">db</a></tt><tt class="py-op">,</tt> <tt id="link-2" class="py-name" targets="Variable pruebita.app=pruebita-module.html#app"><a title="pruebita.app" class="py-name" href="#" onclick="return doclink('link-2', 'app', 'link-2');">app</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Module modulo=modulo-module.html"><a title="modulo" class="py-name" href="#" onclick="return doclink('link-3', 'modulo', 'link-3');">modulo</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="TestCase"></a><div id="TestCase-def"><a name="L13"></a><tt class="py-lineno"> 13</tt> <a class="py-toggle" href="#" id="TestCase-toggle" onclick="return toggle('TestCase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="tests.TestCase-class.html">TestCase</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TestCase-expanded"><a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">     </tt>
+<a name="TestCase.setUp"></a><div id="TestCase.setUp-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="TestCase.setUp-toggle" onclick="return toggle('TestCase.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="tests.TestCase-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase.setUp-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCase.setUp-expanded"><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt class="py-docstring">""" Inicializa el Testing, crea todas las tablas de la base de datos de prueba """</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt id="link-4" class="py-name"><a title="pruebita.app" class="py-name" href="#" onclick="return doclink('link-4', 'app', 'link-2');">app</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Module config=config-module.html"><a title="config" class="py-name" href="#" onclick="return doclink('link-5', 'config', 'link-5');">config</a></tt><tt class="py-op">[</tt><tt class="py-string">'TESTING'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">        <tt id="link-6" class="py-name"><a title="pruebita.app" class="py-name" href="#" onclick="return doclink('link-6', 'app', 'link-2');">app</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="config" class="py-name" href="#" onclick="return doclink('link-7', 'config', 'link-5');">config</a></tt><tt class="py-op">[</tt><tt class="py-string">'CSRF_ENABLED'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">False</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt id="link-8" class="py-name"><a title="pruebita.app" class="py-name" href="#" onclick="return doclink('link-8', 'app', 'link-2');">app</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="config" class="py-name" href="#" onclick="return doclink('link-9', 'config', 'link-5');">config</a></tt><tt class="py-op">[</tt><tt class="py-string">'SQLALCHEMY_DATABASE_URI'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">'postgresql://admin:admin@localhost:5432/databasePrueba'</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="pruebita.db" class="py-name" href="#" onclick="return doclink('link-10', 'db', 'link-1');">db</a></tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="pruebita.db" class="py-name" href="#" onclick="return doclink('link-11', 'db', 'link-1');">db</a></tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="pruebita.app" class="py-name" href="#" onclick="return doclink('link-12', 'app', 'link-2');">app</a></tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name"><a title="pruebita.app" class="py-name" href="#" onclick="return doclink('link-13', 'app', 'link-2');">app</a></tt><tt class="py-op">.</tt><tt class="py-name">test_client</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>  </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">        <tt id="link-14" class="py-name"><a title="pruebita.db" class="py-name" href="#" onclick="return doclink('link-14', 'db', 'link-1');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">create_all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">      </tt>
+<a name="TestCase.tearDown"></a><div id="TestCase.tearDown-def"><a name="L24"></a><tt class="py-lineno"> 24</tt> <a class="py-toggle" href="#" id="TestCase.tearDown-toggle" onclick="return toggle('TestCase.tearDown');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="tests.TestCase-class.html#tearDown">tearDown</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase.tearDown-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCase.tearDown-expanded"><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-docstring">""" Finaliza el testing, borra todas las tablas de la base de datos de prueba """</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt id="link-15" class="py-name"><a title="pruebita.db" class="py-name" href="#" onclick="return doclink('link-15', 'db', 'link-1');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">remove</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt id="link-16" class="py-name"><a title="pruebita.db" class="py-name" href="#" onclick="return doclink('link-16', 'db', 'link-1');">db</a></tt><tt class="py-op">.</tt><tt class="py-name">drop_all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-comment"># usuarios   </tt> </tt>
+<a name="TestCase.testUsuario"></a><div id="TestCase.testUsuario-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="TestCase.testUsuario-toggle" onclick="return toggle('TestCase.testUsuario');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="tests.TestCase-class.html#testUsuario">testUsuario</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase.testUsuario-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCase.testUsuario-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-docstring">""" Realiza varias pruebas sobre la tabla usuario:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">        1. Crear un usuario nuevo</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">        2. Modificar un usuario existente</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">        3. Crear un usuario repetido</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Test Crear Usuario"</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">u</tt> <tt class="py-op">=</tt> <tt class="py-name">User</tt><tt class="py-op">(</tt><tt id="link-17" class="py-name" targets="Variable form.CreateFormUser.name=form.CreateFormUser-class.html#name,Variable form.ShowFormUser.name=form.ShowFormUser-class.html#name,Variable form.ShowFormUserComite.name=form.ShowFormUserComite-class.html#name,Variable form.ShowFormUserProyecto.name=form.ShowFormUserProyecto-class.html#name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-17', 'name', 'link-17');">name</a></tt><tt class="py-op">=</tt><tt class="py-string">"stfy"</tt><tt class="py-op">,</tt> <tt class="py-name">passwd</tt><tt class="py-op">=</tt><tt class="py-string">"stfy"</tt><tt class="py-op">,</tt> <tt id="link-18" class="py-name" targets="Variable form.CreateFormAtrib.nombre=form.CreateFormAtrib-class.html#nombre,Variable form.CreateFormComite.nombre=form.CreateFormComite-class.html#nombre,Variable form.CreateFormFase.nombre=form.CreateFormFase-class.html#nombre,Variable form.CreateFormItem.nombre=form.CreateFormItem-class.html#nombre,Variable form.CreateFormLineaBase.nombre=form.CreateFormLineaBase-class.html#nombre,Variable form.CreateFormProject.nombre=form.CreateFormProject-class.html#nombre,Variable form.CreateFormRolProyecto.nombre=form.CreateFormRolProyecto-class.html#nombre,Variable form.CreateFormSolicitud.nombre=form.CreateFormSolicitud-class.html#nombre,Variable form.CreateFormTipoDeItem.nombre=form.CreateFormTipoDeItem-class.html#nombre,Variable form.CreateFormUser.nombre=form.CreateFormUser-class.html#nombre,Variable form.EditFormAtrib.nombre=form.EditFormAtrib-class.html#nombre,Variable form.EditFormLineaBase.nombre=form.EditFormLineaBase-class.html#nombre,Variable form.ShowFormAtrib.nombre=form.ShowFormAtrib-class.html#nombre,Variable form.ShowFormFase.nombre=form.ShowFormFase-class.html#nombre,Variable form.ShowFormItem.nombre=form.ShowFormItem-class.html#nombre,Variable form.ShowFormLineaBase.nombre=form.ShowFormLineaBase-class.html#nombre,Variable form.ShowFormProject.nombre=form.ShowFormProject-class.html#nombre,Variable form.ShowFormRolProyecto.nombre=form.ShowFormRolProyecto-class.html#nombre,Variable form.ShowFormSolicitud.nombre=form.ShowFormSolicitud-class.html#nombre,Variable form.ShowFormUser.nombre=form.ShowFormUser-class.html#nombre,Variable form.ShowFormUserComite.nombre=form.ShowFormUserComite-class.html#nombre,Variable form.ShowFormUserProyecto.nombre=form.ShowFormUserProyecto-class.html#nombre"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-18', 'nombre', 'link-18');">nombre</a></tt><tt class="py-op">=</tt><tt class="py-string">"estefanis"</tt><tt class="py-op">,</tt> <tt id="link-19" class="py-name" targets="Variable form.CreateFormUser.apellido=form.CreateFormUser-class.html#apellido,Variable form.ShowFormUser.apellido=form.ShowFormUser-class.html#apellido,Variable form.ShowFormUserComite.apellido=form.ShowFormUserComite-class.html#apellido,Variable form.ShowFormUserProyecto.apellido=form.ShowFormUserProyecto-class.html#apellido"><a title="form.CreateFormUser.apellido
+form.ShowFormUser.apellido
+form.ShowFormUserComite.apellido
+form.ShowFormUserProyecto.apellido" class="py-name" href="#" onclick="return doclink('link-19', 'apellido', 'link-19');">apellido</a></tt><tt class="py-op">=</tt><tt class="py-string">"zamora"</tt><tt class="py-op">,</tt> <tt id="link-20" class="py-name" targets="Variable form.CreateFormUser.email=form.CreateFormUser-class.html#email,Variable form.ShowFormUser.email=form.ShowFormUser-class.html#email,Variable form.ShowFormUserComite.email=form.ShowFormUserComite-class.html#email,Variable form.ShowFormUserProyecto.email=form.ShowFormUserProyecto-class.html#email"><a title="form.CreateFormUser.email
+form.ShowFormUser.email
+form.ShowFormUserComite.email
+form.ShowFormUserProyecto.email" class="py-name" href="#" onclick="return doclink('link-20', 'email', 'link-20');">email</a></tt><tt class="py-op">=</tt><tt class="py-string">"stfy@gmail.com"</tt><tt class="py-op">,</tt> <tt id="link-21" class="py-name" targets="Variable form.CreateFormUser.telefono=form.CreateFormUser-class.html#telefono,Variable form.ShowFormUser.telefono=form.ShowFormUser-class.html#telefono,Variable form.ShowFormUserComite.telefono=form.ShowFormUserComite-class.html#telefono,Variable form.ShowFormUserProyecto.telefono=form.ShowFormUserProyecto-class.html#telefono"><a title="form.CreateFormUser.telefono
+form.ShowFormUser.telefono
+form.ShowFormUserComite.telefono
+form.ShowFormUserProyecto.telefono" class="py-name" href="#" onclick="return doclink('link-21', 'telefono', 'link-21');">telefono</a></tt><tt class="py-op">=</tt><tt class="py-number">1111</tt><tt class="py-op">,</tt> <tt id="link-22" class="py-name" targets="Variable form.CreateFormUser.obs=form.CreateFormUser-class.html#obs,Variable form.ShowFormUser.obs=form.ShowFormUser-class.html#obs,Variable form.ShowFormUserComite.obs=form.ShowFormUserComite-class.html#obs,Variable form.ShowFormUserProyecto.obs=form.ShowFormUserProyecto-class.html#obs"><a title="form.CreateFormUser.obs
+form.ShowFormUser.obs
+form.ShowFormUserComite.obs
+form.ShowFormUserProyecto.obs" class="py-name" href="#" onclick="return doclink('link-22', 'obs', 'link-22');">obs</a></tt><tt class="py-op">=</tt><tt class="py-string">"usuario nuevo"</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">MgrUser</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name">u</tt> <tt class="py-op">=</tt> <tt class="py-name">User</tt><tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-23', 'name', 'link-17');">name</a></tt><tt class="py-op">=</tt><tt class="py-string">"admin"</tt><tt class="py-op">,</tt> <tt class="py-name">passwd</tt><tt class="py-op">=</tt><tt class="py-string">"admin"</tt><tt class="py-op">,</tt> <tt id="link-24" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-24', 'nombre', 'link-18');">nombre</a></tt><tt class="py-op">=</tt><tt class="py-string">"administrador"</tt><tt class="py-op">,</tt> <tt id="link-25" class="py-name"><a title="form.CreateFormUser.apellido
+form.ShowFormUser.apellido
+form.ShowFormUserComite.apellido
+form.ShowFormUserProyecto.apellido" class="py-name" href="#" onclick="return doclink('link-25', 'apellido', 'link-19');">apellido</a></tt><tt class="py-op">=</tt><tt class="py-string">"administrador"</tt><tt class="py-op">,</tt> <tt id="link-26" class="py-name"><a title="form.CreateFormUser.email
+form.ShowFormUser.email
+form.ShowFormUserComite.email
+form.ShowFormUserProyecto.email" class="py-name" href="#" onclick="return doclink('link-26', 'email', 'link-20');">email</a></tt><tt class="py-op">=</tt><tt class="py-string">"admin@gmail.com"</tt><tt class="py-op">,</tt> <tt id="link-27" class="py-name"><a title="form.CreateFormUser.telefono
+form.ShowFormUser.telefono
+form.ShowFormUserComite.telefono
+form.ShowFormUserProyecto.telefono" class="py-name" href="#" onclick="return doclink('link-27', 'telefono', 'link-21');">telefono</a></tt><tt class="py-op">=</tt><tt class="py-number">1234</tt><tt class="py-op">,</tt> <tt id="link-28" class="py-name"><a title="form.CreateFormUser.obs
+form.ShowFormUser.obs
+form.ShowFormUserComite.obs
+form.ShowFormUserProyecto.obs" class="py-name" href="#" onclick="return doclink('link-28', 'obs', 'link-22');">obs</a></tt><tt class="py-op">=</tt><tt class="py-string">"administrador del sistema"</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">MgrUser</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Test Modificar un usuario"</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">u</tt> <tt class="py-op">=</tt> <tt class="py-name">MgrUser</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">filtrar</tt><tt class="py-op">(</tt><tt class="py-string">"stfy"</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">MgrUser</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">modificar</tt><tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">,</tt><tt class="py-name">passwordNew</tt> <tt class="py-op">=</tt> <tt class="py-string">"stfy"</tt><tt class="py-op">,</tt> <tt class="py-name">confirmacionNew</tt> <tt class="py-op">=</tt><tt class="py-string">"stfy"</tt><tt class="py-op">,</tt> <tt class="py-name">nombreNew</tt><tt class="py-op">=</tt><tt class="py-string">"estefanis"</tt><tt class="py-op">,</tt> <tt class="py-name">apellidoNew</tt><tt class="py-op">=</tt><tt class="py-string">"zamora"</tt><tt class="py-op">,</tt> <tt class="py-name">emailNew</tt> <tt class="py-op">=</tt> <tt class="py-string">"stfy@gmail.com"</tt><tt class="py-op">,</tt> <tt class="py-name">telefonoNew</tt> <tt class="py-op">=</tt> <tt class="py-number">222222</tt><tt class="py-op">,</tt> <tt class="py-name">obsNew</tt><tt class="py-op">=</tt><tt class="py-string">"usuario modif"</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Test Crear Usuario Doble"</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-name">uRepetido</tt> <tt class="py-op">=</tt> <tt class="py-name">User</tt><tt class="py-op">(</tt><tt id="link-29" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-29', 'name', 'link-17');">name</a></tt><tt class="py-op">=</tt><tt class="py-string">"stfy"</tt><tt class="py-op">,</tt> <tt class="py-name">passwd</tt><tt class="py-op">=</tt><tt class="py-string">"stfy"</tt><tt class="py-op">,</tt> <tt id="link-30" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-30', 'nombre', 'link-18');">nombre</a></tt><tt class="py-op">=</tt><tt class="py-string">"estefanis"</tt><tt class="py-op">,</tt> <tt id="link-31" class="py-name"><a title="form.CreateFormUser.apellido
+form.ShowFormUser.apellido
+form.ShowFormUserComite.apellido
+form.ShowFormUserProyecto.apellido" class="py-name" href="#" onclick="return doclink('link-31', 'apellido', 'link-19');">apellido</a></tt><tt class="py-op">=</tt><tt class="py-string">"zamora"</tt><tt class="py-op">,</tt> <tt id="link-32" class="py-name"><a title="form.CreateFormUser.email
+form.ShowFormUser.email
+form.ShowFormUserComite.email
+form.ShowFormUserProyecto.email" class="py-name" href="#" onclick="return doclink('link-32', 'email', 'link-20');">email</a></tt><tt class="py-op">=</tt><tt class="py-string">"stfy@gmail.com"</tt><tt class="py-op">,</tt> <tt id="link-33" class="py-name"><a title="form.CreateFormUser.telefono
+form.ShowFormUser.telefono
+form.ShowFormUserComite.telefono
+form.ShowFormUserProyecto.telefono" class="py-name" href="#" onclick="return doclink('link-33', 'telefono', 'link-21');">telefono</a></tt><tt class="py-op">=</tt><tt class="py-number">1111</tt><tt class="py-op">,</tt> <tt id="link-34" class="py-name"><a title="form.CreateFormUser.obs
+form.ShowFormUser.obs
+form.ShowFormUserComite.obs
+form.ShowFormUserProyecto.obs" class="py-name" href="#" onclick="return doclink('link-34', 'obs', 'link-22');">obs</a></tt><tt class="py-op">=</tt><tt class="py-string">"usuario nuevo"</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-name">MgrUser</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">uRepetido</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">         </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">     </tt>
+<a name="TestCase.testProyecto"></a><div id="TestCase.testProyecto-def"><a name="L49"></a><tt class="py-lineno"> 49</tt> <a class="py-toggle" href="#" id="TestCase.testProyecto-toggle" onclick="return toggle('TestCase.testProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="tests.TestCase-class.html#testProyecto">testProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase.testProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCase.testProyecto-expanded"><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-docstring">""" Realiza varias pruebas sobre la tabla Proyecto:</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">        1. Crear y guarda un proyecto nuevo</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        2. Intenta guardar un proyecto vacio</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">        3. Intenta guardar un proyecto repetido</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">        4. Intenta borrar un proyecto inexistente</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Guardar Proyecto"</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">p</tt><tt class="py-op">=</tt><tt class="py-name">Proyecto</tt><tt class="py-op">(</tt><tt class="py-string">"proyectoTest"</tt><tt class="py-op">,</tt><tt class="py-string">"test"</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">MgrProyecto</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Fin de prueba ProyectoGuardar: guardo proyectoTest"</tt>  </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">         </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Guardar Vacio"</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt id="link-35" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-35', 'name', 'link-17');">name</a></tt> <tt class="py-op">=</tt><tt class="py-string">""</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-name">p</tt><tt class="py-op">=</tt><tt class="py-name">Proyecto</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">MgrProyecto</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Fin de prueba ProjectGuardarVacio"</tt>  </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-36" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-36', 'name', 'link-17');">name</a></tt> <tt class="py-op">==</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-37', 'nombre', 'link-18');">nombre</a></tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">         </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Guardar proyecto doble"</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt id="link-38" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-38', 'name', 'link-17');">name</a></tt><tt class="py-op">=</tt><tt class="py-string">"proyectoTest"</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-name">pRepetido</tt><tt class="py-op">=</tt><tt class="py-name">Proyecto</tt><tt class="py-op">(</tt><tt class="py-string">"proyectoTest"</tt><tt class="py-op">,</tt><tt class="py-string">"test"</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">MgrProyecto</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">pRepetido</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Fin de Prueba ProjectGuardarDoble: "</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-39" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-39', 'name', 'link-17');">name</a></tt> <tt class="py-op">==</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-40', 'nombre', 'link-18');">nombre</a></tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Borrar proyecto inexistente"</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt id="link-41" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-41', 'name', 'link-17');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"feo"</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name">p</tt><tt class="py-op">=</tt><tt class="py-name">Proyecto</tt><tt class="py-op">(</tt><tt class="py-string">"proyectoTestfeo"</tt><tt class="py-op">,</tt><tt class="py-string">"test"</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-name">MgrProyecto</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">borrar</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-42', 'nombre', 'link-18');">nombre</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Error: Fin de prueba ProyectoBorrarInexistente:"</tt>  </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-43" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-43', 'name', 'link-17');">name</a></tt> <tt class="py-op">==</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-44', 'nombre', 'link-18');">nombre</a></tt> </tt>
+</div><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">     </tt>
+<a name="TestCase.testFase"></a><div id="TestCase.testFase-def"><a name="L82"></a><tt class="py-lineno"> 82</tt> <a class="py-toggle" href="#" id="TestCase.testFase-toggle" onclick="return toggle('TestCase.testFase');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="tests.TestCase-class.html#testFase">testFase</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase.testFase-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCase.testFase-expanded"><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-docstring">""" Realiza varias pruebas sobre la tabla Fase:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">        1. Crear y guarda una fase nueva</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        2. Intenta guardar una fase vacio</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">        3. Intenta guardar una fase repetida</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">        4. Intenta borrar una fase inexistente</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-name">p</tt><tt class="py-op">=</tt><tt class="py-name">Proyecto</tt><tt class="py-op">(</tt><tt class="py-string">"proyectoTest"</tt><tt class="py-op">,</tt><tt class="py-string">"test"</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">MgrProyecto</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt class="py-name">MgrProyecto</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">filtrar</tt><tt class="py-op">(</tt><tt class="py-string">"proyectoTest"</tt><tt class="py-op">)</tt>         </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">         </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">=</tt><tt class="py-name">Fase</tt><tt class="py-op">(</tt><tt class="py-string">"faseTest"</tt><tt class="py-op">,</tt><tt class="py-string">"rest"</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">idProyecto</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-name">MgrFase</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Fin de prueba FaseGuardar"</tt>  </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">         </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt id="link-45" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-45', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">=</tt><tt class="py-string">""</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-name">p</tt><tt class="py-op">=</tt><tt class="py-name">Fase</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">MgrFase</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Error: Fin de prueba FaseGuardarVacio"</tt>  </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-46" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-46', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">==</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-47', 'nombre', 'link-18');">nombre</a></tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">         </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt id="link-48" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-48', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"faseTest"</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">=</tt><tt class="py-name">Fase</tt><tt class="py-op">(</tt><tt id="link-49" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-49', 'nombre', 'link-18');">nombre</a></tt><tt class="py-op">,</tt><tt class="py-string">"fase inicial"</tt><tt class="py-op">,</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">idProyecto</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">MgrFase</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Error: Fin de Prueba FaseGuardarDoble: "</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-50" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-50', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">==</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-51', 'nombre', 'link-18');">nombre</a></tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">       </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt id="link-52" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-52', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"faseTest1"</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">=</tt><tt class="py-name">Fase</tt><tt class="py-op">(</tt><tt id="link-53" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-53', 'nombre', 'link-18');">nombre</a></tt><tt class="py-op">,</tt><tt class="py-string">"fase inicial"</tt><tt class="py-op">,</tt><tt class="py-number">1</tt> <tt class="py-op">,</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">idProyecto</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-name">MgrFase</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">borrar</tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-54', 'nombre', 'link-18');">nombre</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Error: Fin de prueba FaseBorrarInexistente:"</tt>  </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-55" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-55', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">==</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-56', 'nombre', 'link-18');">nombre</a></tt> </tt>
+</div><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">     </tt>
+<a name="TestCase.testAtrib"></a><div id="TestCase.testAtrib-def"><a name="L115"></a><tt class="py-lineno">115</tt> <a class="py-toggle" href="#" id="TestCase.testAtrib-toggle" onclick="return toggle('TestCase.testAtrib');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="tests.TestCase-class.html#testAtrib">testAtrib</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase.testAtrib-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCase.testAtrib-expanded"><a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-docstring">""" Realiza varias pruebas sobre la tabla Tipo de Atributo:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">        1. Crear y guarda un tipo de atributo nuevo</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">        2. Intenta guardar un tipo de atributo vacio</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-docstring">        3. Intenta guardar un tipo de atributo repetido</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring">        4. Intenta borrar un tipo de atributo inexistente</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt id="link-57" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-57', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"atrib1"</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-name">u</tt> <tt class="py-op">=</tt><tt class="py-name">TipoDeAtributo</tt><tt class="py-op">(</tt><tt class="py-string">"atrib1"</tt><tt class="py-op">,</tt><tt class="py-string">"numerico"</tt><tt class="py-op">,</tt><tt class="py-string">"30"</tt><tt class="py-op">,</tt><tt class="py-string">"atrib numerico precision 30"</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">MgrTipoDeAtrib</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Fin de prueba testAtribGuardar: guardo atrib1"</tt>  </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-58" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-58', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">==</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-59', 'nombre', 'link-18');">nombre</a></tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">         </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt id="link-60" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-60', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">=</tt><tt class="py-string">""</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">u</tt><tt class="py-op">=</tt><tt class="py-name">TipoDeAtributo</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-name">MgrTipoDeAtrib</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Error: Fin de prueba testTipoDeAtribGuardarVacio"</tt>  </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-61" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-61', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">==</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-62', 'nombre', 'link-18');">nombre</a></tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">         </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt id="link-63" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-63', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"atrib1"</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-name">u</tt> <tt class="py-op">=</tt><tt class="py-name">TipoDeAtributo</tt><tt class="py-op">(</tt><tt class="py-string">"atrib1"</tt><tt class="py-op">,</tt><tt class="py-string">"numerico"</tt><tt class="py-op">,</tt><tt class="py-string">"30"</tt><tt class="py-op">,</tt><tt class="py-string">"atrib numerico precision 30"</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-name">MgrTipoDeAtrib</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">guardar</tt><tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Error: Fin de Prueba testTipoDeAtribGuardarDoble: "</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-64" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-64', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">==</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-65', 'nombre', 'link-18');">nombre</a></tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">         </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt id="link-66" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-66', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"feo"</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-name">u</tt> <tt class="py-op">=</tt><tt class="py-name">TipoDeAtributo</tt><tt class="py-op">(</tt><tt class="py-string">"feo"</tt><tt class="py-op">,</tt><tt class="py-string">"texto"</tt><tt class="py-op">,</tt><tt class="py-string">"30"</tt><tt class="py-op">,</tt><tt class="py-string">"atrib texto precision 30"</tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-name">MgrTipoDeAtrib</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">borrar</tt><tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">.</tt><tt id="link-67" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-67', 'nombre', 'link-18');">nombre</a></tt><tt class="py-op">)</tt>       </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Error: Fin de prueba testTipoDeAtribBorrarInexistente:"</tt>  </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt id="link-68" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-68', 'nombre', 'link-18');">nombre</a></tt> <tt class="py-op">==</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt id="link-69" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-69', 'nombre', 'link-18');">nombre</a></tt> </tt>
+</div><a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">     </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">     </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">    <tt class="py-comment"># login - logout    </tt> </tt>
+<a name="TestCase.login"></a><div id="TestCase.login-def"><a name="L149"></a><tt class="py-lineno">149</tt> <a class="py-toggle" href="#" id="TestCase.login-toggle" onclick="return toggle('TestCase.login');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="tests.TestCase-class.html#login">login</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">username</tt><tt class="py-op">,</tt> <tt class="py-param">password</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase.login-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCase.login-expanded"><a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-docstring">""" Prueba el login </tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-docstring">        @param username nick del usuario</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-docstring">        @param password contrasenha del usuario</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"login"</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">        <tt class="py-name">final</tt><tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-string">'username'</tt><tt class="py-op">:</tt><tt id="link-70" class="py-name" targets="Variable form.LoginForm.username=form.LoginForm-class.html#username"><a title="form.LoginForm.username" class="py-name" href="#" onclick="return doclink('link-70', 'username', 'link-70');">username</a></tt><tt class="py-op">,</tt><tt class="py-string">'password'</tt><tt class="py-op">:</tt><tt id="link-71" class="py-name" targets="Variable form.CreateFormUser.password=form.CreateFormUser-class.html#password,Variable form.LoginForm.password=form.LoginForm-class.html#password"><a title="form.CreateFormUser.password
+form.LoginForm.password" class="py-name" href="#" onclick="return doclink('link-71', 'password', 'link-71');">password</a></tt><tt class="py-op">}</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt class="py-name">data</tt> <tt class="py-op">=</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">dumps</tt><tt class="py-op">(</tt><tt class="py-name">final</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-72" class="py-name"><a title="pruebita.app" class="py-name" href="#" onclick="return doclink('link-72', 'app', 'link-2');">app</a></tt><tt class="py-op">.</tt><tt class="py-name">post</tt><tt class="py-op">(</tt><tt class="py-string">'/login'</tt><tt class="py-op">,</tt> <tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-name">data</tt><tt class="py-op">,</tt>  </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">            <tt class="py-name">follow_redirects</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt>
+<a name="TestCase.logout"></a><div id="TestCase.logout-def"><a name="L160"></a><tt class="py-lineno">160</tt> <a class="py-toggle" href="#" id="TestCase.logout-toggle" onclick="return toggle('TestCase.logout');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="tests.TestCase-class.html#logout">logout</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase.logout-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCase.logout-expanded"><a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-docstring">""" Prueba el logout """</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"logout"</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-73" class="py-name"><a title="pruebita.app" class="py-name" href="#" onclick="return doclink('link-73', 'app', 'link-2');">app</a></tt><tt class="py-op">.</tt><tt class="py-name">get</tt><tt class="py-op">(</tt><tt class="py-string">'/logout'</tt><tt class="py-op">,</tt> <tt class="py-name">follow_redirects</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">     </tt>
+<a name="TestCase.testLoginLogout"></a><div id="TestCase.testLoginLogout-def"><a name="L165"></a><tt class="py-lineno">165</tt> <a class="py-toggle" href="#" id="TestCase.testLoginLogout-toggle" onclick="return toggle('TestCase.testLoginLogout');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="tests.TestCase-class.html#testLoginLogout">testLoginLogout</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestCase.testLoginLogout-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestCase.testLoginLogout-expanded"><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-docstring">""" Prueba el login y logout del usuario admin"""</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"longin - logout"</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-name">rv</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-74" class="py-name" targets="Method tests.TestCase.login()=tests.TestCase-class.html#login"><a title="tests.TestCase.login" class="py-name" href="#" onclick="return doclink('link-74', 'login', 'link-74');">login</a></tt><tt class="py-op">(</tt><tt class="py-string">'admin'</tt><tt class="py-op">,</tt> <tt class="py-string">'admin'</tt><tt class="py-op">)</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-name">dato</tt> <tt class="py-op">=</tt> <tt class="py-name">json</tt><tt class="py-op">.</tt><tt class="py-name">loads</tt><tt class="py-op">(</tt><tt class="py-name">rv</tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Esta logueado como"</tt><tt class="py-op">,</tt><tt class="py-name">dato</tt><tt class="py-op">[</tt><tt class="py-string">"usuario"</tt><tt class="py-op">]</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-name">rv</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-75" class="py-name" targets="Method tests.TestCase.logout()=tests.TestCase-class.html#logout"><a title="tests.TestCase.logout" class="py-name" href="#" onclick="return doclink('link-75', 'logout', 'link-75');">logout</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">     </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">    <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">main</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Dec  6 13:49:07 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

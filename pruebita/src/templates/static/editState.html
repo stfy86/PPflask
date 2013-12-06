@@ -3,23 +3,26 @@
 {% block title %}Editar estado del usuario{% endblock %}
 
 {% block body %}
-    <h1>Modificar estado de usuario</h1>
+<div class="page-header">
+    <center>
+    <h1>Administrar Usuario</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+    <h3>*PASO 1: Modificar el estado del usuario</h3>
     <form method="post" action="">
-      <dl>
-        {{ form.csrf }}
-            {{ form.estado.label(style="float: left; width: 100px;") }} 
-            {{ form.estado(class="form-input", style="width:200px") }}
-            {% for error in form.estado.errors %} {{ error }} {% endfor %}
-      </dl>
-      <script language="JavaScript">
-      function confirmar ( mensaje ) {
-      return confirm( mensaje );
-      } 
-      </script>
+    <label> Estado:  </label>
+    <select name="estado" onchange="chequea(this,this.form.estado)" id="estadoUser">        
+            {% for button in buttons %}
+                {% if button in user.estado %}
+                    <option selected value="{{ button }}" >{{ button }}</option>
+                {% else %}
+                    <option value="{{ button }}" >{{ button }}</option>
+                {% endif %}
+            {% endfor %}
+    </select>
+          <input class="button" type="submit" value="EditState">
+          <input class="button" type="button" value="Back" onclick="document.location='/showUser/{{idUser}}.html';">
       
-      <p>
-          <input class="button" type="submit" value="Aceptar">
-          <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
-      <p>
     </form>
 {% endblock %}

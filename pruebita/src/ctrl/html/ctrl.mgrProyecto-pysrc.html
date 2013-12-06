@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ctrl.mgrProyecto</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ctrl-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ctrl-module.html">Package&nbsp;ctrl</a> ::
+        Module&nbsp;mgrProyecto
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="ctrl.mgrProyecto-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ctrl.mgrProyecto-module.html">Module ctrl.mgrProyecto</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">"""Clase que maneja los Proyectos"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">modulo</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">sqlalchemy</tt> <tt class="py-keyword">import</tt> <tt class="py-name">or_</tt><tt class="py-op">,</tt> <tt class="py-name">and_</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module ctrl.mgrUser=ctrl.mgrUser-module.html"><a title="ctrl.mgrUser" class="py-name" href="#" onclick="return doclink('link-0', 'mgrUser', 'link-0');">mgrUser</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Class ctrl.mgrUser.MgrUser=ctrl.mgrUser.MgrUser-class.html"><a title="ctrl.mgrUser.MgrUser" class="py-name" href="#" onclick="return doclink('link-1', 'MgrUser', 'link-1');">MgrUser</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module ctrl.mgrFase=ctrl.mgrFase-module.html"><a title="ctrl.mgrFase" class="py-name" href="#" onclick="return doclink('link-2', 'mgrFase', 'link-2');">mgrFase</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class ctrl.mgrFase.MgrFase=ctrl.mgrFase.MgrFase-class.html"><a title="ctrl.mgrFase.MgrFase" class="py-name" href="#" onclick="return doclink('link-3', 'MgrFase', 'link-3');">MgrFase</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto"></a><div id="MgrProyecto-def"><a name="L8"></a><tt class="py-lineno">  8</tt> <a class="py-toggle" href="#" id="MgrProyecto-toggle" onclick="return toggle('MgrProyecto');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html">MgrProyecto</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MgrProyecto-expanded"><a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.guardar"></a><div id="MgrProyecto.guardar-def"><a name="L10"></a><tt class="py-lineno"> 10</tt> <a class="py-toggle" href="#" id="MgrProyecto.guardar-toggle" onclick="return toggle('MgrProyecto.guardar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#guardar">guardar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">project</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.guardar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.guardar-expanded"><a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">        <tt class="py-docstring">""" Guarda un proyecto solo si:</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">        1. El proyecto no existe en el sistema """</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method ctrl.mgrComite.MgrComite.existe()=ctrl.mgrComite.MgrComite-class.html#existe,Method ctrl.mgrFase.MgrFase.existe()=ctrl.mgrFase.MgrFase-class.html#existe,Method ctrl.mgrLineaBase.MgrLineaBase.existe()=ctrl.mgrLineaBase.MgrLineaBase-class.html#existe,Method ctrl.mgrProyecto.MgrProyecto.existe()=ctrl.mgrProyecto.MgrProyecto-class.html#existe,Method ctrl.mgrRol.MgrRol.existe()=ctrl.mgrRol.MgrRol-class.html#existe,Method ctrl.mgrTipoDeItem.MgrTipoDeItem.existe()=ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#existe,Method ctrl.mgrUser.MgrUser.existe()=ctrl.mgrUser.MgrUser-class.html#existe"><a title="ctrl.mgrComite.MgrComite.existe
+ctrl.mgrFase.MgrFase.existe
+ctrl.mgrLineaBase.MgrLineaBase.existe
+ctrl.mgrProyecto.MgrProyecto.existe
+ctrl.mgrRol.MgrRol.existe
+ctrl.mgrTipoDeItem.MgrTipoDeItem.existe
+ctrl.mgrUser.MgrUser.existe" class="py-name" href="#" onclick="return doclink('link-4', 'existe', 'link-4');">existe</a></tt><tt class="py-op">(</tt><tt class="py-name">project</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt class="py-name">project</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":guardo el proyecto:"</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO guardo el proyecto:"</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">       </tt>
+<a name="MgrProyecto.borrar"></a><div id="MgrProyecto.borrar-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="MgrProyecto.borrar-toggle" onclick="return toggle('MgrProyecto.borrar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#borrar">borrar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">project</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.borrar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.borrar-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-docstring">""" Borra el proyecto solo si:</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">        1. El proyecto existe</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">        2. El estado del proyecto es Finalizado</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="ctrl.mgrComite.MgrComite.existe
+ctrl.mgrFase.MgrFase.existe
+ctrl.mgrLineaBase.MgrLineaBase.existe
+ctrl.mgrProyecto.MgrProyecto.existe
+ctrl.mgrRol.MgrRol.existe
+ctrl.mgrTipoDeItem.MgrTipoDeItem.existe
+ctrl.mgrUser.MgrUser.existe" class="py-name" href="#" onclick="return doclink('link-5', 'existe', 'link-4');">existe</a></tt><tt class="py-op">(</tt><tt class="py-name">project</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO borro el proyecto: el proyecto no existe"</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">project</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method ctrl.mgrFase.MgrFase.estado()=ctrl.mgrFase.MgrFase-class.html#estado,Method ctrl.mgrItem.MgrItem.estado()=ctrl.mgrItem.MgrItem-class.html#estado,Method ctrl.mgrLineaBase.MgrLineaBase.estado()=ctrl.mgrLineaBase.MgrLineaBase-class.html#estado,Method ctrl.mgrProyecto.MgrProyecto.estado()=ctrl.mgrProyecto.MgrProyecto-class.html#estado,Method ctrl.mgrSolicitud.MgrSolicitud.estado()=ctrl.mgrSolicitud.MgrSolicitud-class.html#estado,Method ctrl.mgrUser.MgrUser.estado()=ctrl.mgrUser.MgrUser-class.html#estado"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-6', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">!=</tt> <tt class="py-string">"Finalizado"</tt><tt class="py-op">:</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO borro el proyecto: el estado del proyecto no es Finalizado"</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">delete</tt><tt class="py-op">(</tt><tt class="py-name">project</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":borro proyecto:"</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.listar"></a><div id="MgrProyecto.listar-def"><a name="L34"></a><tt class="py-lineno"> 34</tt> <a class="py-toggle" href="#" id="MgrProyecto.listar-toggle" onclick="return toggle('MgrProyecto.listar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#listar">listar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.listar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.listar-expanded"><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-docstring">"""Lista los Proyectos """</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">      </tt>
+<a name="MgrProyecto.filtrar"></a><div id="MgrProyecto.filtrar-def"><a name="L38"></a><tt class="py-lineno"> 38</tt> <a class="py-toggle" href="#" id="MgrProyecto.filtrar-toggle" onclick="return toggle('MgrProyecto.filtrar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#filtrar">filtrar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.filtrar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.filtrar-expanded"><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-docstring">""" Busca el proyecto por nombre """</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.listProjectPyF"></a><div id="MgrProyecto.listProjectPyF-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="MgrProyecto.listProjectPyF-toggle" onclick="return toggle('MgrProyecto.listProjectPyF');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#listProjectPyF">listProjectPyF</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.listProjectPyF-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.listProjectPyF-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-docstring">"""Lista los proyectos con estado Pendiente y Finalizado"""</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">or_</tt><tt class="py-op">(</tt><tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-7', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Pendiente"</tt><tt class="py-op">,</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-8', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Finalizado"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.listarActivo"></a><div id="MgrProyecto.listarActivo-def"><a name="L46"></a><tt class="py-lineno"> 46</tt> <a class="py-toggle" href="#" id="MgrProyecto.listarActivo-toggle" onclick="return toggle('MgrProyecto.listarActivo');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#listarActivo">listarActivo</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.listarActivo-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.listarActivo-expanded"><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-docstring">""" Lista los proyectos Activos """</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-9', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Activo"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>         </tt>
+</div><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.listarFinalizado"></a><div id="MgrProyecto.listarFinalizado-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="MgrProyecto.listarFinalizado-toggle" onclick="return toggle('MgrProyecto.listarFinalizado');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#listarFinalizado">listarFinalizado</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.listarFinalizado-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.listarFinalizado-expanded"><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-docstring">""" Lista los proyectos Finalizados """</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-10', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Finalizado"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>   </tt>
+</div><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.listarPendiente"></a><div id="MgrProyecto.listarPendiente-def"><a name="L54"></a><tt class="py-lineno"> 54</tt> <a class="py-toggle" href="#" id="MgrProyecto.listarPendiente-toggle" onclick="return toggle('MgrProyecto.listarPendiente');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#listarPendiente">listarPendiente</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.listarPendiente-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.listarPendiente-expanded"><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-docstring">"""Lista los proyectos Pendientes"""</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-11', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Pendiente"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>   </tt>
+</div><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.modificar"></a><div id="MgrProyecto.modificar-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="MgrProyecto.modificar-toggle" onclick="return toggle('MgrProyecto.modificar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#modificar">modificar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">project</tt><tt class="py-op">,</tt> <tt class="py-param">descripcionNew</tt><tt class="py-op">,</tt> <tt class="py-param">presupuestoNew</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.modificar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.modificar-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-docstring">"""Edita los datos del proyecto solo si:</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">        1. El proyecto existe</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">        2. El estado del proyecto es Pendiente</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="ctrl.mgrComite.MgrComite.existe
+ctrl.mgrFase.MgrFase.existe
+ctrl.mgrLineaBase.MgrLineaBase.existe
+ctrl.mgrProyecto.MgrProyecto.existe
+ctrl.mgrRol.MgrRol.existe
+ctrl.mgrTipoDeItem.MgrTipoDeItem.existe
+ctrl.mgrUser.MgrUser.existe" class="py-name" href="#" onclick="return doclink('link-12', 'existe', 'link-4');">existe</a></tt><tt class="py-op">(</tt><tt class="py-name">project</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO modifico el proyecto: el proyecto no existe"</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">project</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-13', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">!=</tt> <tt class="py-string">"Pendiente"</tt><tt class="py-op">:</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO modifico el proyecto: el estado del proyecto no es Pendiente"</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">            <tt class="py-name">project</tt><tt class="py-op">.</tt><tt class="py-name">descripcion</tt> <tt class="py-op">=</tt> <tt class="py-name">descripcionNew</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">            <tt class="py-name">project</tt><tt class="py-op">.</tt><tt class="py-name">presupuesto</tt> <tt class="py-op">=</tt> <tt class="py-name">presupuestoNew</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":se modifico los datos del proyecto:"</tt> </tt>
+</div><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">         </tt>
+<a name="MgrProyecto.modificarOrden"></a><div id="MgrProyecto.modificarOrden-def"><a name="L73"></a><tt class="py-lineno"> 73</tt> <a class="py-toggle" href="#" id="MgrProyecto.modificarOrden-toggle" onclick="return toggle('MgrProyecto.modificarOrden');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#modificarOrden">modificarOrden</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">project</tt><tt class="py-op">,</tt> <tt class="py-param">fase</tt><tt class="py-op">,</tt> <tt class="py-param">faseNew</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.modificarOrden-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.modificarOrden-expanded"><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-docstring">""" Cambia el orden de la fase del proyecto """</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="ctrl.mgrComite.MgrComite.existe
+ctrl.mgrFase.MgrFase.existe
+ctrl.mgrLineaBase.MgrLineaBase.existe
+ctrl.mgrProyecto.MgrProyecto.existe
+ctrl.mgrRol.MgrRol.existe
+ctrl.mgrTipoDeItem.MgrTipoDeItem.existe
+ctrl.mgrUser.MgrUser.existe" class="py-name" href="#" onclick="return doclink('link-14', 'existe', 'link-4');">existe</a></tt><tt class="py-op">(</tt><tt class="py-name">project</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO modifico el orden de la fase: el proyecto no existe"</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">project</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-15', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">!=</tt> <tt class="py-string">"Pendiente"</tt><tt class="py-op">:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO modifico el orden de la fase: el estado del proyecto no es Pendiente"</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">fase</tt> <tt class="py-keyword">in</tt>  <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method ctrl.mgrProyecto.MgrProyecto.fasesDeProyecto()=ctrl.mgrProyecto.MgrProyecto-class.html#fasesDeProyecto"><a title="ctrl.mgrProyecto.MgrProyecto.fasesDeProyecto" class="py-name" href="#" onclick="return doclink('link-16', 'fasesDeProyecto', 'link-16');">fasesDeProyecto</a></tt><tt class="py-op">(</tt><tt class="py-name">project</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">faseNew</tt> <tt class="py-keyword">in</tt>  <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="ctrl.mgrProyecto.MgrProyecto.fasesDeProyecto" class="py-name" href="#" onclick="return doclink('link-17', 'fasesDeProyecto', 'link-16');">fasesDeProyecto</a></tt><tt class="py-op">(</tt><tt class="py-name">project</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt class="py-name">aux</tt> <tt class="py-op">=</tt> <tt class="py-name">fase</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">            <tt class="py-name">fase</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt> <tt class="py-op">=</tt> <tt class="py-name">faseNew</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt class="py-name">faseNew</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt> <tt class="py-op">=</tt> <tt class="py-name">aux</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":se modifico el orden:"</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO se puede modificar el orden: una de las fases no pertenece al proyecto"</tt> </tt>
+</div><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">         </tt>
+<a name="MgrProyecto.estado"></a><div id="MgrProyecto.estado-def"><a name="L88"></a><tt class="py-lineno"> 88</tt> <a class="py-toggle" href="#" id="MgrProyecto.estado-toggle" onclick="return toggle('MgrProyecto.estado');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#estado">estado</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">,</tt> <tt class="py-param">estadoNew</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.estado-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.estado-expanded"><a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-docstring">""" Cambia el estado del proyecto """</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">estadoNew</tt> <tt class="py-op">==</tt> <tt class="py-string">"Activo"</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method ctrl.mgrProyecto.MgrProyecto.proyectoIniciado()=ctrl.mgrProyecto.MgrProyecto-class.html#proyectoIniciado"><a title="ctrl.mgrProyecto.MgrProyecto.proyectoIniciado" class="py-name" href="#" onclick="return doclink('link-18', 'proyectoIniciado', 'link-18');">proyectoIniciado</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-19', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">estadoNew</tt>         </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":modifico el estado a Activo:"</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">estadoNew</tt> <tt class="py-op">==</tt> <tt class="py-string">"Finalizado"</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method ctrl.mgrProyecto.MgrProyecto.proyectoFinalizado()=ctrl.mgrProyecto.MgrProyecto-class.html#proyectoFinalizado"><a title="ctrl.mgrProyecto.MgrProyecto.proyectoFinalizado" class="py-name" href="#" onclick="return doclink('link-20', 'proyectoFinalizado', 'link-20');">proyectoFinalizado</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">            <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-21', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">estadoNew</tt>         </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":modifico el estado Finalizado:"</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">estadoNew</tt> <tt class="py-op">==</tt> <tt class="py-string">"Inactivo"</tt><tt class="py-op">:</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">            <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-22', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">estadoNew</tt>         </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":modifico el estado a Inactivo:"</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">         </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt><tt class="py-string">":NO modifico el estado:"</tt> </tt>
+</div><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">             </tt>
+<a name="MgrProyecto.proyectoIniciado"></a><div id="MgrProyecto.proyectoIniciado-def"><a name="L105"></a><tt class="py-lineno">105</tt> <a class="py-toggle" href="#" id="MgrProyecto.proyectoIniciado-toggle" onclick="return toggle('MgrProyecto.proyectoIniciado');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#proyectoIniciado">proyectoIniciado</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.proyectoIniciado-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.proyectoIniciado-expanded"><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna True si todas las fases del proyecto estan en estado desarrollo """</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method ctrl.mgrComite.MgrComite.filtrar()=ctrl.mgrComite.MgrComite-class.html#filtrar,Method ctrl.mgrFase.MgrFase.filtrar()=ctrl.mgrFase.MgrFase-class.html#filtrar,Method ctrl.mgrItem.MgrItem.filtrar()=ctrl.mgrItem.MgrItem-class.html#filtrar,Method ctrl.mgrLineaBase.MgrLineaBase.filtrar()=ctrl.mgrLineaBase.MgrLineaBase-class.html#filtrar,Method ctrl.mgrPermiso.MgrPermiso.filtrar()=ctrl.mgrPermiso.MgrPermiso-class.html#filtrar,Method ctrl.mgrProyecto.MgrProyecto.filtrar()=ctrl.mgrProyecto.MgrProyecto-class.html#filtrar,Method ctrl.mgrRol.MgrRol.filtrar()=ctrl.mgrRol.MgrRol-class.html#filtrar,Method ctrl.mgrSolicitud.MgrSolicitud.filtrar()=ctrl.mgrSolicitud.MgrSolicitud-class.html#filtrar,Method ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar()=ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#filtrar,Method ctrl.mgrUser.MgrUser.filtrar()=ctrl.mgrUser.MgrUser-class.html#filtrar"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-23', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">fase</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">fase</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-24', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">!=</tt> <tt class="py-string">"Desarrollo"</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">         </tt>
+<a name="MgrProyecto.proyectoFinalizado"></a><div id="MgrProyecto.proyectoFinalizado-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="MgrProyecto.proyectoFinalizado-toggle" onclick="return toggle('MgrProyecto.proyectoFinalizado');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#proyectoFinalizado">proyectoFinalizado</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.proyectoFinalizado-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.proyectoFinalizado-expanded"><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna true si todas las fases del proyecto estan en estado finalizado """</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-25', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">fase</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">fase</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-26', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">!=</tt> <tt class="py-string">"Finalizado"</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.asignarFase"></a><div id="MgrProyecto.asignarFase-def"><a name="L121"></a><tt class="py-lineno">121</tt> <a class="py-toggle" href="#" id="MgrProyecto.asignarFase-toggle" onclick="return toggle('MgrProyecto.asignarFase');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#asignarFase">asignarFase</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">,</tt> <tt class="py-param">nombreFase</tt><tt class="py-op">,</tt> <tt class="py-param">descripcionFase</tt><tt class="py-op">,</tt> <tt class="py-param">ordenFase</tt><tt class="py-op">,</tt> <tt class="py-param">tipoDeItemIdFase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.asignarFase-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.asignarFase-expanded"><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-name">fase</tt> <tt class="py-op">=</tt> <tt class="py-name">Fase</tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt> <tt class="py-op">=</tt> <tt class="py-name">nombreFase</tt><tt class="py-op">,</tt> <tt class="py-name">descripcion</tt> <tt class="py-op">=</tt> <tt class="py-name">descripcionFase</tt><tt class="py-op">,</tt> <tt class="py-name">orden</tt> <tt class="py-op">=</tt> <tt class="py-name">ordenFase</tt> <tt class="py-op">,</tt> <tt class="py-name">proyectoId</tt><tt class="py-op">=</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">idProyecto</tt><tt class="py-op">,</tt> <tt class="py-name">tipoDeItemId</tt> <tt class="py-op">=</tt> <tt class="py-name">tipoDeItemIdFase</tt> <tt class="py-op">)</tt>     </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">idTipoDeItem</tt> <tt class="py-op">==</tt> <tt class="py-name">tipoDeItemIdFase</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Method ctrl.mgrProyecto.MgrProyecto.faseRepetida()=ctrl.mgrProyecto.MgrProyecto-class.html#faseRepetida"><a title="ctrl.mgrProyecto.MgrProyecto.faseRepetida" class="py-name" href="#" onclick="return doclink('link-27', 'faseRepetida', 'link-27');">faseRepetida</a></tt><tt class="py-op">(</tt><tt class="py-name">proyecto</tt><tt class="py-op">,</tt> <tt class="py-name">nombreFase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO asigno la fase: nombre de la fase repetida"</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt class="py-name">fase</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">fase</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":asigno fase =&gt;"</tt> <tt class="py-op">+</tt><tt class="py-name">fase</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">+</tt> <tt class="py-string">" al proyecto =&gt;"</tt> <tt class="py-op">+</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">+</tt> <tt class="py-string">" con el tipo de item  =&gt;"</tt> <tt class="py-op">+</tt> <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">+</tt> <tt class="py-string">":"</tt> </tt>
+</div><a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">     </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">   </tt>
+<a name="MgrProyecto.deasignarLider"></a><div id="MgrProyecto.deasignarLider-def"><a name="L134"></a><tt class="py-lineno">134</tt> <a class="py-toggle" href="#" id="MgrProyecto.deasignarLider-toggle" onclick="return toggle('MgrProyecto.deasignarLider');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#deasignarLider">deasignarLider</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">,</tt> <tt class="py-param">rol</tt><tt class="py-op">,</tt> <tt class="py-param">nameLider</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.deasignarLider-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.deasignarLider-expanded"><a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-name">r</tt> <tt class="py-op">=</tt> <tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">and_</tt><tt class="py-op">(</tt><tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">,</tt> <tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">ambito</tt> <tt class="py-op">==</tt> <tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">ambito</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-28', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-name">u</tt> <tt class="py-op">=</tt> <tt class="py-name">User</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">User</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">==</tt> <tt class="py-name">nameLider</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-29', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Pendiente"</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">r</tt> <tt class="py-keyword">in</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">u</tt> <tt class="py-keyword">in</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">            <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">.</tt><tt class="py-name">remove</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">)</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">            <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">.</tt><tt class="py-name">remove</tt><tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":desasigno el lider =&gt;"</tt> <tt class="py-op">+</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">+</tt> <tt class="py-string">" al proyecto =&gt;"</tt> <tt class="py-op">+</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">+</tt><tt class="py-string">":"</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO desasigno el lider "</tt> </tt>
+</div><a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">         </tt>
+<a name="MgrProyecto.asignarLider"></a><div id="MgrProyecto.asignarLider-def"><a name="L146"></a><tt class="py-lineno">146</tt> <a class="py-toggle" href="#" id="MgrProyecto.asignarLider-toggle" onclick="return toggle('MgrProyecto.asignarLider');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#asignarLider">asignarLider</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">,</tt> <tt class="py-param">rol</tt><tt class="py-op">,</tt> <tt class="py-param">nameLider</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.asignarLider-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.asignarLider-expanded"><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-name">r</tt> <tt class="py-op">=</tt> <tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">and_</tt><tt class="py-op">(</tt><tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">,</tt> <tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">ambito</tt> <tt class="py-op">==</tt> <tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">ambito</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-30', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt class="py-name">u</tt> <tt class="py-op">=</tt> <tt class="py-name">User</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">User</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">==</tt> <tt class="py-name">nameLider</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-31', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Pendiente"</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">r</tt> <tt class="py-keyword">in</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">u</tt> <tt class="py-keyword">in</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-32', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Activo"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">"NO se asigno el lider"</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">)</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">            <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">u</tt><tt class="py-op">)</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":asigno el lider =&gt;"</tt> <tt class="py-op">+</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">+</tt> <tt class="py-string">" al proyecto =&gt;"</tt> <tt class="py-op">+</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">+</tt><tt class="py-string">":"</tt> </tt>
+</div><a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">         </tt>
+<a name="MgrProyecto.asignarUsuario"></a><div id="MgrProyecto.asignarUsuario-def"><a name="L158"></a><tt class="py-lineno">158</tt> <a class="py-toggle" href="#" id="MgrProyecto.asignarUsuario-toggle" onclick="return toggle('MgrProyecto.asignarUsuario');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#asignarUsuario">asignarUsuario</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">,</tt>  <tt class="py-param">user</tt><tt class="py-op">,</tt> <tt class="py-param">rol</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.asignarUsuario-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.asignarUsuario-expanded"><a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">        <tt class="py-docstring">"""Asigna un usuario al proyecto"""</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">user</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO asigno usuario: el usuario ya es miembro del proyecto"</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">rol</tt> <tt class="py-keyword">in</tt> <tt class="py-name">user</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">:</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO asigno el usuario: el usuario ya tiene asignado el rol"</tt>             </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">            <tt class="py-name">user</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-33', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Activo"</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">            <tt class="py-comment"># asigna el rol al usuario</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">            <tt class="py-name">user</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">rol</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">            <tt class="py-comment"># asigna el usuario al proyecto </tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">            <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">user</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":asigno el usuario =&gt; "</tt> <tt class="py-op">+</tt> <tt class="py-name">user</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">+</tt> <tt class="py-string">"al proyecto =&gt; "</tt> <tt class="py-op">+</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">+</tt><tt class="py-string">" con el rol =&gt; "</tt><tt class="py-op">+</tt> <tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">+</tt> <tt class="py-string">":"</tt> </tt>
+</div><a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">         </tt>
+<a name="MgrProyecto.desasignarUsuario"></a><div id="MgrProyecto.desasignarUsuario-def"><a name="L174"></a><tt class="py-lineno">174</tt> <a class="py-toggle" href="#" id="MgrProyecto.desasignarUsuario-toggle" onclick="return toggle('MgrProyecto.desasignarUsuario');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#desasignarUsuario">desasignarUsuario</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">,</tt> <tt class="py-param">user</tt><tt class="py-op">,</tt> <tt class="py-param">rol</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.desasignarUsuario-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.desasignarUsuario-expanded"><a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-docstring">""" Des asigna usuario de proyecto con el rol especificado """</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">user</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">:</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO desasigno el usuario: el usuario no es miembro del proyecto"</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-string">"LiderDeProyecto"</tt> <tt class="py-op">:</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO desasigno el usuario: no se permite eliminar un lider de proyecto"</tt>         </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">rol</tt> <tt class="py-keyword">in</tt> <tt class="py-name">user</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">:</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO desasigno el usuario: el usuario no tiene asignado el rol"</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">            <tt class="py-comment"># desasigna el rol al usuario</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">            <tt class="py-name">user</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">.</tt><tt class="py-name">remove</tt><tt class="py-op">(</tt><tt class="py-name">rol</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-34" class="py-name"><a title="ctrl.mgrUser.MgrUser" class="py-name" href="#" onclick="return doclink('link-34', 'MgrUser', 'link-1');">MgrUser</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Method ctrl.mgrUser.MgrUser.ceroRol()=ctrl.mgrUser.MgrUser-class.html#ceroRol"><a title="ctrl.mgrUser.MgrUser.ceroRol" class="py-name" href="#" onclick="return doclink('link-35', 'ceroRol', 'link-35');">ceroRol</a></tt><tt class="py-op">(</tt><tt class="py-name">user</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">                <tt class="py-name">user</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-36', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Inactivo"</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">            <tt class="py-comment"># deasigna del proyecto el usuario </tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">            <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">.</tt><tt class="py-name">remove</tt><tt class="py-op">(</tt><tt class="py-name">user</tt><tt class="py-op">)</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":desasigno usuario =&gt;"</tt> <tt class="py-op">+</tt> <tt class="py-name">user</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">+</tt> <tt class="py-string">" del proyecto =&gt;"</tt> <tt class="py-op">+</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">+</tt> <tt class="py-string">" con el rol =&gt;"</tt> <tt class="py-op">+</tt> <tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">+</tt> <tt class="py-string">":"</tt> </tt>
+</div><a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.usersDeProyecto"></a><div id="MgrProyecto.usersDeProyecto-def"><a name="L192"></a><tt class="py-lineno">192</tt> <a class="py-toggle" href="#" id="MgrProyecto.usersDeProyecto-toggle" onclick="return toggle('MgrProyecto.usersDeProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#usersDeProyecto">usersDeProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.usersDeProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.usersDeProyecto-expanded"><a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna usuarios de proyecto """</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-37', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">users</tt> </tt>
+</div><a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.filtrarXId"></a><div id="MgrProyecto.filtrarXId-def"><a name="L197"></a><tt class="py-lineno">197</tt> <a class="py-toggle" href="#" id="MgrProyecto.filtrarXId-toggle" onclick="return toggle('MgrProyecto.filtrarXId');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#filtrarXId">filtrarXId</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">idProyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.filtrarXId-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.filtrarXId-expanded"><a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">        <tt class="py-docstring">"""Busca proyecto por Id"""</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">idProyecto</tt> <tt class="py-op">==</tt> <tt class="py-name">idProyecto</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">     </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.fasesDeProyecto"></a><div id="MgrProyecto.fasesDeProyecto-def"><a name="L202"></a><tt class="py-lineno">202</tt> <a class="py-toggle" href="#" id="MgrProyecto.fasesDeProyecto-toggle" onclick="return toggle('MgrProyecto.fasesDeProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#fasesDeProyecto">fasesDeProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.fasesDeProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.fasesDeProyecto-expanded"><a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna fases del proyecto """</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-38', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt> </tt>
+</div><a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.nroDeFaseDeProyecto"></a><div id="MgrProyecto.nroDeFaseDeProyecto-def"><a name="L207"></a><tt class="py-lineno">207</tt> <a class="py-toggle" href="#" id="MgrProyecto.nroDeFaseDeProyecto-toggle" onclick="return toggle('MgrProyecto.nroDeFaseDeProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#nroDeFaseDeProyecto">nroDeFaseDeProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.nroDeFaseDeProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.nroDeFaseDeProyecto-expanded"><a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna el numero de fases del proyecto """</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-39', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">        <tt class="py-name">cont</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">:</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">i</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">                <tt class="py-name">cont</tt> <tt class="py-op">=</tt> <tt class="py-name">cont</tt> <tt class="py-op">+</tt>  <tt class="py-number">1</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">cont</tt> </tt>
+</div><a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.ordenarFase"></a><div id="MgrProyecto.ordenarFase-def"><a name="L216"></a><tt class="py-lineno">216</tt> <a class="py-toggle" href="#" id="MgrProyecto.ordenarFase-toggle" onclick="return toggle('MgrProyecto.ordenarFase');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#ordenarFase">ordenarFase</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">,</tt> <tt class="py-param">fase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.ordenarFase-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.ordenarFase-expanded"><a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">        <tt class="py-docstring">""" Ordena las fase de un proyecto"""</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">:</tt>     </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">            <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt> <tt class="py-op">==</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">fase</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt> <tt class="py-keyword">and</tt> <tt class="py-name">fase</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt> <tt class="py-op">!=</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt><tt class="py-op">:</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">                <tt class="py-name">f</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt> <tt class="py-op">=</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt class="py-name">orden</tt> <tt class="py-op">-</tt> <tt class="py-number">1</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">                <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">":ordeno las fases:"</tt> </tt>
+</div><a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">     </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.fasesDeProyectosPendiente"></a><div id="MgrProyecto.fasesDeProyectosPendiente-def"><a name="L226"></a><tt class="py-lineno">226</tt> <a class="py-toggle" href="#" id="MgrProyecto.fasesDeProyectosPendiente-toggle" onclick="return toggle('MgrProyecto.fasesDeProyectosPendiente');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#fasesDeProyectosPendiente">fasesDeProyectosPendiente</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.fasesDeProyectosPendiente-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.fasesDeProyectosPendiente-expanded"><a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-name">proyectosPendientes</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name" targets="Method ctrl.mgrProyecto.MgrProyecto.listarPendiente()=ctrl.mgrProyecto.MgrProyecto-class.html#listarPendiente"><a title="ctrl.mgrProyecto.MgrProyecto.listarPendiente" class="py-name" href="#" onclick="return doclink('link-40', 'listarPendiente', 'link-40');">listarPendiente</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">        <tt class="py-name">fasesPendiente</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">p</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyectosPendientes</tt><tt class="py-op">:</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">            <tt class="py-name">fasesPendiente</tt><tt class="py-op">.</tt><tt class="py-name">extend</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="ctrl.mgrProyecto.MgrProyecto.fasesDeProyecto" class="py-name" href="#" onclick="return doclink('link-41', 'fasesDeProyecto', 'link-16');">fasesDeProyecto</a></tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">fasesPendiente</tt> </tt>
+</div><a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">     </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.importarFase"></a><div id="MgrProyecto.importarFase-def"><a name="L234"></a><tt class="py-lineno">234</tt> <a class="py-toggle" href="#" id="MgrProyecto.importarFase-toggle" onclick="return toggle('MgrProyecto.importarFase');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#importarFase">importarFase</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">,</tt> <tt class="py-param">fase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.importarFase-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.importarFase-expanded"><a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="ctrl.mgrProyecto.MgrProyecto.faseRepetida" class="py-name" href="#" onclick="return doclink('link-42', 'faseRepetida', 'link-27');">faseRepetida</a></tt><tt class="py-op">(</tt><tt class="py-name">proyecto</tt><tt class="py-op">,</tt> <tt class="py-name">fase</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO se puede importar fase:"</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt>           </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">            <tt class="py-name">faseNew</tt> <tt class="py-op">=</tt> <tt class="py-name">Fase</tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">=</tt><tt class="py-name">fase</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">,</tt> <tt class="py-name">descripcion</tt><tt class="py-op">=</tt><tt class="py-name">fase</tt><tt class="py-op">.</tt><tt class="py-name">descripcion</tt><tt class="py-op">,</tt> <tt class="py-name">orden</tt><tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name" targets="Method ctrl.mgrProyecto.MgrProyecto.nroDeFaseDeProyecto()=ctrl.mgrProyecto.MgrProyecto-class.html#nroDeFaseDeProyecto"><a title="ctrl.mgrProyecto.MgrProyecto.nroDeFaseDeProyecto" class="py-name" href="#" onclick="return doclink('link-43', 'nroDeFaseDeProyecto', 'link-43');">nroDeFaseDeProyecto</a></tt><tt class="py-op">(</tt><tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">proyectoId</tt><tt class="py-op">=</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">idProyecto</tt><tt class="py-op">,</tt> <tt class="py-name">tipoDeItemId</tt><tt class="py-op">=</tt><tt class="py-name">fase</tt><tt class="py-op">.</tt><tt class="py-name">tipoDeItemId</tt><tt class="py-op">)</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt class="py-name">faseNew</tt><tt class="py-op">)</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">            <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">faseNew</tt><tt class="py-op">)</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":importo fase:"</tt> </tt>
+</div><a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">         </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">                 </tt>
+<a name="MgrProyecto.faseRepetida"></a><div id="MgrProyecto.faseRepetida-def"><a name="L245"></a><tt class="py-lineno">245</tt> <a class="py-toggle" href="#" id="MgrProyecto.faseRepetida-toggle" onclick="return toggle('MgrProyecto.faseRepetida');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#faseRepetida">faseRepetida</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">,</tt> <tt class="py-param">nombreFase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  </tt>
+</div><a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna True si existe en el proyecto una fase con el mismo nombre """</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">n</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">:</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">n</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombreFase</tt> <tt class="py-keyword">and</tt> <tt class="py-name">n</tt><tt class="py-op">.</tt><tt class="py-name">proyectoId</tt> <tt class="py-op">==</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">idProyecto</tt><tt class="py-op">:</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.iniciarProyecto"></a><div id="MgrProyecto.iniciarProyecto-def"><a name="L252"></a><tt class="py-lineno">252</tt> <a class="py-toggle" href="#" id="MgrProyecto.iniciarProyecto-toggle" onclick="return toggle('MgrProyecto.iniciarProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#iniciarProyecto">iniciarProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.iniciarProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.iniciarProyecto-expanded"><a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-44', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Pendiente"</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Method ctrl.mgrProyecto.MgrProyecto.sePuedeIniciar()=ctrl.mgrProyecto.MgrProyecto-class.html#sePuedeIniciar"><a title="ctrl.mgrProyecto.MgrProyecto.sePuedeIniciar" class="py-name" href="#" onclick="return doclink('link-45', 'sePuedeIniciar', 'link-45');">sePuedeIniciar</a></tt><tt class="py-op">(</tt><tt class="py-name">proyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">:</tt>     </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">                <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt> <tt class="py-op">==</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">                <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-46', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Activo"</tt>  </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">                <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">            <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-47', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Activo"</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":se inicio el proyecto:"</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO se puede iniciar el proyecto:"</tt> </tt>
+</div><a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">         </tt>
+<a name="MgrProyecto.sePuedeIniciar"></a><div id="MgrProyecto.sePuedeIniciar-def"><a name="L264"></a><tt class="py-lineno">264</tt> <a class="py-toggle" href="#" id="MgrProyecto.sePuedeIniciar-toggle" onclick="return toggle('MgrProyecto.sePuedeIniciar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#sePuedeIniciar">sePuedeIniciar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.sePuedeIniciar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.sePuedeIniciar-expanded"><a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="ctrl.mgrProyecto.MgrProyecto.nroDeFaseDeProyecto" class="py-name" href="#" onclick="return doclink('link-48', 'nroDeFaseDeProyecto', 'link-43');">nroDeFaseDeProyecto</a></tt><tt class="py-op">(</tt><tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt>            </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">:</tt>     </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">                <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt> <tt class="py-op">==</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-49', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Finalizado"</tt> <tt class="py-keyword">or</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-50', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Activo"</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt class="py-name">tipoDeItemId</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">                    <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt>       </tt>
+</div><a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">         </tt>
+<a name="MgrProyecto.fasesActivasDeProyecto"></a><div id="MgrProyecto.fasesActivasDeProyecto-def"><a name="L274"></a><tt class="py-lineno">274</tt> <a class="py-toggle" href="#" id="MgrProyecto.fasesActivasDeProyecto-toggle" onclick="return toggle('MgrProyecto.fasesActivasDeProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#fasesActivasDeProyecto">fasesActivasDeProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.fasesActivasDeProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.fasesActivasDeProyecto-expanded"><a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line">        <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-51', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">and_</tt><tt class="py-op">(</tt><tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-52', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Activo"</tt><tt class="py-op">,</tt> <tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">proyectoId</tt> <tt class="py-op">==</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">idProyecto</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line"> </tt>
+<a name="MgrProyecto.existe"></a><div id="MgrProyecto.existe-def"><a name="L278"></a><tt class="py-lineno">278</tt> <a class="py-toggle" href="#" id="MgrProyecto.existe-toggle" onclick="return toggle('MgrProyecto.existe');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#existe">existe</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.existe-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.existe-expanded"><a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">        <tt class="py-docstring">"""Retorna True si el proyecto ya existe"""</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line">        <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">p</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">         </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line">     </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.ambitoDeUser"></a><div id="MgrProyecto.ambitoDeUser-def"><a name="L288"></a><tt class="py-lineno">288</tt> <a class="py-toggle" href="#" id="MgrProyecto.ambitoDeUser-toggle" onclick="return toggle('MgrProyecto.ambitoDeUser');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#ambitoDeUser">ambitoDeUser</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.ambitoDeUser-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.ambitoDeUser-expanded"><a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line">        <tt class="py-comment">#user = self.filtrar(name)</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line">        <tt class="py-name">list</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">rol</tt> <tt class="py-keyword">in</tt> <tt class="py-name">name</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">:</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">ambito</tt> <tt class="py-op">==</tt> <tt class="py-string">"none project"</tt><tt class="py-op">:</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line">                <tt class="py-name">proyecto</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-53', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">ambito</tt><tt class="py-op">)</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line">                <tt class="py-comment">#li.extend(["two", "elements"])</tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line">                <tt class="py-name">list</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">proyecto</tt><tt class="py-op">,</tt> <tt class="py-name">rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">]</tt><tt class="py-op">)</tt>     </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">list</tt> </tt>
+</div><a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line">     </tt>
+<a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line">                 </tt>
+<a name="MgrProyecto.getLider"></a><div id="MgrProyecto.getLider-def"><a name="L299"></a><tt class="py-lineno">299</tt> <a class="py-toggle" href="#" id="MgrProyecto.getLider-toggle" onclick="return toggle('MgrProyecto.getLider');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#getLider">getLider</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.getLider-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.getLider-expanded"><a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line">        <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="ctrl.mgrComite.MgrComite.filtrar
+ctrl.mgrFase.MgrFase.filtrar
+ctrl.mgrItem.MgrItem.filtrar
+ctrl.mgrLineaBase.MgrLineaBase.filtrar
+ctrl.mgrPermiso.MgrPermiso.filtrar
+ctrl.mgrProyecto.MgrProyecto.filtrar
+ctrl.mgrRol.MgrRol.filtrar
+ctrl.mgrSolicitud.MgrSolicitud.filtrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrar
+ctrl.mgrUser.MgrUser.filtrar" class="py-name" href="#" onclick="return doclink('link-54', 'filtrar', 'link-23');">filtrar</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">        <tt class="py-name">r</tt> <tt class="py-op">=</tt> <tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">and_</tt><tt class="py-op">(</tt><tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-string">"LiderDeProyecto"</tt><tt class="py-op">,</tt> <tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">ambito</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">u</tt> <tt class="py-keyword">in</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">:</tt> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">r</tt> <tt class="py-keyword">in</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">:</tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.getUserLider"></a><div id="MgrProyecto.getUserLider-def"><a name="L307"></a><tt class="py-lineno">307</tt> <a class="py-toggle" href="#" id="MgrProyecto.getUserLider-toggle" onclick="return toggle('MgrProyecto.getUserLider');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#getUserLider">getUserLider</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">idProyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.getUserLider-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.getUserLider-expanded"><a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line">        <tt class="py-name">p</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name" targets="Method ctrl.mgrComite.MgrComite.filtrarXId()=ctrl.mgrComite.MgrComite-class.html#filtrarXId,Method ctrl.mgrFase.MgrFase.filtrarXId()=ctrl.mgrFase.MgrFase-class.html#filtrarXId,Method ctrl.mgrLineaBase.MgrLineaBase.filtrarXId()=ctrl.mgrLineaBase.MgrLineaBase-class.html#filtrarXId,Method ctrl.mgrPermiso.MgrPermiso.filtrarXId()=ctrl.mgrPermiso.MgrPermiso-class.html#filtrarXId,Method ctrl.mgrProyecto.MgrProyecto.filtrarXId()=ctrl.mgrProyecto.MgrProyecto-class.html#filtrarXId,Method ctrl.mgrRol.MgrRol.filtrarXId()=ctrl.mgrRol.MgrRol-class.html#filtrarXId,Method ctrl.mgrSolicitud.MgrSolicitud.filtrarXId()=ctrl.mgrSolicitud.MgrSolicitud-class.html#filtrarXId,Method ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrarXId()=ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#filtrarXId,Method ctrl.mgrUser.MgrUser.filtrarXId()=ctrl.mgrUser.MgrUser-class.html#filtrarXId"><a title="ctrl.mgrComite.MgrComite.filtrarXId
+ctrl.mgrFase.MgrFase.filtrarXId
+ctrl.mgrLineaBase.MgrLineaBase.filtrarXId
+ctrl.mgrPermiso.MgrPermiso.filtrarXId
+ctrl.mgrProyecto.MgrProyecto.filtrarXId
+ctrl.mgrRol.MgrRol.filtrarXId
+ctrl.mgrSolicitud.MgrSolicitud.filtrarXId
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrarXId
+ctrl.mgrUser.MgrUser.filtrarXId" class="py-name" href="#" onclick="return doclink('link-55', 'filtrarXId', 'link-55');">filtrarXId</a></tt><tt class="py-op">(</tt><tt class="py-name">idProyecto</tt><tt class="py-op">)</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line">        <tt class="py-name">r</tt> <tt class="py-op">=</tt> <tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">and_</tt><tt class="py-op">(</tt><tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-string">"LiderDeProyecto"</tt><tt class="py-op">,</tt> <tt class="py-name">Rol</tt><tt class="py-op">.</tt><tt class="py-name">ambito</tt> <tt class="py-op">==</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">u</tt> <tt class="py-keyword">in</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">users</tt><tt class="py-op">:</tt> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">r</tt> <tt class="py-keyword">in</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">roles</tt><tt class="py-op">:</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line">                <tt class="py-name">user</tt> <tt class="py-op">=</tt> <tt class="py-name">User</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">User</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">==</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">name</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">user</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.finalizarProyecto"></a><div id="MgrProyecto.finalizarProyecto-def"><a name="L316"></a><tt class="py-lineno">316</tt> <a class="py-toggle" href="#" id="MgrProyecto.finalizarProyecto-toggle" onclick="return toggle('MgrProyecto.finalizarProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#finalizarProyecto">finalizarProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.finalizarProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.finalizarProyecto-expanded"><a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-56', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Activo"</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name" targets="Method ctrl.mgrProyecto.MgrProyecto.sePuedeFinalizar()=ctrl.mgrProyecto.MgrProyecto-class.html#sePuedeFinalizar"><a title="ctrl.mgrProyecto.MgrProyecto.sePuedeFinalizar" class="py-name" href="#" onclick="return doclink('link-57', 'sePuedeFinalizar', 'link-57');">sePuedeFinalizar</a></tt><tt class="py-op">(</tt><tt class="py-name">proyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line">            <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-58', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Finalizado"</tt> </tt>
+<a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":se finalizo el proyecto:"</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO se puede finalizar el proyecto:"</tt> </tt>
+</div><a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line">         </tt>
+<a name="MgrProyecto.sePuedeFinalizar"></a><div id="MgrProyecto.sePuedeFinalizar-def"><a name="L324"></a><tt class="py-lineno">324</tt> <a class="py-toggle" href="#" id="MgrProyecto.sePuedeFinalizar-toggle" onclick="return toggle('MgrProyecto.sePuedeFinalizar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#sePuedeFinalizar">sePuedeFinalizar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.sePuedeFinalizar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.sePuedeFinalizar-expanded"><a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">proyecto</tt><tt class="py-op">.</tt><tt class="py-name">listafases</tt><tt class="py-op">:</tt>     </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line">            <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt> <tt class="py-op">==</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-59', 'estado', 'link-6');">estado</a></tt> <tt class="py-op">!=</tt> <tt class="py-string">"Finalizado"</tt><tt class="py-op">:</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line">       </tt>
+<a name="MgrProyecto.listarItemProyecto"></a><div id="MgrProyecto.listarItemProyecto-def"><a name="L331"></a><tt class="py-lineno">331</tt> <a class="py-toggle" href="#" id="MgrProyecto.listarItemProyecto-toggle" onclick="return toggle('MgrProyecto.listarItemProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#listarItemProyecto">listarItemProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">proyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.listarItemProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.listarItemProyecto-expanded"><a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna una lista de items Activo de fases Activas """</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line">        <tt class="py-name">lista</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name" targets="Method ctrl.mgrProyecto.MgrProyecto.fasesActivasDeProyecto()=ctrl.mgrProyecto.MgrProyecto-class.html#fasesActivasDeProyecto"><a title="ctrl.mgrProyecto.MgrProyecto.fasesActivasDeProyecto" class="py-name" href="#" onclick="return doclink('link-60', 'fasesActivasDeProyecto', 'link-60');">fasesActivasDeProyecto</a></tt><tt class="py-op">(</tt><tt class="py-name">proyecto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line">            <tt class="py-name">list</tt> <tt class="py-op">=</tt> <tt id="link-61" class="py-name"><a title="ctrl.mgrFase.MgrFase" class="py-name" href="#" onclick="return doclink('link-61', 'MgrFase', 'link-3');">MgrFase</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name" targets="Method ctrl.mgrFase.MgrFase.listItemsActivo()=ctrl.mgrFase.MgrFase-class.html#listItemsActivo"><a title="ctrl.mgrFase.MgrFase.listItemsActivo" class="py-name" href="#" onclick="return doclink('link-62', 'listItemsActivo', 'link-62');">listItemsActivo</a></tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">)</tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line">            <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">extend</tt><tt class="py-op">(</tt><tt class="py-name">list</tt><tt class="py-op">)</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">lista</tt> </tt>
+</div><a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.costoProyecto"></a><div id="MgrProyecto.costoProyecto-def"><a name="L339"></a><tt class="py-lineno">339</tt> <a class="py-toggle" href="#" id="MgrProyecto.costoProyecto-toggle" onclick="return toggle('MgrProyecto.costoProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#costoProyecto">costoProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lista</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.costoProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.costoProyecto-expanded"><a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line">        <tt class="py-name">costo</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">itm</tt> <tt class="py-keyword">in</tt> <tt class="py-name">lista</tt><tt class="py-op">:</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line">            <tt class="py-name">costo</tt> <tt class="py-op">=</tt> <tt class="py-name">costo</tt> <tt class="py-op">+</tt> <tt class="py-name">itm</tt><tt class="py-op">.</tt><tt class="py-name">costo</tt> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">costo</tt> </tt>
+</div><a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line">     </tt>
+<a name="MgrProyecto.impactoProyecto"></a><div id="MgrProyecto.impactoProyecto-def"><a name="L345"></a><tt class="py-lineno">345</tt> <a class="py-toggle" href="#" id="MgrProyecto.impactoProyecto-toggle" onclick="return toggle('MgrProyecto.impactoProyecto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrProyecto.MgrProyecto-class.html#impactoProyecto">impactoProyecto</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lista</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrProyecto.impactoProyecto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrProyecto.impactoProyecto-expanded"><a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line">        <tt class="py-name">impacto</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">itm</tt> <tt class="py-keyword">in</tt> <tt class="py-name">lista</tt><tt class="py-op">:</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line">            <tt class="py-name">impacto</tt> <tt class="py-op">=</tt> <tt class="py-name">impacto</tt> <tt class="py-op">+</tt> <tt class="py-name">itm</tt><tt class="py-op">.</tt><tt class="py-name">complejidad</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">impacto</tt> </tt>
+</div></div><a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ctrl-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Dec  6 13:49:08 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

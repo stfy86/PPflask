@@ -1,0 +1,78 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Add{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <center>
+    <h1>Agregar Fase a Proyecto :{{g.proyecto}}:</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>
+<form method="post" action="" runat="server">
+      <h3>*PASO 1: Rellenar los datos de la Fase</h3>
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input" , autofocus=true) }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="textarea") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+            <br />
+      </dl>
+      <h3>*PASO 2: Elegir el Tipo de Item de la fase </h3>
+      <table id="tableTwo" class="yui">    
+        <thead>
+                <tr>
+                    <td class="tableHeader">
+                    </td>
+                    <td colspan="2" class="filter">
+                        Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                        <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+                    </td>
+                </tr> 	
+                <tr>
+                        <th><a href='#' title="Click Header to Sort">ElegirTipoDeItem</a></th>
+                        <th><a href='#' title="Click Header to Sort">Nombre</a></th>
+                        <th><a href='#' title="Click Header to Sort">Descripcion</a></th>
+
+                </tr>
+        </thead>
+        {% for tipoDeItem in list %}
+        <tr>
+            <td><input type="radio" name=tipoDeItem value="{{ tipoDeItem['nombre'] }}" required=""></td>
+           <td><h5>{{ tipoDeItem.nombre }}</h5></td>
+           <td><h5>{{ tipoDeItem.descripcion }}</h5></td>
+        </tr>
+        {% endfor %}
+
+        <tfoot>
+            <tr id="pagerTwo">
+                <td colspan="5">
+                        <img src="/img/first.png" class="first"/>
+                        <img src="/img/prev.png" class="prev"/>
+                        <input type="text" class="pagedisplay"/>
+                        <img src="/img/next.png" class="next"/>
+                        <img src="/img/last.png" class="last"/>
+                        <select class="pagesize">
+                                <option selected="selected"  value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option  value="20">20</option>
+                        </select>
+                    </td>
+            </tr>
+        </tfoot>    
+</table>
+<div style="padding-bottom:20px;">
+<div class="js-kit-poll" style="width: 350px;"></div>
+<script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+</div>
+<div>
+   <input class="button" type="submit" value="Crear Fase">
+   <input class="button" type="button" value="Back" onclick="document.location='/listFases';">
+</div>
+</form>
+{% endblock %}

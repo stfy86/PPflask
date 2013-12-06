@@ -7,7 +7,7 @@ class Fase(db.Model):
     __tablename__ = 'Fase'
     
     idFase = db.Column(db.Integer, primary_key=True, nullable=False)
-    nombre = db.Column(db.String(45), unique=True, nullable=False)
+    nombre = db.Column(db.String(45), nullable=False)
     descripcion = db.Column(db.String(150))
     estado = db.Column(db.String(20), default ='Pendiente', nullable=False)
     orden = db.Column(db.Integer, nullable=False)

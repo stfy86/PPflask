@@ -1,0 +1,66 @@
+{% extends "static/layout.html" %}
+{% block title %}Lista Linea Base{% endblock %}
+{% block body %}
+<div class="page-header">
+    <center>
+    <h1>Gestionar Linea Base del Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    <h3>Lista de Linea Base de la Fase :{{fase.nombre}}:</h3>
+    </center>
+</div>
+<form method="post" action="" runat="server">            
+<table id="tableTwo" class="yui">    
+<thead>
+        <tr>
+            <td class="tableHeader">
+            </td>
+            <td colspan="5" class="filter">
+                Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+            </td>
+        </tr> 
+            <tr>
+			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
+			<th><a href='#' title="Click Header to Sort">Descripcion</a></th>
+			<th><a href='#' title="Click Header to Sort">Estado</a></th>
+		</tr>
+</thead>
+  {% for lineaBase in list%}
+    <tr>
+        <td><a href="{{ url_for('showLineaBase', idLineaBase = lineaBase.idLineaBase)}}"</a><h5>{{lineaBase.nombre}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', idLineaBase = lineaBase.idLineaBase)}}"</a><h5>{{lineaBase.descripcion}}</h5></td>
+        <td><a href="{{ url_for('showLineaBase', idLineaBase = lineaBase.idLineaBase)}}"</a><h5>{{lineaBase.estado}}</h5></td>
+     </tr>
+   {% endfor %}
+
+</tbody>   
+<tfoot>
+	    <tr id="pagerTwo">
+	        <td colspan="5">
+		        <img src="/img/first.png" class="first"/>
+		        <img src="/img/prev.png" class="prev"/>
+		        <input type="text" class="pagedisplay"/>
+		        <img src="/img/next.png" class="next"/>
+		        <img src="/img/last.png" class="last"/>
+		        <select class="pagesize">
+			        <option selected="selected"  value="5">5</option>
+			        <option value="10">10</option>
+			        <option value="15">15</option>
+			        <option  value="20">20</option>
+		        </select>
+		    </td>
+	    </tr>
+</tfoot>    
+</table>
+<div style="padding-bottom:20px;">
+<div class="js-kit-poll" style="width: 350px;"></div>
+<script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+</div>
+<div class="buttons">
+    <input class="button" type="button" value="Crear Linea Base" onclick="document.location='/addLineaBase/{{idFase}}.html';">
+    <input class="button" type="button" value="Back" onclick="document.location='/listFasesActivasG';">
+</div>
+</form>   
+
+
+ {% endblock %}

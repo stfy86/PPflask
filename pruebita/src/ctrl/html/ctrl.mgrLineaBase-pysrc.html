@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ctrl.mgrLineaBase</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ctrl-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ctrl-module.html">Package&nbsp;ctrl</a> ::
+        Module&nbsp;mgrLineaBase
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="ctrl.mgrLineaBase-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ctrl.mgrLineaBase-module.html">Module ctrl.mgrLineaBase</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""Clase que maneja la Linea Base """</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">modulo</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">sqlalchemy</tt> <tt class="py-keyword">import</tt> <tt class="py-name">or_</tt><tt class="py-op">,</tt> <tt class="py-name">and_</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="MgrLineaBase"></a><div id="MgrLineaBase-def"><a name="L5"></a><tt class="py-lineno">  5</tt> <a class="py-toggle" href="#" id="MgrLineaBase-toggle" onclick="return toggle('MgrLineaBase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html">MgrLineaBase</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MgrLineaBase-expanded"><a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="MgrLineaBase.guardar"></a><div id="MgrLineaBase.guardar-def"><a name="L7"></a><tt class="py-lineno">  7</tt> <a class="py-toggle" href="#" id="MgrLineaBase.guardar-toggle" onclick="return toggle('MgrLineaBase.guardar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#guardar">guardar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.guardar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.guardar-expanded"><a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line">        <tt class="py-docstring">""" Guarda una linea base solo si:</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">        1. La fase esta Activa</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">        2. No existe ya una linea base con el mismo nombre en la fase"""</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">        <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt> <tt class="py-op">==</tt> <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt class="py-name">faseId</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method ctrl.mgrFase.MgrFase.estado()=ctrl.mgrFase.MgrFase-class.html#estado,Method ctrl.mgrItem.MgrItem.estado()=ctrl.mgrItem.MgrItem-class.html#estado,Method ctrl.mgrLineaBase.MgrLineaBase.estado()=ctrl.mgrLineaBase.MgrLineaBase-class.html#estado,Method ctrl.mgrProyecto.MgrProyecto.estado()=ctrl.mgrProyecto.MgrProyecto-class.html#estado,Method ctrl.mgrSolicitud.MgrSolicitud.estado()=ctrl.mgrSolicitud.MgrSolicitud-class.html#estado,Method ctrl.mgrUser.MgrUser.estado()=ctrl.mgrUser.MgrUser-class.html#estado"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-0', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">!=</tt> <tt class="py-string">"Activo"</tt> <tt class="py-keyword">or</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Method ctrl.mgrComite.MgrComite.existe()=ctrl.mgrComite.MgrComite-class.html#existe,Method ctrl.mgrFase.MgrFase.existe()=ctrl.mgrFase.MgrFase-class.html#existe,Method ctrl.mgrLineaBase.MgrLineaBase.existe()=ctrl.mgrLineaBase.MgrLineaBase-class.html#existe,Method ctrl.mgrProyecto.MgrProyecto.existe()=ctrl.mgrProyecto.MgrProyecto-class.html#existe,Method ctrl.mgrRol.MgrRol.existe()=ctrl.mgrRol.MgrRol-class.html#existe,Method ctrl.mgrTipoDeItem.MgrTipoDeItem.existe()=ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#existe,Method ctrl.mgrUser.MgrUser.existe()=ctrl.mgrUser.MgrUser-class.html#existe"><a title="ctrl.mgrComite.MgrComite.existe
+ctrl.mgrFase.MgrFase.existe
+ctrl.mgrLineaBase.MgrLineaBase.existe
+ctrl.mgrProyecto.MgrProyecto.existe
+ctrl.mgrRol.MgrRol.existe
+ctrl.mgrTipoDeItem.MgrTipoDeItem.existe
+ctrl.mgrUser.MgrUser.existe" class="py-name" href="#" onclick="return doclink('link-1', 'existe', 'link-1');">existe</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":No guardo linea base:"</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">            <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-2', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Activo"</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":guardo linea base:"</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">     </tt>
+<a name="MgrLineaBase.borrar"></a><div id="MgrLineaBase.borrar-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="MgrLineaBase.borrar-toggle" onclick="return toggle('MgrLineaBase.borrar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#borrar">borrar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.borrar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.borrar-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-docstring">""" Borra una linea base solo si:</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">        1. El estado de la fase este distinto de Finalizado</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">        2. Existe la linea base</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-name">f</tt> <tt class="py-op">=</tt> <tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt> <tt class="py-op">==</tt> <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt class="py-name">faseId</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="ctrl.mgrComite.MgrComite.existe
+ctrl.mgrFase.MgrFase.existe
+ctrl.mgrLineaBase.MgrLineaBase.existe
+ctrl.mgrProyecto.MgrProyecto.existe
+ctrl.mgrRol.MgrRol.existe
+ctrl.mgrTipoDeItem.MgrTipoDeItem.existe
+ctrl.mgrUser.MgrUser.existe" class="py-name" href="#" onclick="return doclink('link-3', 'existe', 'link-1');">existe</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO borro la linea base: la linea base no existe"</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-4', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Finalizado"</tt><tt class="py-op">:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO borro la linea base: la fase tiene estado Finalizado"</tt>             </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-5', 'estado', 'link-0');">estado</a></tt><tt class="py-op">=</tt><tt class="py-string">"Inactivo"</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method ctrl.mgrLineaBase.MgrLineaBase.itemsDeLB()=ctrl.mgrLineaBase.MgrLineaBase-class.html#itemsDeLB"><a title="ctrl.mgrLineaBase.MgrLineaBase.itemsDeLB" class="py-name" href="#" onclick="return doclink('link-6', 'itemsDeLB', 'link-6');">itemsDeLB</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">                <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">Item</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Item</tt><tt class="py-op">.</tt><tt class="py-name">idItem</tt> <tt class="py-op">==</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">idItem</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">                <tt class="py-name">item</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-7', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Revision"</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":borro la linea base:"</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">         </tt>
+<a name="MgrLineaBase.listar"></a><div id="MgrLineaBase.listar-def"><a name="L38"></a><tt class="py-lineno"> 38</tt> <a class="py-toggle" href="#" id="MgrLineaBase.listar-toggle" onclick="return toggle('MgrLineaBase.listar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#listar">listar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.listar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.listar-expanded"><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-docstring">""" Lista todas las lineas base """</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">     </tt>
+<a name="MgrLineaBase.filtrar"></a><div id="MgrLineaBase.filtrar-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="MgrLineaBase.filtrar-toggle" onclick="return toggle('MgrLineaBase.filtrar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#filtrar">filtrar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.filtrar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.filtrar-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-docstring">"""Busca la linea base por nombre"""</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="MgrLineaBase.filtrarXId"></a><div id="MgrLineaBase.filtrarXId-def"><a name="L46"></a><tt class="py-lineno"> 46</tt> <a class="py-toggle" href="#" id="MgrLineaBase.filtrarXId-toggle" onclick="return toggle('MgrLineaBase.filtrarXId');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#filtrarXId">filtrarXId</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">idLineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.filtrarXId-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.filtrarXId-expanded"><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-docstring">"""Busca la linea base por id """</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">idLineaBase</tt> <tt class="py-op">==</tt> <tt class="py-name">idLineaBase</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="MgrLineaBase.estado"></a><div id="MgrLineaBase.estado-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="MgrLineaBase.estado-toggle" onclick="return toggle('MgrLineaBase.estado');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#estado">estado</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lineaBase</tt><tt class="py-op">,</tt> <tt class="py-param">estadoNew</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.estado-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.estado-expanded"><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-docstring">"""Cambia el estado de una linea base"""</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="ctrl.mgrComite.MgrComite.existe
+ctrl.mgrFase.MgrFase.existe
+ctrl.mgrLineaBase.MgrLineaBase.existe
+ctrl.mgrProyecto.MgrProyecto.existe
+ctrl.mgrRol.MgrRol.existe
+ctrl.mgrTipoDeItem.MgrTipoDeItem.existe
+ctrl.mgrUser.MgrUser.existe" class="py-name" href="#" onclick="return doclink('link-8', 'existe', 'link-1');">existe</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO modifico de estado: la lb no existe"</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-9', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Activo"</tt> <tt class="py-keyword">and</tt> <tt class="py-name">estadoNew</tt> <tt class="py-op">==</tt> <tt class="py-string">"Comprometida"</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method ctrl.mgrLineaBase.MgrLineaBase.hayItemRevision()=ctrl.mgrLineaBase.MgrLineaBase-class.html#hayItemRevision"><a title="ctrl.mgrLineaBase.MgrLineaBase.hayItemRevision" class="py-name" href="#" onclick="return doclink('link-10', 'hayItemRevision', 'link-10');">hayItemRevision</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">            <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-11', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">estadoNew</tt>  </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":modifico el estado: Activo a Comprometida"</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">estadoNew</tt> <tt class="py-op">==</tt> <tt class="py-string">"Finalizado"</tt> <tt class="py-keyword">and</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method ctrl.mgrLineaBase.MgrLineaBase.hayItemEliminado()=ctrl.mgrLineaBase.MgrLineaBase-class.html#hayItemEliminado"><a title="ctrl.mgrLineaBase.MgrLineaBase.hayItemEliminado" class="py-name" href="#" onclick="return doclink('link-12', 'hayItemEliminado', 'link-12');">hayItemEliminado</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>     </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-13', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">estadoNew</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":modifico el estado: Finalizado a "</tt> <tt class="py-op">+</tt> <tt class="py-name">estadoNew</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">estadoNew</tt> <tt class="py-op">==</tt> <tt class="py-string">"Inactivo"</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">            <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-14', 'estado', 'link-0');">estado</a></tt><tt class="py-op">=</tt><tt class="py-string">"Inactivo"</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="ctrl.mgrLineaBase.MgrLineaBase.itemsDeLB" class="py-name" href="#" onclick="return doclink('link-15', 'itemsDeLB', 'link-6');">itemsDeLB</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">                <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">Item</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Item</tt><tt class="py-op">.</tt><tt class="py-name">idItem</tt> <tt class="py-op">==</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">idItem</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">                <tt class="py-name">item</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-16', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"Revision"</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>     </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">":NO modifico el estado:"</tt> </tt>
+</div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">         </tt>
+<a name="MgrLineaBase.asignarItems"></a><div id="MgrLineaBase.asignarItems-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="MgrLineaBase.asignarItems-toggle" onclick="return toggle('MgrLineaBase.asignarItems');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#asignarItems">asignarItems</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lineaBase</tt><tt class="py-op">,</tt> <tt class="py-param">lista</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.asignarItems-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.asignarItems-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-docstring">""" Asigna items a una linea base """</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">itm</tt> <tt class="py-keyword">in</tt> <tt class="py-name">lista</tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">            <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt class="py-name">itemsLB</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">itm</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">":asigno items a la linea base:"</tt> </tt>
+</div><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">         </tt>
+<a name="MgrLineaBase.desAsignarItems"></a><div id="MgrLineaBase.desAsignarItems-def"><a name="L77"></a><tt class="py-lineno"> 77</tt> <a class="py-toggle" href="#" id="MgrLineaBase.desAsignarItems-toggle" onclick="return toggle('MgrLineaBase.desAsignarItems');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#desAsignarItems">desAsignarItems</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.desAsignarItems-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.desAsignarItems-expanded"><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-docstring">""" Des asigna items de una linea base """</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-name">lineaBase</tt> <tt class="py-op">=</tt> <tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt class="py-name">itemsLB</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt>         </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">":des asigno items a la linea base:"</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">         </tt>
+<a name="MgrLineaBase.modificar"></a><div id="MgrLineaBase.modificar-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="MgrLineaBase.modificar-toggle" onclick="return toggle('MgrLineaBase.modificar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#modificar">modificar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lineaBase</tt><tt class="py-op">,</tt> <tt class="py-param">nombreNew</tt><tt class="py-op">,</tt> <tt class="py-param">descripcionNew</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.modificar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.modificar-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-docstring">"""Edita los datos de la linea base """</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="ctrl.mgrComite.MgrComite.existe
+ctrl.mgrFase.MgrFase.existe
+ctrl.mgrLineaBase.MgrLineaBase.existe
+ctrl.mgrProyecto.MgrProyecto.existe
+ctrl.mgrRol.MgrRol.existe
+ctrl.mgrTipoDeItem.MgrTipoDeItem.existe
+ctrl.mgrUser.MgrUser.existe" class="py-name" href="#" onclick="return doclink('link-17', 'existe', 'link-1');">existe</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":NO modifico la linea base: la linea base no existe"</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">=</tt> <tt class="py-name">nombreNew</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">            <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt class="py-name">descripcion</tt> <tt class="py-op">=</tt> <tt class="py-name">descripcionNew</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":mofidico los datos de la linea base:"</tt> </tt>
+</div><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">         </tt>
+<a name="MgrLineaBase.existe"></a><div id="MgrLineaBase.existe-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="MgrLineaBase.existe-toggle" onclick="return toggle('MgrLineaBase.existe');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#existe">existe</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lb</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.existe-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.existe-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna True si la linea base existe """</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">l</tt> <tt class="py-op">=</tt> <tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">and_</tt><tt class="py-op">(</tt><tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">lb</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">,</tt> <tt class="py-name">LineaBase</tt><tt class="py-op">.</tt><tt class="py-name">faseId</tt> <tt class="py-op">==</tt> <tt class="py-name">lb</tt><tt class="py-op">.</tt><tt class="py-name">faseId</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">l</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">     </tt>
+<a name="MgrLineaBase.itemsDeLB"></a><div id="MgrLineaBase.itemsDeLB-def"><a name="L102"></a><tt class="py-lineno">102</tt> <a class="py-toggle" href="#" id="MgrLineaBase.itemsDeLB-toggle" onclick="return toggle('MgrLineaBase.itemsDeLB');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#itemsDeLB">itemsDeLB</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.itemsDeLB-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.itemsDeLB-expanded"><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna la lista de items de la linea base """</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-name">lista</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">lineaBase</tt><tt class="py-op">.</tt><tt class="py-name">itemsLB</tt><tt class="py-op">:</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-name">lista</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt>             </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">lista</tt> </tt>
+</div><a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">     </tt>
+<a name="MgrLineaBase.hayItemRevision"></a><div id="MgrLineaBase.hayItemRevision-def"><a name="L109"></a><tt class="py-lineno">109</tt> <a class="py-toggle" href="#" id="MgrLineaBase.hayItemRevision-toggle" onclick="return toggle('MgrLineaBase.hayItemRevision');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#hayItemRevision">hayItemRevision</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.hayItemRevision-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.hayItemRevision-expanded"><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna True si existe un items en estado de Revision """</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="ctrl.mgrLineaBase.MgrLineaBase.itemsDeLB" class="py-name" href="#" onclick="return doclink('link-18', 'itemsDeLB', 'link-6');">itemsDeLB</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">Item</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Item</tt><tt class="py-op">.</tt><tt class="py-name">idItem</tt> <tt class="py-op">==</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">idItem</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">item</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-19', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Revision"</tt><tt class="py-op">:</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">             </tt>
+<a name="MgrLineaBase.hayItemEliminado"></a><div id="MgrLineaBase.hayItemEliminado-def"><a name="L117"></a><tt class="py-lineno">117</tt> <a class="py-toggle" href="#" id="MgrLineaBase.hayItemEliminado-toggle" onclick="return toggle('MgrLineaBase.hayItemEliminado');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrLineaBase.MgrLineaBase-class.html#hayItemEliminado">hayItemEliminado</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrLineaBase.hayItemEliminado-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MgrLineaBase.hayItemEliminado-expanded"><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna True si existe un item en estado Eliminado """</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="ctrl.mgrLineaBase.MgrLineaBase.itemsDeLB" class="py-name" href="#" onclick="return doclink('link-20', 'itemsDeLB', 'link-6');">itemsDeLB</a></tt><tt class="py-op">(</tt><tt class="py-name">lineaBase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">            <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">Item</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Item</tt><tt class="py-op">.</tt><tt class="py-name">idItem</tt> <tt class="py-op">==</tt> <tt class="py-name">i</tt><tt class="py-op">.</tt><tt class="py-name">idItem</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">item</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="ctrl.mgrFase.MgrFase.estado
+ctrl.mgrItem.MgrItem.estado
+ctrl.mgrLineaBase.MgrLineaBase.estado
+ctrl.mgrProyecto.MgrProyecto.estado
+ctrl.mgrSolicitud.MgrSolicitud.estado
+ctrl.mgrUser.MgrUser.estado" class="py-name" href="#" onclick="return doclink('link-21', 'estado', 'link-0');">estado</a></tt> <tt class="py-op">==</tt> <tt class="py-string">"Eliminado"</tt><tt class="py-op">:</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div></div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ctrl-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Dec  6 13:49:08 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

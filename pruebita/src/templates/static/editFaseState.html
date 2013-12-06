@@ -1,0 +1,31 @@
+{% extends "static/layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <center>
+    <h1>Modificar Estado de Fase de Proyecto :{{g.proyecto}}:</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>
+<h3>*PASO 1: Elegir el nuevo estado la Fase </h3>
+
+<form method="post" action="">
+    <div>
+    <label> Estado:  </label>
+    <select class="button" name="estado" onchange="chequea(this,this.form.estado)" id="estadoFase">        
+            {% for button in buttons %}
+                {% if button in fase.estado %}
+                    <option selected value="{{ button }}" >{{ button }}</option>
+                {% else %}
+                    <option value="{{ button }}" >{{ button }}</option>
+                {% endif %}
+            {% endfor %}
+    </select>
+    <input class="button" type="submit" value="Edit State">
+    <input class="button" type="button" value="Back" onclick="document.location='/showFase/{{idFase}}.html';">
+
+    </div>
+</form>
+{% endblock %}

@@ -1,3 +1,4 @@
+"""Clase que maneja los tipos de atributos"""
 from modulo import *
 
 class MgrTipoDeAtrib():
@@ -16,7 +17,7 @@ class MgrTipoDeAtrib():
         for i in item:
             if tipoDeAtributo in i.atributosItem:
                 hola = 1
-            else:   
+            else:
                 hola = 2
         return hola
                 #db.session.delete(tipoDeAtributo)
@@ -27,17 +28,25 @@ class MgrTipoDeAtrib():
         db.session.delete(tipoDeAtributo)
         db.session.commit()
         
-    def modificar(self, nombre, nombreNew, tipoDeDatoNew, descripcionNew, 
+    def modificar(self, nombre, nombreNew, tipoDeDatoNew, descripcionNew,
         detalleNew, filenameNew, archivoNew):
         atrib = TipoDeAtributo.query.filter(TipoDeAtributo.nombre == nombre).first_or_404()
         atrib.nombre = nombreNew
         atrib.tipoDeDato = tipoDeDatoNew
         atrib.detalle = detalleNew
         atrib.descripcion = descripcionNew
-        atrib.filename = filenameNew   
-        atrib.archivo = archivoNew   
+        atrib.filename = filenameNew
+        atrib.archivo = archivoNew
         db.session.commit()
 
+    def modificarArchivo(self, nombre, nombreNew, descripcionNew,
+        detalleNew):
+        atrib = TipoDeAtributo.query.filter(TipoDeAtributo.nombre == nombre).first_or_404()
+        atrib.nombre = nombreNew
+        atrib.detalle = detalleNew
+        atrib.descripcion = descripcionNew
+        db.session.commit()
+        
     def filtrar(self, nombre):
         return TipoDeAtributo.query.filter(TipoDeAtributo.nombre == nombre).first_or_404()
     
@@ -53,8 +62,12 @@ class MgrTipoDeAtrib():
         """Funcion que recibe el nombre de tipo de atributo y descarga el archivo"""
         atrib = TipoDeAtributo.query.filter(TipoDeAtributo.nombre == nombre).first_or_404()
         archivo = atrib.filename
-        return send_file(archivo,
-                     attachment_filename=MgrTipoDeAtrib().descargar_archivo(nombre),
-                     as_attachment=True)
-        
-        
+        return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               archivo)
+    
+    def listaAtrib(self, lista):
+        lis = []
+        for i in lista:
+            atrib = TipoDeAtributo.query.filter(TipoDeAtributo.idTipoDeAtributo == i ).first_or_404()
+            lis.append(atrib)
+        return lis

@@ -1,55 +1,100 @@
 {% extends "static/layout.html" %}
 
-{% block title %}Datos del Usuario{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-    <h1>Datos del usuario</h1>
+<div class="page-header">
+    <center>
+    <h1>Administrar Usuario</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+<h3>Show User</h3>
+
     <form method="post" action="">  
       <dl>
         {{ form.csrf }}
-            {{ form.name.label(style="float: left; width: 105px;") }} 
-            {{ form.name(class="form-input", style="width: 300px", readonly="readonly") }}
-            {% for error in form.name.errors %} {{ error }} {% endfor %}
-	    <br />
-            {{ form.password.label(style="float: left; width: 105px;") }}
-            {{form.password(class="form-input", style="width: 300px", readonly="readonly") }}
-            {% for error in form.password.errors %} {{ error }} {% endfor %}
-            <br />
-            {{ form.nombre.label(style="float: left; width: 105px;") }}
-            {{form.nombre(class="form-input", style="width: 300px", readonly="readonly") }}
+             {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", readonly="readonly") }}
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.apellido.label(style="float: left; width: 105px;") }}
-            {{form.apellido(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.apellido(class="form-input", readonly="readonly") }}
             {% for error in form.apellido.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.email.label(style="float: left; width: 105px;") }}
-            {{form.email(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.email(class="form-input", readonly="readonly") }}
             {% for error in form.email.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.telefono.label(style="float: left; width: 105px;") }}
-            {{form.telefono(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.telefono(class="form-input", readonly="readonly") }}
             {% for error in form.telefono.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.obs.label(style="float: left; width: 105px;") }}
-            {{form.obs(class="form-input", style="height:50px;width: 300px", readonly="readonly") }}
+            {{form.obs(class="textarea", readonly="readonly") }}
             {% for error in form.obs.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.estado.label(style="float: left; width: 105px;") }}
-            {{form.estado(class="form-input", style="width: 300px", readonly="readonly") }}
+            {{form.estado(class="form-input", readonly="readonly") }}
             {% for error in form.obs.errors %} {{ error }} {% endfor %}
       </dl>
-      <script language="JavaScript">
-          function confirmar ( mensaje ) {
-              return confirm( mensaje );
-          }
-      </script>
-      <p>
-          <input class="button" type="submit" name="edit" value="Modificar Usuario">
-          <input class="button" type="submit" name="delete" value="Eliminar Usuario" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
-          <br />
+        
+        <h3>Roles del Usuario</h3>
+<table id="tableTwo" class="yui">    
+    <thead>
+            <tr>
+                <td class="tableHeader">
+                </td>
+                <td colspan="5" class="filter">
+                    Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
+                    <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
+                </td>
+            </tr> 	
+            <tr>
+                    <th><a href='#' title="Click Header to Sort">Nombre</a></th>
+                    <th><a href='#' title="Click Header to Sort">Ambito</a></th>
+            </tr>
+    </thead>
+    {% for rol in list %}
+         <tr>
+           <td><h5>{{rol.nombre}}</h5></td>
+           <td><h5>{{rol.ambito}}</h5></td>  
+        </tr>
+     {% endfor %}
+
+      <tfoot>
+        <tr id="pagerTwo">
+            <td colspan="5">
+                    <img src="/img/first.png" class="first"/>
+                    <img src="/img/prev.png" class="prev"/>
+                    <input type="text" class="pagedisplay"/>
+                    <img src="/img/next.png" class="next"/>
+                    <img src="/img/last.png" class="last"/>
+                    <select class="pagesize">
+                            <option selected="selected"  value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option  value="20">20</option>
+                    </select>
+             </td>
+        </tr>
+    </tfoot>    
+</table>
+<div style="padding-bottom:20px;">
+<div class="js-kit-poll" style="width: 350px;"></div>
+<script type="text/javascript" src="http://js-kit.com/polls.js"></script>
+</div>
+
+        <div>
           <input class="button" type="submit" name="state" value="Modificar Estado de Usuario">
-          <input class="button" type="button" value="Atras" onclick="javascript:history.back();">
-      </p>   
+            {% if user.estado == "Inactivo" %}
+          <input class="button" type="submit" name="edit" value="Modificar Usuario">          
+          <input class="button" type="submit" name="delete" value="Eliminar Usuario" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+          {% else %}
+          <input class="disabled" type="submit" name="edit" value="Modificar Usuario">
+          <input class="disabled" type="submit" name="delete" value="Eliminar Usuario" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+          {% endif %}
+          <input class="button" type="button" value="Back" onclick="document.location='/listUser';">
+        </div>
     </form>
 {% endblock %}

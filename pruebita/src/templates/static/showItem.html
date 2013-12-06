@@ -3,12 +3,19 @@
 {% block title %}Show Item{% endblock %}
 
 {% block body %}
-    <h1>Datos del item</h1>
-    <form method="post" action="">  
+    <div class="page-header">
+    <center>
+    <h1>Gestionar Item en el Contexto de la Fase</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('desarrollo') }}">Modulo Desarrollo</a></p>
+    </center>
+</div>
+    <h3>Datos del item</h3>
+    <form method="post" action="" target ="_blank">
       <dl>
         {{ form.csrf }}
             {{ form.nombre.label(style="float: left; width: 100px;") }}
             {{form.nombre(class="form-input", style="width: 200px", readonly="readonly") }}
+            <input class="button" type="submit" name="graficarItem" value="Graficar Item">
             {% for error in form.nombre.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.version.label(style="float: left; width: 100px;") }}
@@ -31,18 +38,14 @@
             {{form.fechaDeModif(class="form-input", style="width: 200px", readonly="readonly") }}
             {% for error in form.fechaDeModif.errors %} {{ error }} {% endfor %}
       </dl>
-      <script language="JavaScript">
-          function confirmar ( mensaje ) {
-              return confirm( mensaje );
-          }
-      </script> 
-      
+    </form> 
+    <form method="post" action="">
       <p>
          <input class="button" type="submit" name="edit" value="Modificar Item">
-         <input class="button" type="submit" name="delete" value="Eliminar Item" onclick="return confirmar('¿Está seguro que desea eliminar el usuario?')">
+         <input class="button" type="submit" name="delete" value="Eliminar Item" onclick="return confirmar('¿Está seguro que desea eliminar el item?')">
          <input class="button" type="submit" name="state" value="Modificar Estado de Item">
          <input class="button" type="submit" name="relacionar" value="Relacionar Item">
-         <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
+         <input class="button" type="button" value="Back" onclick="document.location='/listItem/{{idFase}}.html';">
       <p>
     </form>
 {% endblock %}

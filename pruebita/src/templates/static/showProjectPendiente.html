@@ -1,0 +1,55 @@
+{% extends "static/layout.html" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <center>
+    <h1>Administrar Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
+</div>
+
+<h3>Show Proyecto</h3>
+    <form method="post" action="">  
+      <dl>
+        {{ form.csrf }}
+            {{ form.nombre.label(style="float: left; width: 105px;") }}
+            {{form.nombre(class="form-input", readonly="readonly") }}
+            {% for error in form.nombre.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.descripcion.label(style="float: left; width: 105px;") }}
+            {{form.descripcion(class="textarea", readonly="readonly") }}
+            {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.fechaDeCreacion.label(style="float: left; width: 105px;") }}
+            {{form.fechaDeCreacion(class="form-input", readonly="readonly") }}
+            {% for error in form.fechaDeCreacion.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.estado.label(style="float: left; width: 105px;") }}
+            {{form.estado(class="form-input", readonly="readonly") }}
+            {% for error in form.estado.errors %} {{ error }} {% endfor %}
+            <br />
+            {{ form.presupuesto.label(style="float: left; width: 105px;") }}
+            {{form.presupuesto(class="form-input", readonly="readonly") }}
+            {% for error in form.presupuesto.errors %} {{ error }} {% endfor %}
+            <br />
+      </dl>
+      <div class="buttons">
+       
+        <input class="button" type="submit" name="edit" value="Modificar Proyecto">
+        {% if proyecto.estado == "Pendiente" %}
+        <input class="button" type="submit" name="delete" value="Eliminar Proyecto" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+        <input class="button" type="submit" name="editState" value="Modificar Estado de Proyecto">
+        <input class="button" type="submit" name="listComiteProyecto" value="Ver Comite de Proyecto">
+        {% else %}
+        <input class="disabled" type="submit" name="delete" value="Eliminar Proyecto" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
+        <input class="disabled" type="submit" name="editState" value="Modificar Estado de Proyecto">
+        <input class="disabled" type="submit" name="listComiteProyecto" value="Ver Comite de Proyecto">
+        {% endif %}
+        <input class="button" type="button" value="Back" onclick="document.location='/listProject';">
+       </div>
+      
+    </form>
+
+{% endblock %}

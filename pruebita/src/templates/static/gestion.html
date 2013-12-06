@@ -1,32 +1,25 @@
 {% extends "static/layout.html" %}
-
 {% block title %} Modulo de Gestion de Cambio {% endblock %}
-
 {% block body %}
-    <div class="page-header">
-        
-        <h3>Modulo de Gestion</h3>
-            <li><a href="/">Inicio</a></li>
-				{% if not g.user %}
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-				{% else %}        
-        <dl>
-            <li><a href="{{ url_for('index') }}">Administrar Proyecto</a></li>
-            <ul>
-                <li> Iniciar Proyecto                 
-                <li> Finalizar Proyecto
-  
-            </ul>
-            <li><a href="{{ url_for('index') }}">Calculo de Costo</a></li>
-            <ul>
-                <li> Generar Costo
-            </ul>
-            <li><a href="{{ url_for('index') }}">Calculo de Impacto</a></li>
-            <ul>
-                <li> Generar Impacto   
-            </ul>
-        </dl>
-                                {% endif %}
-    </div>
-
+{% if session.logged_in and g.proyecto != None and  "ModuloGestion" in g.permisos %}
+    <center>
+    <div class="page-header"><h3>Modulo de Gestion</h3></div>
+    {% if "GesTiposDeItem" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('listTipoDeItem') }}"> Tipo De Ítem </a></p>
+    {% else %}
+    <p><a class="disabled" href="javascript:void(0) href="{{ url_for('listTipoDeItem') }}">  Tipo De Ítem </a></p>
+    {% endif %}
+     <p><img src="/img/link.png"/><a href="{{ url_for('gesProyecto') }}"> Proyecto</a></p>
+    </center>
+    <h3> Datos de Sesion </h3>
+    <p><img src="/img/info.png"/></p>
+    <p>Proyecto: {{g.proyecto.nombre}} </p>
+    <p>Rol del Usuario:  {{ g.rol.nombre}} </p>
+    <p>Permisos del Usuario: {{ g.permisos}}</p>
+    </dl> 
+{% else%}
+    <p><img src="/img/info.png"/></p>
+    <p>No se logue al sistema o </p>
+    <p>No tiene el permiso: "ModuloGestion" </p>
+{% endif %}
 {% endblock %}

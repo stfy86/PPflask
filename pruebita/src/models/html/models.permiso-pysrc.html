@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>models.permiso</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="models-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="models-module.html">Package&nbsp;models</a> ::
+        Module&nbsp;permiso
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="models.permiso-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="models.permiso-module.html">Module models.permiso</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">pruebita</tt> <tt class="py-keyword">import</tt> <tt class="py-name">db</tt><tt class="py-op">,</tt> <tt class="py-name">app</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="Permiso"></a><div id="Permiso-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="Permiso-toggle" onclick="return toggle('Permiso');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="models.permiso.Permiso-class.html">Permiso</a><tt class="py-op">(</tt><tt class="py-base-class">db</tt><tt class="py-op">.</tt><tt class="py-base-class">Model</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Permiso-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Permiso-expanded"><a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">    <tt class="py-docstring">""" Modelo de Permiso """</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Variable models.comite.Comite.__tablename__=models.comite.Comite-class.html#__tablename__,Variable models.fase.Fase.__tablename__=models.fase.Fase-class.html#__tablename__,Variable models.item.Item.__tablename__=models.item.Item-class.html#__tablename__,Variable models.lineaBase.LineaBase.__tablename__=models.lineaBase.LineaBase-class.html#__tablename__,Variable models.permiso.Permiso.__tablename__=models.permiso.Permiso-class.html#__tablename__,Variable models.proyecto.Proyecto.__tablename__=models.proyecto.Proyecto-class.html#__tablename__,Variable models.relacion.Relacion.__tablename__=models.relacion.Relacion-class.html#__tablename__,Variable models.rol.Rol.__tablename__=models.rol.Rol-class.html#__tablename__,Variable models.solicitud.Solicitud.__tablename__=models.solicitud.Solicitud-class.html#__tablename__,Variable models.tipoDeAtributo.TipoDeAtributo.__tablename__=models.tipoDeAtributo.TipoDeAtributo-class.html#__tablename__,Variable models.tipoDeItem.TipoDeItem.__tablename__=models.tipoDeItem.TipoDeItem-class.html#__tablename__,Variable models.user.User.__tablename__=models.user.User-class.html#__tablename__"><a title="models.comite.Comite.__tablename__
+models.fase.Fase.__tablename__
+models.item.Item.__tablename__
+models.lineaBase.LineaBase.__tablename__
+models.permiso.Permiso.__tablename__
+models.proyecto.Proyecto.__tablename__
+models.relacion.Relacion.__tablename__
+models.rol.Rol.__tablename__
+models.solicitud.Solicitud.__tablename__
+models.tipoDeAtributo.TipoDeAtributo.__tablename__
+models.tipoDeItem.TipoDeItem.__tablename__
+models.user.User.__tablename__" class="py-name" href="#" onclick="return doclink('link-0', '__tablename__', 'link-0');">__tablename__</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'Permiso'</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">     </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">    <tt id="link-1" class="py-name" targets="Variable models.permiso.Permiso.idPermiso=models.permiso.Permiso-class.html#idPermiso"><a title="models.permiso.Permiso.idPermiso" class="py-name" href="#" onclick="return doclink('link-1', 'idPermiso', 'link-1');">idPermiso</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">Column</tt><tt class="py-op">(</tt><tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">Integer</tt><tt class="py-op">,</tt> <tt class="py-name">primary_key</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt><tt class="py-name">nullable</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable models.comite.Comite.nombre=models.comite.Comite-class.html#nombre,Variable models.fase.Fase.nombre=models.fase.Fase-class.html#nombre,Variable models.item.Item.nombre=models.item.Item-class.html#nombre,Variable models.lineaBase.LineaBase.nombre=models.lineaBase.LineaBase-class.html#nombre,Variable models.permiso.Permiso.nombre=models.permiso.Permiso-class.html#nombre,Variable models.proyecto.Proyecto.nombre=models.proyecto.Proyecto-class.html#nombre,Variable models.relacion.Relacion.nombre=models.relacion.Relacion-class.html#nombre,Variable models.rol.Rol.nombre=models.rol.Rol-class.html#nombre,Variable models.solicitud.Solicitud.nombre=models.solicitud.Solicitud-class.html#nombre,Variable models.tipoDeAtributo.TipoDeAtributo.nombre=models.tipoDeAtributo.TipoDeAtributo-class.html#nombre,Variable models.tipoDeItem.TipoDeItem.nombre=models.tipoDeItem.TipoDeItem-class.html#nombre,Variable models.user.User.nombre=models.user.User-class.html#nombre"><a title="models.comite.Comite.nombre
+models.fase.Fase.nombre
+models.item.Item.nombre
+models.lineaBase.LineaBase.nombre
+models.permiso.Permiso.nombre
+models.proyecto.Proyecto.nombre
+models.relacion.Relacion.nombre
+models.rol.Rol.nombre
+models.solicitud.Solicitud.nombre
+models.tipoDeAtributo.TipoDeAtributo.nombre
+models.tipoDeItem.TipoDeItem.nombre
+models.user.User.nombre" class="py-name" href="#" onclick="return doclink('link-2', 'nombre', 'link-2');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">Column</tt><tt class="py-op">(</tt><tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">String</tt><tt class="py-op">(</tt><tt class="py-number">45</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">unique</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt><tt class="py-name">nullable</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">    <tt id="link-3" class="py-name" targets="Variable models.comite.Comite.descripcion=models.comite.Comite-class.html#descripcion,Variable models.fase.Fase.descripcion=models.fase.Fase-class.html#descripcion,Variable models.lineaBase.LineaBase.descripcion=models.lineaBase.LineaBase-class.html#descripcion,Variable models.permiso.Permiso.descripcion=models.permiso.Permiso-class.html#descripcion,Variable models.proyecto.Proyecto.descripcion=models.proyecto.Proyecto-class.html#descripcion,Variable models.rol.Rol.descripcion=models.rol.Rol-class.html#descripcion,Variable models.solicitud.Solicitud.descripcion=models.solicitud.Solicitud-class.html#descripcion,Variable models.tipoDeAtributo.TipoDeAtributo.descripcion=models.tipoDeAtributo.TipoDeAtributo-class.html#descripcion,Variable models.tipoDeItem.TipoDeItem.descripcion=models.tipoDeItem.TipoDeItem-class.html#descripcion"><a title="models.comite.Comite.descripcion
+models.fase.Fase.descripcion
+models.lineaBase.LineaBase.descripcion
+models.permiso.Permiso.descripcion
+models.proyecto.Proyecto.descripcion
+models.rol.Rol.descripcion
+models.solicitud.Solicitud.descripcion
+models.tipoDeAtributo.TipoDeAtributo.descripcion
+models.tipoDeItem.TipoDeItem.descripcion" class="py-name" href="#" onclick="return doclink('link-3', 'descripcion', 'link-3');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">Column</tt><tt class="py-op">(</tt><tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">String</tt><tt class="py-op">(</tt><tt class="py-number">150</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable models.permiso.Permiso.tipoPermiso=models.permiso.Permiso-class.html#tipoPermiso"><a title="models.permiso.Permiso.tipoPermiso" class="py-name" href="#" onclick="return doclink('link-4', 'tipoPermiso', 'link-4');">tipoPermiso</a></tt> <tt class="py-op">=</tt> <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">Column</tt><tt class="py-op">(</tt><tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">Integer</tt><tt class="py-op">,</tt><tt class="py-name">nullable</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">     </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">     </tt>
+<a name="Permiso.__init__"></a><div id="Permiso.__init__-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="Permiso.__init__-toggle" onclick="return toggle('Permiso.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="models.permiso.Permiso-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">descripcion</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">tipoPermiso</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Permiso.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Permiso.__init__-expanded"><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-docstring">""" constructor de Permiso """</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="models.comite.Comite.nombre
+models.fase.Fase.nombre
+models.item.Item.nombre
+models.lineaBase.LineaBase.nombre
+models.permiso.Permiso.nombre
+models.proyecto.Proyecto.nombre
+models.relacion.Relacion.nombre
+models.rol.Rol.nombre
+models.solicitud.Solicitud.nombre
+models.tipoDeAtributo.TipoDeAtributo.nombre
+models.tipoDeItem.TipoDeItem.nombre
+models.user.User.nombre" class="py-name" href="#" onclick="return doclink('link-5', 'nombre', 'link-2');">nombre</a></tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name"><a title="models.comite.Comite.nombre
+models.fase.Fase.nombre
+models.item.Item.nombre
+models.lineaBase.LineaBase.nombre
+models.permiso.Permiso.nombre
+models.proyecto.Proyecto.nombre
+models.relacion.Relacion.nombre
+models.rol.Rol.nombre
+models.solicitud.Solicitud.nombre
+models.tipoDeAtributo.TipoDeAtributo.nombre
+models.tipoDeItem.TipoDeItem.nombre
+models.user.User.nombre" class="py-name" href="#" onclick="return doclink('link-6', 'nombre', 'link-2');">nombre</a></tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="models.comite.Comite.descripcion
+models.fase.Fase.descripcion
+models.lineaBase.LineaBase.descripcion
+models.permiso.Permiso.descripcion
+models.proyecto.Proyecto.descripcion
+models.rol.Rol.descripcion
+models.solicitud.Solicitud.descripcion
+models.tipoDeAtributo.TipoDeAtributo.descripcion
+models.tipoDeItem.TipoDeItem.descripcion" class="py-name" href="#" onclick="return doclink('link-7', 'descripcion', 'link-3');">descripcion</a></tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="models.comite.Comite.descripcion
+models.fase.Fase.descripcion
+models.lineaBase.LineaBase.descripcion
+models.permiso.Permiso.descripcion
+models.proyecto.Proyecto.descripcion
+models.rol.Rol.descripcion
+models.solicitud.Solicitud.descripcion
+models.tipoDeAtributo.TipoDeAtributo.descripcion
+models.tipoDeItem.TipoDeItem.descripcion" class="py-name" href="#" onclick="return doclink('link-8', 'descripcion', 'link-3');">descripcion</a></tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="models.permiso.Permiso.tipoPermiso" class="py-name" href="#" onclick="return doclink('link-9', 'tipoPermiso', 'link-4');">tipoPermiso</a></tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name"><a title="models.permiso.Permiso.tipoPermiso" class="py-name" href="#" onclick="return doclink('link-10', 'tipoPermiso', 'link-4');">tipoPermiso</a></tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">     </tt>
+<a name="Permiso.__repr__"></a><div id="Permiso.__repr__-def"><a name="L20"></a><tt class="py-lineno">20</tt> <a class="py-toggle" href="#" id="Permiso.__repr__-toggle" onclick="return toggle('Permiso.__repr__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="models.permiso.Permiso-class.html#__repr__">__repr__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Permiso.__repr__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Permiso.__repr__-expanded"><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="models.comite.Comite.nombre
+models.fase.Fase.nombre
+models.item.Item.nombre
+models.lineaBase.LineaBase.nombre
+models.permiso.Permiso.nombre
+models.proyecto.Proyecto.nombre
+models.relacion.Relacion.nombre
+models.rol.Rol.nombre
+models.solicitud.Solicitud.nombre
+models.tipoDeAtributo.TipoDeAtributo.nombre
+models.tipoDeItem.TipoDeItem.nombre
+models.user.User.nombre" class="py-name" href="#" onclick="return doclink('link-11', 'nombre', 'link-2');">nombre</a></tt> </tt>
+</div></div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="models-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Dec  6 13:49:09 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

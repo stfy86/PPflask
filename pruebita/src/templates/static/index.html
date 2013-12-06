@@ -3,11 +3,15 @@
 {% block title %}Index{% endblock %}
 
 {% block body %}
-    <h4>   BIENVENIDO A LA PAGINA DEL GRUPO 22 </h4>
-    Integrantes
-    <ul>
-    <li> Lorelay Ortiz             
-    <li> Victor Vera
-    <li> Estefanis Zamora
-    </ul>
+<center>
+                    {% if not g.user %}
+    <h4> Sistema PP </h4>
+                    {% elif g.user.name == "admin" %}
+    <h4> Bienvenido {{g.user}}!!! </h4>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Administracion</a></p>
+                    {% else %}
+    <h4> Bienvenido {{g.user}}!!! </h4>
+    <p><img src="/img/link.png"/><a href="{{ url_for('misProyectos') }}">Mis Proyectos</a></p>
+                    {% endif %}
+</center>
 {% endblock %}

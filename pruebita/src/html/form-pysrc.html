@@ -1,0 +1,1337 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>form</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;form
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="form-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="form-module.html">Module form</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">""" Modulo que contiene todos los formularios usados en el sistema """</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">wtforms</tt><tt class="py-op">.</tt><tt class="py-name">fields</tt> <tt class="py-keyword">import</tt> <tt class="py-name">HiddenField</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">wtforms</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Form</tt><tt class="py-op">,</tt> <tt class="py-name">TextField</tt><tt class="py-op">,</tt> <tt class="py-name">FileField</tt><tt class="py-op">,</tt> <tt class="py-name">PasswordField</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line">     <tt class="py-name">validators</tt><tt class="py-op">,</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">,</tt> <tt class="py-name">SelectField</tt><tt class="py-op">,</tt> <tt class="py-name">SubmitField</tt><tt class="py-op">,</tt> <tt class="py-name">DateTimeField</tt><tt class="py-op">,</tt> <tt class="py-name">RadioField</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#------------------------------------------------------------------------------#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># FORMS</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#------------------------------------------------------------------------------#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># Ingreso al Sistema</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="LoginForm"></a><div id="LoginForm-def"><a name="L12"></a><tt class="py-lineno"> 12</tt> <a class="py-toggle" href="#" id="LoginForm-toggle" onclick="return toggle('LoginForm');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.LoginForm-class.html">LoginForm</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LoginForm-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="LoginForm-expanded"><a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario de logueo """</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Variable form.LoginForm.username=form.LoginForm-class.html#username"><a title="form.LoginForm.username" class="py-name" href="#" onclick="return doclink('link-0', 'username', 'link-0');">username</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nick'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">10</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">    <tt id="link-1" class="py-name" targets="Variable form.CreateFormUser.password=form.CreateFormUser-class.html#password,Variable form.LoginForm.password=form.LoginForm-class.html#password"><a title="form.CreateFormUser.password
+form.LoginForm.password" class="py-name" href="#" onclick="return doclink('link-1', 'password', 'link-1');">password</a></tt> <tt class="py-op">=</tt> <tt class="py-name">PasswordField</tt><tt class="py-op">(</tt><tt class="py-string">'Password'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">15</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment"># Administrar Usuarios</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="CreateFormUser"></a><div id="CreateFormUser-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="CreateFormUser-toggle" onclick="return toggle('CreateFormUser');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormUser-class.html">CreateFormUser</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormUser-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormUser-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear un usuario con validaciones"""</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable form.CreateFormUser.name=form.CreateFormUser-class.html#name,Variable form.ShowFormUser.name=form.ShowFormUser-class.html#name,Variable form.ShowFormUserComite.name=form.ShowFormUserComite-class.html#name,Variable form.ShowFormUserProyecto.name=form.ShowFormUserProyecto-class.html#name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-2', 'name', 'link-2');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Name'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":name?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">15</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-15]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">    <tt id="link-3" class="py-name"><a title="form.CreateFormUser.password
+form.LoginForm.password" class="py-name" href="#" onclick="return doclink('link-3', 'password', 'link-1');">password</a></tt> <tt class="py-op">=</tt> <tt class="py-name">PasswordField</tt><tt class="py-op">(</tt><tt class="py-string">'Password'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":password?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">15</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-15]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable form.CreateFormUser.confirmacion=form.CreateFormUser-class.html#confirmacion"><a title="form.CreateFormUser.confirmacion" class="py-name" href="#" onclick="return doclink('link-4', 'confirmacion', 'link-4');">confirmacion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">PasswordField</tt><tt class="py-op">(</tt><tt class="py-string">'Confirmacion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">EqualTo</tt><tt class="py-op">(</tt><tt class="py-string">'password'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable form.CreateFormAtrib.nombre=form.CreateFormAtrib-class.html#nombre,Variable form.CreateFormComite.nombre=form.CreateFormComite-class.html#nombre,Variable form.CreateFormFase.nombre=form.CreateFormFase-class.html#nombre,Variable form.CreateFormItem.nombre=form.CreateFormItem-class.html#nombre,Variable form.CreateFormLineaBase.nombre=form.CreateFormLineaBase-class.html#nombre,Variable form.CreateFormProject.nombre=form.CreateFormProject-class.html#nombre,Variable form.CreateFormRolProyecto.nombre=form.CreateFormRolProyecto-class.html#nombre,Variable form.CreateFormSolicitud.nombre=form.CreateFormSolicitud-class.html#nombre,Variable form.CreateFormTipoDeItem.nombre=form.CreateFormTipoDeItem-class.html#nombre,Variable form.CreateFormUser.nombre=form.CreateFormUser-class.html#nombre,Variable form.EditFormAtrib.nombre=form.EditFormAtrib-class.html#nombre,Variable form.EditFormLineaBase.nombre=form.EditFormLineaBase-class.html#nombre,Variable form.ShowFormAtrib.nombre=form.ShowFormAtrib-class.html#nombre,Variable form.ShowFormFase.nombre=form.ShowFormFase-class.html#nombre,Variable form.ShowFormItem.nombre=form.ShowFormItem-class.html#nombre,Variable form.ShowFormLineaBase.nombre=form.ShowFormLineaBase-class.html#nombre,Variable form.ShowFormProject.nombre=form.ShowFormProject-class.html#nombre,Variable form.ShowFormRolProyecto.nombre=form.ShowFormRolProyecto-class.html#nombre,Variable form.ShowFormSolicitud.nombre=form.ShowFormSolicitud-class.html#nombre,Variable form.ShowFormUser.nombre=form.ShowFormUser-class.html#nombre,Variable form.ShowFormUserComite.nombre=form.ShowFormUserComite-class.html#nombre,Variable form.ShowFormUserProyecto.nombre=form.ShowFormUserProyecto-class.html#nombre"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-5', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt id="link-6" class="py-name" targets="Variable form.CreateFormUser.apellido=form.CreateFormUser-class.html#apellido,Variable form.ShowFormUser.apellido=form.ShowFormUser-class.html#apellido,Variable form.ShowFormUserComite.apellido=form.ShowFormUserComite-class.html#apellido,Variable form.ShowFormUserProyecto.apellido=form.ShowFormUserProyecto-class.html#apellido"><a title="form.CreateFormUser.apellido
+form.ShowFormUser.apellido
+form.ShowFormUserComite.apellido
+form.ShowFormUserProyecto.apellido" class="py-name" href="#" onclick="return doclink('link-6', 'apellido', 'link-6');">apellido</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Apellido'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":apellido?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable form.CreateFormUser.email=form.CreateFormUser-class.html#email,Variable form.ShowFormUser.email=form.ShowFormUser-class.html#email,Variable form.ShowFormUserComite.email=form.ShowFormUserComite-class.html#email,Variable form.ShowFormUserProyecto.email=form.ShowFormUserProyecto-class.html#email"><a title="form.CreateFormUser.email
+form.ShowFormUser.email
+form.ShowFormUserComite.email
+form.ShowFormUserProyecto.email" class="py-name" href="#" onclick="return doclink('link-7', 'email', 'link-7');">email</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Email'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":email?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Variable form.CreateFormUser.telefono=form.CreateFormUser-class.html#telefono,Variable form.ShowFormUser.telefono=form.ShowFormUser-class.html#telefono,Variable form.ShowFormUserComite.telefono=form.ShowFormUserComite-class.html#telefono,Variable form.ShowFormUserProyecto.telefono=form.ShowFormUserProyecto-class.html#telefono"><a title="form.CreateFormUser.telefono
+form.ShowFormUser.telefono
+form.ShowFormUserComite.telefono
+form.ShowFormUserProyecto.telefono" class="py-name" href="#" onclick="return doclink('link-8', 'telefono', 'link-8');">telefono</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Telefono'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":telefono?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":telefono?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt id="link-9" class="py-name" targets="Variable form.CreateFormUser.obs=form.CreateFormUser-class.html#obs,Variable form.ShowFormUser.obs=form.ShowFormUser-class.html#obs,Variable form.ShowFormUserComite.obs=form.ShowFormUserComite-class.html#obs,Variable form.ShowFormUserProyecto.obs=form.ShowFormUserProyecto-class.html#obs"><a title="form.CreateFormUser.obs
+form.ShowFormUser.obs
+form.ShowFormUserComite.obs
+form.ShowFormUserProyecto.obs" class="py-name" href="#" onclick="return doclink('link-9', 'obs', 'link-9');">obs</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Obs'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":obs?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">150</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-150]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="ShowFormUser"></a><div id="ShowFormUser-def"><a name="L31"></a><tt class="py-lineno"> 31</tt> <a class="py-toggle" href="#" id="ShowFormUser-toggle" onclick="return toggle('ShowFormUser');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormUser-class.html">ShowFormUser</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormUser-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormUser-expanded"><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar datos de un usuario """</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt id="link-10" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-10', 'name', 'link-2');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Name'</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt id="link-11" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-11', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt id="link-12" class="py-name"><a title="form.CreateFormUser.apellido
+form.ShowFormUser.apellido
+form.ShowFormUserComite.apellido
+form.ShowFormUserProyecto.apellido" class="py-name" href="#" onclick="return doclink('link-12', 'apellido', 'link-6');">apellido</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Apellido'</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt id="link-13" class="py-name"><a title="form.CreateFormUser.email
+form.ShowFormUser.email
+form.ShowFormUserComite.email
+form.ShowFormUserProyecto.email" class="py-name" href="#" onclick="return doclink('link-13', 'email', 'link-7');">email</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Email'</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt id="link-14" class="py-name"><a title="form.CreateFormUser.telefono
+form.ShowFormUser.telefono
+form.ShowFormUserComite.telefono
+form.ShowFormUserProyecto.telefono" class="py-name" href="#" onclick="return doclink('link-14', 'telefono', 'link-8');">telefono</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Telefono'</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt id="link-15" class="py-name"><a title="form.CreateFormUser.obs
+form.ShowFormUser.obs
+form.ShowFormUserComite.obs
+form.ShowFormUserProyecto.obs" class="py-name" href="#" onclick="return doclink('link-15', 'obs', 'link-9');">obs</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Obs'</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt id="link-16" class="py-name" targets="Variable form.EditStateItemForm.estado=form.EditStateItemForm-class.html#estado,Variable form.ShowFormFase.estado=form.ShowFormFase-class.html#estado,Variable form.ShowFormItem.estado=form.ShowFormItem-class.html#estado,Variable form.ShowFormLineaBase.estado=form.ShowFormLineaBase-class.html#estado,Variable form.ShowFormProject.estado=form.ShowFormProject-class.html#estado,Variable form.ShowFormUser.estado=form.ShowFormUser-class.html#estado,Variable form.ShowFormUserComite.estado=form.ShowFormUserComite-class.html#estado,Variable form.ShowFormUserProyecto.estado=form.ShowFormUserProyecto-class.html#estado"><a title="form.EditStateItemForm.estado
+form.ShowFormFase.estado
+form.ShowFormItem.estado
+form.ShowFormLineaBase.estado
+form.ShowFormProject.estado
+form.ShowFormUser.estado
+form.ShowFormUserComite.estado
+form.ShowFormUserProyecto.estado" class="py-name" href="#" onclick="return doclink('link-16', 'estado', 'link-16');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Estado'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-comment"># Administrar Proyecto</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="CreateFormProject"></a><div id="CreateFormProject-def"><a name="L43"></a><tt class="py-lineno"> 43</tt> <a class="py-toggle" href="#" id="CreateFormProject-toggle" onclick="return toggle('CreateFormProject');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormProject-class.html">CreateFormProject</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormProject-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormProject-expanded"><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear proyecto"""</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt id="link-17" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-17', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt id="link-18" class="py-name" targets="Variable form.CreateFormAtrib.descripcion=form.CreateFormAtrib-class.html#descripcion,Variable form.CreateFormComite.descripcion=form.CreateFormComite-class.html#descripcion,Variable form.CreateFormFase.descripcion=form.CreateFormFase-class.html#descripcion,Variable form.CreateFormLineaBase.descripcion=form.CreateFormLineaBase-class.html#descripcion,Variable form.CreateFormProject.descripcion=form.CreateFormProject-class.html#descripcion,Variable form.CreateFormRolProyecto.descripcion=form.CreateFormRolProyecto-class.html#descripcion,Variable form.CreateFormSolicitud.descripcion=form.CreateFormSolicitud-class.html#descripcion,Variable form.CreateFormTipoDeItem.descripcion=form.CreateFormTipoDeItem-class.html#descripcion,Variable form.EditFormAtrib.descripcion=form.EditFormAtrib-class.html#descripcion,Variable form.EditFormComite.descripcion=form.EditFormComite-class.html#descripcion,Variable form.EditFormFase.descripcion=form.EditFormFase-class.html#descripcion,Variable form.EditFormLineaBase.descripcion=form.EditFormLineaBase-class.html#descripcion,Variable form.EditFormProject.descripcion=form.EditFormProject-class.html#descripcion,Variable form.ShowFormAtrib.descripcion=form.ShowFormAtrib-class.html#descripcion,Variable form.ShowFormComite.descripcion=form.ShowFormComite-class.html#descripcion,Variable form.ShowFormFase.descripcion=form.ShowFormFase-class.html#descripcion,Variable form.ShowFormLineaBase.descripcion=form.ShowFormLineaBase-class.html#descripcion,Variable form.ShowFormProject.descripcion=form.ShowFormProject-class.html#descripcion,Variable form.ShowFormRolProyecto.descripcion=form.ShowFormRolProyecto-class.html#descripcion,Variable form.ShowFormSolicitud.descripcion=form.ShowFormSolicitud-class.html#descripcion"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-18', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">150</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-150]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt id="link-19" class="py-name" targets="Variable form.CreateFormProject.presupuesto=form.CreateFormProject-class.html#presupuesto,Variable form.EditFormProject.presupuesto=form.EditFormProject-class.html#presupuesto,Variable form.ShowFormProject.presupuesto=form.ShowFormProject-class.html#presupuesto"><a title="form.CreateFormProject.presupuesto
+form.EditFormProject.presupuesto
+form.ShowFormProject.presupuesto" class="py-name" href="#" onclick="return doclink('link-19', 'presupuesto', 'link-19');">presupuesto</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Presupuesto'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":presupuesto?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":presupuesto?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="EditFormProject"></a><div id="EditFormProject-def"><a name="L49"></a><tt class="py-lineno"> 49</tt> <a class="py-toggle" href="#" id="EditFormProject-toggle" onclick="return toggle('EditFormProject');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.EditFormProject-class.html">EditFormProject</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EditFormProject-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EditFormProject-expanded"><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para editar datos del proyecto """</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt id="link-20" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-20', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">150</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-150]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt id="link-21" class="py-name"><a title="form.CreateFormProject.presupuesto
+form.EditFormProject.presupuesto
+form.ShowFormProject.presupuesto" class="py-name" href="#" onclick="return doclink('link-21', 'presupuesto', 'link-19');">presupuesto</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Presupuesto'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":presupuesto?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":presupuesto?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="ShowFormProject"></a><div id="ShowFormProject-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="ShowFormProject-toggle" onclick="return toggle('ShowFormProject');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormProject-class.html">ShowFormProject</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormProject-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormProject-expanded"><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar un proyecto"""</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt id="link-22" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-22', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt id="link-23" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-23', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt id="link-24" class="py-name" targets="Variable form.ShowFormFase.fechaDeCreacion=form.ShowFormFase-class.html#fechaDeCreacion,Variable form.ShowFormProject.fechaDeCreacion=form.ShowFormProject-class.html#fechaDeCreacion"><a title="form.ShowFormFase.fechaDeCreacion
+form.ShowFormProject.fechaDeCreacion" class="py-name" href="#" onclick="return doclink('link-24', 'fechaDeCreacion', 'link-24');">fechaDeCreacion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">DateTimeField</tt><tt class="py-op">(</tt><tt class="py-string">'FechaDeCreacion'</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt id="link-25" class="py-name"><a title="form.EditStateItemForm.estado
+form.ShowFormFase.estado
+form.ShowFormItem.estado
+form.ShowFormLineaBase.estado
+form.ShowFormProject.estado
+form.ShowFormUser.estado
+form.ShowFormUserComite.estado
+form.ShowFormUserProyecto.estado" class="py-name" href="#" onclick="return doclink('link-25', 'estado', 'link-16');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Estado'</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt id="link-26" class="py-name"><a title="form.CreateFormProject.presupuesto
+form.EditFormProject.presupuesto
+form.ShowFormProject.presupuesto" class="py-name" href="#" onclick="return doclink('link-26', 'presupuesto', 'link-19');">presupuesto</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Presupuesto'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">     </tt>
+<a name="CreateFormRolProyecto"></a><div id="CreateFormRolProyecto-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="CreateFormRolProyecto-toggle" onclick="return toggle('CreateFormRolProyecto');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormRolProyecto-class.html">CreateFormRolProyecto</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormRolProyecto-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormRolProyecto-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear un rol por proyecto"""</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt id="link-27" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-27', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt id="link-28" class="py-name" targets="Variable form.CreateFormRolProyecto.ambito=form.CreateFormRolProyecto-class.html#ambito,Variable form.ShowFormRolProyecto.ambito=form.ShowFormRolProyecto-class.html#ambito"><a title="form.CreateFormRolProyecto.ambito
+form.ShowFormRolProyecto.ambito" class="py-name" href="#" onclick="return doclink('link-28', 'ambito', 'link-28');">ambito</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Ambito'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":ambito?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt id="link-29" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-29', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    </tt>
+<a name="ShowFormRolProyecto"></a><div id="ShowFormRolProyecto-def"><a name="L69"></a><tt class="py-lineno"> 69</tt> <a class="py-toggle" href="#" id="ShowFormRolProyecto-toggle" onclick="return toggle('ShowFormRolProyecto');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormRolProyecto-class.html">ShowFormRolProyecto</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormRolProyecto-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormRolProyecto-expanded"><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar un rol """</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt id="link-30" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-30', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt id="link-31" class="py-name"><a title="form.CreateFormRolProyecto.ambito
+form.ShowFormRolProyecto.ambito" class="py-name" href="#" onclick="return doclink('link-31', 'ambito', 'link-28');">ambito</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Ambito'</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt id="link-32" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-32', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="ShowFormUserProyecto"></a><div id="ShowFormUserProyecto-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="ShowFormUserProyecto-toggle" onclick="return toggle('ShowFormUserProyecto');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormUserProyecto-class.html">ShowFormUserProyecto</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormUserProyecto-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormUserProyecto-expanded"><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar un usuario de proyecto """</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt id="link-33" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-33', 'name', 'link-2');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Name'</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt id="link-34" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-34', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt id="link-35" class="py-name"><a title="form.CreateFormUser.apellido
+form.ShowFormUser.apellido
+form.ShowFormUserComite.apellido
+form.ShowFormUserProyecto.apellido" class="py-name" href="#" onclick="return doclink('link-35', 'apellido', 'link-6');">apellido</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Apellido'</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt id="link-36" class="py-name"><a title="form.CreateFormUser.email
+form.ShowFormUser.email
+form.ShowFormUserComite.email
+form.ShowFormUserProyecto.email" class="py-name" href="#" onclick="return doclink('link-36', 'email', 'link-7');">email</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Email'</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt id="link-37" class="py-name"><a title="form.CreateFormUser.telefono
+form.ShowFormUser.telefono
+form.ShowFormUserComite.telefono
+form.ShowFormUserProyecto.telefono" class="py-name" href="#" onclick="return doclink('link-37', 'telefono', 'link-8');">telefono</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Telefono'</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt id="link-38" class="py-name"><a title="form.CreateFormUser.obs
+form.ShowFormUser.obs
+form.ShowFormUserComite.obs
+form.ShowFormUserProyecto.obs" class="py-name" href="#" onclick="return doclink('link-38', 'obs', 'link-9');">obs</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Obs'</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt id="link-39" class="py-name"><a title="form.EditStateItemForm.estado
+form.ShowFormFase.estado
+form.ShowFormItem.estado
+form.ShowFormLineaBase.estado
+form.ShowFormProject.estado
+form.ShowFormUser.estado
+form.ShowFormUserComite.estado
+form.ShowFormUserProyecto.estado" class="py-name" href="#" onclick="return doclink('link-39', 'estado', 'link-16');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Estado'</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">    <tt id="link-40" class="py-name" targets="Variable form.ShowFormUserProyecto.rolNombre=form.ShowFormUserProyecto-class.html#rolNombre"><a title="form.ShowFormUserProyecto.rolNombre" class="py-name" href="#" onclick="return doclink('link-40', 'rolNombre', 'link-40');">rolNombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Rol'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="ShowFormUserComite"></a><div id="ShowFormUserComite-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="ShowFormUserComite-toggle" onclick="return toggle('ShowFormUserComite');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormUserComite-class.html">ShowFormUserComite</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormUserComite-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormUserComite-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar un usuario del comite de proyecto """</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt id="link-41" class="py-name"><a title="form.CreateFormUser.name
+form.ShowFormUser.name
+form.ShowFormUserComite.name
+form.ShowFormUserProyecto.name" class="py-name" href="#" onclick="return doclink('link-41', 'name', 'link-2');">name</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Name'</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt id="link-42" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-42', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt id="link-43" class="py-name"><a title="form.CreateFormUser.apellido
+form.ShowFormUser.apellido
+form.ShowFormUserComite.apellido
+form.ShowFormUserProyecto.apellido" class="py-name" href="#" onclick="return doclink('link-43', 'apellido', 'link-6');">apellido</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Apellido'</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt id="link-44" class="py-name"><a title="form.CreateFormUser.email
+form.ShowFormUser.email
+form.ShowFormUserComite.email
+form.ShowFormUserProyecto.email" class="py-name" href="#" onclick="return doclink('link-44', 'email', 'link-7');">email</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Email'</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt id="link-45" class="py-name"><a title="form.CreateFormUser.telefono
+form.ShowFormUser.telefono
+form.ShowFormUserComite.telefono
+form.ShowFormUserProyecto.telefono" class="py-name" href="#" onclick="return doclink('link-45', 'telefono', 'link-8');">telefono</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Telefono'</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt id="link-46" class="py-name"><a title="form.CreateFormUser.obs
+form.ShowFormUser.obs
+form.ShowFormUserComite.obs
+form.ShowFormUserProyecto.obs" class="py-name" href="#" onclick="return doclink('link-46', 'obs', 'link-9');">obs</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Obs'</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt id="link-47" class="py-name"><a title="form.EditStateItemForm.estado
+form.ShowFormFase.estado
+form.ShowFormItem.estado
+form.ShowFormLineaBase.estado
+form.ShowFormProject.estado
+form.ShowFormUser.estado
+form.ShowFormUserComite.estado
+form.ShowFormUserProyecto.estado" class="py-name" href="#" onclick="return doclink('link-47', 'estado', 'link-16');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Estado'</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt id="link-48" class="py-name" targets="Variable form.ShowFormUserComite.comiteNombre=form.ShowFormUserComite-class.html#comiteNombre"><a title="form.ShowFormUserComite.comiteNombre" class="py-name" href="#" onclick="return doclink('link-48', 'comiteNombre', 'link-48');">comiteNombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Comite'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">     </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-comment"># Administrar Fase</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"> </tt>
+<a name="CreateFormFase"></a><div id="CreateFormFase-def"><a name="L99"></a><tt class="py-lineno"> 99</tt> <a class="py-toggle" href="#" id="CreateFormFase-toggle" onclick="return toggle('CreateFormFase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormFase-class.html">CreateFormFase</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormFase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormFase-expanded"><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear fase"""</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">    <tt id="link-49" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-49', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt id="link-50" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-50', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">150</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-150]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt>
+<a name="EditFormFase"></a><div id="EditFormFase-def"><a name="L104"></a><tt class="py-lineno">104</tt> <a class="py-toggle" href="#" id="EditFormFase-toggle" onclick="return toggle('EditFormFase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.EditFormFase-class.html">EditFormFase</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EditFormFase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EditFormFase-expanded"><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para editar fase """</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">    <tt id="link-51" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-51', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">150</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-150]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    </tt>
+<a name="ShowFormFase"></a><div id="ShowFormFase-def"><a name="L108"></a><tt class="py-lineno">108</tt> <a class="py-toggle" href="#" id="ShowFormFase-toggle" onclick="return toggle('ShowFormFase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormFase-class.html">ShowFormFase</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormFase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormFase-expanded"><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar una fase """</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt id="link-52" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-52', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt id="link-53" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-53', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt id="link-54" class="py-name"><a title="form.ShowFormFase.fechaDeCreacion
+form.ShowFormProject.fechaDeCreacion" class="py-name" href="#" onclick="return doclink('link-54', 'fechaDeCreacion', 'link-24');">fechaDeCreacion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">DateTimeField</tt><tt class="py-op">(</tt><tt class="py-string">'FechaDeCreacion'</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt id="link-55" class="py-name" targets="Variable form.ShowFormFase.orden=form.ShowFormFase-class.html#orden"><a title="form.ShowFormFase.orden" class="py-name" href="#" onclick="return doclink('link-55', 'orden', 'link-55');">orden</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Orden'</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt id="link-56" class="py-name"><a title="form.EditStateItemForm.estado
+form.ShowFormFase.estado
+form.ShowFormItem.estado
+form.ShowFormLineaBase.estado
+form.ShowFormProject.estado
+form.ShowFormUser.estado
+form.ShowFormUserComite.estado
+form.ShowFormUserProyecto.estado" class="py-name" href="#" onclick="return doclink('link-56', 'estado', 'link-16');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Estado'</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">    <tt id="link-57" class="py-name" targets="Variable form.ShowFormComite.proyectoId=form.ShowFormComite-class.html#proyectoId,Variable form.ShowFormFase.proyectoId=form.ShowFormFase-class.html#proyectoId"><a title="form.ShowFormComite.proyectoId
+form.ShowFormFase.proyectoId" class="py-name" href="#" onclick="return doclink('link-57', 'proyectoId', 'link-57');">proyectoId</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'ProyectoId'</tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">    <tt id="link-58" class="py-name" targets="Variable form.ShowFormFase.tipoDeItemId=form.ShowFormFase-class.html#tipoDeItemId"><a title="form.ShowFormFase.tipoDeItemId" class="py-name" href="#" onclick="return doclink('link-58', 'tipoDeItemId', 'link-58');">tipoDeItemId</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'TipoDeItemId'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-comment"># Administrar tipo de atributos</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="CreateFormAtrib"></a><div id="CreateFormAtrib-def"><a name="L120"></a><tt class="py-lineno">120</tt> <a class="py-toggle" href="#" id="CreateFormAtrib-toggle" onclick="return toggle('CreateFormAtrib');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormAtrib-class.html">CreateFormAtrib</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormAtrib-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormAtrib-expanded"><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear un atributo"""</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">    <tt id="link-59" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-59', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">    <tt id="link-60" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-60', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">150</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-150]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">     </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">     </tt>
+<a name="ShowFormAtrib"></a><div id="ShowFormAtrib-def"><a name="L126"></a><tt class="py-lineno">126</tt> <a class="py-toggle" href="#" id="ShowFormAtrib-toggle" onclick="return toggle('ShowFormAtrib');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormAtrib-class.html">ShowFormAtrib</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormAtrib-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormAtrib-expanded"><a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar un atributo"""</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">    <tt id="link-61" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-61', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">    <tt id="link-62" class="py-name" targets="Variable form.ShowFormAtrib.tipoDeDato=form.ShowFormAtrib-class.html#tipoDeDato"><a title="form.ShowFormAtrib.tipoDeDato" class="py-name" href="#" onclick="return doclink('link-62', 'tipoDeDato', 'link-62');">tipoDeDato</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Tipo De Dato'</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt id="link-63" class="py-name" targets="Variable form.EditStateItemForm.submit=form.EditStateItemForm-class.html#submit,Variable form.ShowFormAtrib.submit=form.ShowFormAtrib-class.html#submit"><a title="form.EditStateItemForm.submit
+form.ShowFormAtrib.submit" class="py-name" href="#" onclick="return doclink('link-63', 'submit', 'link-63');">submit</a></tt> <tt class="py-op">=</tt> <tt class="py-name">SubmitField</tt><tt class="py-op">(</tt><tt class="py-string">"POST"</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt id="link-64" class="py-name" targets="Variable form.EditFormAtrib.filename=form.EditFormAtrib-class.html#filename,Variable form.ShowFormAtrib.filename=form.ShowFormAtrib-class.html#filename"><a title="form.EditFormAtrib.filename
+form.ShowFormAtrib.filename" class="py-name" href="#" onclick="return doclink('link-64', 'filename', 'link-64');">filename</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre de Archivo'</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">    <tt id="link-65" class="py-name" targets="Variable form.EditFormAtrib.detalle=form.EditFormAtrib-class.html#detalle,Variable form.ShowFormAtrib.detalle=form.ShowFormAtrib-class.html#detalle"><a title="form.EditFormAtrib.detalle
+form.ShowFormAtrib.detalle" class="py-name" href="#" onclick="return doclink('link-65', 'detalle', 'link-65');">detalle</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Detalle'</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">    <tt id="link-66" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-66', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="EditFormAtrib"></a><div id="EditFormAtrib-def"><a name="L135"></a><tt class="py-lineno">135</tt> <a class="py-toggle" href="#" id="EditFormAtrib-toggle" onclick="return toggle('EditFormAtrib');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.EditFormAtrib-class.html">EditFormAtrib</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EditFormAtrib-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EditFormAtrib-expanded"><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para editar un atributo"""</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">    <tt id="link-67" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-67', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">    <tt id="link-68" class="py-name"><a title="form.EditFormAtrib.filename
+form.ShowFormAtrib.filename" class="py-name" href="#" onclick="return doclink('link-68', 'filename', 'link-64');">filename</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre de Archivo'</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">    <tt id="link-69" class="py-name"><a title="form.EditFormAtrib.detalle
+form.ShowFormAtrib.detalle" class="py-name" href="#" onclick="return doclink('link-69', 'detalle', 'link-65');">detalle</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Detalle'</tt><tt class="py-op">)</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">    <tt id="link-70" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-70', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-comment"># Administrar tipo de item</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"> </tt>
+<a name="CreateFormTipoDeItem"></a><div id="CreateFormTipoDeItem-def"><a name="L145"></a><tt class="py-lineno">145</tt> <a class="py-toggle" href="#" id="CreateFormTipoDeItem-toggle" onclick="return toggle('CreateFormTipoDeItem');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormTipoDeItem-class.html">CreateFormTipoDeItem</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormTipoDeItem-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormTipoDeItem-expanded"><a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear tipo de item"""</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">    <tt id="link-71" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-71', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">    <tt id="link-72" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-72', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">150</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-150]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">    </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-comment"># Administrar item</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">     </tt>
+<a name="CreateFormItem"></a><div id="CreateFormItem-def"><a name="L152"></a><tt class="py-lineno">152</tt> <a class="py-toggle" href="#" id="CreateFormItem-toggle" onclick="return toggle('CreateFormItem');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormItem-class.html">CreateFormItem</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormItem-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormItem-expanded"><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear un item"""</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">    <tt id="link-73" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-73', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt id="link-74" class="py-name" targets="Variable form.CreateFormItem.tipoDeItem=form.CreateFormItem-class.html#tipoDeItem"><a title="form.CreateFormItem.tipoDeItem" class="py-name" href="#" onclick="return doclink('link-74', 'tipoDeItem', 'link-74');">tipoDeItem</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'TipoDeItem'</tt><tt class="py-op">)</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">    <tt id="link-75" class="py-name" targets="Variable form.CreateFormItem.version=form.CreateFormItem-class.html#version,Variable form.ShowFormItem.version=form.ShowFormItem-class.html#version"><a title="form.CreateFormItem.version
+form.ShowFormItem.version" class="py-name" href="#" onclick="return doclink('link-75', 'version', 'link-75');">version</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Version'</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt id="link-76" class="py-name" targets="Variable form.CreateFormItem.complejidad=form.CreateFormItem-class.html#complejidad,Variable form.ShowFormItem.complejidad=form.ShowFormItem-class.html#complejidad,Variable form.ShowFormSolicitud.complejidad=form.ShowFormSolicitud-class.html#complejidad"><a title="form.CreateFormItem.complejidad
+form.ShowFormItem.complejidad
+form.ShowFormSolicitud.complejidad" class="py-name" href="#" onclick="return doclink('link-76', 'complejidad', 'link-76');">complejidad</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Complejidad'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":complejidad?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">100</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":complejidad?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">    <tt id="link-77" class="py-name" targets="Variable form.CreateFormItem.costo=form.CreateFormItem-class.html#costo,Variable form.ShowFormItem.costo=form.ShowFormItem-class.html#costo,Variable form.ShowFormSolicitud.costo=form.ShowFormSolicitud-class.html#costo"><a title="form.CreateFormItem.costo
+form.ShowFormItem.costo
+form.ShowFormSolicitud.costo" class="py-name" href="#" onclick="return doclink('link-77', 'costo', 'link-77');">costo</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Costo'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":costo?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">100</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":costo?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">         </tt>
+<a name="ShowFormItem"></a><div id="ShowFormItem-def"><a name="L160"></a><tt class="py-lineno">160</tt> <a class="py-toggle" href="#" id="ShowFormItem-toggle" onclick="return toggle('ShowFormItem');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormItem-class.html">ShowFormItem</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormItem-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormItem-expanded"><a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear un item"""</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt id="link-78" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-78', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">    <tt id="link-79" class="py-name"><a title="form.CreateFormItem.version
+form.ShowFormItem.version" class="py-name" href="#" onclick="return doclink('link-79', 'version', 'link-75');">version</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Version'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":version?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":version?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    <tt id="link-80" class="py-name"><a title="form.CreateFormItem.complejidad
+form.ShowFormItem.complejidad
+form.ShowFormSolicitud.complejidad" class="py-name" href="#" onclick="return doclink('link-80', 'complejidad', 'link-76');">complejidad</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Complejidad'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":complejidad?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":complejidad?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">    <tt id="link-81" class="py-name"><a title="form.CreateFormItem.costo
+form.ShowFormItem.costo
+form.ShowFormSolicitud.costo" class="py-name" href="#" onclick="return doclink('link-81', 'costo', 'link-77');">costo</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'Costo'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":costo?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":costo?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">    <tt id="link-82" class="py-name"><a title="form.EditStateItemForm.estado
+form.ShowFormFase.estado
+form.ShowFormItem.estado
+form.ShowFormLineaBase.estado
+form.ShowFormProject.estado
+form.ShowFormUser.estado
+form.ShowFormUserComite.estado
+form.ShowFormUserProyecto.estado" class="py-name" href="#" onclick="return doclink('link-82', 'estado', 'link-16');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Estado'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":estado?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-20]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">    <tt id="link-83" class="py-name" targets="Variable form.ShowFormItem.fechaDeModif=form.ShowFormItem-class.html#fechaDeModif"><a title="form.ShowFormItem.fechaDeModif" class="py-name" href="#" onclick="return doclink('link-83', 'fechaDeModif', 'link-83');">fechaDeModif</a></tt> <tt class="py-op">=</tt> <tt class="py-name">DateTimeField</tt><tt class="py-op">(</tt><tt class="py-string">'FechaDeModif'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">     </tt>
+<a name="EditStateItemForm"></a><div id="EditStateItemForm-def"><a name="L169"></a><tt class="py-lineno">169</tt> <a class="py-toggle" href="#" id="EditStateItemForm-toggle" onclick="return toggle('EditStateItemForm');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.EditStateItemForm-class.html">EditStateItemForm</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EditStateItemForm-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EditStateItemForm-expanded"><a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario de modificacion de estado de item """</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt id="link-84" class="py-name"><a title="form.EditStateItemForm.estado
+form.ShowFormFase.estado
+form.ShowFormItem.estado
+form.ShowFormLineaBase.estado
+form.ShowFormProject.estado
+form.ShowFormUser.estado
+form.ShowFormUserComite.estado
+form.ShowFormUserProyecto.estado" class="py-name" href="#" onclick="return doclink('link-84', 'estado', 'link-16');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">SelectField</tt><tt class="py-op">(</tt><tt class="py-string">"Estado"</tt><tt class="py-op">,</tt> <tt class="py-name">choices</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">"Activo"</tt><tt class="py-op">,</tt> <tt class="py-string">"Activo"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">"Eliminado"</tt><tt class="py-op">,</tt> <tt class="py-string">"Eliminado"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">"Aprobado"</tt><tt class="py-op">,</tt> <tt class="py-string">"Aprobado"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">"Revision"</tt><tt class="py-op">,</tt> <tt class="py-string">"Revision"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">    <tt id="link-85" class="py-name"><a title="form.EditStateItemForm.submit
+form.ShowFormAtrib.submit" class="py-name" href="#" onclick="return doclink('link-85', 'submit', 'link-63');">submit</a></tt> <tt class="py-op">=</tt> <tt class="py-name">SubmitField</tt><tt class="py-op">(</tt><tt class="py-string">"POST"</tt><tt class="py-op">)</tt>     </tt>
+</div><a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"><tt class="py-comment"># Administrar LB</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"> </tt>
+<a name="CreateFormLineaBase"></a><div id="CreateFormLineaBase-def"><a name="L180"></a><tt class="py-lineno">180</tt> <a class="py-toggle" href="#" id="CreateFormLineaBase-toggle" onclick="return toggle('CreateFormLineaBase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormLineaBase-class.html">CreateFormLineaBase</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormLineaBase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormLineaBase-expanded"><a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear linea base"""</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">    <tt id="link-86" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-86', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">    <tt id="link-87" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-87', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">    <tt id="link-88" class="py-name" targets="Variable form.CreateFormLineaBase.fase=form.CreateFormLineaBase-class.html#fase"><a title="form.CreateFormLineaBase.fase" class="py-name" href="#" onclick="return doclink('link-88', 'fase', 'link-88');">fase</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Fase'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":fase?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">     </tt>
+<a name="ShowFormLineaBase"></a><div id="ShowFormLineaBase-def"><a name="L186"></a><tt class="py-lineno">186</tt> <a class="py-toggle" href="#" id="ShowFormLineaBase-toggle" onclick="return toggle('ShowFormLineaBase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormLineaBase-class.html">ShowFormLineaBase</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormLineaBase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormLineaBase-expanded"><a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar una linea base"""</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">    <tt id="link-89" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-89', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">    <tt id="link-90" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-90', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">    <tt id="link-91" class="py-name"><a title="form.EditStateItemForm.estado
+form.ShowFormFase.estado
+form.ShowFormItem.estado
+form.ShowFormLineaBase.estado
+form.ShowFormProject.estado
+form.ShowFormUser.estado
+form.ShowFormUserComite.estado
+form.ShowFormUserProyecto.estado" class="py-name" href="#" onclick="return doclink('link-91', 'estado', 'link-16');">estado</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Estado'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">     </tt>
+<a name="EditFormLineaBase"></a><div id="EditFormLineaBase-def"><a name="L192"></a><tt class="py-lineno">192</tt> <a class="py-toggle" href="#" id="EditFormLineaBase-toggle" onclick="return toggle('EditFormLineaBase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.EditFormLineaBase-class.html">EditFormLineaBase</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EditFormLineaBase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EditFormLineaBase-expanded"><a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para editar linea base"""</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">    <tt id="link-92" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-92', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">    <tt id="link-93" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-93', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-comment"># Administrar Comite</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"> </tt>
+<a name="CreateFormComite"></a><div id="CreateFormComite-def"><a name="L200"></a><tt class="py-lineno">200</tt> <a class="py-toggle" href="#" id="CreateFormComite-toggle" onclick="return toggle('CreateFormComite');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormComite-class.html">CreateFormComite</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormComite-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormComite-expanded"><a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para crear un comite de cambio """</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">    <tt id="link-94" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-94', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">    <tt id="link-95" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-95', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">    <tt id="link-96" class="py-name" targets="Variable form.CreateFormComite.cantMiembro=form.CreateFormComite-class.html#cantMiembro,Variable form.EditFormComite.cantMiembro=form.EditFormComite-class.html#cantMiembro,Variable form.ShowFormComite.cantMiembro=form.ShowFormComite-class.html#cantMiembro"><a title="form.CreateFormComite.cantMiembro
+form.EditFormComite.cantMiembro
+form.ShowFormComite.cantMiembro" class="py-name" href="#" onclick="return doclink('link-96', 'cantMiembro', 'link-96');">cantMiembro</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'CantMiembro'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":cantMiembro?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">150</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":cantMiembro &gt;= 1?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">      </tt>
+<a name="EditFormComite"></a><div id="EditFormComite-def"><a name="L206"></a><tt class="py-lineno">206</tt> <a class="py-toggle" href="#" id="EditFormComite-toggle" onclick="return toggle('EditFormComite');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.EditFormComite-class.html">EditFormComite</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="EditFormComite-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="EditFormComite-expanded"><a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para editar un comite de cambio """</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">    <tt id="link-97" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-97', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">    <tt id="link-98" class="py-name"><a title="form.CreateFormComite.cantMiembro
+form.EditFormComite.cantMiembro
+form.ShowFormComite.cantMiembro" class="py-name" href="#" onclick="return doclink('link-98', 'cantMiembro', 'link-96');">cantMiembro</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'CantMiembro'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":cantMiembro?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">NumberRange</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">150</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":cantMiembro &gt;= 1?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">     </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">    </tt>
+<a name="ShowFormComite"></a><div id="ShowFormComite-def"><a name="L212"></a><tt class="py-lineno">212</tt> <a class="py-toggle" href="#" id="ShowFormComite-toggle" onclick="return toggle('ShowFormComite');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormComite-class.html">ShowFormComite</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormComite-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormComite-expanded"><a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar un comite de cambio"""</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">    <tt id="link-99" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-99', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">)</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">    <tt id="link-100" class="py-name"><a title="form.CreateFormComite.cantMiembro
+form.EditFormComite.cantMiembro
+form.ShowFormComite.cantMiembro" class="py-name" href="#" onclick="return doclink('link-100', 'cantMiembro', 'link-96');">cantMiembro</a></tt> <tt class="py-op">=</tt> <tt class="py-name">IntegerField</tt><tt class="py-op">(</tt><tt class="py-string">'CantMiembro'</tt><tt class="py-op">)</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">    <tt id="link-101" class="py-name"><a title="form.ShowFormComite.proyectoId
+form.ShowFormFase.proyectoId" class="py-name" href="#" onclick="return doclink('link-101', 'proyectoId', 'link-57');">proyectoId</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'ProyectoId'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line"> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"><tt class="py-comment"># Solicitud</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"> </tt>
+<a name="CreateFormSolicitud"></a><div id="CreateFormSolicitud-def"><a name="L220"></a><tt class="py-lineno">220</tt> <a class="py-toggle" href="#" id="CreateFormSolicitud-toggle" onclick="return toggle('CreateFormSolicitud');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.CreateFormSolicitud-class.html">CreateFormSolicitud</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CreateFormSolicitud-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CreateFormSolicitud-expanded"><a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar una solicitud de cambio """</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">    <tt id="link-102" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-102', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Nombre'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">    <tt id="link-103" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-103', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Descripcion'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":descripcion?:"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">Length</tt><tt class="py-op">(</tt><tt class="py-name">min</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">max</tt><tt class="py-op">=</tt><tt class="py-number">45</tt><tt class="py-op">,</tt> <tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":longitud requerida [1-45]?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">    <tt id="link-104" class="py-name" targets="Variable form.CreateFormSolicitud.proyecto_nombre=form.CreateFormSolicitud-class.html#proyecto_nombre"><a title="form.CreateFormSolicitud.proyecto_nombre" class="py-name" href="#" onclick="return doclink('link-104', 'proyecto_nombre', 'link-104');">proyecto_nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'NombreProyecto'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-name">validators</tt><tt class="py-op">.</tt><tt class="py-name">required</tt><tt class="py-op">(</tt><tt class="py-name">message</tt><tt class="py-op">=</tt><tt class="py-string">":nombre de proyecto?:"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">     </tt>
+<a name="ShowFormSolicitud"></a><div id="ShowFormSolicitud-def"><a name="L226"></a><tt class="py-lineno">226</tt> <a class="py-toggle" href="#" id="ShowFormSolicitud-toggle" onclick="return toggle('ShowFormSolicitud');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="form.ShowFormSolicitud-class.html">ShowFormSolicitud</a><tt class="py-op">(</tt><tt class="py-base-class">Form</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ShowFormSolicitud-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ShowFormSolicitud-expanded"><a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">    <tt class="py-docstring">""" Formulario para mostrar una solicitud de cambio """</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">    <tt id="link-105" class="py-name"><a title="form.CreateFormAtrib.nombre
+form.CreateFormComite.nombre
+form.CreateFormFase.nombre
+form.CreateFormItem.nombre
+form.CreateFormLineaBase.nombre
+form.CreateFormProject.nombre
+form.CreateFormRolProyecto.nombre
+form.CreateFormSolicitud.nombre
+form.CreateFormTipoDeItem.nombre
+form.CreateFormUser.nombre
+form.EditFormAtrib.nombre
+form.EditFormLineaBase.nombre
+form.ShowFormAtrib.nombre
+form.ShowFormFase.nombre
+form.ShowFormItem.nombre
+form.ShowFormLineaBase.nombre
+form.ShowFormProject.nombre
+form.ShowFormRolProyecto.nombre
+form.ShowFormSolicitud.nombre
+form.ShowFormUser.nombre
+form.ShowFormUserComite.nombre
+form.ShowFormUserProyecto.nombre" class="py-name" href="#" onclick="return doclink('link-105', 'nombre', 'link-5');">nombre</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'nombre'</tt><tt class="py-op">)</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">    <tt id="link-106" class="py-name"><a title="form.CreateFormAtrib.descripcion
+form.CreateFormComite.descripcion
+form.CreateFormFase.descripcion
+form.CreateFormLineaBase.descripcion
+form.CreateFormProject.descripcion
+form.CreateFormRolProyecto.descripcion
+form.CreateFormSolicitud.descripcion
+form.CreateFormTipoDeItem.descripcion
+form.EditFormAtrib.descripcion
+form.EditFormComite.descripcion
+form.EditFormFase.descripcion
+form.EditFormLineaBase.descripcion
+form.EditFormProject.descripcion
+form.ShowFormAtrib.descripcion
+form.ShowFormComite.descripcion
+form.ShowFormFase.descripcion
+form.ShowFormLineaBase.descripcion
+form.ShowFormProject.descripcion
+form.ShowFormRolProyecto.descripcion
+form.ShowFormSolicitud.descripcion" class="py-name" href="#" onclick="return doclink('link-106', 'descripcion', 'link-18');">descripcion</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'descripcion'</tt><tt class="py-op">)</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">    <tt id="link-107" class="py-name" targets="Variable form.ShowFormSolicitud.autor=form.ShowFormSolicitud-class.html#autor"><a title="form.ShowFormSolicitud.autor" class="py-name" href="#" onclick="return doclink('link-107', 'autor', 'link-107');">autor</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'autor'</tt><tt class="py-op">)</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">    <tt id="link-108" class="py-name"><a title="form.CreateFormItem.complejidad
+form.ShowFormItem.complejidad
+form.ShowFormSolicitud.complejidad" class="py-name" href="#" onclick="return doclink('link-108', 'complejidad', 'link-76');">complejidad</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'complejidad'</tt><tt class="py-op">)</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">    <tt id="link-109" class="py-name"><a title="form.CreateFormItem.costo
+form.ShowFormItem.costo
+form.ShowFormSolicitud.costo" class="py-name" href="#" onclick="return doclink('link-109', 'costo', 'link-77');">costo</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'costo'</tt><tt class="py-op">)</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">    <tt id="link-110" class="py-name" targets="Variable form.ShowFormSolicitud.a_favor=form.ShowFormSolicitud-class.html#a_favor"><a title="form.ShowFormSolicitud.a_favor" class="py-name" href="#" onclick="return doclink('link-110', 'a_favor', 'link-110');">a_favor</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Votos a favor'</tt><tt class="py-op">)</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">    <tt id="link-111" class="py-name" targets="Variable form.ShowFormSolicitud.en_contra=form.ShowFormSolicitud-class.html#en_contra"><a title="form.ShowFormSolicitud.en_contra" class="py-name" href="#" onclick="return doclink('link-111', 'en_contra', 'link-111');">en_contra</a></tt> <tt class="py-op">=</tt> <tt class="py-name">TextField</tt><tt class="py-op">(</tt><tt class="py-string">'Votos en contra'</tt><tt class="py-op">)</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">    <tt id="link-112" class="py-name" targets="Variable form.ShowFormSolicitud.aceptar=form.ShowFormSolicitud-class.html#aceptar"><a title="form.ShowFormSolicitud.aceptar" class="py-name" href="#" onclick="return doclink('link-112', 'aceptar', 'link-112');">aceptar</a></tt> <tt class="py-op">=</tt> <tt class="py-name">SelectField</tt><tt class="py-op">(</tt><tt class="py-string">'Aceptar Cambio?'</tt><tt class="py-op">,</tt><tt class="py-name">choices</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'0'</tt><tt class="py-op">,</tt><tt class="py-string">'No'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-string">'1'</tt><tt class="py-op">,</tt><tt class="py-string">'Si'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Dec  6 13:49:07 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

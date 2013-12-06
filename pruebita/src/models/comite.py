@@ -29,7 +29,7 @@ class Comite(db.Model):
     def __init__(self, nombre=None, descripcion=None, cantMiembro=None, proyectoId=None):
         """ constructor de comite """
         self.nombre = nombre
-        self.description = descripcion
+        self.descripcion = descripcion
         self.cantMiembro = cantMiembro
         self.proyectoId = proyectoId
 

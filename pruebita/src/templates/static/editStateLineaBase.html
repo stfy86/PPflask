@@ -1,0 +1,31 @@
+{% extends "static/layout.html" %}
+
+{% block title %}Edit State Linea Base{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <center>
+    <h1>Gestionar Linea Base del Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>
+    <h3>*PASO 1: Modificar estado de Linea Base</h3>
+    <form method="post" action="">
+      <label> Estado:  </label>
+    <select name="estado" onchange="chequea(this,this.form.estado)" id="estadoLB">        
+            {% for button in buttons %}
+                {% if button in lineaBase.estado %}
+                    <option selected value="{{ button }}" >{{ button }}</option>
+                {% else %}
+                    <option value="{{ button }}" >{{ button }}</option>
+                {% endif %}
+            {% endfor %}
+    </select>
+    
+      <p>
+          <input class="button" type="submit" value="Editar State">
+          <input class="button" type="button" value="Back" onclick="document.location='/showLineaBase/{{idLineaBase}}.html';">
+      </p>
+      
+    </form>
+{% endblock %}

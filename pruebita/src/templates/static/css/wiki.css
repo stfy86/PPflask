@@ -1,10 +1,26 @@
-.buttons { float: right; text-align: right; }
+.link{
+    background: url("/img/link.png") repeat-x scroll center bottom #FFFFFF;  
+   
+}
+.buttons { float: left; text-align: left; }
 a.button { color: #000; }
 .button
 {
     background-color: #FFFFFF;
     background: url("/img/buttonshadow.png") repeat-x scroll center bottom #FFFFFF;
     border: 1px solid #8CACBB;
+    color: #000000;
+    cursor: pointer;
+    font-size: 100%;
+    width: 200px;
+    margin: 1px;
+    padding: 0.125em 0.4em;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.disabled
+{
+    background-color: #FFFFFF;
     color: #000000;
     cursor: pointer;
     font-size: 100%;
@@ -22,10 +38,17 @@ textarea
 
 .form-input
 {
+        width: 500px;
 	border: 1px solid #888;
 }
 .form-login-input
 {
-	width: 100px;
+	width: 300px;
 	border: 1px solid #888;
+}
+.textarea
+{
+    height:50px;
+    width: 500px;       
+    border: 1px solid #888;
 }

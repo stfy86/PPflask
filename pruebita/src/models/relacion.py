@@ -9,7 +9,7 @@ class Relacion(db.Model):
     itemOrigenId = db.Column(db.Integer, db.ForeignKey('Item.idItem'), primary_key=True)   
     itemDestinoId = db.Column(db.Integer, db.ForeignKey('Item.idItem'), primary_key=True) 
     
-    nombre = db.Column(db.String(45), default ='', nullable=False)
+    nombre = db.Column(db.String(150), default ='', nullable=False)
     tipoDeRelacion = db.Column(db.String(20), nullable=False) # padre-hijo  e antecesor-sucesor
     estado = db.Column(db.String(20), default ='Pendiente', nullable=False)
   

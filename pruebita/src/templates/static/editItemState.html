@@ -7,14 +7,13 @@
     <form method="post" action="">
       <dl>
         {{ form.csrf }}
-            {{ form.estado.label(style="float: left; width: 100px;") }} 
+            {{ form.estado.label(style="float: left; width: 100px;") }}
             {{ form.estado(class="form-input", style="width: 200px") }}
             {% for error in form.estado.errors %} {{ error }} {% endfor %}
       </dl>
-      
-      <p>
-          <input class="button" type="submit" value="Aceptar">
-          <input class="button" type="button" value="Cancelar" onclick="javascript:history.back();">
-      <p>
+      <div class="buttons"> 
+            <input  class="button"  type="submit" value="Edit State Item"> 
+            <input class="button" type="button" value="Back" onclick="document.location='/showItem/{{idItem}}.html';">
+      </div> 
     </form>
 {% endblock %}
