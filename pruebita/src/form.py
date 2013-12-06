@@ -149,8 +149,6 @@ class CreateFormTipoDeItem(Form):
    
 # Administrar item
     
-# Administrar item
-    
 class CreateFormItem(Form):
     """ Formulario para crear un item"""
     nombre = TextField('Nombre', [validators.required(message=":nombre?:"),validators.Length(min=1, max=45, message=":longitud requerida [1-45]:")])
