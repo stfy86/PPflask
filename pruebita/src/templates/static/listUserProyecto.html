@@ -22,6 +22,7 @@
         <tr>
             <th><a href='#' title="Click Header to Sort">Nick</a></th>
             <th><a href='#' title="Click Header to Sort">Estado</a></th>
+           
         </tr>
     </thead>
  
@@ -29,6 +30,7 @@
         <tr>
            <td><a href="{{ url_for('showUserProyecto', idUser=user.idUser )}}"</a><h5>{{user.name}}</h5></td>
            <td><a href="{{ url_for('showUserProyecto', idUser=user.idUser )}}"</a><h5>{{user.estado}}</h5></td>
+           
         </tr>
     {% endfor %}
 
@@ -58,7 +60,7 @@
 </form>   
 <div>
     <input type="button" value="Asignar Usuario a Proyecto" onclick="document.location='/addUserProyecto';">
-    <input class="button" type="button" value="Back" onclick="document.location='/gestion';">
+ <input class="button" type="button" value="Back" onclick="document.location='/gesProyecto';">
 </div>
 
 {% endblock %}

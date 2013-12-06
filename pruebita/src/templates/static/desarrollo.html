@@ -1,4 +1,4 @@
-{% extends "static/layout.html" %}
+l{% extends "static/layout.html" %}
 
 {% block title %}Modulo de Desarrollo{% endblock %}
 
@@ -6,17 +6,31 @@
 {% if session.logged_in and g.proyecto != None and "ModuloDesarrollo" in g.permisos%}
     <div class="page-header">        
         <center>
-            <h3>Modulo de Desarrollo</h3>
-        
+        <h3>Modulo de Desarrollo</h3>
+        {% if "DesItem" in g.permisos%}
         <p><img src="/img/link.png"/><a href="{{ url_for('listFasesActivasD') }}"> Desarrollar Ítem </a></p>
-        <p><img src="/img/link.png"/><a href="{{ url_for('listSolicitudes') }}"> Desarrollar Solicitud</a></p>        
-        <p><img src="/img/link.png"/><a href="{{ url_for('index') }}"> Cambio</a></p>
-        <p><img src="/img/link.png"/><a href="{{ url_for('index') }}"> Reportes </a></p>
+        {% else %}
+        <p><a class="disabled" href="javascript:void(0) href="{{ url_for('listFasesActivasD') }}">  Desarrollar Item</a></p>
+        {% endif %}
+        {% if "DesSolicitud" in g.permisos%}
+        <p><img src="/img/link.png"/><a href="{{ url_for('listSolicitudes') }}"> Solicitud de Cambio</a></p>        
+        {% else %}
+        <p><a class="disabled" href="javascript:void(0) href="{{ url_for('listSolicitudes') }}">  Solicitud de Cambio</a></p>
+        {% endif %}
+        {% if "DesReporte" in g.permisos%}
+        <p><img src="/img/link.png"/><a href="{{ url_for('desReporte') }}"> Desarrollar Reportes </a></p>        
+        {% else %}
+        <p><a class="disabled" href="javascript:void(0) href="{{ url_for('desReporte') }}">  Desarrollar Reportes</a></p>
+        {% endif %}
+    
+        
+        
         
         </center>
         
     </div>
 </br>
+<h3> Datos de Sesion </h3>
 <p><img src="/img/info.png"/></p>
 <p>Proyecto: {{g.proyecto.nombre}} </p>
 <p>Rol del Usuario:  {{ g.rol.nombre}} </p>

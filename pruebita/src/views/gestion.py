@@ -15,6 +15,15 @@ def listProjectP():
 
 
 
+@app.route('/listSolicitudesG', methods=['GET', 'POST'])
+def listSolicitudesG():
+    if g.user is None:
+        return redirect(url_for('login'))
+    else:
+        return render_template(app.config['DEFAULT_TPL'] + '/listSolicitudesG.html',
+                               conf=app.config,
+                               list=MgrSolicitud().listar()
+                               )
 #------------------------------------------------------------------------------#
 # MODULO GESTION
 #------------------------------------------------------------------------------#
@@ -32,15 +41,7 @@ def gesProyecto():
                fechaDeCreacion = project.fechaDeCreacion,
                estado = project.estado,
                presupuesto = project.presupuesto)
-        if request.method == 'POST':
-            if request.form.get('init', None) == "Iniciar Proyecto":
-                return redirect(url_for('initProject', idProyecto = project.idProyecto))
-            elif request.form.get('fin', None) == "Finalizar Proyecto":
-                return redirect(url_for('finProject', idProyecto = project.idProyecto))
-            elif request.form.get('reporte', None) == "Reporte de Proyecto":
-                return redirect(url_for('reporteProject', idProyecto = project.idProyecto))
-            
-	return render_template(app.config['DEFAULT_TPL']+'/gesProyecto.html',
+        return render_template(app.config['DEFAULT_TPL']+'/gesProyecto.html',
 			       conf = app.config,
 			       form = form,
                                proyecto = g.proyecto
@@ -83,8 +84,8 @@ def reporteProject(idProyecto):
         buff.close()
         return response
     
-@app.route('/reporteFase/<path:idProyecto>.html')
-def reporteFase(idProyecto):   
+@app.route('/reporteFaseProject/<path:idProyecto>.html')
+def reporteFaseProject(idProyecto):   
     if g.user is None:
         return redirect(url_for('login'))
     else:
@@ -95,11 +96,36 @@ def reporteFase(idProyecto):
         story = MgrReporte().generarReporteFase(project)
         doc.build(story)        
         response = make_response(buff.getvalue())
-        response.headers['Content-Disposition'] = "attachment; filename='reporteFase.pdf"
+        response.headers['Content-Disposition'] = "attachment; filename='reporteFaseDeProyecto.pdf"
         response.mimetype = 'application/pdf'        
         buff.close()
         return response
 
+@app.route('/costoProyecto/<path:proyecto>.html', methods=['GET','POST'])
+def costoProyecto(proyecto):
+    if g.user is None:
+        return redirect(url_for('login'))   
+    else:
+        list = MgrProyecto().listarItemProyecto(proyecto)   
+        costo = MgrProyecto().costoProyecto(list)
+        flash("El costo total del proyecto es: " + costo)
+        return render_template(app.config['DEFAULT_TPL']+'/costoProyecto.html',
+                           conf = app.config,
+                           costo = costo,
+                           list = list) 
+             
+@app.route('/impactoProyecto/<path:proyecto>.html', methods=['GET','POST'])
+def impactoProyecto(proyecto):
+    if g.user is None:
+        return redirect(url_for('login'))   
+    else:
+        list = MgrProyecto().listarItemProyecto(proyecto)   
+        impacto = MgrProyecto().impactoProyecto(list)
+        flash("El impacto total del proyecto es: " + impacto)
+        return render_template(app.config['DEFAULT_TPL']+'/costoProyecto.html',
+                           conf = app.config,
+                           impacto = impacto,
+                           list = list) 
 #------------------------------------------------------------------------------#
 # MODULO GESTION
 #------------------------------------------------------------------------------#
@@ -194,11 +220,25 @@ def showFase(idFase):
                 return redirect(url_for('initFase', idFase = fase.idFase))
             elif request.form.get('finFase', None) == "Finalizar Fase":
                 return redirect(url_for('finFase', idFase = fase.idFase))
-            
+            elif request.form.get('items', None) == "Ver Items":
+                return redirect(url_for('listItemG', idFase = fase.idFase))
+                        
 	return render_template(app.config['DEFAULT_TPL']+'/showFase.html',
 			       conf = app.config,
 			       form = form,
                                fase = fase)
+                               
+@app.route('/listItemG/<path:idFase>.html')
+def listItemG(idFase):
+    """ Lista los datos de un item """
+    if g.user is None:
+        return redirect(url_for('login'))   
+    list = MgrFase().filtrarItemsId(idFase)
+    return render_template(app.config['DEFAULT_TPL']+'/listItemG.html',
+                           conf = app.config,
+                           id = idFase,
+                           list = list) 
+                                                              
 @app.route('/ordenarFase/<path:idFase>.html', methods=['GET','POST'])
 def ordenarFase(idFase):
     if g.user is None:
@@ -288,8 +328,8 @@ def finFase(idFase):
     else:
         fase = MgrFase().filtrarXId(idFase)
         if MgrFase().itemsAprobados(fase):
-            flash(":Finalizo Fase: todos los Items de la fase estan dentro de una Linea Base:")        
             flash(MgrFase().estado(fase,"Finalizado"))
+            flash(":Finalizo Fase: todos los Items de la fase estan dentro de una Linea Base:")        
         else:
             flash(":NO Finalizo Fase:")        
         return redirect(url_for('listFases')) 
@@ -320,7 +360,7 @@ def showRolProyecto(idRol):
         return redirect(url_for('login'))
     else:
         rol = MgrRol().filtrarXId(idRol)
-        form = CreateFormRol(request.form, nombre = rol.nombre, ambito=rol.ambito, descripcion = rol.descripcion)
+        form = CreateFormRolProyecto(request.form, nombre = rol.nombre, ambito=rol.ambito, descripcion = rol.descripcion)
         if request.method == 'POST':
             if request.form.get('edit', None) == "Modificar Rol":
                 return redirect(url_for('editRolProyecto', idRol = rol.idRol))
@@ -338,12 +378,12 @@ def editRolProyecto(idRol):
         return redirect(url_for('login'))
     else:
         rol = MgrRol().filtrarXId(idRol)
-        form = CreateFormRol(request.form, nombre = rol.nombre, ambito = rol.ambito, descripcion = rol.descripcion)
+        form = CreateFormRolProyecto(request.form, nombre = rol.nombre, ambito = rol.ambito, descripcion = rol.descripcion)
         list = request.form.getlist("lista")
 	if request.method == 'POST' and form.validate() and list:
             perm = MgrPermiso().getlistaPermiso(list)
-            flash(list)
-            flash(MgrRol().modificar(rol.idRol, request.form['nombre'],request.form['ambito'], request.form['descripcion'],perm))
+            #flash(list)
+            flash(MgrRol().modificar(rol, request.form['nombre'],request.form['ambito'], request.form['descripcion'],perm))
             return redirect(url_for('showRolProyecto', idRol = rol.idRol))
         elif not list:
             flash("no eligio ningun permiso")
@@ -369,11 +409,10 @@ def addRolProyecto():
     else:
 	if request.method == 'POST':
             list = request.form.getlist("lista")
-            form = CreateFormRol(request.form, nombre = request.form['nombre'], descripcion = request.form['descripcion'])
+            form = CreateFormRolProyecto(request.form, nombre = request.form['nombre'], descripcion = request.form['descripcion'])
             if form.validate() and list: 
                 perm = MgrPermiso().getlistaPermiso(list)
                 rol = Rol(nombre = request.form['nombre'], ambito = g.proyecto.nombre, descripcion = request.form['descripcion'], permisos = perm) 
-                flash(list)
                 flash(MgrRol().guardar(rol))
                 return redirect(url_for('listRolProyecto')) 
                    
@@ -392,7 +431,7 @@ def addRolProyecto():
                                )
     return render_template(app.config['DEFAULT_TPL']+'/formRolProyecto.html',
 			       conf = app.config,
-			       form = CreateFormRol(),
+			       form = CreateFormRolProyecto(),
                                list = MgrPermiso().listar()
                                )
 
@@ -604,10 +643,11 @@ def addLineaBase(idFase):
             if form.validate() and idLista != None and not MgrLineaBase().existe(lb):
                 # 0. obtener los items aprobados seleccionados
                 items = MgrItem().getListaItem(idLista)
-                # 1. asignar los items seleccionados a la linea base
-                flash(MgrLineaBase().asignarItems(lb, items))
-                # 2. guardar la linea base
+                # 1. guardar la linea base
                 flash(MgrLineaBase().guardar(lb))
+                # 2. asignar los items seleccionados a la linea base
+                flash(MgrLineaBase().asignarItems(lb, items))
+        
                 return redirect(url_for('gesLB', idFase = fase.idFase))
             else:
                 return render_template(app.config['DEFAULT_TPL']+'/formLineaBase.html',
@@ -617,7 +657,7 @@ def addLineaBase(idFase):
                             idFase = idFase,
                             list = MgrFase().listItemsAprobados(fase))
                             
-    return render_template(app.config['DEFAULT_TPL']+'/formLineaBase.html',
+        return render_template(app.config['DEFAULT_TPL']+'/formLineaBase.html',
                             conf = app.config,
                             form = CreateFormLineaBase(),
                             fase = fase,
@@ -644,7 +684,7 @@ def showLineaBase(idLineaBase):
                 conf = app.config,
                 idLineaBase = idLineaBase,
                 lineaBase = lineaBase,
-                list = MgrLineaBase().itemsDeLB(idLineaBase),
+                list = MgrLineaBase().itemsDeLB(lineaBase),
                 form = form)
 
 
@@ -675,9 +715,10 @@ def editStateLineaBase(idLineaBase):
         if request.method == 'POST':
             flash(MgrLineaBase().estado(lineaBase, request.form['estado']))
             return redirect(url_for('showLineaBase', idLineaBase = lineaBase.idLineaBase))
-    return render_template(app.config['DEFAULT_TPL']+'/editStateLineaBase.html',
+        return render_template(app.config['DEFAULT_TPL']+'/editStateLineaBase.html',
                             conf = app.config,
                             idLineaBase = idLineaBase,
+                            lineaBase = lineaBase,
                             buttons=['Activo', 'Comprometida', 'Inactivo']
                             )
 

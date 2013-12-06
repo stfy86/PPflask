@@ -92,7 +92,7 @@ def editProject(idProyecto):
                descripcion = project.descripcion,
                presupuesto = project.presupuesto)
 	if request.method == 'POST' and form.validate():
-            flash(MgrProyecto().modificar(project.nombre, request.form['descripcion'], request.form['presupuesto']))
+            flash(MgrProyecto().modificar(project, request.form['descripcion'], request.form['presupuesto']))
             return redirect(url_for('showProjectPendiente', idProyecto = idProyecto))
     return render_template(app.config['DEFAULT_TPL']+'/editProject.html',
 			       conf = app.config,
@@ -108,7 +108,7 @@ def editProjectState(idProyecto):
     else:
         proyecto = MgrProyecto().filtrarXId(idProyecto)
         if request.method == 'POST': 
-            flash (MgrProyecto().estado(proyecto.nombre, request.form['estado']))
+            flash (MgrProyecto().estado(proyecto, request.form['estado']))
 	    return redirect(url_for('showProjectPendiente',idProyecto = proyecto.idProyecto))
 	return render_template(app.config['DEFAULT_TPL']+'/editProjectState.html',
 			       conf = app.config,
@@ -191,7 +191,7 @@ def listComiteProyecto(idProyecto):
         project = MgrProyecto().filtrarXId(idProyecto)
         return render_template(app.config['DEFAULT_TPL']+'/listComiteProyecto.html',
                            conf = app.config,
-                           list = MgrComite().listarPorProyecto(idProyecto),
+                           list = MgrComite().filtrarXIdProyecto(idProyecto),
                            proyecto = project,
                            idProyecto = idProyecto
                            ) 
@@ -319,7 +319,9 @@ def showUser(idUser):
                 return redirect(url_for('editState', idUser = user.idUser))
         return render_template(app.config['DEFAULT_TPL']+'/showUser.html',
                                conf = app.config,
-                               form = form)
+                               form = form, 
+                               user = user,
+                               list = user.roles)
                              
 @app.route('/addUser', methods=['GET','POST'])
 def addUser():
@@ -345,9 +347,6 @@ def addUser():
                             obs = request.form['obs'])
             if form.validate() and not MgrUser().existe(user):
                 flash(MgrUser().guardar(user))
-                rol = MgrRol().search("Invitado", "none project")
-                u = MgrUser().filtrar(user.name)
-                flash(MgrUser().addRol(u, rol))
                 return redirect(url_for('listUser'))
             elif MgrUser().existe(user):
                 flash("el usuario ya existe")

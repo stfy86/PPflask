@@ -1,0 +1,46 @@
+{% extends "static/layout.html" %}
+{% block title %}List Item{% endblock %}
+{% block body %}
+{% if session.logged_in and g.proyecto != None and  "ModuloDesarrollo" in g.permisos %}
+
+<div class="page-header">
+    <center>
+    <h1>Desarrollar Reporte de Proyecto </h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('desarrollo') }}">Modulo Desarrollo</a></p>
+    <h3>Reportes</h3>
+    </center>
+</div>
+
+    <center>
+    {% if "DesReporte" in g.permisos%}
+    <p><img src="/img/link.png"/><a href="{{ url_for('descargarProyecto') }}">Reporte de Proyectos del Sistema</a>
+    <p><img src="/img/link.png"/><a href="{{ url_for('descargarUser') }}">Reporte de Usuarios del Sistema</a>
+    <p><img src="/img/link.png"/><a href="{{ url_for('reporteFaseProject', idProyecto = g.proyecto.idProyecto) }}">Reporte de Fase en el contexto del Proyecto</a>    
+    <p><img src="/img/link.png"/><a href="{{ url_for('reporteItem') }}">Reporte de Item en el contexto de la fase</a>    
+    {% else %}
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  {{ url_for('descargarProyecto') }}"> Reporte de Proyectos del Sistema</a>
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  {{ url_for('descargarUser') }}"> Reporte de Usuarios del Sistema</a>
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  {{ url_for('reporteFaseProject', idProyecto = g.proyecto.idProyecto) }}"> Reporte de Fase en el contexto del Proyecto</a>
+    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  {{ url_for('reporteItem') }}"> Reporte de Fase en el contexto del Proyecto</a>
+        {% endif %}
+    
+    </center>
+    <p><img src="/img/info.png"/></p>
+    <p>Proyecto: {{g.proyecto.nombre}} </p>
+    <p>Rol del Usuario:  {{ g.rol.nombre}} </p>
+    <p>Permisos del Usuario: {{ g.permisos}}</p>
+    </dl> 
+{% else%}
+    <p><img src="/img/info.png"/></p>
+    <p>No se logue al sistema o </p>
+    <p>No tiene el permiso: "ModuloGestion" o </p>
+    <p>No tiene el permiso: "DesReporte" </p>
+{% endif %}
+
+
+{% endblock %}
+
+
+
+
+

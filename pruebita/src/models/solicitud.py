@@ -30,25 +30,11 @@ class Solicitud(db.Model):
     # one to many : Relaciona Comite x Solicitud
     comiteId = db.Column(db.Integer, db.ForeignKey('Comite.idComite'))
     Comite = db.relationship("Comite", backref=db.backref("Solicitudes"))
-
-    def costo_total(self):
-        t=0
-        for i in self.items:
-           t=t+i.costo
-        return t
-
-    def complejidad_total(self):
-        t=0
-        for i in self.items:
-           t=t+i.complejidad
-        return 0
-
-    def __init__(self, nombre=None, descripcion=None, votosPositivos=None, votosNegativos=None, autorId=None, itemsSolicitud =[None], comiteId=None):
+   
+    def __init__(self, nombre=None, descripcion=None, autorId=None, itemsSolicitud =[None], comiteId=None):
         """ constructor de solicitud """
         self.nombre = nombre
-        self.description = descripcion
-        self.votosNegativos = votosNegativos
-        self.votosPositivos = votosPositivos
+        self.descripcion = descripcion
         self.autorId = autorId
         self.itemsSolicitud = itemsSolicitud
         self.comiteId = comiteId

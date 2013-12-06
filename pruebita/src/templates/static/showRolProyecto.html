@@ -4,10 +4,12 @@
 
 {% block body %}
 <div class="page-header">
+    <center>
     <h1>Gestionar Rol del Proyecto</h1>
-    <li><a href="{{ url_for('gestion') }}">Modulo Gestion</a></li>
-    <h3>Show Rol de Proyecto</h3>
-</div>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
+    </center>
+</div>  
+<h3>Show Rol de Proyecto</h3>
 <form method="post" action="">  
 <dl>
 {{ form.csrf }}
@@ -23,7 +25,7 @@
     {{form.descripcion(class="textarea", readonly="readonly") }}
     {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
 </dl>
-<div class="page-header"><h3> Lista de Permisos de Rol </h3></div>
+<h3> Lista de Permisos de Rol </h3>
 <table id="tableTwo" class="yui">    
     <thead>
             <tr>
@@ -68,7 +70,7 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
-<div class="buttons">
+<div>
     <input class="button" type="submit" name="edit" value="Modificar Rol">
     <input class="button" type="submit" name="delete" value="Eliminar Rol" onclick="return confirmar('¿Está seguro que desea eliminar el registro?')">
     <input class="button" type="button" value="Back" onclick="document.location='/listRolProyecto';">

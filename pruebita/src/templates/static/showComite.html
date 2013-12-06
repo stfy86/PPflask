@@ -4,14 +4,18 @@
 
 {% block body %}
 <div class="page-header">
-<h1> Show Comite de Proyecto</h1>
-<a href="{{ url_for('administracion') }}">Modulo de Administracion</a>
+    <center>
+    <h1>Administrar Comite de Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
 </div>
+
+<h3>Show Comite de Proyecto</h3>
     <form method="post" action="">  
       <dl>
         {{ form.csrf }}
             {{ form.descripcion.label(style="float: left; width: 105px;") }}
-            {{form.descripcion(class="form-input", readonly="readonly") }}
+            {{form.descripcion(class="textarea", readonly="readonly") }}
             {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
             <br />
             {{ form.cantMiembro.label(style="float: left; width: 105px;") }}
@@ -24,7 +28,7 @@
             <br />
       </dl>
       <br />
-      <div class="buttons"> 
+      <div> 
         <input class="button" type="submit" name="edit" value="Modificar Comite">
         <input class="button" type="button" value="Back" onclick="document.location='/listComiteProyecto/{{idProyecto}}.html';">
       </div>

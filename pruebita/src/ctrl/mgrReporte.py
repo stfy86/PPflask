@@ -1,3 +1,4 @@
+""" Clase encargada de Manejar los Reportes """
 from modulo import *
 from reportlab.platypus import Paragraph
 from reportlab.platypus import Spacer
@@ -33,7 +34,8 @@ class MgrReporte():
     #############################            
     # datos basicos del reporte
     #############################
-    def titulo(self):        
+    def titulo(self):  
+        """ Contiene el titulo basico de todo reporte """
         cabecera = self.estiloHoja['Heading1']
         cabecera.pageBreakBefore = 0
         cabecera.keepWithNext = 0
@@ -43,7 +45,8 @@ class MgrReporte():
         return parrafo
             
     def encabezado(self, cadena):
-        estilo = self.estiloHoja['BodyText']
+        """ Genera un encabezado en el reporte """
+        estilo = self.estiloHoja['Heading5']
         parrafo2 = Paragraph(cadena, estilo)
         return parrafo2
     
@@ -51,11 +54,10 @@ class MgrReporte():
     # reportes del modulo administracion
     #############################
     def generarProyecto(self):
+        """ Genera un reporte de todos los proyectos del Sistema"""
         story = []
-        #
         parrafo = self.titulo()
         story.append(parrafo)    
-        #
         parrafo2 = self.encabezado('Proyectos del Sistema')
         story.append(parrafo2)
         story.append(Spacer(0, 20))
@@ -77,6 +79,7 @@ class MgrReporte():
         return story
 
     def generarUser(self):
+        """ Genera un reporte de todos los usuarios del sistema """
         story = []
         parrafo = self.titulo()
         story.append(parrafo)    
@@ -104,6 +107,7 @@ class MgrReporte():
     # reportes del modulo de gestion
     #############################
     def datosProyecto(self, proyecto):
+        """ Genera una tabla con los datos de un proyecto en especifico """
         thead = self.estiloHoja['Heading5']
         thead.alignment=TA_CENTER
         tbody = self.estiloHoja["BodyText"]
@@ -126,6 +130,7 @@ class MgrReporte():
     
     
     def listaUsuariosDeProyecto(self, proyecto):
+        """ Genera una tabla con todos los usuarios del proyecto """
         thead = self.estiloHoja['Heading5']
         thead.alignment=TA_CENTER
         tbody = self.estiloHoja["BodyText"]
@@ -142,6 +147,7 @@ class MgrReporte():
         return tabla
     
     def listaFasesDeProyecto(self, proyecto):
+        """ Genera una tabla con todas las fases del proyecto """
         thead = self.estiloHoja['Heading5']
         thead.alignment=TA_CENTER
         tbody = self.estiloHoja["BodyText"]
@@ -158,6 +164,7 @@ class MgrReporte():
         return tabla
     
     def listaUsuariosDeComite(self, proyecto):
+        """ Genera una tabla con todos los usuarios del comite de un proyecto """
         #Estilos de la tabla para cabeceras y datos
         thead = self.estiloHoja['Heading5']
         thead.alignment=TA_CENTER
@@ -176,6 +183,11 @@ class MgrReporte():
     
     
     def generarReporteProyecto(self, proyecto):
+        """ Genera un reporte con todos los datos de un proyecto
+        1. Datos propios del proyecto
+        2. Lista de usuarios del proyecto
+        3. Lista de usuarios del comite del proyecto
+        4. Lista de las fases del proyecto"""
         story = []
         #
         parrafo = self.titulo()
@@ -210,6 +222,10 @@ class MgrReporte():
     
     
     def generarReporteFase(self, proyecto):
+        """Genera un reporte de las fases de un proyecto
+        1. Datos de la fase especifica
+        2. Lista de item de la fase
+        3. Lista de Linea Base de la Fase"""
         story = []
         contenido=[]
         #
@@ -223,38 +239,64 @@ class MgrReporte():
         #
         lista = MgrProyecto().fasesDeProyecto(proyecto.nombre)
         for f in lista:
-            parrafo2 = self.encabezado('Datos de Fase y Lista de Item de la fase')
+            parrafo2 = self.encabezado('Datos de Fase')
             story.append(parrafo2)
             contenido = self.datosFase(f)
             tabla = Table(contenido)
             tabla.setStyle(self.tablaStyle)
             story.append(tabla)
             story.append(Spacer(0, 20)) 
+            parrafo2 = self.encabezado('Lista de Item de Fase')
+            story.append(parrafo2)
             tablaF = self.listaDeItem(f)
-            story.append(tablaF)   
+            story.append(tablaF)  
+            parrafo2 = self.encabezado('Lista de Linea Base de Fase')
+            story.append(parrafo2)
+            tablaLB = self.listaDeLB(f)
+            story.append(tablaLB)  
             story.append(Spacer(0, 40))
             contenido = []
         
         return story       
     
+    def listaDeLB(self, fase):
+        """ Genera una lista de linea base de la fase """
+        thead = self.estiloHoja['Heading5']
+        thead.alignment=TA_CENTER
+        tbody = self.estiloHoja["BodyText"]
+        tbody.alignment=TA_LEFT
+        contenido=[]
+        cabecera = [Paragraph('Nombre',thead),Paragraph('Descripcion',thead),Paragraph('Estado',thead), Paragraph('Lista de Items',thead)]
+        contenido = [cabecera]
+        tabla = Table(contenido)
+        lista = MgrFase().lineaBaseDeFase(fase)        
+        for lb in lista:
+            contenido.append([Paragraph(lb.nombre,tbody), Paragraph(lb.descripcion,tbody),  Paragraph(lb.estado,tbody), Paragraph(str(lb.itemsLB),tbody)])
+            tabla = Table(contenido)  
+        tabla.setStyle(self.tablaStyle)
+        return tabla
+    
     def listaDeItem(self, fase):
+        """ Genera una lista de item de la fase """
         tipoDeItem = MgrTipoDeItem().filtrarXId(fase.tipoDeItemId)
         thead = self.estiloHoja['Heading5']
         thead.alignment=TA_CENTER
         tbody = self.estiloHoja["BodyText"]
         tbody.alignment=TA_LEFT
         contenido=[]
-        cabecera = [Paragraph('Nombre',thead),Paragraph('Version',thead),Paragraph('Complejidad',thead),Paragraph('Costo',thead),Paragraph('Estado',thead), Paragraph('Tipo De Item',thead)]
+        cabecera = [Paragraph('Codigo',thead),Paragraph('Nombre',thead),Paragraph('Version',thead),Paragraph('Complejidad',thead),Paragraph('Costo',thead),Paragraph('Estado',thead), Paragraph('Tipo De Item',thead)]
         contenido = [cabecera]
         tabla = Table(contenido)
         lista = MgrFase().filtrarItems(fase.nombre)
         for i in lista:
             tipoDeItem = MgrTipoDeItem().filtrarXId(i.tipoDeItemId)
-            contenido.append([Paragraph(i.nombre,tbody), Paragraph(str(i.version),tbody), Paragraph(str(i.complejidad),tbody), Paragraph(str(i.costo),tbody), Paragraph(i.estado,tbody), Paragraph(tipoDeItem.nombre,tbody)])
+            contenido.append([Paragraph(str(i.codigo),tbody), Paragraph(i.nombre,tbody), Paragraph(str(i.version),tbody), Paragraph(str(i.complejidad),tbody), Paragraph(str(i.costo),tbody), Paragraph(i.estado,tbody), Paragraph(tipoDeItem.nombre,tbody)])
             tabla = Table(contenido)  
+        tabla.setStyle(self.tablaStyle)
         return tabla
     
     def datosFase(self, fase):
+        """ Genera un reporte con los datos de la fase """
         contenido = []        
         thead = self.estiloHoja['Heading5']
         thead.alignment=TA_CENTER
@@ -266,3 +308,48 @@ class MgrReporte():
         contenido.append([Paragraph('Estado',thead),Paragraph(fase.estado,tbody)])
         contenido.append([Paragraph('Tipo de Item',thead),Paragraph(tipoDeItem.nombre,tbody)])
         return contenido
+    
+    
+    def datosItem(self, item):
+        """ Genera un reporte con los datos del Item """
+        tipoDeItem = MgrTipoDeItem().filtrarXId(item.tipoDeItemId)
+        thead = self.estiloHoja['Heading5']
+        thead.alignment=TA_CENTER
+        tbody = self.estiloHoja["BodyText"]
+        tbody.alignment=TA_LEFT
+        contenido=[]
+        cabecera = [Paragraph('Codigo',thead),Paragraph('Nombre',thead),Paragraph('Version',thead),Paragraph('Complejidad',thead),Paragraph('Costo',thead),Paragraph('Estado',thead), Paragraph('Tipo De Item',thead)]
+        contenido = [cabecera]
+        contenido.append([Paragraph(str(item.codigo),tbody), Paragraph(item.nombre,tbody), Paragraph(str(item.version),tbody), Paragraph(str(item.complejidad),tbody), Paragraph(str(item.costo),tbody), Paragraph(item.estado,tbody), Paragraph(tipoDeItem.nombre,tbody)])
+        tabla = Table(contenido)  
+        tabla.setStyle(self.tablaStyle)
+        return tabla
+    
+    def generarReporteItem(self, item):
+        """ Genera un reporte del item y su historial """
+        story = []
+        #
+        parrafo = self.titulo()
+        story.append(parrafo)    
+        #        
+        parrafo2 = self.encabezado('Historial del Item ' + item.nombre)
+        story.append(parrafo2)
+        story.append(Spacer(0, 20))
+        #
+        lista = MgrItem().historialItem(item)
+        thead = self.estiloHoja['Heading5']
+        thead.alignment=TA_CENTER
+        tbody = self.estiloHoja["BodyText"]
+        tbody.alignment=TA_LEFT
+        contenido=[]
+        cabecera = [Paragraph('Codigo',thead),Paragraph('Nombre',thead),Paragraph('Version',thead),Paragraph('Complejidad',thead),Paragraph('Costo',thead),Paragraph('Estado',thead), Paragraph('Tipo De Item',thead)]
+        contenido = [cabecera]
+        for i in lista:
+            tipoDeItem = MgrTipoDeItem().filtrarXId(i.tipoDeItemId)
+            contenido.append([Paragraph(str(i.codigo),tbody), Paragraph(i.nombre,tbody), Paragraph(str(i.version),tbody), Paragraph(str(i.complejidad),tbody), Paragraph(str(i.costo),tbody), Paragraph(i.estado,tbody), Paragraph(tipoDeItem.nombre,tbody)])
+            tabla = Table(contenido)
+            
+        tabla.setStyle(self.tablaStyle)
+        story.append(tabla)        
+        return story       
+    

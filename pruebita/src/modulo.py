@@ -2,6 +2,7 @@
 # IMPORTS
 #------------------------------------------------------------------------------#
 import os
+import pydot
 from flask import Flask, request, send_file, send_from_directory, Response, make_response
 from pruebita import app, db
 from form import *
@@ -20,6 +21,7 @@ from models.tipoDeItem import TipoDeItem, atributosItem
 from models.user import User, roles
 # paquete ctrl
 from ctrl.mgrFase import MgrFase
+from ctrl.mgrGraficarItem import MgrGraficarItem
 from ctrl.mgrItem import MgrItem
 from ctrl.mgrPermiso import MgrPermiso
 from ctrl.mgrProyecto import MgrProyecto
@@ -31,6 +33,7 @@ from ctrl.mgrTipoDeItem import MgrTipoDeItem
 from ctrl.mgrSolicitud import MgrSolicitud
 from ctrl.mgrLineaBase import MgrLineaBase
 from ctrl.mgrReporte import MgrReporte
+from ctrl.mgrCambio import MgrCambio
 # paquete views
 from views.ingreso import *
 from views.administracion import *

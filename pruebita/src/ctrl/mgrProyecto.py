@@ -1,64 +1,90 @@
 from modulo import *
 from sqlalchemy import or_, and_
+from mgrUser import MgrUser
+from mgrFase import MgrFase
 
 class MgrProyecto():
 
     def guardar(self, project):
+        """ Guarda un proyecto solo si:
+        1. El proyecto no existe en el sistema """
         if not self.existe(project):
             db.session.add(project)
             db.session.commit()
             return ":guardo el proyecto:"
         else:
-            return ":no guardo el proyecto:"
+            return ":NO guardo el proyecto:"
       
     def borrar(self, project):
-        if self.existe(project) and project.estado == "Finalizado":
+        """ Borra el proyecto solo si:
+        1. El proyecto existe
+        2. El estado del proyecto es Finalizado
+        """
+        if not self.existe(project):
+            return ":NO borro el proyecto: el proyecto no existe"
+        if project.estado != "Finalizado":
+            return ":NO borro el proyecto: el estado del proyecto no es Finalizado"
+        else:
             db.session.delete(project)
             db.session.commit()
             return ":borro proyecto:"
-        else:
-            return ":no borro proyecto: el estado del proyecto no es finalizado"
     
     def listar(self):
+        """Lista los Proyectos """
         return Proyecto.query.all()
      
     def filtrar(self, nombre):
+        """ Busca el proyecto por nombre """
         return Proyecto.query.filter(Proyecto.nombre == nombre).first_or_404()
 
     def listProjectPyF(self):
+        """Lista los proyectos con estado Pendiente y Finalizado"""
         return Proyecto.query.filter(or_(Proyecto.estado == "Pendiente", Proyecto.estado == "Finalizado")).all()
     
     def listarActivo(self):
+        """ Lista los proyectos Activos """
         return Proyecto.query.filter(Proyecto.estado == "Activo").all()        
 
     def listarFinalizado(self):
+        """ Lista los proyectos Finalizados """
         return Proyecto.query.filter(Proyecto.estado == "Finalizado").all()  
     
     def listarPendiente(self):
+        """Lista los proyectos Pendientes"""
         return Proyecto.query.filter(Proyecto.estado == "Pendiente").all()  
 
-    def modificar(self, nombre, descripcionNew, presupuestoNew):
-        project = self.filtrar(nombre)
-        if project.estado == "Pendiente":
+    def modificar(self, project, descripcionNew, presupuestoNew):
+        """Edita los datos del proyecto solo si:
+        1. El proyecto existe
+        2. El estado del proyecto es Pendiente
+        """
+        if not self.existe(project):
+            return ":NO modifico el proyecto: el proyecto no existe"
+        if project.estado != "Pendiente":
+            return ":NO modifico el proyecto: el estado del proyecto no es Pendiente"
+        else:
             project.descripcion = descripcionNew
             project.presupuesto = presupuestoNew
             db.session.commit()
             return ":se modifico los datos del proyecto:"
-        else:
-            return ":NO modifico el proyecto de estado Pendiente:"
-         
+        
     def modificarOrden(self, project, fase, faseNew):
-        if (project.estado == "Pendiente") and (fase in  self.fasesDeProyecto(project.nombre)) and (faseNew in  self.fasesDeProyecto(project.nombre)):
+        """ Cambia el orden de la fase del proyecto """
+        if not self.existe(project):
+            return ":NO modifico el orden de la fase: el proyecto no existe"
+        if project.estado != "Pendiente":
+            return ":NO modifico el orden de la fase: el estado del proyecto no es Pendiente"
+        if (fase in  self.fasesDeProyecto(project.nombre)) and (faseNew in  self.fasesDeProyecto(project.nombre)):
             aux = fase.orden
             fase.orden = faseNew.orden
             faseNew.orden = aux
             db.session.commit()
             return ":se modifico el orden:"
         else:
-            return ":NO se puede modificar el orden"
+            return ":NO se puede modificar el orden: una de las fases no pertenece al proyecto"
         
-    def estado(self, nombre, estadoNew):
-        proyecto = self.filtrar(nombre)
+    def estado(self, proyecto, estadoNew):
+        """ Cambia el estado del proyecto """
         if estadoNew == "Activo" and self.proyectoIniciado(nombre):
             proyecto.estado = estadoNew        
             db.session.commit()
@@ -72,10 +98,10 @@ class MgrProyecto():
             db.session.commit()
             return ":modifico el estado a Inactivo:"
         
-        return":no modifico el estado:"
+        return":NO modifico el estado:"
             
     def proyectoIniciado(self, nombre):
-        """ Retorna true si todas las fases del proyecto estan en estado desarrollo """
+        """ Retorna True si todas las fases del proyecto estan en estado desarrollo """
         proyecto = self.filtrar(nombre)
         for fase in proyecto.listafases:
             if fase.estado != "Desarrollo":
@@ -94,17 +120,13 @@ class MgrProyecto():
         proyecto = Proyecto.query.filter(Proyecto.nombre == nombre).first_or_404()
         fase = Fase(nombre = nombreFase, descripcion = descripcionFase, orden = ordenFase , proyectoId= proyecto.idProyecto, tipoDeItemId = tipoDeItemIdFase )    
         tipoDeItem = TipoDeItem.query.filter(TipoDeItem.idTipoDeItem == tipoDeItemIdFase).first_or_404()
-        for n in proyecto.listafases:
-            if n.nombre == fase.nombre:
-                return ":error: nombre de fase repetida"
-
-        if(fase not in proyecto.listafases):
+        if self.faseRepetida(proyecto, nombreFase):
+            return ":NO asigno la fase: nombre de la fase repetida"
+        else:
             db.session.add(fase)
             proyecto.listafases.append(fase)
             db.session.commit()
             return ":asigno fase =>" +fase.nombre + " al proyecto =>" + proyecto.nombre + " con el tipo de item  =>" + tipoDeItem.nombre + ":"
-        else:
-            return ":error:"
     
   
     def deasignarLider(self, proyecto, rol, nameLider):
@@ -117,14 +139,14 @@ class MgrProyecto():
             db.session.commit()
             return ":desasigno el lider =>" + u.name + " al proyecto =>" + p.nombre +":"
         else:
-            return ":error: no desasigno el lider "
+            return ":NO desasigno el lider "
         
     def asignarLider(self, proyecto, rol, nameLider):
         r = Rol.query.filter(and_(Rol.nombre == rol.nombre, Rol.ambito == rol.ambito)).first_or_404()
         p = self.filtrar(proyecto.nombre)
         u = User.query.filter(User.name == nameLider).first_or_404()
         if ((p.estado == "Pendiente") and (r in u.roles) and (u in p.users) and (u.estado == "Activo")):
-            return ":error: no se asigno el lider"
+            return "NO se asigno el lider"
         else:
             u.roles.append(r)
             p.users.append(u)
@@ -132,49 +154,56 @@ class MgrProyecto():
             return ":asigno el lider =>" + u.name + " al proyecto =>" + p.nombre +":"
         
     def asignarUsuario(self, proyecto,  user, rol):
-        if((rol not in user.roles) and (user not in proyecto.users)):
+        """Asigna un usuario al proyecto"""
+        if user in proyecto.users:
+            return ":NO asigno usuario: el usuario ya es miembro del proyecto"
+        if rol in user.roles:
+            return ":NO asigno el usuario: el usuario ya tiene asignado el rol"            
+        else:
             user.estado = "Activo"
             # asigna el rol al usuario
             user.roles.append(rol)
             # asigna el usuario al proyecto 
             proyecto.users.append(user)
             db.session.commit()
-            return ":asigno el usuario =>" + user.name + "al proyecto =>" + proyecto.nombre +" con el rol =>"+ rol.nombre + ":"
-        else:
-            return ":error:"
+            return ":asigno el usuario => " + user.name + "al proyecto => " + proyecto.nombre +" con el rol => "+ rol.nombre + ":"
 
-    
-    
+        
     def desasignarUsuario(self, proyecto, user, rol):
-        if((not rol.nombre == "LiderDeProyecto" ) and (rol in user.roles) and (user in proyecto.users)):
+        """ Des asigna usuario de proyecto con el rol especificado """
+        if not user in proyecto.users:
+            return ":NO desasigno el usuario: el usuario no es miembro del proyecto"
+        if rol.nombre == "LiderDeProyecto" :
+            return ":NO desasigno el usuario: no se permite eliminar un lider de proyecto"        
+        if not rol in user.roles:
+            return ":NO desasigno el usuario: el usuario no tiene asignado el rol"
+        else:
             # desasigna el rol al usuario
             user.roles.remove(rol)
+            if MgrUser().ceroRol(user) == 0:
+                user.estado = "Inactivo"
             # deasigna del proyecto el usuario 
             proyecto.users.remove(user)
             db.session.commit()
             return ":desasigno usuario =>" + user.name + " del proyecto =>" + proyecto.nombre + " con el rol =>" + rol.nombre + ":"
-        elif not user in proyecto.users:
-            return ":error: el usuario no es miembro del proyecto"
-        elif rol.nombre == "LiderDeProyecto" :
-            return ":error: no se permite eliminar un lider de proyecto"        
-        elif not rol in user.roles:
-            return ":error: no existe el rol en el proyecto"
-        else:
-            return ":error:"
 
     def usersDeProyecto(self, nombre):
+        """ Retorna usuarios de proyecto """
         proyecto = self.filtrar(nombre)
         return proyecto.users
 
     def filtrarXId(self, idProyecto):
+        """Busca proyecto por Id"""
         return Proyecto.query.filter(Proyecto.idProyecto == idProyecto).first_or_404()
     
     
     def fasesDeProyecto(self, nombre):
+        """ Retorna fases del proyecto """
         proyecto = self.filtrar(nombre)
         return proyecto.listafases
     
     def nroDeFaseDeProyecto(self, nombre):
+        """ Retorna el numero de fases del proyecto """
         proyecto = self.filtrar(nombre)
         cont = 0
         for i in proyecto.listafases:
@@ -183,6 +212,7 @@ class MgrProyecto():
         return cont
     
     def ordenarFase(self, proyecto, fase):
+        """ Ordena las fase de un proyecto"""
         for i in proyecto.listafases:    
             f = Fase.query.filter(Fase.idFase == i.idFase).first()
             if f.orden > fase.orden and fase.orden != f.orden:
@@ -210,9 +240,10 @@ class MgrProyecto():
             return ":importo fase:"
         
                 
-    def faseRepetida(self, proyecto, nombreFase):           
+    def faseRepetida(self, proyecto, nombreFase): 
+        """ Retorna True si existe en el proyecto una fase con el mismo nombre """
         for n in proyecto.listafases:
-            if n.nombre == nombreFase:
+            if n.nombre == nombreFase and n.proyectoId == proyecto.idProyecto:
                 return True
         return False
     
@@ -243,6 +274,7 @@ class MgrProyecto():
         return Fase.query.filter(and_(Fase.estado == "Activo", Fase.proyectoId == proyecto.idProyecto)).all()
 
     def existe(self, proyecto):
+        """Retorna True si el proyecto ya existe"""
         p = Proyecto.query.filter(Proyecto.nombre == proyecto.nombre).first()
         if p != None:
             return True
@@ -293,4 +325,25 @@ class MgrProyecto():
             if f.estado != "Finalizado":
                 return False
         return True
-        
+      
+    def listarItemProyecto(self, proyecto):
+        """ Retorna una lista de items Activo de fases Activas """
+        lista = []
+        for f in self.fasesActivasDeProyecto(proyecto):
+            list = MgrFase().listItemsActivo(f)
+            lista.extend(list)
+        return lista
+    
+    def costoProyecto(self, lista):
+        costo = 0
+        for itm in lista:
+            costo = costo + itm.costo
+        return costo
+    
+    def impactoProyecto(self, lista):
+        impacto = 0
+        for itm in lista:
+            impacto = impacto + itm.complejidad
+        return impacto
+            
+            

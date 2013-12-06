@@ -10,15 +10,23 @@
 <form action="" method=post>
       <br>
         <div><label>Tipo de Relacion:</label><br>
-                            {% if bool %}
+                            {% if bool == 1 %}
                                     <select name="tipo">
                                                     <option value="padre-hijo">Padre-Hijo</option>
                                                     <option value="sucesor-antecesor">Sucesor-Antecesor</option>
+                                                    <option value="antecesor-sucesor">Antecesor-Sucesor</option>
                                     </select>
-                            {% else %}
+                            {% elif bool == 2 %}
                                     <select name="tipo">
                                                     <option value="sucesor-antecesor">Sucesor-Antecesor</option>
                                                     <option value="padre-hijo">Padre-Hijo</option>
+                                                    <option value="antecesor-sucesor">Antecesor-Sucesor</option>
+                                    </select>
+                            {% elif bool == 3 %}
+                                    <select name="tipo">
+                                                    <option value="antecesor-sucesor">Antecesor-Sucesor</option>
+                                                    <option value="padre-hijo">Padre-Hijo</option>
+                                                    <option value="sucesor-antecesor">Sucesor-Antecesor</option>
                                     </select>
                             {% endif %}
         <br> 
@@ -48,11 +56,8 @@
             <div><center>
            
             
-            <input name='opcion' type='submit' value='Guardar'>
-            <input class="button" type="button" value="Back" onclick="document.location='/showItem/{{idItem}}.html';">
+            <input class="button" name='opcion' type='submit' value='Guardar'>
+            <input class="button" type="button" value="Back" onclick="document.location='/showItem/{{id}}.html';">
             </center></div>
 </form>
-
-<li><a href="{{ url_for('index') }}">Home</a></li>
-<li><a href="{{ url_for('showItem', idItem = id )}}">Datos del Item</a></li>
 {% endblock %}

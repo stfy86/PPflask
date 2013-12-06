@@ -1,5 +1,5 @@
 from modulo import *
-from sqlalchemy import and_
+from sqlalchemy import and_, or_
 
 class MgrItem():
 
@@ -17,7 +17,10 @@ class MgrItem():
     
     def borrar(self,idItem):
         item = Item.query.filter(Item.idItem == idItem).first_or_404()
+        relaciones = Relacion.query.filter(or_(Relacion.itemOrigenId == idItem,Relacion.itemDestinoId == idItem), Relacion.estado == "Pendiente").all()
         item.estado = "Eliminado"
+        for relacion in relaciones:
+            relacion.estado = "Inactivo"
         db.session.commit()
         
     def modificarCodigo(self, nombre):
@@ -56,8 +59,35 @@ class MgrItem():
     
     def cambiarEstadoAnterior(self, idItem):
         item = Item.query.filter(Item.idItem == idItem).first_or_404()
+        relaciones = Relacion.query.filter(or_(Relacion.itemOrigenId == idItem,Relacion.itemDestinoId == idItem), Relacion.estado == "Pendiente").all()
         item.estado = "Eliminado"
+        for relacion in relaciones:
+            relacion.estado = "Inactivo"
         db.session.commit()
+        
+    def eliminarRelacion(self, idItem):
+        origen = Relacion.query.filter(Relacion.itemOrigenId == idItem).all()
+        destino = Relacion.query.filter(Relacion.itemDestinoId == idItem).all()
+        
+        for o in origen:
+            if o.estado == "Pendiente":
+                o.estado = "Inactivo"
+        
+        for d in destino:
+            if d.estado == "Pendiente":
+                d.estado = "Inactivo"
+                
+    def revivirRelacion(self, idItem):
+        origen = Relacion.query.filter(Relacion.itemOrigenId == idItem).all()
+        destino = Relacion.query.filter(Relacion.itemDestinoId == idItem).all()
+        
+        for o in origen:
+            if o.estado == "Inactivo":
+                o.estado = "Pendiente"
+        
+        for d in destino:
+            if d.estado == "Inactivo":
+                d.estado = "Pendiente"
         
     def revivir(self, idItem):
         item = Item.query.filter(Item.idItem == idItem).first_or_404()
@@ -66,8 +96,10 @@ class MgrItem():
         list = Item.query.filter(Item.codigo == cod).all()
         for i in list:
             if i.estado == "Activo":
+                self.eliminarRelacion(i.idItem)
                 i.estado = "Eliminado"
         item.estado = "Activo" 
+        self.revivirRelacion(idItem)
         db.session.commit()
 
     def getListaItem(self, listaId):
@@ -77,5 +109,33 @@ class MgrItem():
             list.append(item)
         return list
     
+    def idParaRelacionar(self, cod):
+        list = []
+        list = Item.query.filter(Item.codigo == cod).all()
+        for i in list:
+            if i.estado == "Activo":
+                return i.idItem
+            
+    def versionMax(self, cod):
+        list2 = []
+        list = Item.query.filter(Item.codigo == cod).all()
+        for i in list:
+            list2.append(i.version)
+        list2.sort()
+        return int(list2.pop())
+    
+    def codigoItem(self, idItem):
+        item = Item.query.filter(Item.idItem == idItem).first_or_404()
+        return item.codigo
+  
+    
+    
     def aprobados(self):
         return Item.query.filter(Item.estado == 'Aprobado')
+        
+    def historialItem(self, item):
+        list = Item.query.filter(Item.codigo == item.codigo).all()
+        hist = []
+        for i in list:
+            hist.append(i)
+        return hist

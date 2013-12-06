@@ -1,33 +1,14 @@
 {% extends "static/layout.html" %}
-
-{% block title %}Solicitud{% endblock %}
-
+{% block title %}List Item{% endblock %}
 {% block body %}
 <div class="page-header">
     <center>
-    <h1>Agregar Solicitud</h1>
+    <h1>Costo de Proyecto </h1>
     <p><img src="/img/link.png"/><a href="{{ url_for('desarrollo') }}">Modulo Desarrollo</a></p>
+    <h3>Lista de Item</h3>
     </center>
 </div>
-<form method="post" action="">
-    <h3>*PASO 1: Detallar solicitud</h3>
-    <dl>
-        {{ form.csrf }}
-        {{ form.nombre.label(style="float: left; width: 105px;") }}
-        {{ form.nombre(class="form-input" , autofocus=true) }}
-        {% for error in form.nombre.errors %} {{ error }} {% endfor %}
-        <br />
-        {{ form.descripcion.label(style="float: left; width: 105px;") }}
-        {{ form.descripcion(class="textarea") }}
-        {% for error in form.descripcion.errors %} {{ error }} {% endfor %}
-        <br />
-        {{ form.proyecto_nombre.label(style="float: left; width: 105px;") }}
-        {{ form.proyecto_nombre(class="form-input" , value = g.proyecto, readonly="readonly") }}
-        {% for error in form.proyecto_nombre.errors %} {{ error }} {% endfor %}
-               
-    </dl>
-    <h3>*PASO 2: Seleccionar los items</h3>
-                       
+<form runat="server">             
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
@@ -39,24 +20,22 @@
             </td>
         </tr> 	
 		<tr>
-                    	<th><a href='#' title="Click Header to Sort">Elegir</a></th>
 			<th><a href='#' title="Click Header to Sort">Nombre</a></th>
 			<th><a href='#' title="Click Header to Sort">Version</a></th>
                         <th><a href='#' title="Click Header to Sort">Complejidad</a></th>
                         <th><a href='#' title="Click Header to Sort">Costo</a></th>
                         <th><a href='#' title="Click Header to Sort">Estado</a></th>
-       	
+                        <th><a href='#' title="Click Header to Sort">FechaDeModif</a></th>			
 		</tr>
 </thead>
     {% for item in list %}
     <tr>
-       <td><input type="checkbox" name=lista value="{{ item['idItem'] }}"></td>
        <td><h5>{{ item.nombre }}</h5></td>
        <td><h5>{{ item.version }}</h5></td>
        <td><h5>{{ item.complejidad }}</h5></td>
        <td><h5>{{ item.costo }}</h5></td>
        <td><h5>{{ item.estado }}</h5></td>
-       
+       <td><h5>{{ item.fechaDeModif }}</h5></td>
     </tr>
     {% endfor %}
 
@@ -83,10 +62,11 @@
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
 </div>
+</form>   
+<input class="button" type="button" value="Back" onclick="document.location='/gesProyecto';">
 
-<p>
-    <input class="button" type="submit" value="Guardar">
-    <input class="button" type="button" value="Back" onclick="document.location='/desarrollo';">
-</p>
-</form>
 {% endblock %}
+
+
+
+

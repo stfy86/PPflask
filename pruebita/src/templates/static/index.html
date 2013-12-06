@@ -3,7 +3,7 @@
 {% block title %}Index{% endblock %}
 
 {% block body %}
-
+<center>
                     {% if not g.user %}
     <h4> Sistema PP </h4>
                     {% elif g.user.name == "admin" %}
@@ -13,4 +13,5 @@
     <h4> Bienvenido {{g.user}}!!! </h4>
     <p><img src="/img/link.png"/><a href="{{ url_for('misProyectos') }}">Mis Proyectos</a></p>
                     {% endif %}
+</center>
 {% endblock %}

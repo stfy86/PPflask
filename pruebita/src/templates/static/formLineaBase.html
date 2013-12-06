@@ -5,7 +5,7 @@
 {% block body %}
 <div class="page-header">
     <center>
-    <h1>Agregar Linea Base a la Fase :{{fase.nombre}}:</h1>
+    <h1>Agregar Linea Base a la Fase</h1>
     <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
     </center>
 </div>
@@ -44,7 +44,7 @@
         </thead>
             {% for item in list %}
                   <tr>
-                      <td><input type=checkbox name=lista value="{{ item['idItem'] }}" required=""></td>
+                      <td><input type=checkbox name=lista value="{{ item['idItem'] }}"></td>
                    <td><h5>{{item.nombre}}</h5></td>
                    <td><h5>{{item.estado}}</h5></td>  
                 </tr>

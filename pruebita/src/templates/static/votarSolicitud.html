@@ -5,8 +5,8 @@
 {% block body %}
 <div class="page-header">
     <center>
-    <h1>Solicitud de Cambio en el contexto del Proyecto</h1>
-    <p><img src="/img/link.png"/><a href="{{ url_for('desarrollo') }}">Modulo Desarrollo</a></p>
+    <h1>Votar Solicitud de Cambio en el contexto del Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
     <h3>Show Solicitud</h3>
     </center>
 </div>
@@ -44,13 +44,15 @@
             {{ form.en_contra.label(style="float: left; width: 105px;")}}:
             {{form.en_contra(class="form-input", readonly="readonly") }}
             {% for error in form.en_contra.errors %} {{ error }} {% endfor %}
-      
+           
+            <br />
+            {{ form.aceptar.label(style="float: left; width: 105px;")}}:
+            {{form.aceptar}}
 
       </dl>
         <div>
-          <input class="button" type="button" value="Votar Solicitud de Cambio" onclick="document.location='/votarSolicitud/{{idSolicitud}}.html';">
-          <input class="button" type="button" value="Back" onclick="document.location='/listSolicitudes';">
-          <input class="button" type="button" value="Ejecutar Solicitud" onclick="document.location='/ejecutarSolicitud/{{idSolicitud}}.html';">
+          <input class="button" type="submit" name="edit" value="Guardar">
+          <input class="button" type="button" value="Back" onclick="document.location='/listSolicitudesG';">
         </div>
     </form>
 {% endblock %}

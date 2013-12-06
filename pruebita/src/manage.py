@@ -2,11 +2,10 @@ from flask.ext.script import Manager
 from modulo import *
 from poblarBD import *
 
-manager = Manager(app)
 """
 Clase que contiene los metodos relacionados con la inicializacion de la base de datos 
-@param manager Inicializa el modulo 
 """
+manager = Manager(app)
 
 @manager.command
 def initdb():
@@ -28,6 +27,12 @@ def poblardb():
     createTipoDeItem()
     createFase()
     asignarRol()
+    
+@manager.command
+def poblardbPrueba():
+    """ Carga registros en la base de datos de Prueba """
+    dropdb()
+    initdb()
     
 @manager.command
 def dropdb():

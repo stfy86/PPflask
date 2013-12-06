@@ -2,11 +2,13 @@
 {% block title %}Lista Comite{% endblock %}
 {% block body %}
 <div class="page-header">
-    <h1>Administrar Proyecto :{{proyecto.nombre}}:</h1>
-    <a href="{{ url_for('administracion') }}">Modulo de Administracion</a>
-    <h3>Comite de Proyecto</h3>
+    <center>
+    <h1>Administrar Proyecto</h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('administracion') }}">Modulo Administracion</a></p>
+    </center>
 </div>
-</br>
+
+<h3>Comite de Proyecto</h3>
 <form method="post" action="" runat="server" >
 <table id="tableTwo" class="yui">    
 <thead>

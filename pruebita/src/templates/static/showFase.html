@@ -7,7 +7,7 @@
     <center>
     <h1>Gestionar Fase de Proyecto</h1>
     <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
-    <h3>Show Fase :{{fase.nombre}}:</h3>
+    <h3>Show Fase</h3>
     </center>
 </div>
 <form method="post" action="">  
@@ -52,9 +52,9 @@
         {% endif %}
         {% if fase.estado == "Activo" %}
         <input class="button" type="submit" name="gesLB" value="Ver Linea Base"  >
+        <input class="button" type="submit" name="items" value="Ver Items"  >
         <input class="button" type="submit" name="finFase" value="Finalizar Fase"  >          
         {% endif %}
-        <input class="button" type="submit" name="reporteFase" value="Reporte Fase"  >          
         <input class="button" type="button" value="Back" onclick="document.location='/listFases';">
     </div>
    </form>

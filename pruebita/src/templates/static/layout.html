@@ -75,6 +75,9 @@ return confirm( mensaje );
                 <li><a href="{{ url_for('login') }}">Login</a></li>
 				{% else %}
                 <li><a href="{{ url_for('index') }}">Home</a></li>
+                {% if g.user.name != "admin"%}
+                <li><a href="{{ url_for('misProyectos') }}"> Mis Proyectos </a></li>
+                {% endif %}
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 		{% endif %}
             </ul>
@@ -94,6 +97,9 @@ return confirm( mensaje );
                         <li><a href="{{ url_for('login') }}">Login</a></li>
                         			{% else %}
                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        {% if g.user.name != "admin"%}
+                        <li><a href="{{ url_for('misProyectos') }}"> Mis Proyectos </a></li>
+                        {% endif %}
                         <li><a href="{{ url_for('index') }}">Home</a></li>
                         <div class="page-header"><h3>Sesion</h3></div>  
                         <img src="/img/user.png"/>{{g.user}}

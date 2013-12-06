@@ -3,42 +3,41 @@
 {% block body %}
 <div class="page-header">
     <center>
-    <h1>Gestionar Fases Activas del Proyecto</h1>
-    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
-    <h3>Lista de Fases</h3>
+    <h1>Gestionar Solicitudes de Cambio </h1>
+    <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo de Gestion</a></p>
+    <h3>Lista de Solicitudes</h3>
     </center>
 </div>
-<form method="post" action="" runat="server" >
+<form method="post" action="" runat="server">             
 <table id="tableTwo" class="yui">    
 <thead>
         <tr>
             <td class="tableHeader">
             </td>
-            <td colspan="5" class="filter">
+            <td colspan="2" class="filter">
                 Search: <input id="filterBoxTwo" value="" maxlength="30" size="30" type="text" />
                 <img id="filterClearTwo" src="/img/cross.png" title="Click to clear filter." alt="Clear Filter Image" />
             </td>
         </tr> 	
-        <tr>
+	<tr>
+                <th><a href='#' title="Click Header to Sort">Autor</a></th>
                 <th><a href='#' title="Click Header to Sort">Nombre</a></th>
                 <th><a href='#' title="Click Header to Sort">Descripcion</a></th>
-                <th><a href='#' title="Click Header to Sort">FechaDeCreacion</a></th>
-                <th><a href='#' title="Click Header to Sort">Orden</a></th>
                 <th><a href='#' title="Click Header to Sort">Estado</a></th>
-                <th><a href='#' title="Click Header to Sort">TipoDeItemId</a></th>
+                <th><a href='#' title="Click Header to Sort">Votos Positivos</a></th>
+                <th><a href='#' title="Click Header to Sort">Votos Negativos</a></th>
+                
         </tr>
 </thead>
- {% for fase in list %}
-    {% if fase.estado == "Activo" %}
+ {% for solicitud in list %}
      <tr>  
-        <td><a href="{{ url_for('gesLB', idFase=fase.idFase )}}"</a> <h5>{{ fase.nombre }}</h5></td>
-        <td><a href="{{ url_for('gesLB', idFase=fase.idFase )}}" </a><h5>{{ fase.descripcion }}</h5></td>
-        <td><a href="{{ url_for('gesLB', idFase=fase.idFase )}}" </a><h5>{{ fase.fechaDeCreacion}}</h5></td>
-        <td><a href="{{ url_for('gesLB', idFase=fase.idFase )}}" </a> <h5>{{ fase.orden}}</h5></td>	
-        <td><a href="{{ url_for('gesLB', idFase=fase.idFase )}}" </a> <h5>{{ fase.estado}}</h5></td>	
-        <td><a href="{{ url_for('gesLB', idFase=fase.idFase  )}}" </a> <h5>{{ fase.tipoDeItemId}}</h5></td>
+        <td><a href="{{ url_for('votarSolicitud', idSolicitud=solicitud.idSolicitud )}}"</a> <h5>{{ solicitud.autor.nombre }}</h5></td>
+        <td><a href="{{ url_for('votarSolicitud', idSolicitud=solicitud.idSolicitud )}}" </a><h5>{{ solicitud.nombre }}</h5></td>
+        <td><a href="{{ url_for('votarSolicitud', idSolicitud=solicitud.idSolicitud )}}" </a><h5>{{ solicitud.descripcion}}</h5></td>
+        <td><a href="{{ url_for('votarSolicitud', idSolicitud=solicitud.idSolicitud )}}" </a><h5>{{ solicitud.estado}}</h5></td>
+        <td><a href="{{ url_for('votarSolicitud', idSolicitud=solicitud.idSolicitud )}}" </a><h5>{{ solicitud.votosPositivos}}</h5></td>
+        <td><a href="{{ url_for('votarSolicitud', idSolicitud=solicitud.idSolicitud )}}" </a><h5>{{ solicitud.votosNegativos}}</h5></td>
      </tr>
-     {% endif %}
  {% endfor %}
 </tbody>   
 <tfoot>
@@ -62,7 +61,11 @@
 <div style="padding-bottom:20px;">
 <div class="js-kit-poll" style="width: 350px;"></div>
 <script type="text/javascript" src="http://js-kit.com/polls.js"></script>
-</div> 
-<input class="button" type="button" value="Back" onclick="document.location='/gesProyecto';">
+</div>
+</form>
+    
+    <input class="button" type="button" value="back" onclick="document.location='/gesProyecto';">
+    
+
 {% endblock %}
 

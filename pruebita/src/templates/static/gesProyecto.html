@@ -36,16 +36,62 @@
             <br />
       </dl>
           <div>
-          {% if proyecto.estado == "Pendiente" %}
-              <input class="button" type="submit" name="init" value="Iniciar Proyecto">
-          {% endif %}          
-          {% if proyecto.estado == "Activo" %}
-              <input class="button" type="submit" name="fin" value="Finalizar Proyecto">
-          {% endif %}
-            <input class="button" type="submit" name="reporte" value="Reporte de Proyecto">
-            <input class="button" type="submit" name="costo" value="Calculo de Costo de Proyecto">
-            <input class="button" type="submit" name="impacto" value="Calculo de Impacto de Proyecto">
-        <input class="button" type="button" value="Back" onclick="document.location='/gestion';">
+         
+          {% if proyecto.estado != "Finalizado" %}
+                {% if "GesProyecto" in g.permisos and proyecto.estado == "Pendiente" %}
+                <input class="button" type="button" value="Iniciar Proyecto" onclick="document.location='/initProject/{{proyecto.idProyecto}}.html';">
+                <input class="disabled" type="button" value="Finalizar Proyecto">
+                {% endif %}        
+
+                {% if "GesProyecto" in g.permisos and proyecto.estado == "Activo" %}
+                <input class="disabled"  type="button" value="Iniciar Proyecto">
+                <input class="button" type="button" value="Finalizar Proyecto" onclick="document.location='/finProject/{{proyecto.idProyecto}}.html';">
+                {% endif %}
+                {% if "GesRolProyecto" in g.permisos%}
+                <input class="button" type="button" value="Ver Roles de Proyecto" onclick="document.location='/listRolProyecto';">
+                {% else %}
+                <input class="disabled" type="button" value="Ver Roles de Proyecto" >
+                {% endif %}
+                {% if "GesUserProyecto" in g.permisos%}
+                <input class="button" type="button" value="Ver Usuarios de Proyecto" onclick="document.location='/listUserProyecto';">
+                {% else %}
+                <input class="disabled" type="button" value="Ver Usuarios de Proyecto">
+                {% endif %}
+                {% if "GesUsuarioComite" in g.permisos%}
+                <input class="button" type="button" value="Ver Usuarios Comite de Proyecto" onclick="document.location='/listUserComite';">
+                {% else %}
+                <input class="disabled" type="button" value="Ver Usuarios de Comite de Proyecto">
+                {% endif %}
+                {% if "GesFase" in g.permisos and proyecto.estado == "Pendiente" %}
+                <input class="button" type="button" value="Ver Fases de Proyecto" onclick="document.location='/listFases';">
+                {% else %}
+                <input class="disabled" type="button" value="Ver Fases de Proyecto" >
+                {% endif %}
+                {% if "GesLB" in g.permisos  and proyecto.estado == "Activo" %}
+                <input class="button" type="button" value="Ver LB" onclick="document.location='/listFasesActivasG';">
+                {% else %}
+                <input class="disabled" type="button" value="Ver LB" >
+                {% endif %}
+                {% if "GesCalculo" in g.permisos  and proyecto.estado == "Activo" %}
+                 <input class="button" type="button" name="costo" value="Calculo de Costo de Proyecto" onclick="document.location='/costoProyecto/{{proyecto}}.html';">
+                <input class="button" type="button" name="impacto" value="Calculo de Impacto de Proyecto" onclick="document.location='/impactoProyecto/{{proyecto}}.html';">
+                {% else %}
+                 <input class="disabled" type="button" name="costo" value="Calculo de Costo de Proyecto">
+                <input class="disabled" type="button" name="impacto" value="Calculo de Impacto de Proyecto">
+                {% endif %}
+                
+         {% endif %}
+         {% if "GesReporte" in g.permisos %}
+                 <input class="button" type="submit" name="reporte" value="Reporte de Proyecto" onclick="document.location='/reporteProject/{{proyecto.idProyecto}}.html';">
+         {% else %}
+         <input class="disabled" type="submit" name="reporte" value="Reporte de Proyecto" >
+                 
+         {% endif %}
+         
+         
+         <input class="button" type="button" value="Back" onclick="document.location='/gestion';">
+         <input class="button" type="button" value="Solicitud de Cambio" onclick="document.location='/listSolicitudesG';">
+        
         </div>
       
     </form>

@@ -5,7 +5,7 @@
 {% block body %}
 <div class="page-header">
     <center>
-    <h1>Agregar Usuario a Proyecto :{{g.proyecto}}:</h1>
+    <h1>Agregar Usuario a Proyecto</h1>
     <p><img src="/img/link.png"/><a href="{{ url_for('gestion') }}">Modulo Gestion</a></p>
     </center>
 </div>
@@ -28,7 +28,7 @@
         </tr>
     </thead>
         {% for user in listU %}
-            {% if user.estado != "Inactivo" and not user in list and user.name != "admin"%}
+            {% if not user in list and user.name != "admin"%}
             <tr>
                 <td><input type="radio" name=usuario value="{{ user['idUser'] }}" required=""></td>
                <td><h5>{{user.name}}</h5></td>

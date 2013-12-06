@@ -3,43 +3,15 @@
 {% block body %}
 {% if session.logged_in and g.proyecto != None and  "ModuloGestion" in g.permisos %}
     <center>
-        <div class="page-header"><h3>Modulo de Gestion</h3></div>
-    {% if "GesRolProyecto" in g.permisos%}
-    <p><img src="/img/link.png"/><a href="{{ url_for('listRolProyecto') }}"> Gestionar Roles del Proyecto</a>
-    {% else %}
-    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  {{ url_for('listRolProyecto') }}"> Gestionar Roles del Proyecto</a>
-    {% endif %}
-    {% if "GesUserProyecto" in g.permisos%}
-    <p><img src="/img/link.png"/><a href="{{ url_for('listUserProyecto') }}"> Gestionar Usuario del Proyecto</a></p>
-    {% else %}
-    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0)  href="{{ url_for('listUserProyecto') }}"> Gestionar Usuario del Proyecto</a></p>
-    {% endif %}
-    {% if "GesUsuarioComite" in g.permisos%}
-    <p><img src="/img/link.png"/><a href="{{ url_for('listUserComite') }}"> Gestionar Usuario de Comite del Proyecto</a></p>
-    {% else %}
-    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('listUserComite') }}"> Gestionar Usuario de Comite del Proyecto</a></p>
-    {% endif %}
-    {% if "GesFase" in g.permisos %}
-    <p><img src="/img/link.png"/><a href="{{ url_for('listFases') }}"> Gestionar Fases del Proyecto</a></p>
-    {% else %}
-    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('listFases') }}"> Gestionar Fases del Proyecto</a></p>
-    {% endif %}
+    <div class="page-header"><h3>Modulo de Gestion</h3></div>
     {% if "GesTiposDeItem" in g.permisos%}
-    <p><img src="/img/link.png"/><a href="{{ url_for('listTipoDeItem') }}"> Gestionar Tipo De Ítem </a></p>
+    <p><img src="/img/link.png"/><a href="{{ url_for('listTipoDeItem') }}"> Tipo De Ítem </a></p>
     {% else %}
-    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('listTipoDeItem') }}"> Gestionar Tipo De Ítem en el contexto de la fase</a></p>
+    <p><a class="disabled" href="javascript:void(0) href="{{ url_for('listTipoDeItem') }}">  Tipo De Ítem </a></p>
     {% endif %}
-    {% if "GesLB" in g.permisos%}
-    <p><img src="/img/link.png"/><a href="{{ url_for('listFasesActivasG') }}"> Gestionar Linea Base</a></p>
-    {% else %}
-    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('listFasesActivasG') }}"> Gestionar Linea Base</a></p>
-    {% endif %}
-    {% if "GesProyecto" in g.permisos%}
-    <p><img src="/img/link.png"/><a href="{{ url_for('gesProyecto') }}"> Gestionar Proyecto</a></p>
-    {% else %}
-    <p><img src="/img/link.png"/><a class="disabled" href="javascript:void(0) href="{{ url_for('index') }}"> Gestionar Proyecto</a></p>
-    {% endif %}
+     <p><img src="/img/link.png"/><a href="{{ url_for('gesProyecto') }}"> Proyecto</a></p>
     </center>
+    <h3> Datos de Sesion </h3>
     <p><img src="/img/info.png"/></p>
     <p>Proyecto: {{g.proyecto.nombre}} </p>
     <p>Rol del Usuario:  {{ g.rol.nombre}} </p>
