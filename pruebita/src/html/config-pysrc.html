@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>config</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;config
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="config-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="config-module.html">Module config</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># To change this template, choose Tools | Templates</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># and open the template in the editor.</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable config.DEBUG=config-module.html#DEBUG"><a title="config.DEBUG" class="py-name" href="#" onclick="return doclink('link-0', 'DEBUG', 'link-0');">DEBUG</a></tt> <tt class="py-op">=</tt> <tt class="py-name">True</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable config._basedir=config-module.html#_basedir"><a title="config._basedir" class="py-name" href="#" onclick="return doclink('link-1', '_basedir', 'link-1');">_basedir</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">abspath</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable config.WHOOSH_BASE=config-module.html#WHOOSH_BASE"><a title="config.WHOOSH_BASE" class="py-name" href="#" onclick="return doclink('link-2', 'WHOOSH_BASE', 'link-2');">WHOOSH_BASE</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-3" class="py-name"><a title="config._basedir" class="py-name" href="#" onclick="return doclink('link-3', '_basedir', 'link-1');">_basedir</a></tt><tt class="py-op">,</tt> <tt class="py-string">'search.db'</tt><tt class="py-op">)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable config.DATA_PATH=config-module.html#DATA_PATH"><a title="config.DATA_PATH" class="py-name" href="#" onclick="return doclink('link-4', 'DATA_PATH', 'link-4');">DATA_PATH</a></tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-5" class="py-name"><a title="config._basedir" class="py-name" href="#" onclick="return doclink('link-5', '_basedir', 'link-1');">_basedir</a></tt><tt class="py-op">,</tt> <tt class="py-string">'data'</tt><tt class="py-op">)</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable config.DEFAULT_TPL=config-module.html#DEFAULT_TPL"><a title="config.DEFAULT_TPL" class="py-name" href="#" onclick="return doclink('link-6', 'DEFAULT_TPL', 'link-6');">DEFAULT_TPL</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'static'</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable config.SECRET_KEY=config-module.html#SECRET_KEY"><a title="config.SECRET_KEY" class="py-name" href="#" onclick="return doclink('link-7', 'SECRET_KEY', 'link-7');">SECRET_KEY</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'secret devel key'</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable config.URL=config-module.html#URL"><a title="config.URL" class="py-name" href="#" onclick="return doclink('link-8', 'URL', 'link-8');">URL</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'http://localhost:8080/'</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable config.TITLE=config-module.html#TITLE"><a title="config.TITLE" class="py-name" href="#" onclick="return doclink('link-9', 'TITLE', 'link-9');">TITLE</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'Planificador de Proyecto'</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable config.VERSION=config-module.html#VERSION"><a title="config.VERSION" class="py-name" href="#" onclick="return doclink('link-10', 'VERSION', 'link-10');">VERSION</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'0.1'</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt id="link-11" class="py-name" targets="Variable config.LANG=config-module.html#LANG"><a title="config.LANG" class="py-name" href="#" onclick="return doclink('link-11', 'LANG', 'link-11');">LANG</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'es'</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable config.LANG_DIRECTION=config-module.html#LANG_DIRECTION"><a title="config.LANG_DIRECTION" class="py-name" href="#" onclick="return doclink('link-12', 'LANG_DIRECTION', 'link-12');">LANG_DIRECTION</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'ltr'</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt id="link-13" class="py-name" targets="Variable config.YEAR=config-module.html#YEAR"><a title="config.YEAR" class="py-name" href="#" onclick="return doclink('link-13', 'YEAR', 'link-13');">YEAR</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'2013'</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">  </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable config.SQLALCHEMY_DATABASE_URI=config-module.html#SQLALCHEMY_DATABASE_URI"><a title="config.SQLALCHEMY_DATABASE_URI" class="py-name" href="#" onclick="return doclink('link-14', 'SQLALCHEMY_DATABASE_URI', 'link-14');">SQLALCHEMY_DATABASE_URI</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'postgresql://admin:admin@localhost:5432/database'</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-comment">#SQLALCHEMY_DATABASE_URI = 'postgresql://admin:admin@localhost:5432/databasePrueba'</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-keyword">del</tt> <tt class="py-name">os</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Dec  6 13:49:07 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

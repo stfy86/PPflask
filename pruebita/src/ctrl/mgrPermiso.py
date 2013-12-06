@@ -1,3 +1,4 @@
+"""Clase que maneja los permisos"""
 from modulo import *
 
 class MgrPermiso():

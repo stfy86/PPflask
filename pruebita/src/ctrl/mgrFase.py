@@ -1,3 +1,4 @@
+""" Clase que maneja la Fase"""
 from modulo import *
 from sqlalchemy import or_, and_
 

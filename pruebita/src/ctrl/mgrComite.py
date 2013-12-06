@@ -1,3 +1,4 @@
+""" Clase que maneja comite """
 from modulo import *
 
 class MgrComite():
@@ -107,7 +108,8 @@ class MgrComite():
             return False
         
     def esUsuario(self, comite, user):
-       if user in comite.miembros:
-           return True
-       else:
-           return False
+        """Retorna True si el usuario es miembro del comite """
+        if user in comite.miembros:
+            return True
+        else:
+            return False

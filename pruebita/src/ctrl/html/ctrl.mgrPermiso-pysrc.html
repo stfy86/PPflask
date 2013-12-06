@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ctrl.mgrPermiso</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ctrl-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ctrl-module.html">Package&nbsp;ctrl</a> ::
+        Module&nbsp;mgrPermiso
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="ctrl.mgrPermiso-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ctrl.mgrPermiso-module.html">Module ctrl.mgrPermiso</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""Clase que maneja los permisos"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">modulo</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="MgrPermiso"></a><div id="MgrPermiso-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="MgrPermiso-toggle" onclick="return toggle('MgrPermiso');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ctrl.mgrPermiso.MgrPermiso-class.html">MgrPermiso</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrPermiso-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="MgrPermiso-expanded"><a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">     </tt>
+<a name="MgrPermiso.listar"></a><div id="MgrPermiso.listar-def"><a name="L6"></a><tt class="py-lineno"> 6</tt> <a class="py-toggle" href="#" id="MgrPermiso.listar-toggle" onclick="return toggle('MgrPermiso.listar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrPermiso.MgrPermiso-class.html#listar">listar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrPermiso.listar-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrPermiso.listar-expanded"><a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">        <tt class="py-docstring">""" Lista los permisos """</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">     </tt>
+<a name="MgrPermiso.guardar"></a><div id="MgrPermiso.guardar-def"><a name="L10"></a><tt class="py-lineno">10</tt> <a class="py-toggle" href="#" id="MgrPermiso.guardar-toggle" onclick="return toggle('MgrPermiso.guardar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrPermiso.MgrPermiso-class.html#guardar">guardar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">permiso</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrPermiso.guardar-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrPermiso.guardar-expanded"><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">        <tt class="py-docstring">""" Guarda permiso """</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt class="py-name">permiso</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">     </tt>
+<a name="MgrPermiso.borrar"></a><div id="MgrPermiso.borrar-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="MgrPermiso.borrar-toggle" onclick="return toggle('MgrPermiso.borrar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrPermiso.MgrPermiso-class.html#borrar">borrar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">permiso</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrPermiso.borrar-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrPermiso.borrar-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-docstring">""" Borra permiso """</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">delete</tt><tt class="py-op">(</tt><tt class="py-name">permiso</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">     </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">     </tt>
+<a name="MgrPermiso.filtrar"></a><div id="MgrPermiso.filtrar-def"><a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="MgrPermiso.filtrar-toggle" onclick="return toggle('MgrPermiso.filtrar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrPermiso.MgrPermiso-class.html#filtrar">filtrar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrPermiso.filtrar-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrPermiso.filtrar-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-docstring">""" Busca permiso por nombre """</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-name">permiso</tt> <tt class="py-op">=</tt>  <tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">permiso</tt> </tt>
+</div><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">     </tt>
+<a name="MgrPermiso.filtrarXModulo"></a><div id="MgrPermiso.filtrarXModulo-def"><a name="L26"></a><tt class="py-lineno">26</tt> <a class="py-toggle" href="#" id="MgrPermiso.filtrarXModulo-toggle" onclick="return toggle('MgrPermiso.filtrarXModulo');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrPermiso.MgrPermiso-class.html#filtrarXModulo">filtrarXModulo</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">modulo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrPermiso.filtrarXModulo-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrPermiso.filtrarXModulo-expanded"><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-docstring">""" Busca permiso por modulo,retorna una lista """</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-name">permiso</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">modulo</tt> <tt class="py-op">==</tt> <tt class="py-string">"ModuloAdministracion"</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">            <tt class="py-name">permiso</tt> <tt class="py-op">=</tt>  <tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">tipoPermiso</tt> <tt class="py-op">==</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">modulo</tt> <tt class="py-op">==</tt> <tt class="py-string">"ModuloGestion"</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">            <tt class="py-name">permiso</tt> <tt class="py-op">=</tt>  <tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">tipoPermiso</tt> <tt class="py-op">==</tt> <tt class="py-number">2</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">modulo</tt> <tt class="py-op">==</tt> <tt class="py-string">"ModuloDesarrollo"</tt><tt class="py-op">:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">            <tt class="py-name">permiso</tt> <tt class="py-op">=</tt>  <tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">tipoPermiso</tt> <tt class="py-op">==</tt> <tt class="py-number">3</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">permiso</tt> </tt>
+</div><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">     </tt>
+<a name="MgrPermiso.getlistaPermiso"></a><div id="MgrPermiso.getlistaPermiso-def"><a name="L37"></a><tt class="py-lineno">37</tt> <a class="py-toggle" href="#" id="MgrPermiso.getlistaPermiso-toggle" onclick="return toggle('MgrPermiso.getlistaPermiso');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrPermiso.MgrPermiso-class.html#getlistaPermiso">getlistaPermiso</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lista</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrPermiso.getlistaPermiso-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrPermiso.getlistaPermiso-expanded"><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-docstring">""" Retorna una lista de permiso del mismo id"""</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-name">perm</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">p</tt> <tt class="py-keyword">in</tt> <tt class="py-name">lista</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">            <tt class="py-name">perm</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method ctrl.mgrComite.MgrComite.filtrarXId()=ctrl.mgrComite.MgrComite-class.html#filtrarXId,Method ctrl.mgrFase.MgrFase.filtrarXId()=ctrl.mgrFase.MgrFase-class.html#filtrarXId,Method ctrl.mgrLineaBase.MgrLineaBase.filtrarXId()=ctrl.mgrLineaBase.MgrLineaBase-class.html#filtrarXId,Method ctrl.mgrPermiso.MgrPermiso.filtrarXId()=ctrl.mgrPermiso.MgrPermiso-class.html#filtrarXId,Method ctrl.mgrProyecto.MgrProyecto.filtrarXId()=ctrl.mgrProyecto.MgrProyecto-class.html#filtrarXId,Method ctrl.mgrRol.MgrRol.filtrarXId()=ctrl.mgrRol.MgrRol-class.html#filtrarXId,Method ctrl.mgrSolicitud.MgrSolicitud.filtrarXId()=ctrl.mgrSolicitud.MgrSolicitud-class.html#filtrarXId,Method ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrarXId()=ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#filtrarXId,Method ctrl.mgrUser.MgrUser.filtrarXId()=ctrl.mgrUser.MgrUser-class.html#filtrarXId"><a title="ctrl.mgrComite.MgrComite.filtrarXId
+ctrl.mgrFase.MgrFase.filtrarXId
+ctrl.mgrLineaBase.MgrLineaBase.filtrarXId
+ctrl.mgrPermiso.MgrPermiso.filtrarXId
+ctrl.mgrProyecto.MgrProyecto.filtrarXId
+ctrl.mgrRol.MgrRol.filtrarXId
+ctrl.mgrSolicitud.MgrSolicitud.filtrarXId
+ctrl.mgrTipoDeItem.MgrTipoDeItem.filtrarXId
+ctrl.mgrUser.MgrUser.filtrarXId" class="py-name" href="#" onclick="return doclink('link-0', 'filtrarXId', 'link-0');">filtrarXId</a></tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">perm</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">     </tt>
+<a name="MgrPermiso.filtrarXId"></a><div id="MgrPermiso.filtrarXId-def"><a name="L44"></a><tt class="py-lineno">44</tt> <a class="py-toggle" href="#" id="MgrPermiso.filtrarXId-toggle" onclick="return toggle('MgrPermiso.filtrarXId');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrPermiso.MgrPermiso-class.html#filtrarXId">filtrarXId</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">idPermiso</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrPermiso.filtrarXId-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrPermiso.filtrarXId-expanded"><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-docstring">""" Busca permiso por id """</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Permiso</tt><tt class="py-op">.</tt><tt class="py-name">idPermiso</tt> <tt class="py-op">==</tt> <tt class="py-name">idPermiso</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ctrl-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Dec  6 13:49:08 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

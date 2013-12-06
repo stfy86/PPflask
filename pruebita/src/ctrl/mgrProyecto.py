@@ -1,3 +1,5 @@
+
+"""Clase que maneja los Proyectos"""
 from modulo import *
 from sqlalchemy import or_, and_
 from mgrUser import MgrUser

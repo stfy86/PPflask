@@ -1,3 +1,4 @@
+"""Clase que maneja los tipo de Item"""
 from modulo import *
 
 class MgrTipoDeItem():

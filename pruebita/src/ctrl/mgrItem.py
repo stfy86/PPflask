@@ -1,3 +1,4 @@
+"""Clase que maneja los Items"""
 from modulo import *
 from sqlalchemy import and_, or_
 

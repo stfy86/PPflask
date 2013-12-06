@@ -1,9 +1,11 @@
+""" Clase que maneja los cambios """
 from modulo import *
 from sqlalchemy import and_, or_
 
 class MgrCambio():
 
     def getLBItem(self, item):
+        """ Retorna la lista de linea base en la que participa el item"""
         listaLB = [] 
         todasLB = LineaBase.query.all()
         for lb in todasLB:

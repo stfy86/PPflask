@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>ctrl.mgrTipoDeItem</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ctrl-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="ctrl-module.html">Package&nbsp;ctrl</a> ::
+        Module&nbsp;mgrTipoDeItem
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="ctrl.mgrTipoDeItem-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="ctrl.mgrTipoDeItem-module.html">Module ctrl.mgrTipoDeItem</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""Clase que maneja los tipo de Item"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">modulo</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="MgrTipoDeItem"></a><div id="MgrTipoDeItem-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem-toggle" onclick="return toggle('MgrTipoDeItem');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html">MgrTipoDeItem</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="MgrTipoDeItem-expanded"><a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="MgrTipoDeItem.listar"></a><div id="MgrTipoDeItem.listar-def"><a name="L6"></a><tt class="py-lineno"> 6</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.listar-toggle" onclick="return toggle('MgrTipoDeItem.listar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#listar">listar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.listar-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.listar-expanded"><a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">all</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">     </tt>
+<a name="MgrTipoDeItem.guardar"></a><div id="MgrTipoDeItem.guardar-def"><a name="L9"></a><tt class="py-lineno"> 9</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.guardar-toggle" onclick="return toggle('MgrTipoDeItem.guardar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#guardar">guardar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">tipoDeItem</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.guardar-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.guardar-expanded"><a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">add</tt><tt class="py-op">(</tt><tt class="py-name">tipoDeItem</tt><tt class="py-op">)</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">     </tt>
+<a name="MgrTipoDeItem.borrar"></a><div id="MgrTipoDeItem.borrar-def"><a name="L13"></a><tt class="py-lineno">13</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.borrar-toggle" onclick="return toggle('MgrTipoDeItem.borrar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#borrar">borrar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.borrar-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.borrar-expanded"><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">delete</tt><tt class="py-op">(</tt><tt class="py-name">tipoDeItem</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">         </tt>
+<a name="MgrTipoDeItem.modificar"></a><div id="MgrTipoDeItem.modificar-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.modificar-toggle" onclick="return toggle('MgrTipoDeItem.modificar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#modificar">modificar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">,</tt> <tt class="py-param">nombreNew</tt><tt class="py-op">,</tt> <tt class="py-param">descripcionNew</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.modificar-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.modificar-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">=</tt> <tt class="py-name">nombreNew</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">descripcion</tt> <tt class="py-op">=</tt> <tt class="py-name">descripcionNew</tt>      </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="MgrTipoDeItem.filtrarXId"></a><div id="MgrTipoDeItem.filtrarXId-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.filtrarXId-toggle" onclick="return toggle('MgrTipoDeItem.filtrarXId');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#filtrarXId">filtrarXId</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">idTipoDeItem</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.filtrarXId-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.filtrarXId-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">idTipoDeItem</tt> <tt class="py-op">==</tt> <tt class="py-name">idTipoDeItem</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">     </tt>
+<a name="MgrTipoDeItem.filtrar"></a><div id="MgrTipoDeItem.filtrar-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.filtrar-toggle" onclick="return toggle('MgrTipoDeItem.filtrar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#filtrar">filtrar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.filtrar-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.filtrar-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">     </tt>
+<a name="MgrTipoDeItem.asignarTipoDeAtrib2"></a><div id="MgrTipoDeItem.asignarTipoDeAtrib2-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.asignarTipoDeAtrib2-toggle" onclick="return toggle('MgrTipoDeItem.asignarTipoDeAtrib2');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#asignarTipoDeAtrib2">asignarTipoDeAtrib2</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">tipoDeItem</tt><tt class="py-op">,</tt> <tt class="py-param">listaTipoDeAtrib</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-name">None</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-param">listaSinTipoDeAtrib</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-name">None</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.asignarTipoDeAtrib2-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.asignarTipoDeAtrib2-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">n</tt> <tt class="py-keyword">in</tt> <tt class="py-name">listaSinTipoDeAtrib</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">            <tt class="py-name">tipoDeAtrib</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeAtributo</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeAtributo</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">n</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">            <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">atributosItem</tt><tt class="py-op">.</tt><tt class="py-name">remove</tt><tt class="py-op">(</tt><tt class="py-name">tipoDeAtrib</tt><tt class="py-op">)</tt>  </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">u</tt> <tt class="py-keyword">in</tt> <tt class="py-name">listaTipoDeAtrib</tt><tt class="py-op">:</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">            <tt class="py-name">tipoDeAtrib</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeAtributo</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeAtributo</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">u</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">            <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">atributosItem</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">tipoDeAtrib</tt><tt class="py-op">)</tt>  </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">             </tt>
+<a name="MgrTipoDeItem.asignarFase"></a><div id="MgrTipoDeItem.asignarFase-def"><a name="L40"></a><tt class="py-lineno">40</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.asignarFase-toggle" onclick="return toggle('MgrTipoDeItem.asignarFase');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#asignarFase">asignarFase</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">,</tt> <tt class="py-param">opcion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.asignarFase-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.asignarFase-expanded"><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-name">fase</tt> <tt class="py-op">=</tt> <tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">opcion</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">Fase</tt> <tt class="py-op">=</tt> <tt class="py-name">fase</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">             </tt>
+<a name="MgrTipoDeItem.desasignarTipoDeAtrib"></a><div id="MgrTipoDeItem.desasignarTipoDeAtrib-def"><a name="L46"></a><tt class="py-lineno">46</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.desasignarTipoDeAtrib-toggle" onclick="return toggle('MgrTipoDeItem.desasignarTipoDeAtrib');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#desasignarTipoDeAtrib">desasignarTipoDeAtrib</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">,</tt> <tt class="py-param">nombreTipoDeAtrib</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.desasignarTipoDeAtrib-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.desasignarTipoDeAtrib-expanded"><a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-name">MgrTipoDeItemXTipoDeAtrib</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method ctrl.mgrComite.MgrComite.borrar()=ctrl.mgrComite.MgrComite-class.html#borrar,Method ctrl.mgrFase.MgrFase.borrar()=ctrl.mgrFase.MgrFase-class.html#borrar,Method ctrl.mgrItem.MgrItem.borrar()=ctrl.mgrItem.MgrItem-class.html#borrar,Method ctrl.mgrLineaBase.MgrLineaBase.borrar()=ctrl.mgrLineaBase.MgrLineaBase-class.html#borrar,Method ctrl.mgrPermiso.MgrPermiso.borrar()=ctrl.mgrPermiso.MgrPermiso-class.html#borrar,Method ctrl.mgrProyecto.MgrProyecto.borrar()=ctrl.mgrProyecto.MgrProyecto-class.html#borrar,Method ctrl.mgrRol.MgrRol.borrar()=ctrl.mgrRol.MgrRol-class.html#borrar,Method ctrl.mgrSolicitud.MgrSolicitud.borrar()=ctrl.mgrSolicitud.MgrSolicitud-class.html#borrar,Method ctrl.mgrTipoDeItem.MgrTipoDeItem.borrar()=ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#borrar,Method ctrl.mgrUser.MgrUser.borrar()=ctrl.mgrUser.MgrUser-class.html#borrar"><a title="ctrl.mgrComite.MgrComite.borrar
+ctrl.mgrFase.MgrFase.borrar
+ctrl.mgrItem.MgrItem.borrar
+ctrl.mgrLineaBase.MgrLineaBase.borrar
+ctrl.mgrPermiso.MgrPermiso.borrar
+ctrl.mgrProyecto.MgrProyecto.borrar
+ctrl.mgrRol.MgrRol.borrar
+ctrl.mgrSolicitud.MgrSolicitud.borrar
+ctrl.mgrTipoDeItem.MgrTipoDeItem.borrar
+ctrl.mgrUser.MgrUser.borrar" class="py-name" href="#" onclick="return doclink('link-0', 'borrar', 'link-0');">borrar</a></tt><tt class="py-op">(</tt><tt class="py-name">nombre</tt><tt class="py-op">,</tt> <tt class="py-name">nombreTipoDeAtrib</tt><tt class="py-op">)</tt>  </tt>
+</div><a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                     </tt>
+<a name="MgrTipoDeItem.filtrarTipoDeAtrib"></a><div id="MgrTipoDeItem.filtrarTipoDeAtrib-def"><a name="L49"></a><tt class="py-lineno">49</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.filtrarTipoDeAtrib-toggle" onclick="return toggle('MgrTipoDeItem.filtrarTipoDeAtrib');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#filtrarTipoDeAtrib">filtrarTipoDeAtrib</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.filtrarTipoDeAtrib-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.filtrarTipoDeAtrib-expanded"><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">atributosItem</tt> </tt>
+</div><a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">     </tt>
+<a name="MgrTipoDeItem.filtrarTipoDeItem"></a><div id="MgrTipoDeItem.filtrarTipoDeItem-def"><a name="L53"></a><tt class="py-lineno">53</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.filtrarTipoDeItem-toggle" onclick="return toggle('MgrTipoDeItem.filtrarTipoDeItem');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#filtrarTipoDeItem">filtrarTipoDeItem</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">opcion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.filtrarTipoDeItem-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.filtrarTipoDeItem-expanded"><a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">opcion</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> </tt>
+</div><a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">     </tt>
+<a name="MgrTipoDeItem.filtrarFase"></a><div id="MgrTipoDeItem.filtrarFase-def"><a name="L57"></a><tt class="py-lineno">57</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.filtrarFase-toggle" onclick="return toggle('MgrTipoDeItem.filtrarFase');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#filtrarFase">filtrarFase</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.filtrarFase-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.filtrarFase-expanded"><a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt>      </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">Fase</tt><tt class="py-op">.</tt><tt class="py-name">idFase</tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">     </tt>
+<a name="MgrTipoDeItem.asignarTipoDeAtrib"></a><div id="MgrTipoDeItem.asignarTipoDeAtrib-def"><a name="L61"></a><tt class="py-lineno">61</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.asignarTipoDeAtrib-toggle" onclick="return toggle('MgrTipoDeItem.asignarTipoDeAtrib');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#asignarTipoDeAtrib">asignarTipoDeAtrib</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">,</tt> <tt class="py-param">nombreTipoDeAtrib</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.asignarTipoDeAtrib-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.asignarTipoDeAtrib-expanded"><a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-name">tipoDeAtrib</tt><tt class="py-op">=</tt> <tt class="py-name">TipoDeAtributo</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeAtributo</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombreTipoDeAtrib</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>    </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">tipoDeAtrib</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">atributosItem</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">            <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">atributosItem</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">tipoDeAtrib</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":asigno tipo de atributo a tipo de item:"</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":error: no asigno tipo de atributo a tipo de item"</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">         </tt>
+<a name="MgrTipoDeItem.desasignarTipoDeAtrib"></a><div id="MgrTipoDeItem.desasignarTipoDeAtrib-def"><a name="L71"></a><tt class="py-lineno">71</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.desasignarTipoDeAtrib-toggle" onclick="return toggle('MgrTipoDeItem.desasignarTipoDeAtrib');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#desasignarTipoDeAtrib">desasignarTipoDeAtrib</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">nombre</tt><tt class="py-op">,</tt> <tt class="py-param">nombreTipoDeAtrib</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.desasignarTipoDeAtrib-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.desasignarTipoDeAtrib-expanded"><a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-name">tipoDeItem</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">        <tt class="py-name">tipoDeAtrib</tt><tt class="py-op">=</tt> <tt class="py-name">TipoDeAtributo</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeAtributo</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">nombreTipoDeAtrib</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first_or_404</tt><tt class="py-op">(</tt><tt class="py-op">)</tt>  </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">tipoDeAtrib</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">atributosItem</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">            <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">atributosItem</tt><tt class="py-op">.</tt><tt class="py-name">remove</tt><tt class="py-op">(</tt><tt class="py-name">tipoDeAtrib</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">            <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":desasigno tipo de atributo de tipo de item:"</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-string">":error: no desasigno tipo de atributo de tipo de item"</tt> </tt>
+</div><a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"> </tt>
+<a name="MgrTipoDeItem.atributosDeTipoDeItem"></a><div id="MgrTipoDeItem.atributosDeTipoDeItem-def"><a name="L81"></a><tt class="py-lineno">81</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.atributosDeTipoDeItem-toggle" onclick="return toggle('MgrTipoDeItem.atributosDeTipoDeItem');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#atributosDeTipoDeItem">atributosDeTipoDeItem</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">tipoDeItem</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.atributosDeTipoDeItem-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.atributosDeTipoDeItem-expanded"><a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">atributosItem</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">     </tt>
+<a name="MgrTipoDeItem.existe"></a><div id="MgrTipoDeItem.existe-def"><a name="L84"></a><tt class="py-lineno">84</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.existe-toggle" onclick="return toggle('MgrTipoDeItem.existe');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#existe">existe</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">tipoDeItem</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.existe-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.existe-expanded"><a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line">        <tt class="py-name">t</tt> <tt class="py-op">=</tt> <tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">query</tt><tt class="py-op">.</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">TipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt> <tt class="py-op">==</tt> <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">nombre</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">first</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">t</tt> <tt class="py-op">!=</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line"> </tt>
+<a name="MgrTipoDeItem.asignarAtributosItem"></a><div id="MgrTipoDeItem.asignarAtributosItem-def"><a name="L91"></a><tt class="py-lineno">91</tt> <a class="py-toggle" href="#" id="MgrTipoDeItem.asignarAtributosItem-toggle" onclick="return toggle('MgrTipoDeItem.asignarAtributosItem');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="ctrl.mgrTipoDeItem.MgrTipoDeItem-class.html#asignarAtributosItem">asignarAtributosItem</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">tipoDeItem</tt><tt class="py-op">,</tt> <tt class="py-param">listaAtrib</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MgrTipoDeItem.asignarAtributosItem-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MgrTipoDeItem.asignarAtributosItem-expanded"><a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">a</tt> <tt class="py-keyword">in</tt> <tt class="py-name">listaAtrib</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno">93</tt>  <tt class="py-line">            <tt class="py-name">tipoDeItem</tt><tt class="py-op">.</tt><tt class="py-name">atributosItem</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">a</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno">94</tt>  <tt class="py-line">        <tt class="py-name">db</tt><tt class="py-op">.</tt><tt class="py-name">session</tt><tt class="py-op">.</tt><tt class="py-name">commit</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L95"></a><tt class="py-lineno">95</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="ctrl-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Fri Dec  6 13:49:08 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

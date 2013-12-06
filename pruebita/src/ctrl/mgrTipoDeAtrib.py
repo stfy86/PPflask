@@ -1,3 +1,4 @@
+"""Clase que maneja los tipos de atributos"""
 from modulo import *
 
 class MgrTipoDeAtrib():

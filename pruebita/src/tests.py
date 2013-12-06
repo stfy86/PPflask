@@ -1,4 +1,5 @@
 #!virtualenv/bin/python
+""" Clase encargada de las pruebas unitarias """
 import os
 import unittest
 import tempfile
@@ -8,9 +9,11 @@ from flask import Flask
 from pruebita import db, app
 from modulo import *
 
+
 class TestCase(unittest.TestCase):
     
     def setUp(self):
+        """ Inicializa el Testing, crea todas las tablas de la base de datos de prueba """
         app.config['TESTING'] = True
         app.config['CSRF_ENABLED'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:admin@localhost:5432/databasePrueba'
@@ -19,11 +22,17 @@ class TestCase(unittest.TestCase):
         db.create_all()
      
     def tearDown(self):
+        """ Finaliza el testing, borra todas las tablas de la base de datos de prueba """
         db.session.remove()
         db.drop_all()
 
     # usuarios   
     def testUsuario(self):
+        """ Realiza varias pruebas sobre la tabla usuario:
+        1. Crear un usuario nuevo
+        2. Modificar un usuario existente
+        3. Crear un usuario repetido
+        """
         print "Test Crear Usuario"
         u = User(name="stfy", passwd="stfy", nombre="estefanis", apellido="zamora", email="stfy@gmail.com", telefono=1111, obs="usuario nuevo")
         print MgrUser().guardar(u)
@@ -38,6 +47,12 @@ class TestCase(unittest.TestCase):
         
     
     def testProyecto(self):
+        """ Realiza varias pruebas sobre la tabla Proyecto:
+        1. Crear y guarda un proyecto nuevo
+        2. Intenta guardar un proyecto vacio
+        3. Intenta guardar un proyecto repetido
+        4. Intenta borrar un proyecto inexistente
+        """
         print "Guardar Proyecto"
         p=Proyecto("proyectoTest","test")
         MgrProyecto().guardar(p)
@@ -65,7 +80,12 @@ class TestCase(unittest.TestCase):
         assert name == p.nombre
     
     def testFase(self):
-        
+        """ Realiza varias pruebas sobre la tabla Fase:
+        1. Crear y guarda una fase nueva
+        2. Intenta guardar una fase vacio
+        3. Intenta guardar una fase repetida
+        4. Intenta borrar una fase inexistente
+        """
         p=Proyecto("proyectoTest","test")
         MgrProyecto().guardar(p)
         p = MgrProyecto().filtrar("proyectoTest")        
@@ -93,6 +113,12 @@ class TestCase(unittest.TestCase):
         assert nombre == f.nombre
     
     def testAtrib(self):
+        """ Realiza varias pruebas sobre la tabla Tipo de Atributo:
+        1. Crear y guarda un tipo de atributo nuevo
+        2. Intenta guardar un tipo de atributo vacio
+        3. Intenta guardar un tipo de atributo repetido
+        4. Intenta borrar un tipo de atributo inexistente
+        """
         nombre = "atrib1"
         u =TipoDeAtributo("atrib1","numerico","30","atrib numerico precision 30")
         MgrTipoDeAtrib().guardar(u)
@@ -121,6 +147,10 @@ class TestCase(unittest.TestCase):
     
     # login - logout    
     def login(self, username, password):
+        """ Prueba el login 
+        @param username nick del usuario
+        @param password contrasenha del usuario
+        """
         print "login"
         final= {'username':username,'password':password}
         data = json.dumps(final)
@@ -128,12 +158,14 @@ class TestCase(unittest.TestCase):
             follow_redirects=True)
 
     def logout(self):
+        """ Prueba el logout """
         print "logout"
         return self.app.get('/logout', follow_redirects=True)
     
     def testLoginLogout(self):
+        """ Prueba el login y logout del usuario admin"""
         print "longin - logout"
-        rv = self.login('stfy', 'stfy')
+        rv = self.login('admin', 'admin')
         dato = json.loads(rv.data)
         print "Esta logueado como",dato["usuario"]
         rv = self.logout()

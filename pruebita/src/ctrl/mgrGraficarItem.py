@@ -1,3 +1,4 @@
+"""Clase que maneja el grafico de los items"""
 from modulo import *
 from sqlalchemy import and_
 

@@ -1,3 +1,4 @@
+""" Clase encargada de manejar las solicitudes"""
 from modulo import *
 from pruebita import app
 from pruebita import db

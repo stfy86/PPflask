@@ -1,3 +1,4 @@
+"""Clase que maneja la Linea Base """
 from modulo import *
 from sqlalchemy import or_, and_
 

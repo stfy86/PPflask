@@ -1,3 +1,4 @@
+""" Clase que maneja los Usuarios"""
 from modulo import *
 
 class MgrUser():
